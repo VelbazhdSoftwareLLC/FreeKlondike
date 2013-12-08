@@ -39,18 +39,18 @@ Features
 
 Similarities to FreeCell:
 
-   -The Cards in the columns are always visible
-   -There are four individual cells at the top
+   - The Cards in the columns are always visible
+   - There are four individual cells at the top
 
 Similarities to Solitaire:
 
-   -There is a deck and discard pile to draw cards from
-   -Only Kings may be placed at the top of an empty column
-   -Cards may be removed from the Ace piles and placed back onto the playing field
-   -Any number of cards can be moved in one move (as long as they are stacked as in Solitaire
+   - There is a deck and discard pile to draw cards from
+   - Only Kings may be placed at the top of an empty column
+   - Cards may be removed from the Ace piles and placed back onto the playing field
+   - Any number of cards can be moved in one move (as long as they are stacked as in Solitaire
 
 Features unique to this game:
 
-   -The four individual cells start with cards in them
-   -You may only go through the deck twice on draw one and three times on draw three
-   -The obvious: there are only four columns, not 7 or 8 as in Solitaire and FreeCell, respectively
+   - The four individual cells start with cards in them
+   - You may only go through the deck twice on draw one and three times on draw three
+   - The obvious: there are only four columns, not 7 or 8 as in Solitaire and FreeCell, respectively
