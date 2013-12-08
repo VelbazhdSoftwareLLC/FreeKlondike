@@ -15,7 +15,8 @@ Four Row Solitaire
     You should have received a copy of the GNU General Public License
     along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
 
-
+Card faces and deck 1 and 2 backs provided by 
+http://www.jfitz.com/cards/
 
 Four Row Solitaire was created and programmed by Matt Stephen.
 This game is a mixture of FreeCell and normal (Klondike) Solitaire.
