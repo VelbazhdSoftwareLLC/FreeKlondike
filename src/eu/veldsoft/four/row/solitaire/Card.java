@@ -1,5 +1,3 @@
-package eu.veldsoft.four.row.solitaire;
-
 /*
  This file is a part of Four Row Solitaire
 
@@ -19,6 +17,8 @@ package eu.veldsoft.four.row.solitaire;
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+package eu.veldsoft.four.row.solitaire;
+
 import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
@@ -35,6 +35,11 @@ import javax.swing.JComponent;
  * @author Matt Stephen
  */
 public class Card extends JComponent {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public static final String SPADES_SUIT = "Spades";
 	public static final String CLUBS_SUIT = "Clubs";
 	public static final String HEARTS_SUIT = "Hearts";

@@ -1,5 +1,3 @@
-package eu.veldsoft.four.row.solitaire;
-
 /*
  This file is a part of Four Row Solitaire
 
@@ -19,12 +17,15 @@ package eu.veldsoft.four.row.solitaire;
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+package eu.veldsoft.four.row.solitaire;
+
 import java.awt.Desktop;
 import java.awt.event.*;
 import java.io.*;
 import java.net.URI;
 import java.net.URL;
 import java.util.LinkedList;
+
 import javax.swing.*;
 
 /**
@@ -36,6 +37,11 @@ import javax.swing.*;
  * @author Matt Stephen
  */
 public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public static final String version = ".63";
 
 	private JMenuBar menuBar = new JMenuBar();
@@ -271,11 +277,11 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 			super.setDeckThroughs(deckThroughs);
 			LinkedList<Integer> cards = new LinkedList<Integer>();
 
+			DataInputStream input = null;
 			try {
 				File file = new File(fileLocation + "frs-savedgame.dat");
 				file.createNewFile();
-				DataInputStream input = new DataInputStream(
-						new FileInputStream(file));
+				input = new DataInputStream(new FileInputStream(file));
 
 				while (input.available() > 0) {
 					cards.add(input.readInt());
@@ -293,6 +299,11 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 				System.err
 						.println("Problem Loading Saved Game (Unknown Error)... Starting New Game");
 				super.createBoard(null, 1);
+			} finally {
+				try {
+					input.close();
+				} catch (Exception ex) {
+				}
 			}
 		} else {
 			super.createBoard(null, 1);
@@ -304,6 +315,7 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 	}
 
 	public static void main(String[] args) {
+		@SuppressWarnings("unused")
 		FourRowSolitaire fourRowSolitaire = new FourRowSolitaire();
 	}
 

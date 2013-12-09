@@ -1,5 +1,3 @@
-package eu.veldsoft.four.row.solitaire;
-
 /*
  This file is a part of Four Row Solitaire
 
@@ -19,6 +17,8 @@ package eu.veldsoft.four.row.solitaire;
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+package eu.veldsoft.four.row.solitaire;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -32,6 +32,11 @@ import javax.swing.*;
  * @author Matt Stephen
  */
 public class ChangeAppearance extends JDialog implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public static final int NUM_DECKS = 3;
 	public static final int NUM_BACKGROUNDS = 3;
 

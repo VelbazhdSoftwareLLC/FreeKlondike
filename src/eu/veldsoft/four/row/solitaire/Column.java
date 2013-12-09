@@ -1,5 +1,3 @@
-package eu.veldsoft.four.row.solitaire;
-
 /*
  This file is a part of Four Row Solitaire
 
@@ -19,6 +17,8 @@ package eu.veldsoft.four.row.solitaire;
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+package eu.veldsoft.four.row.solitaire;
+
 /**
  * Class: Column
  * 
@@ -27,6 +27,11 @@ package eu.veldsoft.four.row.solitaire;
  * @author Matt Stephen
  */
 public class Column extends CardStack {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Column() {
 	}
 

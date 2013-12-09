@@ -1,5 +1,3 @@
-package eu.veldsoft.four.row.solitaire;
-
 /*
  This file is a part of Four Row Solitaire
 
@@ -18,6 +16,8 @@ package eu.veldsoft.four.row.solitaire;
  You should have received a copy of the GNU General Public License
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+package eu.veldsoft.four.row.solitaire;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -39,6 +39,10 @@ import javax.swing.*;
  * @author pavlosn
  */
 public class TopTimes extends JFrame implements ActionListener, KeyListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private final int NUM_OF_RECORDS = 10;
 	private JTextField names[] = new JTextField[NUM_OF_RECORDS];

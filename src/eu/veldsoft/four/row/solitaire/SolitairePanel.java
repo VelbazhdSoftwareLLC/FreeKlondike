@@ -1,5 +1,3 @@
-package eu.veldsoft.four.row.solitaire;
-
 /*
  This file is a part of Four Row Solitaire
 
@@ -19,6 +17,8 @@ package eu.veldsoft.four.row.solitaire;
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+package eu.veldsoft.four.row.solitaire;
+
 import java.awt.*;
 import java.net.URL;
 import javax.swing.*;
@@ -31,6 +31,11 @@ import javax.swing.*;
  * @author Matt Stephen
  */
 public class SolitairePanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private int backgroundNumber = 2;
 	private Image background;
 

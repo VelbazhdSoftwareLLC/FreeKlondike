@@ -1,5 +1,3 @@
-package eu.veldsoft.four.row.solitaire;
-
 /*
  This file is a part of Four Row Solitaire
 
@@ -19,6 +17,8 @@ package eu.veldsoft.four.row.solitaire;
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+package eu.veldsoft.four.row.solitaire;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -33,6 +33,11 @@ import javax.swing.border.TitledBorder;
  * @author Matt Stephen
  */
 public class ChangeOptions extends JDialog implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private int drawCount = 1;
 
 	private JRadioButton drawOne = new JRadioButton("Draw One");

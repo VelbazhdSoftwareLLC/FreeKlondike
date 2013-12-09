@@ -1,5 +1,3 @@
-package eu.veldsoft.four.row.solitaire;
-
 /*
  This file is a part of Four Row Solitaire
 
@@ -19,6 +17,8 @@ package eu.veldsoft.four.row.solitaire;
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+package eu.veldsoft.four.row.solitaire;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -34,6 +34,11 @@ import javax.swing.event.MouseInputAdapter;
  * @author Matt Stephen
  */
 public class SolitaireBoard extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public static final int GAME_WON = 1;
 	public static final int GAME_LOST = 0;
 	public static final int RESET_STATS = 2;

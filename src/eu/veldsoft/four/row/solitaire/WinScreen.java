@@ -1,5 +1,3 @@
-package eu.veldsoft.four.row.solitaire;
-
 /*
  This file is a part of Four Row Solitaire
 
@@ -19,7 +17,8 @@ package eu.veldsoft.four.row.solitaire;
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-//import java.awt.Dialog;
+package eu.veldsoft.four.row.solitaire;
+
 import java.awt.event.*;
 import java.io.File;
 import java.net.URL;
@@ -36,6 +35,11 @@ import javax.swing.event.MouseInputAdapter;
  * @author Matt Stephen
  */
 public class WinScreen extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	SoundThread sound = null;
 
 	public WinScreen(int animation, int sounds) {

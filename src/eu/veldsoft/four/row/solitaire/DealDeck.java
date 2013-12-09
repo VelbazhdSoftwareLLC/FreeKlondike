@@ -1,5 +1,3 @@
-package eu.veldsoft.four.row.solitaire;
-
 /*
  This file is a part of Four Row Solitaire
 
@@ -19,6 +17,8 @@ package eu.veldsoft.four.row.solitaire;
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+package eu.veldsoft.four.row.solitaire;
+
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
@@ -34,14 +34,14 @@ import javax.swing.JOptionPane;
  * @author Matt Stephen
  */
 public class DealDeck extends CardStack {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private DiscardPile discardPile;
 	private int numTimesThroughDeck = 1;
 
 	private int drawCount = 1;
-	private int difficulty = 2; // 1, 2, or 3
-
-	// private static final int DRAW_ONE_THROUGH_LIMIT = 2;
-	// private static final int DRAW_THREE_THROUGH_LIMIT = 3;
 
 	private static final int EASY_THROUGH_LIMIT = 3; // Number of deck throughs
 														// for each difficulty
@@ -100,14 +100,11 @@ public class DealDeck extends CardStack {
 	}
 
 	public void setDifficulty(int difficulty) {
-		this.difficulty = difficulty;
-
 		if (difficulty == 1) {
 			deckThroughLimit = EASY_THROUGH_LIMIT;
 		} else if (difficulty == 3) {
 			deckThroughLimit = HARD_THROUGH_LIMIT;
-		} else // if(difficulty == 2)
-		{
+		} else if (difficulty == 2) {
 			deckThroughLimit = MEDIUM_THROUGH_LIMIT;
 		}
 

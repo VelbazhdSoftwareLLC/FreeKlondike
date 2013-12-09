@@ -1,5 +1,3 @@
-package eu.veldsoft.four.row.solitaire;
-
 /*
  This file is a part of Four Row Solitaire
 
@@ -19,6 +17,8 @@ package eu.veldsoft.four.row.solitaire;
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+package eu.veldsoft.four.row.solitaire;
+
 import java.awt.Point;
 
 /**
@@ -30,6 +30,11 @@ import java.awt.Point;
  * @author Matt Stephen
  */
 public class SingleCell extends CardStack {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public SingleCell() {
 	}
 

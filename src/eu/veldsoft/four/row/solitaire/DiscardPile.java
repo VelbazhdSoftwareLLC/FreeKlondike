@@ -1,5 +1,3 @@
-package eu.veldsoft.four.row.solitaire;
-
 /*
  This file is a part of Four Row Solitaire
 
@@ -19,6 +17,8 @@ package eu.veldsoft.four.row.solitaire;
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+package eu.veldsoft.four.row.solitaire;
+
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
@@ -32,6 +32,11 @@ import java.awt.Point;
  * @author Matt Stephen
  */
 public class DiscardPile extends CardStack {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private int drawCount = 1;
 	private int cardsLeftFromDraw = 0;
 
@@ -77,7 +82,7 @@ public class DiscardPile extends CardStack {
 		if (drawCount != 1 || (drawCount == 1 && stack.length() == 1)) {
 			cardsLeftFromDraw = 0;
 
-			for (int i = 0; !stack.isEmpty(); i++) {
+			while (stack.isEmpty() == false) {
 				push(stack.pop());
 			}
 		}

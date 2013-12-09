@@ -1,5 +1,3 @@
-package eu.veldsoft.four.row.solitaire;
-
 /*
  This file is a part of Four Row Solitaire
 
@@ -19,6 +17,8 @@ package eu.veldsoft.four.row.solitaire;
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+package eu.veldsoft.four.row.solitaire;
+
 import java.awt.*;
 import java.util.Vector;
 import javax.swing.JLayeredPane;
@@ -31,6 +31,11 @@ import javax.swing.JLayeredPane;
  * @author Matt Stephen
  */
 public class CardStack extends JLayeredPane {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private Vector<Card> cards = new Vector<Card>();
 
 	public CardStack() {

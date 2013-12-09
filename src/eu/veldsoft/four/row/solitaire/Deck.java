@@ -1,5 +1,3 @@
-package eu.veldsoft.four.row.solitaire;
-
 /*
  This file is a part of Four Row Solitaire
 
@@ -18,6 +16,8 @@ package eu.veldsoft.four.row.solitaire;
  You should have received a copy of the GNU General Public License
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+package eu.veldsoft.four.row.solitaire;
 
 import java.util.LinkedList;
 import java.util.Random;
