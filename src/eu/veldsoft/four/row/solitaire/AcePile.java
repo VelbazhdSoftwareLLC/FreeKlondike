@@ -36,23 +36,23 @@ public class AcePile extends CardStack {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private String suit;
+	private CardSuit suit;
 
-	public AcePile(String suit) {
+	public AcePile(CardSuit suit) {
 		this.suit = suit;
 	}
 
-	public String getSuit() {
+	public CardSuit getSuit() {
 		return suit;
 	}
 
 	public Card push(Card card) {
 		if (isEmpty() && card.getSuit().equals(suit)
-				&& card.getNumber() == Card.ACE) {
+				&& card.getNumber().equals(CardRank.ACE)) {
 			super.push(card);
 			return card;
 		} else if (card.getSuit().equals(suit)
-				&& card.getNumber() == peek().getNumber() + 1) {
+				&& card.getNumber().isLessByOneThan(peek().getNumber())) {
 			super.push(card);
 			return card;
 		}
@@ -68,7 +68,7 @@ public class AcePile extends CardStack {
 		if (isEmpty() && card.getSuit().equals(suit)) {
 			return true;
 		} else if (!isEmpty() && card.getSuit().equals(suit)
-				&& card.getNumber() == (peek().getNumber() + 1)) {
+				&& card.getNumber().isLessByOneThan(peek().getNumber())) {
 			return true;
 		}
 

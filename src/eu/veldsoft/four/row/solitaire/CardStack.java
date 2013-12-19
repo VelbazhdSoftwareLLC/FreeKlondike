@@ -151,17 +151,24 @@ public class CardStack extends JLayeredPane {
 		return null;
 	}
 
-	// Verifies that the card is a part of a valid stack
+	/**
+	 * Verifies that the card is a part of a valid stack.
+	 * 
+	 * @param index
+	 * @return
+	 */
 	private boolean isValidCard(int index) {
 		if (index >= cards.size()) {
 			return false;
 		}
 
 		for (int i = index; i < cards.size() - 1; i++) {
-			// Cards are not opposite colors or decreasing in value correctly
+			/*
+			 * Cards are not opposite colors or decreasing in value correctly.
+			 */
 			if (cards.get(i).getColor() == cards.get(i + 1).getColor()
-					|| cards.get(i).getNumber() != (cards.get(i + 1)
-							.getNumber() + 1)) {
+					|| cards.get(i).getNumber()
+							.isLessByOneThan(cards.get(i + 1).getNumber()) == false) {
 				return false;
 			}
 		}
@@ -244,7 +251,8 @@ public class CardStack extends JLayeredPane {
 					Card card = cards.get(index);
 
 					if (card.getColor() != temp.peek().getColor()
-							&& card.getNumber() == temp.peek().getNumber() + 1) {
+							&& card.getNumber().isLessByOneThan(
+									temp.peek().getNumber())) {
 						temp.addCard(card);
 					} else {
 						cardsMatch = false;

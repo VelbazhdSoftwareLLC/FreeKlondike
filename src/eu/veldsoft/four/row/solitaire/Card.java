@@ -23,6 +23,8 @@ import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
 import java.net.URL;
+import java.util.logging.Logger;
+
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
@@ -40,31 +42,10 @@ public class Card extends JComponent {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static final String SPADES_SUIT = "Spades";
-	public static final String CLUBS_SUIT = "Clubs";
-	public static final String HEARTS_SUIT = "Hearts";
-	public static final String DIAMONDS_SUIT = "Diamonds";
-	public static final String INVALID_SUIT = "Invalid Suit";
-
-	public static final int ACE = 1;
-	public static final int TWO = 2;
-	public static final int THREE = 3;
-	public static final int FOUR = 4;
-	public static final int FIVE = 5;
-	public static final int SIX = 6;
-	public static final int SEVEN = 7;
-	public static final int EIGHT = 8;
-	public static final int NINE = 9;
-	public static final int TEN = 10;
-	public static final int JACK = 11;
-	public static final int QUEEN = 12;
-	public static final int KING = 13;
-	public static final int INVALID_NUMBER = -1;
-
-	private String cardSuit;
-	private int cardNumber;
+	private CardSuit cardSuit;
+	private CardRank cardNumber;
+	private CardColor cardColor;
 	private int fullCardNumber; // 1 - 52
-	private int cardColor; // 0 = black, red = 1
 
 	private int deckNumber;
 
@@ -80,26 +61,19 @@ public class Card extends JComponent {
 	private String location = ""; // To notify the discard pile of moves from
 									// the deck
 
-	public Card(String suit, int number, int deckNumber, int fullNumber) {
-		if (isValidSuit(suit) && (number >= 1 && number <= 13)) {
-			cardSuit = suit;
-			cardNumber = number;
-			fullCardNumber = fullNumber;
-			this.deckNumber = deckNumber;
+	public Card(CardSuit suit, CardRank number, int deckNumber, int fullNumber) {
+		this.cardSuit = suit;
+		this.cardNumber = number;
+		this.fullCardNumber = fullNumber;
+		this.deckNumber = deckNumber;
 
-			if (deckNumber >= 1 && deckNumber <= ChangeAppearance.NUM_DECKS) {
-				cardBack = "images/cardbacks/cardback" + deckNumber + ".png";
-			} else {
-				cardBack = "images/cardbacks/cardback3.png";
-			}
-
-			initializeCardImageString();
+		if (deckNumber >= 1 && deckNumber <= ChangeAppearance.NUM_DECKS) {
+			cardBack = "images/cardbacks/cardback" + deckNumber + ".png";
 		} else {
-			cardSuit = INVALID_SUIT;
-			cardNumber = INVALID_NUMBER;
-
-			cardImageString = "images/invalidcard.png";
+			cardBack = "images/cardbacks/cardback3.png";
 		}
+
+		initializeCardImageString();
 
 		setFaceUp();
 	}
@@ -163,76 +137,65 @@ public class Card extends JComponent {
 		return faceUp;
 	}
 
-	public boolean isValidSuit(String suit) {
-		if (suit.equals(SPADES_SUIT) || suit.equals(DIAMONDS_SUIT)
-				|| suit.equals(HEARTS_SUIT) || suit.equals(CLUBS_SUIT)) {
-			return true;
-		}
-
-		return false;
-	}
-
 	private void initializeCardImageString() {
 		cardImageString = "images/cardfaces/";
 		cardHighlighted = "images/highlightedfaces/";
 
-		if (cardSuit.equals(SPADES_SUIT)) {
+		if (cardSuit.equals(CardSuit.SPADES)) {
 			cardImageString += "s";
 			cardHighlighted += "s";
-			cardColor = 0;
-		} else if (cardSuit.equals(CLUBS_SUIT)) {
+			cardColor = CardColor.BLACK;
+		} else if (cardSuit.equals(CardSuit.CLUBS)) {
 			cardImageString += "c";
 			cardHighlighted += "c";
-			cardColor = 0;
-		} else if (cardSuit.equals(DIAMONDS_SUIT)) {
+			cardColor = CardColor.BLACK;
+		} else if (cardSuit.equals(CardSuit.DIAMONDS)) {
 			cardImageString += "d";
 			cardHighlighted += "d";
-			cardColor = 1;
-		} else // if(cardSuit.equals(HEARTS_SUIT))
-		{
+			cardColor = CardColor.RED;
+		} else if (cardSuit.equals(CardSuit.HEARTS)) {
 			cardImageString += "h";
 			cardHighlighted += "h";
-			cardColor = 1;
+			cardColor = CardColor.RED;
 		}
 
-		if (cardNumber == ACE) {
+		if (cardNumber.equals(CardRank.ACE)) {
 			cardImageString += "Ace";
 			cardHighlighted += "Ace";
-		} else if (cardNumber == TWO) {
+		} else if (cardNumber.equals(CardRank.TWO)) {
 			cardImageString += "Two";
 			cardHighlighted += "Two";
-		} else if (cardNumber == THREE) {
+		} else if (cardNumber.equals(CardRank.THREE)) {
 			cardImageString += "Three";
 			cardHighlighted += "Three";
-		} else if (cardNumber == FOUR) {
+		} else if (cardNumber.equals(CardRank.FOUR)) {
 			cardImageString += "Four";
 			cardHighlighted += "Four";
-		} else if (cardNumber == FIVE) {
+		} else if (cardNumber.equals(CardRank.FIVE)) {
 			cardImageString += "Five";
 			cardHighlighted += "Five";
-		} else if (cardNumber == SIX) {
+		} else if (cardNumber.equals(CardRank.SIX)) {
 			cardImageString += "Six";
 			cardHighlighted += "Six";
-		} else if (cardNumber == SEVEN) {
+		} else if (cardNumber.equals(CardRank.SEVEN)) {
 			cardImageString += "Seven";
 			cardHighlighted += "Seven";
-		} else if (cardNumber == EIGHT) {
+		} else if (cardNumber.equals(CardRank.EIGHT)) {
 			cardImageString += "Eight";
 			cardHighlighted += "Eight";
-		} else if (cardNumber == NINE) {
+		} else if (cardNumber.equals(CardRank.NINE)) {
 			cardImageString += "Nine";
 			cardHighlighted += "Nine";
-		} else if (cardNumber == TEN) {
+		} else if (cardNumber.equals(CardRank.TEN)) {
 			cardImageString += "Ten";
 			cardHighlighted += "Ten";
-		} else if (cardNumber == JACK) {
+		} else if (cardNumber.equals(CardRank.JACK)) {
 			cardImageString += "Jack";
 			cardHighlighted += "Jack";
-		} else if (cardNumber == QUEEN) {
+		} else if (cardNumber.equals(CardRank.QUEEN)) {
 			cardImageString += "Queen";
 			cardHighlighted += "Queen";
-		} else // if(cardNumber == KING)
-		{
+		} else if (cardNumber.equals(CardRank.KING)) {
 			cardImageString += "King";
 			cardHighlighted += "King";
 		}
@@ -245,15 +208,15 @@ public class Card extends JComponent {
 		return image;
 	}
 
-	public int getNumber() {
+	public CardRank getNumber() {
 		return cardNumber;
 	}
 
-	public String getSuit() {
+	public CardSuit getSuit() {
 		return cardSuit;
 	}
 
-	public int getColor() {
+	public CardColor getColor() {
 		return cardColor;
 	}
 

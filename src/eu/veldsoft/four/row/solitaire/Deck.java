@@ -21,6 +21,7 @@ package eu.veldsoft.four.row.solitaire;
 
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.logging.Logger;
 
 /**
  * Class: Deck
@@ -30,6 +31,9 @@ import java.util.Random;
  * @author Matt Stephen
  */
 public class Deck {
+	private static final Logger LOGGER = Logger.getLogger(Class.class
+			.toString());
+
 	private int deckNumber;
 	private LinkedList<Card> deck = new LinkedList<Card>();
 
@@ -75,24 +79,39 @@ public class Deck {
 
 	private void createCard(int cardNumber) {
 		if (cardNumber >= 1 && cardNumber <= 13) {
-			deck.add(new Card(Card.SPADES_SUIT, cardNumber, deckNumber,
-					cardNumber));
+			/*
+			 * To make the cardNumber 1-13 you do not need to do anything.
+			 */
+			deck.add(new Card(CardSuit.SPADES, CardRank.getValue(cardNumber),
+					deckNumber, cardNumber));
 		} else if (cardNumber >= 14 && cardNumber <= 26) {
-			cardNumber -= 13; // To make the cardNumber 1-13 instead of 14-26
-			deck.add(new Card(Card.CLUBS_SUIT, cardNumber, deckNumber,
-					cardNumber + 13));
+			/*
+			 * To make the cardNumber 1-13 instead of 14-26.
+			 */
+			cardNumber -= 13;
+			deck.add(new Card(CardSuit.CLUBS, CardRank.getValue(cardNumber),
+					deckNumber, cardNumber + 13));
 		} else if (cardNumber >= 27 && cardNumber <= 39) {
-			cardNumber -= 26; // To make the cardNumber 1-13 instead of 27-39
-			deck.add(new Card(Card.DIAMONDS_SUIT, cardNumber, deckNumber,
-					cardNumber + 26));
+			/*
+			 * To make the cardNumber 1-13 instead of 27-39.
+			 */
+			cardNumber -= 26;
+			deck.add(new Card(CardSuit.DIAMONDS, CardRank.getValue(cardNumber),
+					deckNumber, cardNumber + 26));
 		} else if (cardNumber >= 40 && cardNumber <= 52) {
-			cardNumber -= 39; // To make the cardNumber 1-13 instead of 40-52
-			deck.add(new Card(Card.HEARTS_SUIT, cardNumber, deckNumber,
-					cardNumber + 39));
+			/*
+			 * To make the cardNumber 1-13 instead of 40-52.
+			 */
+			cardNumber -= 39;
+			deck.add(new Card(CardSuit.HEARTS, CardRank.getValue(cardNumber),
+					deckNumber, cardNumber + 39));
 		} else {
-			// Let user know the card is invalid
-			deck.add(new Card(Card.INVALID_SUIT, Card.INVALID_NUMBER,
-					deckNumber, Card.INVALID_NUMBER));
+			/*
+			 * Let user know the card is invalid.
+			 */
+			// deck.add(new Card(Card.INVALID_SUIT, Card.INVALID_NUMBER,
+			// deckNumber, Card.INVALID_NUMBER));
+			LOGGER.info("Invalid card!");
 		}
 	}
 }
