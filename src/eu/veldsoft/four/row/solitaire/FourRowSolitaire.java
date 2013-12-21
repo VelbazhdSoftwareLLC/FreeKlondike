@@ -133,7 +133,9 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 			String inputLine = in.readLine();
 			in.close();
 
-			// Sometimes reads an html document if disconnected from internet
+			/*
+			 * Sometimes reads an html document if disconnected from internet.
+			 */
 			if (!inputLine.contains("DOCTYPE") && !version.equals(inputLine)) {
 				JOptionPane.showMessageDialog(this,
 						"There is a newer version available, "
@@ -164,10 +166,14 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 			}
 
 			if (correctedStatistics == -2) {
-				// No statistics file found
+				/*
+				 * No statistics file found.
+				 */
 			} else if (correctedStatistics == -1) {
-				// Statistics file is formatted to the new style of saving
-				// statistics
+				/*
+				 * Statistics file is formatted to the new style of saving
+				 * statistics.
+				 */
 				while ((input.available() > 0) && count < 43) {
 					temp = input.readInt();
 					switch (count) {
@@ -209,15 +215,16 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 						break;
 
 					default:
-						;
 						break;
 					}
 
 					count++;
 				}
 			} else {
-				// Statistics file is formatted to the old style of saving
-				// statistics
+				/*
+				 * Statistics file is formatted to the old style of saving
+				 * statistics.
+				 */
 				while ((input.available() > 0) && count < 14) {
 					temp = input.readInt();
 					switch (count) {
@@ -250,7 +257,6 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 						break;
 
 					default:
-						;
 						break;
 					}
 
@@ -445,7 +451,6 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 						break;
 
 					default:
-						;
 						break;
 					}
 
@@ -602,10 +607,14 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 					JOptionPane.PLAIN_MESSAGE, null, buttons, buttons[0]);
 
 			if (check == 1) {
-				// Reset stats
+				/* 
+				 * Reset stats.
+				 */
 				super.resetStats();
 			} else {
-				// Close
+				/* 
+				 * Close.
+				 */
 				return;
 			}
 		} else if (e.getSource() == options) {

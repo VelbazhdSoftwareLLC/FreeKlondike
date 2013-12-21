@@ -23,6 +23,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
 import java.util.LinkedList;
+import java.util.Random;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -38,18 +40,27 @@ public class DealDeck extends CardStack {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 	private DiscardPile discardPile;
+
 	private int numTimesThroughDeck = 1;
 
 	private int drawCount = 1;
 
-	private static final int EASY_THROUGH_LIMIT = 3; // Number of deck throughs
-														// for each difficulty
-	private static final int MEDIUM_THROUGH_LIMIT = 2; // Three card draw adds 1
-														// to each
+	/**
+	 * Number of deck throughs for each difficulty.
+	 */
+	private static final int EASY_THROUGH_LIMIT = 3;
+
+	/**
+	 * Three card draw adds 1 to each.
+	 */
+	private static final int MEDIUM_THROUGH_LIMIT = 2;
+
 	private static final int HARD_THROUGH_LIMIT = 1;
 
 	private int deckThroughLimit;
+
 	private boolean redealable = true;
 
 	public DealDeck(DiscardPile discard, int drawCount) {
@@ -108,9 +119,12 @@ public class DealDeck extends CardStack {
 			deckThroughLimit = MEDIUM_THROUGH_LIMIT;
 		}
 
+		/*
+		 * Draw three has an extra deck through on top of the single card
+		 * setting.
+		 */
 		if (drawCount == 3) {
-			deckThroughLimit++; // draw three has an extra deck through on top
-								// of the single card setting
+			deckThroughLimit++;
 		}
 	}
 
@@ -120,7 +134,9 @@ public class DealDeck extends CardStack {
 
 	public synchronized Card pop() {
 		if (!isEmpty()) {
-			// Verify there are still cards remaining
+			/*
+			 * Verify there are still cards remaining.
+			 */
 			if (drawCount == 1) {
 				Card card = super.pop();
 
@@ -142,10 +158,11 @@ public class DealDeck extends CardStack {
 					tempDrawCount--;
 				}
 
-				CardStack tempStack2 = new CardStack(); // To put the cards back
-														// in order because the
-														// previous step
-														// reversed them
+				/*
+				 * To put the cards back in order because the previous step
+				 * reversed them.
+				 */
+				CardStack tempStack2 = new CardStack();
 
 				for (int i = tempStack.length(); i > 0; i--) {
 					tempStack2.push(tempStack.pop());
@@ -209,11 +226,13 @@ public class DealDeck extends CardStack {
 	public void paint(Graphics g) {
 		super.paint(g);
 
-		if (!isEmpty()) {
-			for (int i = 0; i < length(); i++) {
-				Image image = getCardAtLocation(i).getImage();
-				g.drawImage(image, 0, 0, null);
-			}
+		if (isEmpty()) {
+			return;
+		}
+
+		for (int i = 0; i < length(); i++) {
+			Image image = getCardAtLocation(i).getImage();
+			g.drawImage(image, 0, 0, null);
 		}
 	}
 }

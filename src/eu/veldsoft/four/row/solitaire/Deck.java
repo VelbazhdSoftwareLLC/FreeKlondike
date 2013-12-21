@@ -34,7 +34,10 @@ public class Deck {
 	private static final Logger LOGGER = Logger.getLogger(Class.class
 			.toString());
 
+	private static Random gen = new Random();
+
 	private int deckNumber;
+
 	private LinkedList<Card> deck = new LinkedList<Card>();
 
 	public Deck(int deckNumber) {
@@ -65,9 +68,7 @@ public class Deck {
 			numberList.add(i);
 		}
 
-		Random gen = new Random();
-
-		for (int i = 0; i < 52; i++) {
+		while (numberList.isEmpty() == false) {
 			int num = gen.nextInt(numberList.size());
 
 			int cardNumber = numberList.get(num);
@@ -109,8 +110,6 @@ public class Deck {
 			/*
 			 * Let user know the card is invalid.
 			 */
-			// deck.add(new Card(Card.INVALID_SUIT, Card.INVALID_NUMBER,
-			// deckNumber, Card.INVALID_NUMBER));
 			LOGGER.info("Invalid card!");
 		}
 	}

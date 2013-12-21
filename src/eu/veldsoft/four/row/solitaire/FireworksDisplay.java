@@ -1,4 +1,5 @@
 /*
+
  This file is a part of Four Row Solitaire
 
  Copyright (C) 2010 by Matt Stephen
@@ -47,8 +48,15 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 	private int[] y;
 	private Color[] colors;
 
-	private int[][] xx; // For firework burst
-	private int[][] yy; // For firework burst
+	/** 
+	 * For firework burst.
+	 */
+	private int[][] xx; 
+	
+	/** 
+	 * For firework burst.
+	 */
+	private int[][] yy; 
 
 	private int num = 0;
 	private int numSets = 0;
@@ -148,7 +156,9 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 		g.setColor(Color.RED);
 		g.drawString("You Win! -- Click to Close.", 340, 550);
 
-		// Longer set one
+		/* 
+		 * Longer set one.
+		 */
 		if (numSets < 5) {
 			for (int i = startValue; i < startValue + 2; i++) {
 				if (num < 2 * FIREWORKS_TIME / 3) {
@@ -156,11 +166,15 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 					int y0 = getHeight()
 							- (num * y[i] / (2 * FIREWORKS_TIME / 3));
 
-					// Fire from left side
+					/* 
+					 * Fire from left side.
+					 */
 					if (i % 2 == 0) {
 						x0 = num * x[i] / (2 * FIREWORKS_TIME / 3);
 					}
-					// Fire from right side
+					/* 
+					 * Fire from right side.
+					 */
 					else {
 						x0 = getWidth() - num * x[i] / (2 * FIREWORKS_TIME / 3);
 					}
@@ -181,9 +195,6 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 											+ (num * xx[i][j] / (NUM_FIREWORKS / 3)),
 									getHeight()
 											- (y[i] + (num * yy[i][j] / (NUM_FIREWORKS / 3))));
-							// g.drawRect(x[i] + (num * xx[i][j] / 10),
-							// getHeight() - (y[i] + (num * yy[i][j] / 10)), 5,
-							// 5);
 						} else {
 							g.drawLine(
 									getWidth() - x[i],
@@ -193,18 +204,16 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 													/ (NUM_FIREWORKS / 3)),
 									getHeight()
 											- (y[i] + (num * yy[i][j] / (NUM_FIREWORKS / 3))));
-							// g.drawRect(getWidth() - (x[i] + (num * xx[i][j] /
-							// 10)), getHeight() - (y[i] + (num * yy[i][j] /
-							// 10)), 5, 5);
 						}
-
 					}
 
 					num += Math.ceil(2 * FIREWORKS_TIME / 3.0);
 				}
 			}
 		}
-		// Longer set two
+		/* 
+		 * Longer set two.
+		 */
 		else if (numSets < 10) {
 			for (int i = startValue; i < startValue + 3; i++) {
 				if (num < 2 * FIREWORKS_TIME / 3) {
@@ -212,11 +221,15 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 					int y0 = getHeight()
 							- (num * y[i] / (2 * FIREWORKS_TIME / 3));
 
-					// Fire from left side
+					/* 
+					 * Fire from left side.
+					 */
 					if (i % 2 == 0) {
 						x0 = num * x[i] / (2 * FIREWORKS_TIME / 3);
 					}
-					// Fire from right side
+					/* 
+					 * Fire from right side.
+					 */
 					else {
 						x0 = getWidth() - num * x[i] / (2 * FIREWORKS_TIME / 3);
 					}
@@ -237,9 +250,6 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 											+ (num * xx[i][j] / (NUM_FIREWORKS / 3)),
 									getHeight()
 											- (y[i] + (num * yy[i][j] / (NUM_FIREWORKS / 3))));
-							// g.drawRect(x[i] + (num * xx[i][j] / 10),
-							// getHeight() - (y[i] + (num * yy[i][j] / 10)), 5,
-							// 5);
 						} else {
 							g.drawLine(
 									getWidth() - x[i],
@@ -249,18 +259,16 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 													/ (NUM_FIREWORKS / 3)),
 									getHeight()
 											- (y[i] + (num * yy[i][j] / (NUM_FIREWORKS / 3))));
-							// g.drawRect(getWidth() - (x[i] + (num * xx[i][j] /
-							// 10)), getHeight() - (y[i] + (num * yy[i][j] /
-							// 10)), 5, 5);
 						}
-
 					}
 
 					num += Math.ceil(2 * FIREWORKS_TIME / 3.0);
 				}
 			}
 		}
-		// Longer set three
+		/* 
+		 * Longer set three.
+		 */
 		else if (numSets < 15) {
 			for (int i = startValue; i < startValue + 4; i++) {
 				if (num < 2 * FIREWORKS_TIME / 3) {
@@ -268,11 +276,15 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 					int y0 = getHeight()
 							- (num * y[i] / (2 * FIREWORKS_TIME / 3));
 
-					// Fire from left side
+					/* 
+					 * Fire from left side.
+					 */
 					if (i % 2 == 0) {
 						x0 = num * x[i] / (2 * FIREWORKS_TIME / 3);
 					}
-					// Fire from right side
+					/* 
+					 * Fire from right side.
+					 */
 					else {
 						x0 = getWidth() - num * x[i] / (2 * FIREWORKS_TIME / 3);
 					}
@@ -293,9 +305,6 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 											+ (num * xx[i][j] / (NUM_FIREWORKS / 3)),
 									getHeight()
 											- (y[i] + (num * yy[i][j] / (NUM_FIREWORKS / 3))));
-							// g.drawRect(x[i] + (num * xx[i][j] / 10),
-							// getHeight() - (y[i] + (num * yy[i][j] / 10)), 5,
-							// 5);
 						} else {
 							g.drawLine(
 									getWidth() - x[i],
@@ -305,9 +314,6 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 													/ (NUM_FIREWORKS / 3)),
 									getHeight()
 											- (y[i] + (num * yy[i][j] / (NUM_FIREWORKS / 3))));
-							// g.drawRect(getWidth() - (x[i] + (num * xx[i][j] /
-							// 10)), getHeight() - (y[i] + (num * yy[i][j] /
-							// 10)), 5, 5);
 						}
 
 					}
@@ -316,7 +322,9 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 				}
 			}
 		}
-		// Longer set four
+		/* 
+		 * Longer set four.
+		 */
 		else if (numSets < 20) {
 			for (int i = startValue; i < startValue + 5; i++) {
 				if (num < 2 * FIREWORKS_TIME / 3) {
@@ -324,11 +332,15 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 					int y0 = getHeight()
 							- (num * y[i] / (2 * FIREWORKS_TIME / 3));
 
-					// Fire from left side
+					/* 
+					 * Fire from left side.
+					 */
 					if (i % 2 == 0) {
 						x0 = num * x[i] / (2 * FIREWORKS_TIME / 3);
 					}
-					// Fire from right side
+					/* 
+					 * Fire from right side.
+					 */
 					else {
 						x0 = getWidth() - num * x[i] / (2 * FIREWORKS_TIME / 3);
 					}
@@ -349,9 +361,6 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 											+ (num * xx[i][j] / (NUM_FIREWORKS / 3)),
 									getHeight()
 											- (y[i] + (num * yy[i][j] / (NUM_FIREWORKS / 3))));
-							// g.drawRect(x[i] + (num * xx[i][j] / 10),
-							// getHeight() - (y[i] + (num * yy[i][j] / 10)), 5,
-							// 5);
 						} else {
 							g.drawLine(
 									getWidth() - x[i],
@@ -361,18 +370,16 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 													/ (NUM_FIREWORKS / 3)),
 									getHeight()
 											- (y[i] + (num * yy[i][j] / (NUM_FIREWORKS / 3))));
-							// g.drawRect(getWidth() - (x[i] + (num * xx[i][j] /
-							// 10)), getHeight() - (y[i] + (num * yy[i][j] /
-							// 10)), 5, 5);
 						}
-
 					}
 
 					num += Math.ceil(2 * FIREWORKS_TIME / 3.0);
 				}
 			}
 		}
-		// Longer set five
+		/* 
+		 * Longer set five.
+		 */
 		else if (numSets < 25) {
 			for (int i = startValue; i < startValue + 10; i++) {
 				if (num < 2 * FIREWORKS_TIME / 3) {
@@ -380,11 +387,15 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 					int y0 = getHeight()
 							- (num * y[i] / (2 * FIREWORKS_TIME / 3));
 
-					// Fire from left side
+					/* 
+					 * Fire from left side.
+					 */
 					if (i % 2 == 0) {
 						x0 = num * x[i] / (2 * FIREWORKS_TIME / 3);
 					}
-					// Fire from right side
+					/* 
+					 * Fire from right side.
+					 */
 					else {
 						x0 = getWidth() - num * x[i] / (2 * FIREWORKS_TIME / 3);
 					}
@@ -405,9 +416,6 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 											+ (num * xx[i][j] / (NUM_FIREWORKS / 3)),
 									getHeight()
 											- (y[i] + (num * yy[i][j] / (NUM_FIREWORKS / 3))));
-							// g.drawRect(x[i] + (num * xx[i][j] / 10),
-							// getHeight() - (y[i] + (num * yy[i][j] / 10)), 5,
-							// 5);
 						} else {
 							g.drawLine(
 									getWidth() - x[i],
@@ -417,18 +425,16 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 													/ (NUM_FIREWORKS / 3)),
 									getHeight()
 											- (y[i] + (num * yy[i][j] / (NUM_FIREWORKS / 3))));
-							// g.drawRect(getWidth() - (x[i] + (num * xx[i][j] /
-							// 10)), getHeight() - (y[i] + (num * yy[i][j] /
-							// 10)), 5, 5);
 						}
-
 					}
 
 					num += Math.ceil(2 * FIREWORKS_TIME / 3.0);
 				}
 			}
 		}
-		// Longer set six (finale)
+		/* 
+		 * Longer set six (finale).
+		 */
 		else if (numSets < 26) {
 			for (int i = startValue; i < x.length; i++) {
 				if (num < 2 * FIREWORKS_TIME / 3) {
@@ -436,11 +442,15 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 					int y0 = getHeight()
 							- (num * y[i] / (2 * FIREWORKS_TIME / 3));
 
-					// Fire from left side
+					/* 
+					 * Fire from left side.
+					 */
 					if (i % 2 == 0) {
 						x0 = num * x[i] / (2 * FIREWORKS_TIME / 3);
 					}
-					// Fire from right side
+					/* 
+					 * Fire from right side.
+					 */
 					else {
 						x0 = getWidth() - num * x[i] / (2 * FIREWORKS_TIME / 3);
 					}
@@ -461,9 +471,6 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 											+ (num * xx[i][j] / (NUM_FIREWORKS / 3)),
 									getHeight()
 											- (y[i] + (num * yy[i][j] / (NUM_FIREWORKS / 3))));
-							// g.drawRect(x[i] + (num * xx[i][j] / 10),
-							// getHeight() - (y[i] + (num * yy[i][j] / 10)), 5,
-							// 5);
 						} else {
 							g.drawLine(
 									getWidth() - x[i],
@@ -473,174 +480,13 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 													/ (NUM_FIREWORKS / 3)),
 									getHeight()
 											- (y[i] + (num * yy[i][j] / (NUM_FIREWORKS / 3))));
-							// g.drawRect(getWidth() - (x[i] + (num * xx[i][j] /
-							// 10)), getHeight() - (y[i] + (num * yy[i][j] /
-							// 10)), 5, 5);
 						}
-
 					}
 
 					num += Math.ceil(2 * FIREWORKS_TIME / 3.0);
 				}
 			}
 		}
-
-		// Shorter sets
-		/*
-		 * //Set one if(num <= FIREWORKS_TIME) { for(int i = 0; i <
-		 * Math.ceil(NUM_FIREWORKS / 16.0); i++) { if(num < 2 * FIREWORKS_TIME /
-		 * 3) { int x0 = 0; int y0 = getHeight() - (num * y[i] / (2 *
-		 * FIREWORKS_TIME / 3));
-		 * 
-		 * //Fire from left side if(i%2 == 0) { x0 = num * x[i] / (2 *
-		 * FIREWORKS_TIME / 3); } //Fire from right side else { x0 = getWidth()
-		 * - num * x[i] / (2 * FIREWORKS_TIME / 3); }
-		 * 
-		 * g.setColor(colors[i]); g.drawRect(x0, y0, 5, 5); } else { num -=
-		 * Math.ceil(2 * FIREWORKS_TIME / 3.0);
-		 * 
-		 * for(int j = 0; j < FIREWORKS_SIZE; j++) { g.setColor(colors[i]);
-		 * 
-		 * if(i%2 == 0) { g.drawLine(x[i], getHeight() - y[i], x[i] + (num *
-		 * xx[i][j] / (NUM_FIREWORKS / 3)), getHeight() - (y[i] + (num *
-		 * yy[i][j] / (NUM_FIREWORKS / 3)))); //g.drawRect(x[i] + (num *
-		 * xx[i][j] / 10), getHeight() - (y[i] + (num * yy[i][j] / 10)), 5, 5);
-		 * } else { g.drawLine(getWidth() - x[i], getHeight() - y[i], getWidth()
-		 * - (x[i] + num * xx[i][j] / (NUM_FIREWORKS / 3)), getHeight() - (y[i]
-		 * + (num * yy[i][j] / (NUM_FIREWORKS / 3)))); //g.drawRect(getWidth() -
-		 * (x[i] + (num * xx[i][j] / 10)), getHeight() - (y[i] + (num * yy[i][j]
-		 * / 10)), 5, 5); }
-		 * 
-		 * }
-		 * 
-		 * num += Math.ceil(2 * FIREWORKS_TIME / 3.0); } } } //Set two else
-		 * if(num > (FIREWORKS_TIME + SET_DELAY) && num <= (2 * FIREWORKS_TIME +
-		 * SET_DELAY)) { num -= (FIREWORKS_TIME + SET_DELAY);
-		 * 
-		 * for(int i = (int)Math.ceil(NUM_FIREWORKS / 16.0); i <
-		 * Math.ceil(NUM_FIREWORKS / 8.0); i++) { if(num < 2 * FIREWORKS_TIME /
-		 * 3) { int x0 = 0; int y0 = getHeight() - (num * y[i] / (2 *
-		 * FIREWORKS_TIME / 3));
-		 * 
-		 * //Fire from left side if(i%2 == 0) { x0 = num * x[i] / (2 *
-		 * FIREWORKS_TIME / 3); } //Fire from right side else { x0 = getWidth()
-		 * - num * x[i] / (2 * FIREWORKS_TIME / 3); }
-		 * 
-		 * g.setColor(colors[i]); g.drawRect(x0, y0, 5, 5); } else { num -=
-		 * Math.ceil(2 * FIREWORKS_TIME / 3.0);
-		 * 
-		 * for(int j = 0; j < FIREWORKS_SIZE; j++) { g.setColor(colors[i]);
-		 * 
-		 * if(i%2 == 0) { g.drawLine(x[i], getHeight() - y[i], x[i] + (num *
-		 * xx[i][j] / (NUM_FIREWORKS / 3)), getHeight() - (y[i] + (num *
-		 * yy[i][j] / (NUM_FIREWORKS / 3)))); //g.drawRect(x[i] + (num *
-		 * xx[i][j] / 10), getHeight() - (y[i] + (num * yy[i][j] / 10)), 5, 5);
-		 * } else { g.drawLine(getWidth() - x[i], getHeight() - y[i], getWidth()
-		 * - (x[i] + num * xx[i][j] / (NUM_FIREWORKS / 3)), getHeight() - (y[i]
-		 * + (num * yy[i][j] / (NUM_FIREWORKS / 3)))); //g.drawRect(getWidth() -
-		 * (x[i] + (num * xx[i][j] / 10)), getHeight() - (y[i] + (num * yy[i][j]
-		 * / 10)), 5, 5); }
-		 * 
-		 * }
-		 * 
-		 * num += Math.ceil(2 * FIREWORKS_TIME / 3.0); } }
-		 * 
-		 * num += (FIREWORKS_TIME + SET_DELAY); } //Set three else if(num > (2 *
-		 * FIREWORKS_TIME + 2 * SET_DELAY) && num <= (3 * FIREWORKS_TIME + 2 *
-		 * SET_DELAY)) { num -= (2 * FIREWORKS_TIME + 2 * SET_DELAY);
-		 * 
-		 * for(int i = (int)Math.ceil(NUM_FIREWORKS / 8.0); i <
-		 * Math.ceil(NUM_FIREWORKS / 4.0); i++) { if(num < 2 * FIREWORKS_TIME /
-		 * 3) { int x0 = 0; int y0 = getHeight() - (num * y[i] / (2 *
-		 * FIREWORKS_TIME / 3));
-		 * 
-		 * //Fire from left side if(i%2 == 0) { x0 = num * x[i] / (2 *
-		 * FIREWORKS_TIME / 3); } //Fire from right side else { x0 = getWidth()
-		 * - num * x[i] / (2 * FIREWORKS_TIME / 3); }
-		 * 
-		 * g.setColor(colors[i]); g.drawRect(x0, y0, 5, 5); } else { num -=
-		 * Math.ceil(2 * FIREWORKS_TIME / 3.0);
-		 * 
-		 * for(int j = 0; j < FIREWORKS_SIZE; j++) { g.setColor(colors[i]);
-		 * 
-		 * if(i%2 == 0) { g.drawLine(x[i], getHeight() - y[i], x[i] + (num *
-		 * xx[i][j] / (NUM_FIREWORKS / 3)), getHeight() - (y[i] + (num *
-		 * yy[i][j] / (NUM_FIREWORKS / 3)))); //g.drawRect(x[i] + (num *
-		 * xx[i][j] / 10), getHeight() - (y[i] + (num * yy[i][j] / 10)), 5, 5);
-		 * } else { g.drawLine(getWidth() - x[i], getHeight() - y[i], getWidth()
-		 * - (x[i] + num * xx[i][j] / (NUM_FIREWORKS / 3)), getHeight() - (y[i]
-		 * + (num * yy[i][j] / (NUM_FIREWORKS / 3)))); //g.drawRect(getWidth() -
-		 * (x[i] + (num * xx[i][j] / 10)), getHeight() - (y[i] + (num * yy[i][j]
-		 * / 10)), 5, 5); }
-		 * 
-		 * }
-		 * 
-		 * num += Math.ceil(2 * FIREWORKS_TIME / 3.0); } }
-		 * 
-		 * num += (2 * FIREWORKS_TIME + 2 * SET_DELAY); } //Set four else if(num
-		 * > (3 * FIREWORKS_TIME + 3 * SET_DELAY) && num <= (4 * FIREWORKS_TIME
-		 * + 3 * SET_DELAY)) { num -= (3 * FIREWORKS_TIME + 3 * SET_DELAY);
-		 * 
-		 * for(int i = (int)Math.ceil(NUM_FIREWORKS / 4.0); i <
-		 * Math.ceil(NUM_FIREWORKS / 2.0); i++) { if(num < 2 * FIREWORKS_TIME /
-		 * 3) { int x0 = 0; int y0 = getHeight() - (num * y[i] / (2 *
-		 * FIREWORKS_TIME / 3));
-		 * 
-		 * //Fire from left side if(i%2 == 0) { x0 = num * x[i] / (2 *
-		 * FIREWORKS_TIME / 3); } //Fire from right side else { x0 = getWidth()
-		 * - num * x[i] / (2 * FIREWORKS_TIME / 3); }
-		 * 
-		 * g.setColor(colors[i]); g.drawRect(x0, y0, 5, 5); } else { num -=
-		 * Math.ceil(2 * FIREWORKS_TIME / 3.0);
-		 * 
-		 * for(int j = 0; j < FIREWORKS_SIZE; j++) { g.setColor(colors[i]);
-		 * 
-		 * if(i%2 == 0) { g.drawLine(x[i], getHeight() - y[i], x[i] + (num *
-		 * xx[i][j] / (NUM_FIREWORKS / 3)), getHeight() - (y[i] + (num *
-		 * yy[i][j] / (NUM_FIREWORKS / 3)))); //g.drawRect(x[i] + (num *
-		 * xx[i][j] / 10), getHeight() - (y[i] + (num * yy[i][j] / 10)), 5, 5);
-		 * } else { g.drawLine(getWidth() - x[i], getHeight() - y[i], getWidth()
-		 * - (x[i] + num * xx[i][j] / (NUM_FIREWORKS / 3)), getHeight() - (y[i]
-		 * + (num * yy[i][j] / (NUM_FIREWORKS / 3)))); //g.drawRect(getWidth() -
-		 * (x[i] + (num * xx[i][j] / 10)), getHeight() - (y[i] + (num * yy[i][j]
-		 * / 10)), 5, 5); }
-		 * 
-		 * }
-		 * 
-		 * num += Math.ceil(2 * FIREWORKS_TIME / 3.0); } }
-		 * 
-		 * num += (3 * FIREWORKS_TIME + 3 * SET_DELAY); } //Set five (finale)
-		 * else { num -= (4 * FIREWORKS_TIME + 4 * SET_DELAY);
-		 * 
-		 * for(int i = (int)Math.ceil(NUM_FIREWORKS / 2.0); i < NUM_FIREWORKS;
-		 * i++) { if(num < 2 * FIREWORKS_TIME / 3) { int x0 = 0; int y0 =
-		 * getHeight() - (num * y[i] / (2 * FIREWORKS_TIME / 3));
-		 * 
-		 * //Fire from left side if(i%2 == 0) { x0 = num * x[i] / (2 *
-		 * FIREWORKS_TIME / 3); } //Fire from right side else { x0 = getWidth()
-		 * - num * x[i] / (2 * FIREWORKS_TIME / 3); }
-		 * 
-		 * g.setColor(colors[i]); g.drawRect(x0, y0, 5, 5); } else { num -=
-		 * Math.ceil(2 * FIREWORKS_TIME / 3.0);
-		 * 
-		 * for(int j = 0; j < FIREWORKS_SIZE; j++) { g.setColor(colors[i]);
-		 * 
-		 * if(i%2 == 0) { g.drawLine(x[i], getHeight() - y[i], x[i] + (num *
-		 * xx[i][j] / (NUM_FIREWORKS / 3)), getHeight() - (y[i] + (num *
-		 * yy[i][j] / (NUM_FIREWORKS / 3)))); //g.drawRect(x[i] + (num *
-		 * xx[i][j] / 10), getHeight() - (y[i] + (num * yy[i][j] / 10)), 5, 5);
-		 * } else { g.drawLine(getWidth() - x[i], getHeight() - y[i], getWidth()
-		 * - (x[i] + num * xx[i][j] / (NUM_FIREWORKS / 3)), getHeight() - (y[i]
-		 * + (num * yy[i][j] / (NUM_FIREWORKS / 3)))); //g.drawRect(getWidth() -
-		 * (x[i] + (num * xx[i][j] / 10)), getHeight() - (y[i] + (num * yy[i][j]
-		 * / 10)), 5, 5); }
-		 * 
-		 * }
-		 * 
-		 * num += Math.ceil(2 * FIREWORKS_TIME / 3.0); } }
-		 * 
-		 * num += (4 * FIREWORKS_TIME + 4 * SET_DELAY); }
-		 */
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -659,15 +505,6 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 			} else {
 				repaint();
 			}
-
-			// Shorter sets
-			/*
-			 * num++;
-			 * 
-			 * if(num > 5 * FIREWORKS_TIME + 4 * SET_DELAY) { timer.stop(); }
-			 * 
-			 * repaint();
-			 */
 		}
 	}
 }

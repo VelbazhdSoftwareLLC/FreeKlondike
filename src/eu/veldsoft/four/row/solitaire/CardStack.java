@@ -41,7 +41,11 @@ public class CardStack extends JLayeredPane {
 	public CardStack() {
 	}
 
-	// For starting the game
+	/**
+	 * For starting the game.
+	 * 
+	 * @param card
+	 */
 	public void addCard(Card card) {
 		cards.add(card);
 		card.setBounds(0, 0, 72, 96);
@@ -68,7 +72,10 @@ public class CardStack extends JLayeredPane {
 			push(card);
 		}
 
-		return stack; // returns empty stack
+		/*
+		 * Returns empty stack.
+		 */
+		return stack;
 	}
 
 	public synchronized Card pop() {
@@ -81,7 +88,9 @@ public class CardStack extends JLayeredPane {
 	}
 
 	public CardStack pop(CardStack stack) {
-		// Temporary reverse pop of entire stack transfer
+		/*
+		 * Temporary reverse pop of entire stack transfer.
+		 */
 		CardStack temp = new CardStack();
 
 		while (!stack.isEmpty()) {
@@ -176,7 +185,13 @@ public class CardStack extends JLayeredPane {
 		return true;
 	}
 
-	// Checks if clicked area is defined on a card in the stack
+	/**
+	 * Checks if clicked area is defined on a card in the stack.
+	 * 
+	 * @param p
+	 * 
+	 * @return
+	 */
 	private boolean isValidClick(Point p) {
 		int y = (int) p.getY();
 
@@ -264,25 +279,33 @@ public class CardStack extends JLayeredPane {
 			} while (cardsMatch);
 
 			return temp;
-		} else if (!isEmpty()) // is the discardPile or single cell
-		{
+
+			/*
+			 * Is the discardPile or single cell.
+			 */
+		} else if (!isEmpty()) {
 			CardStack temp = new CardStack();
 			temp.addCard(peek());
 
 			return temp;
 		}
 
-		return null; // for deck and ace piles
+		/*
+		 * For deck and ace piles.
+		 */
+		return null;
 	}
 
 	public void paint(Graphics g) {
 		super.paint(g);
 
-		if (!isEmpty()) {
-			for (int i = 0; i < cards.size(); i++) {
-				Image image = cards.get(i).getImage();
-				g.drawImage(image, 0, i * 25, null);
-			}
+		if (isEmpty()) {
+			return;
+		}
+
+		for (int i = 0; i < cards.size(); i++) {
+			Image image = cards.get(i).getImage();
+			g.drawImage(image, 0, i * 25, null);
 		}
 	}
 }

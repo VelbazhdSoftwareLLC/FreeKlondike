@@ -38,6 +38,7 @@ public class DiscardPile extends CardStack {
 	private static final long serialVersionUID = 1L;
 
 	private int drawCount = 1;
+	
 	private int cardsLeftFromDraw = 0;
 
 	public DiscardPile(int draw) {
@@ -93,9 +94,10 @@ public class DiscardPile extends CardStack {
 	public synchronized Card pop() {
 		Card card = super.pop();
 
-		// To make the display of multiple cards correct
-		// (After a player removes the top card of draw 3, it shouldn't display
-		// the top 3 cards)
+		/*
+		 * To make the display of multiple cards correct (After a player removes
+		 * the top card of draw 3, it shouldn't display the top 3 cards).
+		 */
 		if (cardsLeftFromDraw > 0) {
 			cardsLeftFromDraw--;
 		} else {

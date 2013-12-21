@@ -43,23 +43,46 @@ public class Card extends JComponent {
 	private static final long serialVersionUID = 1L;
 
 	private CardSuit cardSuit;
+
 	private CardRank cardNumber;
+
 	private CardColor cardColor;
-	private int fullCardNumber; // 1 - 52
+
+	/**
+	 * 1 - 52
+	 */
+	private int fullCardNumber;
 
 	private int deckNumber;
 
-	private BufferedImage image; // Takes either card back or front
+	/**
+	 * Takes either card back or front.
+	 */
+	private BufferedImage image;
 
-	private String cardBack; // The back design
-	private String cardImageString; // The card front
-	private String cardHighlighted; // The highlighted card front
+	/**
+	 * The back design.
+	 */
+	private String cardBack;
+
+	/**
+	 * The card front.
+	 */
+	private String cardImageString;
+
+	/**
+	 * The highlighted card front.
+	 */
+	private String cardHighlighted;
 
 	private boolean faceUp = false;
+
 	private boolean highlighted = false;
 
-	private String location = ""; // To notify the discard pile of moves from
-									// the deck
+	/**
+	 * To notify the discard pile of moves from the deck.
+	 */
+	private String location = "";
 
 	public Card(CardSuit suit, CardRank number, int deckNumber, int fullNumber) {
 		this.cardSuit = suit;

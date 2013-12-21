@@ -54,7 +54,9 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 
 	private boolean exited = true;
 
-	// To hold the image previews
+	/** 
+	 * To hold the image previews.
+	 */
 	private JLabel cardBackLabel = new JLabel();
 	private JLabel backgroundLabel = new JLabel();
 
@@ -73,7 +75,9 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 	}
 
 	private void setup() {
-		// Card backs
+		/* 
+		 * Card backs.
+		 */
 		JPanel cardBackPanel = new JPanel();
 		cardBackPanel.setLayout(new FlowLayout());
 
@@ -92,7 +96,9 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 			decks[2].setSelected(true);
 		}
 
-		// Backgrounds
+		/* 
+		 * Backgrounds.
+		 */
 		JPanel backgroundPanel = new JPanel();
 		backgroundPanel.setLayout(new FlowLayout());
 
@@ -133,7 +139,9 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 		p2.add(cardBackViewer);
 		p2.add(backgroundViewer);
 
-		// Put everything together
+		/* 
+		 * Put everything together.
+		 */
 		JPanel p1 = new JPanel();
 		p1.setLayout(new BorderLayout());
 

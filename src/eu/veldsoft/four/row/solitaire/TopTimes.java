@@ -59,11 +59,10 @@ public class TopTimes extends JFrame implements ActionListener, KeyListener {
 		initComponents();
 	}
 
-	/*
-	 * Initializes the GUI components
+	/**
+	 * Initializes the GUI components.
 	 */
 	private void initComponents() {
-
 		for (int i = 0; i < names.length; i++) {
 			jSeparator[i] = new JSeparator();
 			jLabel[i] = new JLabel((i + 1) + ".");
@@ -508,8 +507,8 @@ public class TopTimes extends JFrame implements ActionListener, KeyListener {
 		pack();
 	}
 
-	/*
-	 * loads the saved times and names
+	/**
+	 * Loads the saved times and names.
 	 */
 	public void loadData() {
 		String fileLocation = System.getProperty("user.home")
@@ -530,24 +529,22 @@ public class TopTimes extends JFrame implements ActionListener, KeyListener {
 
 			input.close();
 		} catch (Exception ex) {
-			// System.out.println(ex);
 		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		/**
-		 * clear data button selected
+		/*
+		 * Clear data button selected.
 		 */
 		if (e.getSource() == jButton) {
 			clearData();
 			repaint();
 		}
-
 	}
 
-	/*
-	 * discard all the data and saves the changes
+	/**
+	 * Discard all the data and saves the changes.
 	 */
 	private void clearData() {
 		String fileLocation = System.getProperty("user.home")
@@ -565,13 +562,11 @@ public class TopTimes extends JFrame implements ActionListener, KeyListener {
 			output.close();
 
 		} catch (Exception ex) {
-			// ex.printStackTrace();
 		}
-
 	}
 
-	/*
-	 * saves the data into frs-topTimes file
+	/**
+	 * Saves the data into frs-topTimes file.
 	 */
 	private void saveData() {
 		String fileLocation = System.getProperty("user.home")
@@ -585,16 +580,13 @@ public class TopTimes extends JFrame implements ActionListener, KeyListener {
 				output.println(times[i].getText());
 			}
 			output.close();
-
 		} catch (Exception ex) {
-			// ex.printStackTrace();
 		}
-
 	}
 
-	/*
+	/**
 	 * It makes the Jtextfield, which corresponds to the position that the time
-	 * is going to save, editable
+	 * is going to save, editable.
 	 * 
 	 * @param newTime this parameter is the new time to save.
 	 */
@@ -618,11 +610,13 @@ public class TopTimes extends JFrame implements ActionListener, KeyListener {
 	public void keyTyped(KeyEvent e) {
 	}
 
-	@Override
-	/*
+	/**
 	 * if a enter is pressed in a JtextField then it becomes no-editable. Then
 	 * the function stores the new name.
+	 * 
+	 * @param e
 	 */
+	@Override
 	public void keyPressed(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			names[pos] = ((JTextField) e.getSource());
@@ -638,11 +632,13 @@ public class TopTimes extends JFrame implements ActionListener, KeyListener {
 	public void keyReleased(KeyEvent e) {
 	}
 
-	/*
-	 * checks if the parameter given is in the top ten times
+	/**
+	 * Checks if the parameter given is in the top ten times.
 	 * 
-	 * @param newTime the time that program need to find out if it belongs to
-	 * top ten times
+	 * @param newTime The time that program need to find out if it belongs to
+	 * top ten times.
+	 * 
+	 * @return
 	 */
 	public int IsTopTime(int newTime) {
 		for (int i = 0; i < NUM_OF_RECORDS; i++) {

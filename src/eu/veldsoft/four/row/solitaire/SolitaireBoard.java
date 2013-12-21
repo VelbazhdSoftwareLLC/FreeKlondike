@@ -39,58 +39,89 @@ public class SolitaireBoard extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static final int GAME_WON = 1;
 	public static final int GAME_LOST = 0;
+	public static final int GAME_WON = 1;
 	public static final int RESET_STATS = 2;
 	public static final int DO_NOTHING = 3;
 	public static final int GAME_SAVED = 4;
 
-	private int drawCount = 1; // can be 1 or 3
+	/**
+	 * Can be 1 or 3.
+	 */
+	private int drawCount = 1;
 
-	// To store new option selection for next new game, otherwise the count
-	// would
-	// be changed at next click of the deck (in the middle of the game)
+	/*
+	 * To store new option selection for next new game, otherwise the count
+	 * would be changed at next click of the deck (in the middle of the game).
+	 */
 	private int newDrawCount = drawCount;
 
 	private int backgroundNumber = 2;
-	private int deckNumber = 3;
-	private Deck deck = new Deck(deckNumber); // Create default-backed deck
-												// (auto shuffles)
 
-	// The four columns for the main playing field
+	private int deckNumber = 3;
+
+	/**
+	 * Create default-backed deck (auto shuffles).
+	 */
+	private Deck deck = new Deck(deckNumber);
+
+	/**
+	 * The four columns for the main playing field.
+	 */
 	private Column[] columns = new Column[4];
 
-	// The deal and discard piles
+	/**
+	 * The deal and discard piles.
+	 */
 	private DiscardPile discardPile = new DiscardPile(drawCount);
+
 	private DealDeck dealDeck = new DealDeck(discardPile, drawCount);
 
-	// The four ace piles (to stack Ace - King of a single suit)
+	/**
+	 * The four ace piles (to stack Ace - King of a single suit).
+	 */
 	private AcePile[] acePiles = new AcePile[4];
 
-	// The four top individual cells
+	/**
+	 * The four top individual cells.
+	 */
 	private SingleCell[] cells = new SingleCell[4];
 
 	private SolitairePanel mainPanel;
 
 	private MyMouseListener ml = new MyMouseListener();
+
 	public MyWindowListener wl = new MyWindowListener();
 
 	private Timer timer = new Timer(1000, new TimerListener());
+
 	private JPanel statusBar = new JPanel(new FlowLayout(FlowLayout.CENTER));
+
 	private JLabel timerLabel = new JLabel("Time: OFF");
+
 	private int timerCount = 0;
+
 	private int timerToRunNextGame = 0;
+
 	private boolean timerToRun = false;
 
 	private int winAnimationStatus = 0;
+
 	private int winSoundsStatus = 0;
 
-	private int difficulty = 2; // 1 = easy, 2 = medium, 3 = hard
+	/**
+	 * 1 = easy, 2 = medium, 3 = hard
+	 */
+	private int difficulty = 2;
+
 	private int newDifficulty = difficulty;
 
 	private LinkedList<CardStack> sourceList = new LinkedList<CardStack>();
+
 	private LinkedList<CardStack> destinationList = new LinkedList<CardStack>();
+
 	private LinkedList<Integer> numCards = new LinkedList<Integer>();
+
 	private LinkedList<Integer> numCardsInDiscardView = new LinkedList<Integer>();
 
 	public SolitaireBoard() {
@@ -117,7 +148,6 @@ public class SolitaireBoard extends JFrame {
 		for (int i = 0; i < 4; i++) {
 			columns[i] = new Column();
 			columns[i].addMouseListener(ml);
-			// columns[i].addMouseMotionListener(ml);
 		}
 
 		mainPanel.add(columns[0], SolitaireLayout.COLUMN_ONE);
@@ -128,7 +158,6 @@ public class SolitaireBoard extends JFrame {
 		for (int i = 0; i < 4; i++) {
 			cells[i] = new SingleCell();
 			cells[i].addMouseListener(ml);
-			// cells[i].addMouseMotionListener(ml);
 		}
 
 		mainPanel.add(cells[0], SolitaireLayout.CELL_ONE);
@@ -137,9 +166,7 @@ public class SolitaireBoard extends JFrame {
 		mainPanel.add(cells[3], SolitaireLayout.CELL_FOUR);
 
 		dealDeck.addMouseListener(ml);
-		// dealDeck.addMouseMotionListener(ml);
 		discardPile.addMouseListener(ml);
-		// discardPile.addMouseMotionListener(ml);
 
 		mainPanel.add(dealDeck, SolitaireLayout.DECK);
 		mainPanel.add(discardPile, SolitaireLayout.DISCARD_PILE);
@@ -239,7 +266,6 @@ public class SolitaireBoard extends JFrame {
 
 		dealDeck.setDrawCount(drawCount);
 		dealDeck.setDifficulty(difficulty);
-		// timerCount = 0;
 
 		for (int i = 0; i < numbers.size(); i++) {
 			if (numbers.get(i) > 0) {
@@ -344,7 +370,9 @@ public class SolitaireBoard extends JFrame {
 	}
 
 	public void newGame(int winOrLoss) {
-		// If the game was won, the win was already reported
+		/*
+		 * If the game was won, the win was already reported.
+		 */
 		if (winOrLoss != GAME_WON && winOrLoss != DO_NOTHING) {
 			int check = JOptionPane.showConfirmDialog(this,
 					"Quitting the current game will result in a loss.\n"
@@ -354,15 +382,20 @@ public class SolitaireBoard extends JFrame {
 			if (check == JOptionPane.YES_OPTION) {
 				recordGame(GAME_LOST);
 			} else {
-				// If player wants to continue game
+				/*
+				 * If player wants to continue game.
+				 */
 				return;
 			}
 		}
 
 		deck = new Deck(deckNumber);
 
-		clearBoard(); // Remove cards from ace piles
-		dealDeck.reset(); // Set numTimesThroughDeck back to 1
+		/*
+		 * Remove cards from ace piles. Set numTimesThroughDeck back to 1.
+		 */
+		clearBoard();
+		dealDeck.reset();
 		dealOutBoard();
 
 		sourceList.clear();
@@ -413,7 +446,9 @@ public class SolitaireBoard extends JFrame {
 				while ((input.available() > 0) && count < 5) {
 					temp = input.readInt();
 					switch (count) {
-					// case 0 is the format checker
+					/*
+					 * Case 0 is the format checker.
+					 */
 					case 1:
 						gamesWon1m = temp;
 						break;
@@ -428,7 +463,6 @@ public class SolitaireBoard extends JFrame {
 						break;
 
 					default:
-						;
 						break;
 					}
 
@@ -438,7 +472,9 @@ public class SolitaireBoard extends JFrame {
 				while ((input.available() > 0) && count < 31) {
 					temp = input.readInt();
 					switch (count) {
-					// case 0 is the format checker
+					/*
+					 * Case 0 is the format checker.
+					 */
 					case 1:
 						gamesPlayed1e = temp;
 						break;
@@ -536,7 +572,6 @@ public class SolitaireBoard extends JFrame {
 						break;
 
 					default:
-						;
 						break;
 					}
 
@@ -595,8 +630,7 @@ public class SolitaireBoard extends JFrame {
 							winStreak3h = currentStreak3h;
 						}
 					}
-				} else // if(drawCount == 1)
-				{
+				} else if (drawCount == 1) {
 					if (difficulty == 1) {
 						gamesPlayed1e++;
 						gamesWon1e++;
@@ -675,7 +709,9 @@ public class SolitaireBoard extends JFrame {
 				winStreak3h = 0;
 				lossStreak3h = 0;
 			} else if (winOrLoss == DO_NOTHING || winOrLoss == GAME_SAVED) {
-				// just updating options
+				/*
+				 * Just updating options.
+				 */
 			} else {
 				if (drawCount == 3) {
 					if (difficulty == 1) {
@@ -715,8 +751,7 @@ public class SolitaireBoard extends JFrame {
 							lossStreak3h = currentStreak3h;
 						}
 					}
-				} else // if(drawCount == 1)
-				{
+				} else if (drawCount == 1) {
 					if (difficulty == 1) {
 						gamesPlayed1e++;
 
@@ -757,7 +792,10 @@ public class SolitaireBoard extends JFrame {
 				}
 			}
 
-			output.writeInt(-1); // New format indicator
+			/*
+			 * New format indicator.
+			 */
+			output.writeInt(-1);
 
 			output.writeInt(gamesPlayed1e);
 			output.writeInt(gamesWon1e);
@@ -801,7 +839,10 @@ public class SolitaireBoard extends JFrame {
 			output.writeInt(backgroundNumber);
 			output.writeInt(timerToRunNextGame);
 
-			output.writeInt(winAnimationStatus); // Finish saving options
+			/*
+			 * Finish saving options.
+			 */
+			output.writeInt(winAnimationStatus);
 			output.writeInt(winSoundsStatus);
 			output.writeInt(dealDeck.getDeckThroughs());
 			output.writeInt(difficulty);
@@ -813,7 +854,10 @@ public class SolitaireBoard extends JFrame {
 					savedFile));
 
 			if (winOrLoss == GAME_SAVED) {
-				output.writeInt(1); // Saved
+				/*
+				 * Saved.
+				 */
+				output.writeInt(1);
 
 				for (int i = 0; i < cells.length; i++) {
 					if (!cells[i].isEmpty()) {
@@ -877,7 +921,10 @@ public class SolitaireBoard extends JFrame {
 				else
 					saved.writeInt(-1);
 			} else {
-				output.writeInt(0); // Not saved
+				/*
+				 * Not saved.
+				 */
+				output.writeInt(0);
 				savedFile.delete();
 			}
 
@@ -957,11 +1004,9 @@ public class SolitaireBoard extends JFrame {
 	}
 
 	public void setTimerStatus(int timerInt) {
-		if (timerInt == 1)// && !timer.isRunning())
-		{
+		if (timerInt == 1) {
 			timerToRunNextGame = 1;
-		} else if (timerInt == 0)// && timer.isRunning())
-		{
+		} else if (timerInt == 0) {
 			timerToRunNextGame = 0;
 		}
 
@@ -1028,7 +1073,9 @@ public class SolitaireBoard extends JFrame {
 
 	public synchronized void undoMove() {
 		if (!sourceList.isEmpty()) {
-			// if player is holding on to a card
+			/*
+			 * If player is holding on to a card.
+			 */
 			if (sourceList.size() > destinationList.size()) {
 				CardStack tempSource = sourceList.getLast();
 				sourceList.removeLast();
@@ -1081,8 +1128,10 @@ public class SolitaireBoard extends JFrame {
 				tempSource.repaint();
 				tempDest.repaint();
 			}
-			// The last draw from the deck didn't reset the discard pile to make
-			// it an empty pile
+			/*
+			 * The last draw from the deck didn't reset the discard pile to make
+			 * it an empty pile.
+			 */
 			else if (sourceList.getLast() instanceof DealDeck
 					&& !destinationList.getLast().isEmpty()) {
 				int num = numCards.getLast();
@@ -1103,7 +1152,9 @@ public class SolitaireBoard extends JFrame {
 				dealDeck.repaint();
 				discardPile.repaint();
 			}
-			// Last move was a reset on the discard pile
+			/*
+			 * Last move was a reset on the discard pile.
+			 */
 			else if (sourceList.getLast() instanceof DealDeck) {
 				dealDeck.undoPop();
 
@@ -1134,22 +1185,16 @@ public class SolitaireBoard extends JFrame {
 		for (int i = 0; i < 9; i++) {
 			switch (i) {
 			case 0:
-				;
 			case 1:
-				;
 			case 2:
-				;
 			case 3: {
 				source = columns[i];
 				sourceString = "Column " + (i + 1);
 			}
 				break;
 			case 4:
-				;
 			case 5:
-				;
 			case 6:
-				;
 			case 7: {
 				source = cells[i - 4];
 				sourceString = "Cell " + (i - 3);
@@ -1162,7 +1207,6 @@ public class SolitaireBoard extends JFrame {
 				break;
 
 			default:
-				;
 				break;
 			}
 
@@ -1173,22 +1217,16 @@ public class SolitaireBoard extends JFrame {
 				for (int j = 0; j < 8; j++) {
 					switch (j) {
 					case 0:
-						;
 					case 1:
-						;
 					case 2:
-						;
 					case 3: {
 						destination = columns[j];
 						destinationString = "Column " + (j + 1);
 					}
 						break;
 					case 4:
-						;
 					case 5:
-						;
 					case 6:
-						;
 					case 7: {
 						destination = acePiles[j - 4];
 						destinationString = "its Ace Pile";
@@ -1196,7 +1234,6 @@ public class SolitaireBoard extends JFrame {
 						break;
 
 					default:
-						;
 						break;
 					}
 
@@ -1259,8 +1296,11 @@ public class SolitaireBoard extends JFrame {
 										+ destinationString;
 
 								hints.add(hintString);
-								break; // Once a move is found from a source to
-										// destination, stop looking for more
+								/*
+								 * Once a move is found from a source to
+								 * destination, stop looking for more.
+								 */
+								break;
 							}
 						}
 					} else if (destination != null
@@ -1279,8 +1319,11 @@ public class SolitaireBoard extends JFrame {
 										+ destinationString;
 
 								hints.add(hintString);
-								break; // Once a move is found from a source to
-										// destination, stop looking for more
+								/*
+								 * Once a move is found from a source to
+								 * destination, stop looking for more.
+								 */
+								break;
 							}
 						}
 					} else if (destination != null && destination != source
@@ -1296,8 +1339,11 @@ public class SolitaireBoard extends JFrame {
 									+ " to " + destinationString;
 
 							hints.add(hintString);
-							break; // Once a move is found from a source to
-									// destination, stop looking for more
+							/*
+							 * Once a move is found from a source to
+							 * destination, stop looking for more.
+							 */
+							break;
 						}
 					}
 				}
@@ -1330,19 +1376,30 @@ public class SolitaireBoard extends JFrame {
 	}
 
 	private class MyMouseListener extends MouseInputAdapter {
-		private boolean hasSelected = false; // If true, the player hasn't
-												// completed a move
-		private boolean singleCardSelected = false; // If true, the selected
-													// stack is only one card
+		/**
+		 * If true, the player hasn't completed a move.
+		 */
+		private boolean hasSelected = false;
+
+		/**
+		 * If true, the selected stack is only one card.
+		 */
+		private boolean singleCardSelected = false;
 
 		private Card clickedCard;
 		private CardStack source;
 		private CardStack destination;
 		private CardStack temp;
 
-		private Card tempCard; // For right clicking discard pile view
-		private boolean rightClicked = false; // To prevent clicking cards from
-												// the right click view
+		/**
+		 * For right clicking discard pile view.
+		 */
+		private Card tempCard;
+
+		/**
+		 * To prevent clicking cards from the right click view.
+		 */
+		private boolean rightClicked = false;
 
 		private void checkWin() {
 			for (int i = 0; i < 4; i++) {
@@ -1561,11 +1618,12 @@ public class SolitaireBoard extends JFrame {
 						sourceList.add(dealDeck);
 						destinationList.add(discardPile);
 						numCards.add(discardPile.getNumViewableCards());
-					} else if (dealDeck.hasDealsLeft())// The deck was reset but
-														// the player hasn't
-														// used up the times
-														// through the deck
-					{
+					}
+					/*
+					 * The deck was reset but the player hasn't used up the
+					 * times through the deck.
+					 */
+					else if (dealDeck.hasDealsLeft()) {
 						sourceList.add(dealDeck);
 						destinationList.add(discardPile);
 						numCards.add(0);
@@ -1597,7 +1655,9 @@ public class SolitaireBoard extends JFrame {
 					return;
 				}
 			}
-			// Stack/card already selected
+			/*
+			 * Stack/card already selected.
+			 */
 			else if (e.getClickCount() == 1 && hasSelected) {
 				destination = (CardStack) e.getSource();
 
@@ -1607,7 +1667,9 @@ public class SolitaireBoard extends JFrame {
 						card.unhighlight();
 						destination.push(card);
 
-						// If move is valid, add destination info for undo
+						/*
+						 * If move is valid, add destination info for undo.
+						 */
 						destinationList.add(destination);
 
 						if (destination instanceof AcePile
@@ -1617,11 +1679,14 @@ public class SolitaireBoard extends JFrame {
 							checkWin();
 						}
 					} else {
-						// Not needed with highlighting version
-						// source.addCard(clickedCard);
+						/*
+						 * Not needed with highlighting version.
+						 */
 						source.peek().unhighlight();
 
-						// Upon invalid move, remove undo information for cards
+						/*
+						 * Upon invalid move, remove undo information for cards.
+						 */
 						sourceList.removeLast();
 						numCards.removeLast();
 						numCardsInDiscardView.removeLast();
@@ -1639,7 +1704,9 @@ public class SolitaireBoard extends JFrame {
 
 						destination.push(stack);
 
-						// If move is valid, add destination info for undo
+						/*
+						 * If move is valid, add destination info for undo.
+						 */
 						destinationList.add(destination);
 					} else {
 						for (int i = temp.length() - 1; i >= 0; i--) {
@@ -1647,7 +1714,9 @@ public class SolitaireBoard extends JFrame {
 									.unhighlight();
 						}
 
-						// Upon invalid move, remove undo information for cards
+						/*
+						 * Upon invalid move, remove undo information for cards.
+						 */
 						sourceList.removeLast();
 						numCards.removeLast();
 						numCardsInDiscardView.removeLast();
@@ -1686,8 +1755,7 @@ public class SolitaireBoard extends JFrame {
 			if (save == JOptionPane.YES_OPTION) {
 				recordGame(SolitaireBoard.GAME_SAVED);
 				System.exit(0);
-			} else // if(save == JOptionPane.NO_OPTION)
-			{
+			} else if (save == JOptionPane.NO_OPTION) {
 				recordGame(SolitaireBoard.GAME_LOST);
 				System.exit(0);
 			}

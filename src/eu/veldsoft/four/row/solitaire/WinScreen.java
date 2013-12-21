@@ -44,7 +44,6 @@ public class WinScreen extends JFrame {
 
 	public WinScreen(int animation, int sounds) {
 		setUndecorated(true);
-		// setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setFocusable(true);
 
@@ -95,11 +94,16 @@ public class WinScreen extends JFrame {
 		public Sequencer sequencer;
 
 		public void run() {
-			String song = ""; // To hold choice
+			/* 
+			 * To hold choice.
+			 */
+			String song = ""; 
 			Random gen = new Random();
 
 			try {
-				// Doesn't work as a .jar
+				/* 
+				 * Doesn't work as a .jar file.
+				 */
 				File songDir = new File(getClass().getResource("sounds/win/")
 						.toURI());
 				String[] songs = songDir.list();

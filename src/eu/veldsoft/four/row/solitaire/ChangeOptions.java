@@ -44,14 +44,30 @@ public class ChangeOptions extends JDialog implements ActionListener {
 	private JRadioButton drawThree = new JRadioButton("Draw Three");
 
 	private JCheckBox timerCheck = new JCheckBox("Timer");
-	private int timer = 0; // 0 = off, 1 = on
+
+	/**
+	 * 0 = off, 1 = on
+	 */
+	private int timer = 0;
 
 	private JCheckBox winAnimationCheck = new JCheckBox("Win Animation");
-	private int animation = 0; // 0 = off, 1 = on
-	private JCheckBox winSoundsCheck = new JCheckBox("Win Sounds");
-	private int sounds = 0; // 0 = off, 1 = on
 
-	private int difficulty = 2; // 1 = easy, 2 = medium, 3 = hard
+	/**
+	 * 0 = off, 1 = on
+	 */
+	private int animation = 0;
+
+	private JCheckBox winSoundsCheck = new JCheckBox("Win Sounds");
+
+	/** 
+	 * 0 = off, 1 = on
+	 */
+	private int sounds = 0; 
+
+	/** 
+	 * 1 = easy, 2 = medium, 3 = hard
+	 */
+	private int difficulty = 2; 
 
 	private JRadioButton easy = new JRadioButton("Easy");
 	private JRadioButton medium = new JRadioButton("Medium", true);
