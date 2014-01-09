@@ -20,6 +20,7 @@
 package eu.veldsoft.four.row.solitaire;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 import java.util.logging.Logger;
 
@@ -34,22 +35,20 @@ public class Deck {
 	private static final Logger LOGGER = Logger.getLogger(Class.class
 			.toString());
 
-	private static Random gen = new Random();
-
 	private int deckNumber;
 
-	private LinkedList<Card> deck = new LinkedList<Card>();
+	private List<Card> deck = new LinkedList<Card>();
 
 	public Deck(int deckNumber) {
 		this.deckNumber = deckNumber;
 		shuffle();
 	}
 
-	public LinkedList<Card> getDeck() {
+	public List<Card> getDeck() {
 		return deck;
 	}
 
-	public LinkedList<Card> getDeck(LinkedList<Integer> numbers) {
+	public List<Card> getDeck(LinkedList<Integer> numbers) {
 		deck = new LinkedList<Card>();
 
 		for (int i = 0; i < numbers.size(); i++) {
@@ -62,14 +61,15 @@ public class Deck {
 	}
 
 	public void shuffle() {
-		LinkedList<Integer> numberList = new LinkedList<Integer>();
+		//TODO Use stronger shuffling algorithm.
+		List<Integer> numberList = new LinkedList<Integer>();
 
 		for (int i = 1; i <= 52; i++) {
 			numberList.add(i);
 		}
 
 		while (numberList.isEmpty() == false) {
-			int num = gen.nextInt(numberList.size());
+			int num = Common.PRNG.nextInt(numberList.size());
 
 			int cardNumber = numberList.get(num);
 			numberList.remove(num);

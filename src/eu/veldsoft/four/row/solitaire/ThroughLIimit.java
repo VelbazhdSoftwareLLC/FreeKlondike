@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010 by Matt Stephen
+ Copyright (C) 2014 by Todor Balabanov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -19,47 +19,31 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.Point;
+public enum ThroughLIimit {
+	/**
+	 * Number of deck throughs for each difficulty.
+	 * Three card draw adds 1 to each.
+	 */
+	EASY(3), MEDIUM(2), HARD(1);
+	
+	/**
+	 * Number of allowed throughs.
+	 */
+	private int throughs;
 
-/**
- * Class: SingleCell
- * 
- * Description: The SingleCell class manages an individual cell that can only
- * hold one card.
- * 
- * @author Matt Stephen
- */
-public class SingleCell extends CardStack {
 	/**
 	 * 
+	 * @param throughs
 	 */
-	private static final long serialVersionUID = 1L;
-
-	public SingleCell() {
+	private ThroughLIimit(int throughs){
+		this.throughs = throughs;
 	}
 
-	public Card push(Card card) {
-		if (isEmpty()) {
-			super.push(card);
-			return card;
-		}
-
-		return null;
-	}
-
-	public Card getCardAtLocation(Point p) {
-		return peek();
-	}
-
-	public boolean isValidMove(Card card) {
-		if (isEmpty() == true) {
-			return true;
-		}
-
-		return false;
-	}
-
-	public boolean isValidMove(CardStack stack) {
-		return false;
+	/**
+	 * 
+	 * @return
+	 */
+	public int getThroughs() {
+		return throughs;
 	}
 }

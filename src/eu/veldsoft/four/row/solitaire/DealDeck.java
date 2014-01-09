@@ -47,18 +47,6 @@ public class DealDeck extends CardStack {
 
 	private int drawCount = 1;
 
-	/**
-	 * Number of deck throughs for each difficulty.
-	 */
-	private static final int EASY_THROUGH_LIMIT = 3;
-
-	/**
-	 * Three card draw adds 1 to each.
-	 */
-	private static final int MEDIUM_THROUGH_LIMIT = 2;
-
-	private static final int HARD_THROUGH_LIMIT = 1;
-
 	private int deckThroughLimit;
 
 	private boolean redealable = true;
@@ -68,9 +56,9 @@ public class DealDeck extends CardStack {
 		this.drawCount = drawCount;
 
 		if (drawCount == 3) {
-			deckThroughLimit = MEDIUM_THROUGH_LIMIT + 1;
+			deckThroughLimit = ThroughLIimit.MEDIUM.getThroughs() + 1;
 		} else {
-			deckThroughLimit = MEDIUM_THROUGH_LIMIT;
+			deckThroughLimit = ThroughLIimit.MEDIUM.getThroughs();
 		}
 
 		discard.setDrawCount(drawCount);
@@ -104,19 +92,19 @@ public class DealDeck extends CardStack {
 		discardPile.setDrawCount(draw);
 
 		if (drawCount == 3) {
-			deckThroughLimit = MEDIUM_THROUGH_LIMIT + 1;
+			deckThroughLimit = ThroughLIimit.MEDIUM.getThroughs() + 1;
 		} else {
-			deckThroughLimit = MEDIUM_THROUGH_LIMIT;
+			deckThroughLimit = ThroughLIimit.MEDIUM.getThroughs();
 		}
 	}
 
 	public void setDifficulty(int difficulty) {
 		if (difficulty == 1) {
-			deckThroughLimit = EASY_THROUGH_LIMIT;
+			deckThroughLimit = ThroughLIimit.EASY.getThroughs();
 		} else if (difficulty == 3) {
-			deckThroughLimit = HARD_THROUGH_LIMIT;
+			deckThroughLimit = ThroughLIimit.HARD.getThroughs();
 		} else if (difficulty == 2) {
-			deckThroughLimit = MEDIUM_THROUGH_LIMIT;
+			deckThroughLimit = ThroughLIimit.MEDIUM.getThroughs();
 		}
 
 		/*

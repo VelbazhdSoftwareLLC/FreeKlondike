@@ -36,8 +36,9 @@ public class SolitairePanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private int backgroundNumber = 2;
 	private Image background;
+
+	private int backgroundNumber = 2;
 
 	public SolitairePanel() {
 		URL imageURL = this.getClass().getResource(

@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010 by Matt Stephen
+ Copyright (C) 2014 by Todor Balabanov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -16,50 +16,15 @@
  You should have received a copy of the GNU General Public License
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.Point;
-
 /**
- * Class: SingleCell
  * 
- * Description: The SingleCell class manages an individual cell that can only
- * hold one card.
- * 
- * @author Matt Stephen
+ * @author Todor Balabanov
  */
-public class SingleCell extends CardStack {
+public enum GameState {
 	/**
-	 * 
+	 * Game states.
 	 */
-	private static final long serialVersionUID = 1L;
-
-	public SingleCell() {
-	}
-
-	public Card push(Card card) {
-		if (isEmpty()) {
-			super.push(card);
-			return card;
-		}
-
-		return null;
-	}
-
-	public Card getCardAtLocation(Point p) {
-		return peek();
-	}
-
-	public boolean isValidMove(Card card) {
-		if (isEmpty() == true) {
-			return true;
-		}
-
-		return false;
-	}
-
-	public boolean isValidMove(CardStack stack) {
-		return false;
-	}
+	GAME_LOST, GAME_WON, RESET_STATS, DO_NOTHING, GAME_SAVED;
 }

@@ -39,18 +39,12 @@ public class SolitaireBoard extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static final int GAME_LOST = 0;
-	public static final int GAME_WON = 1;
-	public static final int RESET_STATS = 2;
-	public static final int DO_NOTHING = 3;
-	public static final int GAME_SAVED = 4;
-
 	/**
 	 * Can be 1 or 3.
 	 */
 	private int drawCount = 1;
 
-	/*
+	/**
 	 * To store new option selection for next new game, otherwise the count
 	 * would be changed at next click of the deck (in the middle of the game).
 	 */
@@ -213,7 +207,7 @@ public class SolitaireBoard extends JFrame {
 	}
 
 	private void dealOutBoard() {
-		LinkedList<Card> cards = deck.getDeck();
+		LinkedList<Card> cards = (LinkedList<Card>) deck.getDeck();
 
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 4; j++) {
@@ -259,7 +253,7 @@ public class SolitaireBoard extends JFrame {
 
 	private void dealOutCustomBoard(LinkedList<Integer> numbers,
 			int numViewableCards) {
-		LinkedList<Card> cards = deck.getDeck(numbers);
+		LinkedList<Card> cards = (LinkedList<Card>) deck.getDeck(numbers);
 
 		int pileNumber = 0;
 		int cardNumber = -1;
@@ -369,18 +363,19 @@ public class SolitaireBoard extends JFrame {
 		discardPile.repaint();
 	}
 
-	public void newGame(int winOrLoss) {
+	public void newGame(GameState winOrLoss) {
 		/*
 		 * If the game was won, the win was already reported.
 		 */
-		if (winOrLoss != GAME_WON && winOrLoss != DO_NOTHING) {
+		if (winOrLoss != GameState.GAME_WON
+				&& winOrLoss != GameState.DO_NOTHING) {
 			int check = JOptionPane.showConfirmDialog(this,
 					"Quitting the current game will result in a loss.\n"
 							+ "Do you wish to continue?", "Continue?",
 					JOptionPane.PLAIN_MESSAGE);
 
 			if (check == JOptionPane.YES_OPTION) {
-				recordGame(GAME_LOST);
+				recordGame(GameState.GAME_LOST);
 			} else {
 				/*
 				 * If player wants to continue game.
@@ -405,14 +400,14 @@ public class SolitaireBoard extends JFrame {
 	}
 
 	public void resetStats() {
-		recordGame(RESET_STATS);
+		recordGame(GameState.RESET_STATS);
 	}
 
 	public void saveOptions() {
-		recordGame(DO_NOTHING);
+		recordGame(GameState.DO_NOTHING);
 	}
 
-	private void recordGame(int winOrLoss) {
+	private void recordGame(GameState winOrLoss) {
 		int count = 0, temp = 0;
 		int gamesPlayed1e = 0, gamesWon1e = 0, winStreak1e = 0, lossStreak1e = 0, currentStreak1e = 0;
 		int gamesPlayed1m = 0, gamesWon1m = 0, winStreak1m = 0, lossStreak1m = 0, currentStreak1m = 0;
@@ -588,7 +583,7 @@ public class SolitaireBoard extends JFrame {
 			DataOutputStream output = new DataOutputStream(
 					new FileOutputStream(file));
 
-			if (winOrLoss == GAME_WON) {
+			if (winOrLoss == GameState.GAME_WON) {
 				if (drawCount == 3) {
 					if (difficulty == 1) {
 						gamesPlayed3e++;
@@ -672,7 +667,7 @@ public class SolitaireBoard extends JFrame {
 						}
 					}
 				}
-			} else if (winOrLoss == RESET_STATS) {
+			} else if (winOrLoss == GameState.RESET_STATS) {
 				gamesWon1e = 0;
 				gamesPlayed1e = 0;
 				currentStreak1e = 0;
@@ -708,7 +703,8 @@ public class SolitaireBoard extends JFrame {
 				currentStreak3h = 0;
 				winStreak3h = 0;
 				lossStreak3h = 0;
-			} else if (winOrLoss == DO_NOTHING || winOrLoss == GAME_SAVED) {
+			} else if (winOrLoss == GameState.DO_NOTHING
+					|| winOrLoss == GameState.GAME_SAVED) {
 				/*
 				 * Just updating options.
 				 */
@@ -853,7 +849,7 @@ public class SolitaireBoard extends JFrame {
 			DataOutputStream saved = new DataOutputStream(new FileOutputStream(
 					savedFile));
 
-			if (winOrLoss == GAME_SAVED) {
+			if (winOrLoss == GameState.GAME_SAVED) {
 				/*
 				 * Saved.
 				 */
@@ -1426,10 +1422,10 @@ public class SolitaireBoard extends JFrame {
 								JOptionPane.YES_NO_OPTION);
 
 						if (playAgain == JOptionPane.YES_OPTION) {
-							recordGame(GAME_WON);
-							newGame(GAME_WON);
+							recordGame(GameState.GAME_WON);
+							newGame(GameState.GAME_WON);
 						} else if (playAgain == JOptionPane.NO_OPTION) {
-							recordGame(GAME_WON);
+							recordGame(GameState.GAME_WON);
 							System.exit(0);
 						}
 					}
@@ -1447,10 +1443,10 @@ public class SolitaireBoard extends JFrame {
 					"Play Again?", "You Won!", JOptionPane.YES_NO_OPTION);
 
 			if (playAgain == JOptionPane.YES_OPTION) {
-				recordGame(GAME_WON);
-				newGame(GAME_WON);
+				recordGame(GameState.GAME_WON);
+				newGame(GameState.GAME_WON);
 			} else if (playAgain == JOptionPane.NO_OPTION) {
-				recordGame(GAME_WON);
+				recordGame(GameState.GAME_WON);
 				System.exit(0);
 			}
 		}
@@ -1753,10 +1749,10 @@ public class SolitaireBoard extends JFrame {
 							"Save Game?", JOptionPane.YES_NO_OPTION);
 
 			if (save == JOptionPane.YES_OPTION) {
-				recordGame(SolitaireBoard.GAME_SAVED);
+				recordGame(GameState.GAME_SAVED);
 				System.exit(0);
 			} else if (save == JOptionPane.NO_OPTION) {
-				recordGame(SolitaireBoard.GAME_LOST);
+				recordGame(GameState.GAME_LOST);
 				System.exit(0);
 			}
 		}

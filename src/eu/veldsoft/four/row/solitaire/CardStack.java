@@ -36,10 +36,10 @@ public class CardStack extends JLayeredPane {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * 
+	 */
 	private Vector<Card> cards = new Vector<Card>();
-
-	public CardStack() {
-	}
 
 	/**
 	 * For starting the game.
@@ -252,6 +252,7 @@ public class CardStack extends JLayeredPane {
 	}
 
 	public CardStack getAvailableCards() {
+		//TODO This is very bad polymorphism implementation.
 		if (!isEmpty() && (this instanceof Column)) {
 			CardStack temp = new CardStack();
 			boolean cardsMatch = true;
@@ -283,6 +284,7 @@ public class CardStack extends JLayeredPane {
 			/*
 			 * Is the discardPile or single cell.
 			 */
+			//TODO This is very bad polymorphism implementation.
 		} else if (!isEmpty()) {
 			CardStack temp = new CardStack();
 			temp.addCard(peek());

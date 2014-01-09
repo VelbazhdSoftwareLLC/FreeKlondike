@@ -36,6 +36,9 @@ public class AcePile extends CardStack {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Pile suit.
+	 */
 	private CardSuit suit;
 
 	public AcePile(CardSuit suit) {
@@ -47,14 +50,9 @@ public class AcePile extends CardStack {
 	}
 
 	public Card push(Card card) {
-		if (isEmpty() && card.getSuit().equals(suit)
-				&& card.getNumber().equals(CardRank.ACE)) {
+		if(isValidMove(card) == true) {
 			super.push(card);
-			return card;
-		} else if (card.getSuit().equals(suit)
-				&& card.getNumber().isLessByOneThan(peek().getNumber())) {
-			super.push(card);
-			return card;
+			return( card );
 		}
 
 		return null;
@@ -65,10 +63,13 @@ public class AcePile extends CardStack {
 	}
 
 	public boolean isValidMove(Card card) {
-		if (isEmpty() && card.getSuit().equals(suit)) {
+		if (card.getSuit().equals(suit) == false) {
+			return false;
+		}
+
+		if (isEmpty() && card.getNumber().equals(CardRank.ACE)) {
 			return true;
-		} else if (!isEmpty() && card.getSuit().equals(suit)
-				&& card.getNumber().isLessByOneThan(peek().getNumber())) {
+		} else if (card.getNumber().isLessByOneThan(peek().getNumber())) {
 			return true;
 		}
 

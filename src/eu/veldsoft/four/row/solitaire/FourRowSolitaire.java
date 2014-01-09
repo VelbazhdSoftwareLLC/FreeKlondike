@@ -327,7 +327,7 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == newGame) {
-			super.newGame(0);
+			super.newGame(GameState.GAME_LOST);
 		} else if (e.getSource() == undo) {
 			super.undoMove();
 		} else if (e.getSource() == hint) {
@@ -607,12 +607,12 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 					JOptionPane.PLAIN_MESSAGE, null, buttons, buttons[0]);
 
 			if (check == 1) {
-				/* 
+				/*
 				 * Reset stats.
 				 */
 				super.resetStats();
 			} else {
-				/* 
+				/*
 				 * Close.
 				 */
 				return;

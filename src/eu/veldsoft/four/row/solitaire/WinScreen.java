@@ -40,7 +40,7 @@ public class WinScreen extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	SoundThread sound = null;
+	private SoundThread sound = null;
 
 	public WinScreen(int animation, int sounds) {
 		setUndecorated(true);
@@ -52,7 +52,6 @@ public class WinScreen extends JFrame {
 		 * with JDialog for some reason.
 		 * setModalityType(Dialog.ModalityType.DOCUMENT_MODAL);
 		 */
-
 		if (sounds == 1) {
 			setSize(200, 200);
 			sound = new SoundThread();
@@ -98,7 +97,6 @@ public class WinScreen extends JFrame {
 			 * To hold choice.
 			 */
 			String song = ""; 
-			Random gen = new Random();
 
 			try {
 				/* 
@@ -110,14 +108,14 @@ public class WinScreen extends JFrame {
 				boolean retry = true;
 
 				do {
-					song = songs[gen.nextInt(songs.length)];
+					song = songs[Common.PRNG.nextInt(songs.length)];
 
 					if (song.toLowerCase().contains(".mid")) {
 						retry = false;
 					}
 				} while (retry);
 			} catch (Exception ex) {
-				int songInt = gen.nextInt(4);
+				int songInt = Common.PRNG.nextInt(4);
 
 				if (songInt == 0) {
 					song = "celebration.mid";

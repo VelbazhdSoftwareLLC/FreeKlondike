@@ -42,10 +42,19 @@ public class Card extends JComponent {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * 
+	 */
 	private CardSuit cardSuit;
 
+	/**
+	 * 
+	 */
 	private CardRank cardNumber;
 
+	/**
+	 * 
+	 */
 	private CardColor cardColor;
 
 	/**
@@ -53,6 +62,9 @@ public class Card extends JComponent {
 	 */
 	private int fullCardNumber;
 
+	/**
+	 * 
+	 */
 	private int deckNumber;
 
 	/**
@@ -75,8 +87,14 @@ public class Card extends JComponent {
 	 */
 	private String cardHighlighted;
 
+	/**
+	 * 
+	 */
 	private boolean faceUp = false;
 
+	/**
+	 * 
+	 */
 	private boolean highlighted = false;
 
 	/**
@@ -84,6 +102,13 @@ public class Card extends JComponent {
 	 */
 	private String location = "";
 
+	/**
+	 * 
+	 * @param suit
+	 * @param number
+	 * @param deckNumber
+	 * @param fullNumber
+	 */
 	public Card(CardSuit suit, CardRank number, int deckNumber, int fullNumber) {
 		this.cardSuit = suit;
 		this.cardNumber = number;
@@ -101,6 +126,9 @@ public class Card extends JComponent {
 		setFaceUp();
 	}
 
+	/**
+	 * 
+	 */
 	public void highlight() {
 		highlighted = true;
 
@@ -118,16 +146,26 @@ public class Card extends JComponent {
 		repaint();
 	}
 
+	/**
+	 * 
+	 */
 	public void unhighlight() {
 		highlighted = false;
 
 		setFaceUp();
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isHighlighted() {
 		return highlighted;
 	}
 
+	/**
+	 * 
+	 */
 	public void setFaceUp() {
 		faceUp = true;
 
@@ -142,6 +180,9 @@ public class Card extends JComponent {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	public void setFaceDown() {
 		faceUp = false;
 
@@ -156,10 +197,17 @@ public class Card extends JComponent {
 		}
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean isFaceUp() {
 		return faceUp;
 	}
 
+	/**
+	 * 
+	 */
 	private void initializeCardImageString() {
 		cardImageString = "images/cardfaces/";
 		cardHighlighted = "images/highlightedfaces/";

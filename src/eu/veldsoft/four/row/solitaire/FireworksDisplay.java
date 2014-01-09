@@ -63,7 +63,6 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 	private int startValue = 0;
 
 	private Timer timer = new Timer(100, this);
-	private Random random = new Random();
 
 	public FireworksDisplay(int num, int size) {
 		NUM_FIREWORKS = num;
@@ -88,7 +87,7 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 			x[i] = (int) (Math.random() * 300) + 300;
 
 			for (int j = 0; j < FIREWORKS_SIZE; j++) {
-				int xOffset = random.nextInt(151);
+				int xOffset = Common.PRNG.nextInt(151);
 				double signCheck = Math.random();
 
 				if (signCheck <= .5) {
@@ -103,7 +102,7 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 			y[i] = (int) (Math.random() * 200) + 300;
 
 			for (int j = 0; j < FIREWORKS_SIZE; j++) {
-				int yOffset = random.nextInt(151);
+				int yOffset = Common.PRNG.nextInt(151);
 				double signCheck = Math.random();
 
 				if (signCheck <= .5) {
@@ -495,7 +494,7 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 				num = 0;
 				numSets++;
 
-				startValue = random.nextInt(x.length / 2);
+				startValue = Common.PRNG.nextInt(x.length / 2);
 			}
 
 			num++;

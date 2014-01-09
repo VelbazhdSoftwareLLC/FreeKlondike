@@ -32,15 +32,8 @@ public class Column extends CardStack {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Column() {
-	}
-
 	public Card push(Card card) {
-		if (isEmpty() && card.getNumber().equals(CardRank.KING)) {
-			super.push(card);
-			return card;
-		} else if (card.getColor() != peek().getColor()
-				&& card.getNumber().isGreaterByOneThan(peek().getNumber())) {
+		if (isValidMove(card) == true) {
 			super.push(card);
 			return card;
 		}
@@ -49,9 +42,11 @@ public class Column extends CardStack {
 	}
 
 	public boolean isValidMove(Card card) {
-		if (isEmpty() && card.getNumber().equals(CardRank.KING)) {
+		if (isEmpty() == true && card.getNumber().equals(CardRank.KING)) {
 			return true;
-		} else if (!isEmpty() && card.getColor() != peek().getColor()
+		}
+
+		if (isEmpty() == false && card.getColor() != peek().getColor()
 				&& card.getNumber().isGreaterByOneThan(peek().getNumber())) {
 			return true;
 		}

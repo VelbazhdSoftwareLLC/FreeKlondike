@@ -30,14 +30,6 @@ public enum CardColor {
 	 * 
 	 */
 	private int index;
-	
-	/**
-	 * 
-	 * @return
-	 */
-	public int getIndex() {
-		return index;
-	}
 
 	/**
 	 * 
@@ -45,5 +37,13 @@ public enum CardColor {
 	 */
 	private CardColor(int index) {
 		this.index = index;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public int getIndex() {
+		return index;
 	}
 }
