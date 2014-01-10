@@ -57,4 +57,37 @@ public class Column extends CardStack {
 	public boolean isValidMove(CardStack stack) {
 		return isValidMove(stack.peek());
 	}
+
+	public CardStack getAvailableCards() {
+		if (isEmpty() == true) {
+			return (null);
+		}
+
+		CardStack stack = new CardStack();
+		boolean cardsMatch = true;
+		int index = length() - 1;
+
+		stack.addCard(cards.get(index));
+
+		do {
+			index--;
+
+			if (index >= 0) {
+				Card card = cards.get(index);
+
+				if (card.getColor() != stack.peek().getColor()
+						&& card.getNumber().isLessByOneThan(
+								stack.peek().getNumber())) {
+					stack.addCard(card);
+				} else {
+					cardsMatch = false;
+				}
+			} else {
+				cardsMatch = false;
+			}
+
+		} while (cardsMatch);
+
+		return stack;
+	}
 }

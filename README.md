@@ -1,6 +1,6 @@
 Four Row Solitaire
 
-    Copyright (C) 2010 by Matt Stephen
+    Copyright (C) 2010-2014 by Matt Stephen and Todor Balabanov
 
     Four Row Solitaire is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

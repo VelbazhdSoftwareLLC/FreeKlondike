@@ -62,4 +62,15 @@ public class SingleCell extends CardStack {
 	public boolean isValidMove(CardStack stack) {
 		return false;
 	}
+
+	public CardStack getAvailableCards() {
+		if (isEmpty() == true) {
+			return (null);
+		}
+
+		CardStack stack = new CardStack();
+		stack.addCard(peek());
+
+		return stack;
+	}
 }

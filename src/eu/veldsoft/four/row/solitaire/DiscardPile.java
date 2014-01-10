@@ -38,7 +38,7 @@ public class DiscardPile extends CardStack {
 	private static final long serialVersionUID = 1L;
 
 	private int drawCount = 1;
-	
+
 	private int cardsLeftFromDraw = 0;
 
 	public DiscardPile(int draw) {
@@ -160,5 +160,16 @@ public class DiscardPile extends CardStack {
 				}
 			}
 		}
+	}
+
+	public CardStack getAvailableCards() {
+		if (isEmpty() == true) {
+			return (null);
+		}
+
+		CardStack stack = new CardStack();
+		stack.addCard(peek());
+
+		return stack;
 	}
 }

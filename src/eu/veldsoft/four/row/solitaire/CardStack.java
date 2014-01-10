@@ -39,7 +39,7 @@ public class CardStack extends JLayeredPane {
 	/**
 	 * 
 	 */
-	private Vector<Card> cards = new Vector<Card>();
+	protected Vector<Card> cards = new Vector<Card>();
 
 	/**
 	 * For starting the game.
@@ -252,49 +252,6 @@ public class CardStack extends JLayeredPane {
 	}
 
 	public CardStack getAvailableCards() {
-		//TODO This is very bad polymorphism implementation.
-		if (!isEmpty() && (this instanceof Column)) {
-			CardStack temp = new CardStack();
-			boolean cardsMatch = true;
-			int index = length() - 1;
-
-			temp.addCard(cards.get(index));
-
-			do {
-				index--;
-
-				if (index >= 0) {
-					Card card = cards.get(index);
-
-					if (card.getColor() != temp.peek().getColor()
-							&& card.getNumber().isLessByOneThan(
-									temp.peek().getNumber())) {
-						temp.addCard(card);
-					} else {
-						cardsMatch = false;
-					}
-				} else {
-					cardsMatch = false;
-				}
-
-			} while (cardsMatch);
-
-			return temp;
-
-			/*
-			 * Is the discardPile or single cell.
-			 */
-			//TODO This is very bad polymorphism implementation.
-		} else if (!isEmpty()) {
-			CardStack temp = new CardStack();
-			temp.addCard(peek());
-
-			return temp;
-		}
-
-		/*
-		 * For deck and ace piles.
-		 */
 		return null;
 	}
 
