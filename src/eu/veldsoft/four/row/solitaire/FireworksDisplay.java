@@ -20,10 +20,13 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.util.Random;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /**
  * Class: FireworksDisplay
@@ -48,15 +51,15 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 	private int[] y;
 	private Color[] colors;
 
-	/** 
+	/**
 	 * For firework burst.
 	 */
-	private int[][] xx; 
-	
-	/** 
+	private int[][] xx;
+
+	/**
 	 * For firework burst.
 	 */
-	private int[][] yy; 
+	private int[][] yy;
 
 	private int num = 0;
 	private int numSets = 0;
@@ -155,7 +158,7 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 		g.setColor(Color.RED);
 		g.drawString("You Win! -- Click to Close.", 340, 550);
 
-		/* 
+		/*
 		 * Longer set one.
 		 */
 		if (numSets < 5) {
@@ -165,13 +168,13 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 					int y0 = getHeight()
 							- (num * y[i] / (2 * FIREWORKS_TIME / 3));
 
-					/* 
+					/*
 					 * Fire from left side.
 					 */
 					if (i % 2 == 0) {
 						x0 = num * x[i] / (2 * FIREWORKS_TIME / 3);
 					}
-					/* 
+					/*
 					 * Fire from right side.
 					 */
 					else {
@@ -210,7 +213,7 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 				}
 			}
 		}
-		/* 
+		/*
 		 * Longer set two.
 		 */
 		else if (numSets < 10) {
@@ -220,13 +223,13 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 					int y0 = getHeight()
 							- (num * y[i] / (2 * FIREWORKS_TIME / 3));
 
-					/* 
+					/*
 					 * Fire from left side.
 					 */
 					if (i % 2 == 0) {
 						x0 = num * x[i] / (2 * FIREWORKS_TIME / 3);
 					}
-					/* 
+					/*
 					 * Fire from right side.
 					 */
 					else {
@@ -265,7 +268,7 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 				}
 			}
 		}
-		/* 
+		/*
 		 * Longer set three.
 		 */
 		else if (numSets < 15) {
@@ -275,13 +278,13 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 					int y0 = getHeight()
 							- (num * y[i] / (2 * FIREWORKS_TIME / 3));
 
-					/* 
+					/*
 					 * Fire from left side.
 					 */
 					if (i % 2 == 0) {
 						x0 = num * x[i] / (2 * FIREWORKS_TIME / 3);
 					}
-					/* 
+					/*
 					 * Fire from right side.
 					 */
 					else {
@@ -321,7 +324,7 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 				}
 			}
 		}
-		/* 
+		/*
 		 * Longer set four.
 		 */
 		else if (numSets < 20) {
@@ -331,13 +334,13 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 					int y0 = getHeight()
 							- (num * y[i] / (2 * FIREWORKS_TIME / 3));
 
-					/* 
+					/*
 					 * Fire from left side.
 					 */
 					if (i % 2 == 0) {
 						x0 = num * x[i] / (2 * FIREWORKS_TIME / 3);
 					}
-					/* 
+					/*
 					 * Fire from right side.
 					 */
 					else {
@@ -376,7 +379,7 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 				}
 			}
 		}
-		/* 
+		/*
 		 * Longer set five.
 		 */
 		else if (numSets < 25) {
@@ -386,13 +389,13 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 					int y0 = getHeight()
 							- (num * y[i] / (2 * FIREWORKS_TIME / 3));
 
-					/* 
+					/*
 					 * Fire from left side.
 					 */
 					if (i % 2 == 0) {
 						x0 = num * x[i] / (2 * FIREWORKS_TIME / 3);
 					}
-					/* 
+					/*
 					 * Fire from right side.
 					 */
 					else {
@@ -431,7 +434,7 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 				}
 			}
 		}
-		/* 
+		/*
 		 * Longer set six (finale).
 		 */
 		else if (numSets < 26) {
@@ -441,13 +444,13 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 					int y0 = getHeight()
 							- (num * y[i] / (2 * FIREWORKS_TIME / 3));
 
-					/* 
+					/*
 					 * Fire from left side.
 					 */
 					if (i % 2 == 0) {
 						x0 = num * x[i] / (2 * FIREWORKS_TIME / 3);
 					}
-					/* 
+					/*
 					 * Fire from right side.
 					 */
 					else {

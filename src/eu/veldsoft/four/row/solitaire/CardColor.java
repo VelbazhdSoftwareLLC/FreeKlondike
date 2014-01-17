@@ -38,7 +38,7 @@ public enum CardColor {
 	private CardColor(int index) {
 		this.index = index;
 	}
-	
+
 	/**
 	 * 
 	 * @return

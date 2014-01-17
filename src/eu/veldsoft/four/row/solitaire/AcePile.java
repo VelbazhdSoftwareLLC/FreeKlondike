@@ -50,9 +50,9 @@ public class AcePile extends CardStack {
 	}
 
 	public Card push(Card card) {
-		if(isValidMove(card) == true) {
+		if (isValidMove(card) == true) {
 			super.push(card);
-			return( card );
+			return (card);
 		}
 
 		return null;

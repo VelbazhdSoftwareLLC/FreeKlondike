@@ -593,7 +593,8 @@ public class TopTimes extends JFrame implements ActionListener, KeyListener {
 	 * It makes the Jtextfield, which corresponds to the position that the time
 	 * is going to save, editable.
 	 * 
-	 * @param newTime this parameter is the new time to save.
+	 * @param newTime
+	 *            this parameter is the new time to save.
 	 */
 	public void setProperties(int newTime) {
 		for (int j = NUM_OF_RECORDS - 1; (j >= 1) && (j > pos); j--) {
@@ -640,8 +641,9 @@ public class TopTimes extends JFrame implements ActionListener, KeyListener {
 	/**
 	 * Checks if the parameter given is in the top ten times.
 	 * 
-	 * @param newTime The time that program need to find out if it belongs to
-	 * top ten times.
+	 * @param newTime
+	 *            The time that program need to find out if it belongs to top
+	 *            ten times.
 	 * 
 	 * @return
 	 */

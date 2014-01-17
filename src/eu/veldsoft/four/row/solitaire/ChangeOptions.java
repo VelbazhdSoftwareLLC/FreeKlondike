@@ -19,9 +19,20 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;
 
 /**
@@ -59,15 +70,15 @@ public class ChangeOptions extends JDialog implements ActionListener {
 
 	private JCheckBox winSoundsCheck = new JCheckBox("Win Sounds");
 
-	/** 
+	/**
 	 * 0 = off, 1 = on
 	 */
-	private int sounds = 0; 
+	private int sounds = 0;
 
-	/** 
+	/**
 	 * 1 = easy, 2 = medium, 3 = hard
 	 */
-	private int difficulty = 2; 
+	private int difficulty = 2;
 
 	private JRadioButton easy = new JRadioButton("Easy");
 	private JRadioButton medium = new JRadioButton("Medium", true);

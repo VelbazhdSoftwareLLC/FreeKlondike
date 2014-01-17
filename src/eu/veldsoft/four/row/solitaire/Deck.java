@@ -19,9 +19,8 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
+import java.util.LinkedList;
 import java.util.logging.Logger;
 
 /**
@@ -61,7 +60,7 @@ public class Deck {
 	}
 
 	public void shuffle() {
-		//TODO Use stronger shuffling algorithm.
+		// TODO Use stronger shuffling algorithm.
 		List<Integer> numberList = new LinkedList<Integer>();
 
 		for (int i = 1; i <= 52; i++) {

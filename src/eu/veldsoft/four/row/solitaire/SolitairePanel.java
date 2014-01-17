@@ -19,9 +19,12 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.net.URL;
-import javax.swing.*;
+
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  * Class: SolitairePanel

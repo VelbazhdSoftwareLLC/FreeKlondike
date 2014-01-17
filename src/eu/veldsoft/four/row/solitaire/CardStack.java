@@ -19,8 +19,11 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Point;
 import java.util.Vector;
+
 import javax.swing.JLayeredPane;
 
 /**

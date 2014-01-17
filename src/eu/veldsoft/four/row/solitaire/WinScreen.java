@@ -19,12 +19,18 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.event.*;
 import java.io.File;
 import java.net.URL;
-import java.util.Random;
-import javax.sound.midi.*;
-import javax.swing.*;
+
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.Sequence;
+import javax.sound.midi.Sequencer;
 import javax.swing.event.MouseInputAdapter;
 
 /**
@@ -93,13 +99,13 @@ public class WinScreen extends JFrame {
 		public Sequencer sequencer;
 
 		public void run() {
-			/* 
+			/*
 			 * To hold choice.
 			 */
-			String song = ""; 
+			String song = "";
 
 			try {
-				/* 
+				/*
 				 * Doesn't work as a .jar file.
 				 */
 				File songDir = new File(getClass().getResource("sounds/win/")

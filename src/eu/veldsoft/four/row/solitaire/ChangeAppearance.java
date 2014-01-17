@@ -19,9 +19,20 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 
 /**
  * Class: ChangeAppearance
@@ -54,7 +65,7 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 
 	private boolean exited = true;
 
-	/** 
+	/**
 	 * To hold the image previews.
 	 */
 	private JLabel cardBackLabel = new JLabel();
@@ -75,7 +86,7 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 	}
 
 	private void setup() {
-		/* 
+		/*
 		 * Card backs.
 		 */
 		JPanel cardBackPanel = new JPanel();
@@ -96,7 +107,7 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 			decks[2].setSelected(true);
 		}
 
-		/* 
+		/*
 		 * Backgrounds.
 		 */
 		JPanel backgroundPanel = new JPanel();
@@ -139,7 +150,7 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 		p2.add(cardBackViewer);
 		p2.add(backgroundViewer);
 
-		/* 
+		/*
 		 * Put everything together.
 		 */
 		JPanel p1 = new JPanel();

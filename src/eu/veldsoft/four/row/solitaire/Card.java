@@ -19,11 +19,10 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.*;
-import java.awt.image.*;
-import java.io.*;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.net.URL;
-import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
