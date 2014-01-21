@@ -44,6 +44,7 @@ public class DealDeck extends CardStack {
 
 	private int numTimesThroughDeck = 1;
 
+	//TODO Should be in other class.
 	private int drawCount = 1;
 
 	private int deckThroughLimit;

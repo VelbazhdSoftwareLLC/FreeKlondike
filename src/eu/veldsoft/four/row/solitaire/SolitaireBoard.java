@@ -55,7 +55,14 @@ public class SolitaireBoard extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	/**
+	 * Find better OOP modeling alternative!
+	 * Use enumerated type for card back. 
+	 */
+	static int deckNumber = 3;
+
+	/**
 	 * Can be 1 or 3.
+	 * Should be only here!
 	 */
 	private int drawCount = 1;
 
@@ -65,14 +72,16 @@ public class SolitaireBoard extends JFrame {
 	 */
 	private int newDrawCount = drawCount;
 
+	/**
+	 * Find better OOP modeling alternative!
+	 * Use enumerated type for card back. 
+	 */
 	private int backgroundNumber = 2;
-
-	private int deckNumber = 3;
 
 	/**
 	 * Create default-backed deck (auto shuffles).
 	 */
-	private Deck deck = new Deck(deckNumber);
+	private Deck deck = new Deck();
 
 	/**
 	 * The four columns for the main playing field.
@@ -120,6 +129,7 @@ public class SolitaireBoard extends JFrame {
 
 	/**
 	 * 1 = easy, 2 = medium, 3 = hard
+	 * Should be only here!
 	 */
 	private int difficulty = 2;
 
@@ -151,7 +161,7 @@ public class SolitaireBoard extends JFrame {
 		mainPanel = new SolitairePanel();
 		mainPanel.setLayout(new SolitaireLayout());
 
-		deck = new Deck(deckNumber);
+		deck = new Deck();
 		mainPanel.changeBackground(backgroundNumber);
 
 		for (int i = 0; i < 4; i++) {
@@ -399,7 +409,7 @@ public class SolitaireBoard extends JFrame {
 			}
 		}
 
-		deck = new Deck(deckNumber);
+		deck = new Deck();
 
 		/*
 		 * Remove cards from ace piles. Set numTimesThroughDeck back to 1.

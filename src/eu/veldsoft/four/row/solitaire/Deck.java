@@ -34,12 +34,9 @@ public class Deck {
 	private static final Logger LOGGER = Logger.getLogger(Class.class
 			.toString());
 
-	private int deckNumber;
-
 	private List<Card> deck = new LinkedList<Card>();
 
-	public Deck(int deckNumber) {
-		this.deckNumber = deckNumber;
+	public Deck() {
 		shuffle();
 	}
 
@@ -83,28 +80,28 @@ public class Deck {
 			 * To make the cardNumber 1-13 you do not need to do anything.
 			 */
 			deck.add(new Card(CardSuit.SPADES, CardRank.getValue(cardNumber),
-					deckNumber, cardNumber));
+					cardNumber));
 		} else if (cardNumber >= 14 && cardNumber <= 26) {
 			/*
 			 * To make the cardNumber 1-13 instead of 14-26.
 			 */
 			cardNumber -= 13;
 			deck.add(new Card(CardSuit.CLUBS, CardRank.getValue(cardNumber),
-					deckNumber, cardNumber + 13));
+					cardNumber + 13));
 		} else if (cardNumber >= 27 && cardNumber <= 39) {
 			/*
 			 * To make the cardNumber 1-13 instead of 27-39.
 			 */
 			cardNumber -= 26;
 			deck.add(new Card(CardSuit.DIAMONDS, CardRank.getValue(cardNumber),
-					deckNumber, cardNumber + 26));
+					cardNumber + 26));
 		} else if (cardNumber >= 40 && cardNumber <= 52) {
 			/*
 			 * To make the cardNumber 1-13 instead of 40-52.
 			 */
 			cardNumber -= 39;
 			deck.add(new Card(CardSuit.HEARTS, CardRank.getValue(cardNumber),
-					deckNumber, cardNumber + 39));
+					cardNumber + 39));
 		} else {
 			/*
 			 * Let user know the card is invalid.

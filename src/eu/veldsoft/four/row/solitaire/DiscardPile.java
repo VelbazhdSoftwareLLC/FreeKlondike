@@ -37,6 +37,7 @@ public class DiscardPile extends CardStack {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	//TODO Should be in other class.
 	private int drawCount = 1;
 
 	private int cardsLeftFromDraw = 0;

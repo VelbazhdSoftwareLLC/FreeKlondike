@@ -62,11 +62,6 @@ public class Card extends JComponent {
 	private int fullCardNumber;
 
 	/**
-	 * 
-	 */
-	private int deckNumber;
-
-	/**
 	 * Takes either card back or front.
 	 */
 	private BufferedImage image;
@@ -108,14 +103,13 @@ public class Card extends JComponent {
 	 * @param deckNumber
 	 * @param fullNumber
 	 */
-	public Card(CardSuit suit, CardRank number, int deckNumber, int fullNumber) {
+	public Card(CardSuit suit, CardRank number, int fullNumber) {
 		this.cardSuit = suit;
 		this.cardNumber = number;
 		this.fullCardNumber = fullNumber;
-		this.deckNumber = deckNumber;
 
-		if (deckNumber >= 1 && deckNumber <= ChangeAppearance.NUM_DECKS) {
-			cardBack = "images/cardbacks/cardback" + deckNumber + ".png";
+		if (SolitaireBoard.deckNumber >= 1 && SolitaireBoard.deckNumber <= ChangeAppearance.NUM_DECKS) {
+			cardBack = "images/cardbacks/cardback" + SolitaireBoard.deckNumber + ".png";
 		} else {
 			cardBack = "images/cardbacks/cardback3.png";
 		}
@@ -308,7 +302,7 @@ public class Card extends JComponent {
 	}
 
 	public Card clone() {
-		Card card = new Card(cardSuit, cardNumber, deckNumber, fullCardNumber);
+		Card card = new Card(cardSuit, cardNumber, fullCardNumber);
 		return card;
 	}
 }
