@@ -56,25 +56,21 @@ public class CardStack extends JLayeredPane {
 	}
 
 	public void addStack(CardStack stack) {
-		for (int i = stack.length(); i > 0; i--) {
+		while (stack.isEmpty() == false) {
 			Card card = stack.pop();
 			addCard(card);
 		}
 	}
 
 	public Card push(Card card) {
-		cards.add(card);
-		card.setBounds(0, 0, 72, 96);
-		add(card, 0);
+		addCard(card);
+		
 		return card;
 	}
 
 	public CardStack push(CardStack stack) {
-		while (!stack.isEmpty()) {
-			Card card = stack.pop();
-			push(card);
-		}
-
+		addStack(stack);
+		
 		/*
 		 * Returns empty stack.
 		 */

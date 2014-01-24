@@ -37,17 +37,9 @@ public class DiscardPile extends CardStack {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	//TODO Should be in other class.
-	private int drawCount = 1;
-
 	private int cardsLeftFromDraw = 0;
 
-	public DiscardPile(int draw) {
-		drawCount = draw;
-	}
-
-	public void setDrawCount(int draw) {
-		drawCount = draw;
+	public DiscardPile() {
 	}
 
 	public int getNumViewableCards() {
@@ -71,7 +63,7 @@ public class DiscardPile extends CardStack {
 	}
 
 	public Card push(Card card) {
-		if (drawCount == 1) {
+		if (SolitaireBoard.drawCount == 1) {
 			cardsLeftFromDraw = 0;
 		}
 
@@ -81,7 +73,7 @@ public class DiscardPile extends CardStack {
 	}
 
 	public CardStack push(CardStack stack) {
-		if (drawCount != 1 || (drawCount == 1 && stack.length() == 1)) {
+		if (SolitaireBoard.drawCount != 1 || (SolitaireBoard.drawCount == 1 && stack.length() == 1)) {
 			cardsLeftFromDraw = 0;
 
 			while (stack.isEmpty() == false) {
@@ -132,12 +124,12 @@ public class DiscardPile extends CardStack {
 	public void paint(Graphics g) {
 		super.paint(g);
 
-		if (!isEmpty() && drawCount == 1) {
+		if (!isEmpty() && SolitaireBoard.drawCount == 1) {
 			for (int i = 0; i < length(); i++) {
 				Image image = getCardAtLocation(i).getImage();
 				g.drawImage(image, 0, 0, null);
 			}
-		} else if (!isEmpty() && drawCount == 3) {
+		} else if (!isEmpty() && SolitaireBoard.drawCount == 3) {
 			if (cardsLeftFromDraw > 0) {
 				for (int i = 0; i < length() - cardsLeftFromDraw + 1; i++) {
 					Image image = getCardAtLocation(i).getImage();

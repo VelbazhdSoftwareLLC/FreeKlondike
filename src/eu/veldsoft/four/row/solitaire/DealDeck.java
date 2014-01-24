@@ -44,24 +44,18 @@ public class DealDeck extends CardStack {
 
 	private int numTimesThroughDeck = 1;
 
-	//TODO Should be in other class.
-	private int drawCount = 1;
-
 	private int deckThroughLimit;
 
 	private boolean redealable = true;
 
-	public DealDeck(DiscardPile discard, int drawCount) {
+	public DealDeck(DiscardPile discard) {
 		discardPile = discard;
-		this.drawCount = drawCount;
 
-		if (drawCount == 3) {
+		if (SolitaireBoard.drawCount == 3) {
 			deckThroughLimit = ThroughLIimit.MEDIUM.getThroughs() + 1;
 		} else {
 			deckThroughLimit = ThroughLIimit.MEDIUM.getThroughs();
 		}
-
-		discard.setDrawCount(drawCount);
 	}
 
 	public void reset() {
@@ -88,10 +82,7 @@ public class DealDeck extends CardStack {
 	}
 
 	public void setDrawCount(int draw) {
-		drawCount = draw;
-		discardPile.setDrawCount(draw);
-
-		if (drawCount == 3) {
+		if (SolitaireBoard.drawCount == 3) {
 			deckThroughLimit = ThroughLIimit.MEDIUM.getThroughs() + 1;
 		} else {
 			deckThroughLimit = ThroughLIimit.MEDIUM.getThroughs();
@@ -111,7 +102,7 @@ public class DealDeck extends CardStack {
 		 * Draw three has an extra deck through on top of the single card
 		 * setting.
 		 */
-		if (drawCount == 3) {
+		if (SolitaireBoard.drawCount == 3) {
 			deckThroughLimit++;
 		}
 	}
@@ -125,7 +116,7 @@ public class DealDeck extends CardStack {
 			/*
 			 * Verify there are still cards remaining.
 			 */
-			if (drawCount == 1) {
+			if (SolitaireBoard.drawCount == 1) {
 				Card card = super.pop();
 
 				card.setFaceUp();
@@ -134,10 +125,10 @@ public class DealDeck extends CardStack {
 				this.repaint();
 				return card;
 			} else {
-				int tempDrawCount = drawCount;
+				int tempDrawCount = SolitaireBoard.drawCount;
 				CardStack tempStack = new CardStack();
 
-				while (drawCount > 1 && tempDrawCount > 0 && !isEmpty()) {
+				while (SolitaireBoard.drawCount > 1 && tempDrawCount > 0 && !isEmpty()) {
 					Card card = super.pop();
 
 					card.setFaceUp();

@@ -32,6 +32,10 @@ public class Column extends CardStack {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * @param card
+	 * @return
+	 */
 	public Card push(Card card) {
 		if (isValidMove(card) == true) {
 			super.push(card);
@@ -41,6 +45,10 @@ public class Column extends CardStack {
 		return null;
 	}
 
+	/**
+	 * @param card
+	 * @return
+	 */
 	public boolean isValidMove(Card card) {
 		if (isEmpty() == true && card.getNumber().equals(CardRank.KING)) {
 			return true;
@@ -54,39 +62,37 @@ public class Column extends CardStack {
 		return false;
 	}
 
+	/**
+	 * @param stack
+	 * @return
+	 */
 	public boolean isValidMove(CardStack stack) {
 		return isValidMove(stack.peek());
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public CardStack getAvailableCards() {
 		if (isEmpty() == true) {
 			return (null);
 		}
 
 		CardStack stack = new CardStack();
-		boolean cardsMatch = true;
-		int index = length() - 1;
+		stack.addCard(cards.get(length() - 1));
 
-		stack.addCard(cards.get(index));
+		for (int index = length() - 2; index >= 0; index--) {
+			Card card = cards.get(index);
 
-		do {
-			index--;
-
-			if (index >= 0) {
-				Card card = cards.get(index);
-
-				if (card.getColor() != stack.peek().getColor()
-						&& card.getNumber().isLessByOneThan(
-								stack.peek().getNumber())) {
-					stack.addCard(card);
-				} else {
-					cardsMatch = false;
-				}
+			if (card.getColor() != stack.peek().getColor()
+					&& card.getNumber().isLessByOneThan(
+							stack.peek().getNumber())) {
+				stack.addCard(card);
 			} else {
-				cardsMatch = false;
+				break;
 			}
-
-		} while (cardsMatch);
+		}
 
 		return stack;
 	}

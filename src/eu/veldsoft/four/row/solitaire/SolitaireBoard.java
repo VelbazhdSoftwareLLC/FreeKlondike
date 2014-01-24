@@ -64,7 +64,7 @@ public class SolitaireBoard extends JFrame {
 	 * Can be 1 or 3.
 	 * Should be only here!
 	 */
-	private int drawCount = 1;
+	static int drawCount = 1;
 
 	/**
 	 * To store new option selection for next new game, otherwise the count
@@ -91,9 +91,9 @@ public class SolitaireBoard extends JFrame {
 	/**
 	 * The deal and discard piles.
 	 */
-	private DiscardPile discardPile = new DiscardPile(drawCount);
+	private DiscardPile discardPile = new DiscardPile();
 
-	private DealDeck dealDeck = new DealDeck(discardPile, drawCount);
+	private DealDeck dealDeck = new DealDeck(discardPile);
 
 	/**
 	 * The four ace piles (to stack Ace - King of a single suit).
