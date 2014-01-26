@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010 by Matt Stephen
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -40,14 +40,30 @@ public class DealDeck extends CardStack {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Discard pile reference.
+	 */
 	private DiscardPile discardPile;
 
+	/**
+	 * 
+	 */
 	private int numTimesThroughDeck = 1;
 
+	/**
+	 * 
+	 */
 	private int deckThroughLimit;
 
+	/**
+	 * 
+	 */
 	private boolean redealable = true;
 
+	/**
+	 * 
+	 * @param discard
+	 */
 	public DealDeck(DiscardPile discard) {
 		discardPile = discard;
 
@@ -58,22 +74,40 @@ public class DealDeck extends CardStack {
 		}
 	}
 
+	/**
+	 * 
+	 */
 	public void reset() {
 		numTimesThroughDeck = 1;
 	}
 
+	/**
+	 * 
+	 */
 	private void undone() {
 		numTimesThroughDeck--;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public int getDeckThroughs() {
 		return numTimesThroughDeck;
 	}
 
+	/**
+	 * 
+	 * @param throughs
+	 */
 	public void setDeckThroughs(int throughs) {
 		numTimesThroughDeck = throughs;
 	}
 
+	/**
+	 * 
+	 * @param cards
+	 */
 	public void setDeck(LinkedList<Card> cards) {
 		for (int i = 0; i < cards.size(); i++) {
 			cards.get(i).setFaceDown();
@@ -81,6 +115,10 @@ public class DealDeck extends CardStack {
 		}
 	}
 
+	/**
+	 * 
+	 * @param draw
+	 */
 	public void setDrawCount(int draw) {
 		if (SolitaireBoard.drawCount == 3) {
 			deckThroughLimit = ThroughLIimit.MEDIUM.getThroughs() + 1;
@@ -89,6 +127,10 @@ public class DealDeck extends CardStack {
 		}
 	}
 
+	/**
+	 * 
+	 * @param difficulty
+	 */
 	public void setDifficulty(int difficulty) {
 		if (difficulty == 1) {
 			deckThroughLimit = ThroughLIimit.EASY.getThroughs();
@@ -107,10 +149,17 @@ public class DealDeck extends CardStack {
 		}
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean hasDealsLeft() {
 		return redealable;
 	}
 
+	/**
+	 * 
+	 */
 	public synchronized Card pop() {
 		if (!isEmpty()) {
 			/*
@@ -173,6 +222,9 @@ public class DealDeck extends CardStack {
 		return null;
 	}
 
+	/**
+	 * 
+	 */
 	public synchronized void undoPop() {
 		while (!isEmpty()) {
 			Card card = super.pop();
@@ -182,7 +234,7 @@ public class DealDeck extends CardStack {
 
 		undone();
 
-		if (!redealable) {
+		if (redealable == false) {
 			redealable = true;
 		}
 
@@ -190,18 +242,34 @@ public class DealDeck extends CardStack {
 		this.repaint();
 	}
 
-	public Card getCardAtLocation(Point p) {
+	/**
+	 * 
+	 * @param point
+	 */
+	public Card getCardAtLocation(Point point) {
 		return peek();
 	}
 
+	/**
+	 * 
+	 * @param card
+	 */
 	public boolean isValidMove(Card card) {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @param stack
+	 */
 	public boolean isValidMove(CardStack stack) {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @param g
+	 */
 	public void paint(Graphics g) {
 		super.paint(g);
 

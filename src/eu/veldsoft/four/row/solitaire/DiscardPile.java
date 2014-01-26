@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010 by Matt Stephen
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -38,9 +38,6 @@ public class DiscardPile extends CardStack {
 	private static final long serialVersionUID = 1L;
 
 	private int cardsLeftFromDraw = 0;
-
-	public DiscardPile() {
-	}
 
 	public int getNumViewableCards() {
 		return cardsLeftFromDraw;
@@ -101,8 +98,7 @@ public class DiscardPile extends CardStack {
 	}
 
 	public synchronized Card undoPop() {
-		Card card = super.pop();
-		return card;
+		return super.pop();
 	}
 
 	public Card getCardAtLocation(Point p) {

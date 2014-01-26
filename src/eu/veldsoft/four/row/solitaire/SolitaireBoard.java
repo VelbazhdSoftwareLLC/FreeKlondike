@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010 by Matt Stephen
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -67,16 +67,16 @@ public class SolitaireBoard extends JFrame {
 	static int drawCount = 1;
 
 	/**
+	 * Find better OOP modeling alternative!
+	 * Use enumerated type for card back. 
+	 */
+	static int backgroundNumber = 2;
+
+	/**
 	 * To store new option selection for next new game, otherwise the count
 	 * would be changed at next click of the deck (in the middle of the game).
 	 */
 	private int newDrawCount = drawCount;
-
-	/**
-	 * Find better OOP modeling alternative!
-	 * Use enumerated type for card back. 
-	 */
-	private int backgroundNumber = 2;
 
 	/**
 	 * Create default-backed deck (auto shuffles).
@@ -89,10 +89,13 @@ public class SolitaireBoard extends JFrame {
 	private Column[] columns = new Column[4];
 
 	/**
-	 * The deal and discard piles.
+	 * The discard pile.
 	 */
 	private DiscardPile discardPile = new DiscardPile();
 
+	/**
+	 * The deal pile.
+	 */
 	private DealDeck dealDeck = new DealDeck(discardPile);
 
 	/**
@@ -105,10 +108,19 @@ public class SolitaireBoard extends JFrame {
 	 */
 	private SingleCell[] cells = new SingleCell[4];
 
+	/**
+	 * 
+	 */
 	private SolitairePanel mainPanel;
 
+	/**
+	 * 
+	 */
 	private MyMouseListener ml = new MyMouseListener();
 
+	/**
+	 * 
+	 */
 	public MyWindowListener wl = new MyWindowListener();
 
 	private Timer timer = new Timer(1000, new TimerListener());
@@ -162,6 +174,8 @@ public class SolitaireBoard extends JFrame {
 		mainPanel.setLayout(new SolitaireLayout());
 
 		deck = new Deck();
+		deck.shuffle();
+
 		mainPanel.changeBackground(backgroundNumber);
 
 		for (int i = 0; i < 4; i++) {
@@ -410,6 +424,7 @@ public class SolitaireBoard extends JFrame {
 		}
 
 		deck = new Deck();
+		deck.shuffle();
 
 		/*
 		 * Remove cards from ace piles. Set numTimesThroughDeck back to 1.

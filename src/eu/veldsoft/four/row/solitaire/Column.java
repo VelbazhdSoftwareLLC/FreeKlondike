@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010 by Matt Stephen
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -33,7 +33,9 @@ public class Column extends CardStack {
 	private static final long serialVersionUID = 1L;
 
 	/**
+	 * 
 	 * @param card
+	 * 
 	 * @return
 	 */
 	public Card push(Card card) {
@@ -46,7 +48,9 @@ public class Column extends CardStack {
 	}
 
 	/**
+	 * 
 	 * @param card
+	 * 
 	 * @return
 	 */
 	public boolean isValidMove(Card card) {
@@ -63,7 +67,9 @@ public class Column extends CardStack {
 	}
 
 	/**
+	 * 
 	 * @param stack
+	 * 
 	 * @return
 	 */
 	public boolean isValidMove(CardStack stack) {

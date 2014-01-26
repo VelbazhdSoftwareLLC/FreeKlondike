@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010 by Matt Stephen
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -41,14 +41,28 @@ public class AcePile extends CardStack {
 	 */
 	private CardSuit suit;
 
+	/**
+	 * 
+	 * @param suit
+	 */
 	public AcePile(CardSuit suit) {
 		this.suit = suit;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public CardSuit getSuit() {
 		return suit;
 	}
 
+	/**
+	 * 
+	 * @param card
+	 * 
+	 * @return
+	 */
 	public Card push(Card card) {
 		if (isValidMove(card) == true) {
 			super.push(card);
@@ -58,10 +72,22 @@ public class AcePile extends CardStack {
 		return null;
 	}
 
-	public Card getCardAtLocation(Point p) {
+	/**
+	 * 
+	 * @param point
+	 * 
+	 * @return
+	 */
+	public Card getCardAtLocation(Point point) {
 		return peek();
 	}
 
+	/**
+	 * 
+	 * @param card
+	 * 
+	 * @return
+	 */
 	public boolean isValidMove(Card card) {
 		if (card.getSuit().equals(suit) == false) {
 			return false;
@@ -76,10 +102,20 @@ public class AcePile extends CardStack {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @param stack
+	 * 
+	 * @return
+	 */
 	public boolean isValidMove(CardStack stack) {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @param g
+	 */
 	public void paint(Graphics g) {
 		super.paint(g);
 

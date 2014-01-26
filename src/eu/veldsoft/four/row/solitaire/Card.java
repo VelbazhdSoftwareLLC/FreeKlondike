@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010 by Matt Stephen
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -108,8 +108,10 @@ public class Card extends JComponent {
 		this.cardNumber = number;
 		this.fullCardNumber = fullNumber;
 
-		if (SolitaireBoard.deckNumber >= 1 && SolitaireBoard.deckNumber <= ChangeAppearance.NUM_DECKS) {
-			cardBack = "images/cardbacks/cardback" + SolitaireBoard.deckNumber + ".png";
+		if (SolitaireBoard.deckNumber >= 1
+				&& SolitaireBoard.deckNumber <= ChangeAppearance.NUM_DECKS) {
+			cardBack = "images/cardbacks/cardback" + SolitaireBoard.deckNumber
+					+ ".png";
 		} else {
 			cardBack = "images/cardbacks/cardback3.png";
 		}
@@ -268,41 +270,76 @@ public class Card extends JComponent {
 		cardHighlighted += "H.png";
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public BufferedImage getImage() {
 		return image;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public CardRank getNumber() {
 		return cardNumber;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public CardSuit getSuit() {
 		return cardSuit;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public CardColor getColor() {
 		return cardColor;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public int getFullNumber() {
 		return fullCardNumber;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public String getSource() {
 		return location;
 	}
 
+	/**
+	 * 
+	 * @param source
+	 */
 	public void setSource(String source) {
 		location = source;
 	}
 
+	/**
+	 * 
+	 * @param g
+	 */
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(image, 0, 0, null);
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public Card clone() {
-		Card card = new Card(cardSuit, cardNumber, fullCardNumber);
-		return card;
+		return new Card(cardSuit, cardNumber, fullCardNumber);
 	}
 }

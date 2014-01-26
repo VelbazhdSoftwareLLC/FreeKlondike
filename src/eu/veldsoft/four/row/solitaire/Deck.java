@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010 by Matt Stephen
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -31,19 +31,31 @@ import java.util.logging.Logger;
  * @author Matt Stephen
  */
 public class Deck {
+	/**
+	 * 
+	 */
 	private static final Logger LOGGER = Logger.getLogger(Class.class
 			.toString());
 
+	/**
+	 * 
+	 */
 	private List<Card> deck = new LinkedList<Card>();
 
-	public Deck() {
-		shuffle();
-	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public List<Card> getDeck() {
 		return deck;
 	}
 
+	/**
+	 * 
+	 * @param numbers
+	 * 
+	 * @return
+	 */
 	public List<Card> getDeck(LinkedList<Integer> numbers) {
 		deck = new LinkedList<Card>();
 
@@ -56,24 +68,34 @@ public class Deck {
 		return deck;
 	}
 
+	/**
+	 * 
+	 */
 	public void shuffle() {
-		// TODO Use stronger shuffling algorithm.
-		List<Integer> numberList = new LinkedList<Integer>();
+		int numbers[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+				16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
+				32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47,
+				48, 49, 50, 51, 52 };
 
-		for (int i = 1; i <= 52; i++) {
-			numberList.add(i);
+		/*
+		 * Shuffle integer values.
+		 */
+		for (int last = numbers.length - 1, r = -1, swap = -1; last > 0; last--) {
+			r = Common.PRNG.nextInt(last + 1);
+			swap = numbers[last];
+			numbers[last] = numbers[r];
+			numbers[r] = swap;
 		}
 
-		while (numberList.isEmpty() == false) {
-			int num = Common.PRNG.nextInt(numberList.size());
-
-			int cardNumber = numberList.get(num);
-			numberList.remove(num);
-
-			createCard(cardNumber);
+		for (int i = 0; i < numbers.length; i++) {
+			createCard(numbers[i]);
 		}
 	}
 
+	/**
+	 * 
+	 * @param cardNumber
+	 */
 	private void createCard(int cardNumber) {
 		if (cardNumber >= 1 && cardNumber <= 13) {
 			/*

@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010 by Matt Stephen, 2012 by pavlosn
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, 2012 by pavlosn
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -50,11 +50,17 @@ public class TopTimes extends JFrame implements ActionListener, KeyListener {
 	private static final long serialVersionUID = 1L;
 
 	private final int NUM_OF_RECORDS = 10;
+
 	private JTextField names[] = new JTextField[NUM_OF_RECORDS];
+
 	private JLabel times[] = new JLabel[NUM_OF_RECORDS];
+
 	private JLabel jLabel[] = new JLabel[NUM_OF_RECORDS];
+
 	private JSeparator jSeparator[] = new JSeparator[NUM_OF_RECORDS];
+
 	private int pos;
+
 	private JButton jButton;
 
 	/*
@@ -78,6 +84,7 @@ public class TopTimes extends JFrame implements ActionListener, KeyListener {
 			times[i] = new JLabel();
 			times[i].setText(" ");
 		}
+
 		loadData();
 
 		jButton = new JButton("Clear Times");
