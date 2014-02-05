@@ -131,12 +131,12 @@ public class DealDeck extends CardStack {
 	 * 
 	 * @param difficulty
 	 */
-	public void setDifficulty(int difficulty) {
-		if (difficulty == 1) {
+	public void setDifficulty(GameDifficulty difficulty) {
+		if (difficulty == GameDifficulty.EASY) {
 			deckThroughLimit = ThroughLIimit.EASY.getThroughs();
-		} else if (difficulty == 3) {
+		} else if (difficulty == GameDifficulty.HARD) {
 			deckThroughLimit = ThroughLIimit.HARD.getThroughs();
-		} else if (difficulty == 2) {
+		} else if (difficulty == GameDifficulty.MEDIUM) {
 			deckThroughLimit = ThroughLIimit.MEDIUM.getThroughs();
 		}
 

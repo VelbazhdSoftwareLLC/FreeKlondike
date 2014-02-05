@@ -288,8 +288,22 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 		super.setWinAnimationStatus(winAnimation);
 		super.setWinSoundsStatus(winSounds);
 		super.setDrawCount(drawCount);
-		super.setDifficulty(difficulty);
-		super.setNewDifficulty(newDifficulty);
+
+		if (GameDifficulty.EASY.getValue() == difficulty) {
+			super.setDifficulty(GameDifficulty.EASY);
+		} else if (GameDifficulty.MEDIUM.getValue() == difficulty) {
+			super.setDifficulty(GameDifficulty.MEDIUM);
+		} else if (GameDifficulty.HARD.getValue() == difficulty) {
+			super.setDifficulty(GameDifficulty.HARD);
+		}
+
+		if (GameDifficulty.EASY.getValue() == newDifficulty) {
+			super.setNewDifficulty(GameDifficulty.EASY);
+		} else if (GameDifficulty.MEDIUM.getValue() == newDifficulty) {
+			super.setNewDifficulty(GameDifficulty.MEDIUM);
+		} else if (GameDifficulty.HARD.getValue() == newDifficulty) {
+			super.setNewDifficulty(GameDifficulty.HARD);
+		}
 
 		if (saved == 1) {
 			super.setDeckThroughs(deckThroughs);
@@ -633,7 +647,7 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 			ChangeOptions co = new ChangeOptions(this, super.getNewDrawCount(),
 					super.getTimerNextGameStatus(),
 					super.getWinAnimationStatus(), super.getWinSoundsStatus(),
-					super.getNewDifficulty());
+					super.getNewDifficulty().getValue());
 			int drawCount = co.getDrawCount();
 			int timerStatus = co.getTimer();
 			int animationStatus = co.getAnimation();
@@ -645,7 +659,13 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 				super.setTimerStatus(timerStatus);
 				super.setWinAnimationStatus(animationStatus);
 				super.setWinSoundsStatus(soundsStatus);
-				super.setNewDifficulty(difficulty);
+				if (GameDifficulty.EASY.getValue() == difficulty) {
+					super.setDifficulty(GameDifficulty.EASY);
+				} else if (GameDifficulty.MEDIUM.getValue() == difficulty) {
+					super.setDifficulty(GameDifficulty.MEDIUM);
+				} else if (GameDifficulty.HARD.getValue() == difficulty) {
+					super.setDifficulty(GameDifficulty.HARD);
+				}
 			}
 
 			super.saveOptions();

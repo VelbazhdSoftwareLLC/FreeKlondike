@@ -143,9 +143,9 @@ public class SolitaireBoard extends JFrame {
 	 * 1 = easy, 2 = medium, 3 = hard
 	 * Should be only here!
 	 */
-	private int difficulty = 2;
+	private GameDifficulty difficulty = GameDifficulty.MEDIUM;
 
-	private int newDifficulty = difficulty;
+	private GameDifficulty newDifficulty = difficulty;
 
 	private LinkedList<CardStack> sourceList = new LinkedList<CardStack>();
 
@@ -625,7 +625,7 @@ public class SolitaireBoard extends JFrame {
 
 			if (winOrLoss == GameState.GAME_WON) {
 				if (drawCount == 3) {
-					if (difficulty == 1) {
+					if (difficulty == GameDifficulty.EASY) {
 						gamesPlayed3e++;
 						gamesWon3e++;
 
@@ -638,7 +638,7 @@ public class SolitaireBoard extends JFrame {
 						if (winStreak3e < currentStreak3e) {
 							winStreak3e = currentStreak3e;
 						}
-					} else if (difficulty == 2) {
+					} else if (difficulty == GameDifficulty.MEDIUM) {
 						gamesPlayed3m++;
 						gamesWon3m++;
 
@@ -666,7 +666,7 @@ public class SolitaireBoard extends JFrame {
 						}
 					}
 				} else if (drawCount == 1) {
-					if (difficulty == 1) {
+					if (difficulty == GameDifficulty.EASY) {
 						gamesPlayed1e++;
 						gamesWon1e++;
 
@@ -679,7 +679,7 @@ public class SolitaireBoard extends JFrame {
 						if (winStreak1e < currentStreak1e) {
 							winStreak1e = currentStreak1e;
 						}
-					} else if (difficulty == 2) {
+					} else if (difficulty == GameDifficulty.MEDIUM) {
 						gamesPlayed1m++;
 						gamesWon1m++;
 
@@ -750,7 +750,7 @@ public class SolitaireBoard extends JFrame {
 				 */
 			} else {
 				if (drawCount == 3) {
-					if (difficulty == 1) {
+					if (difficulty == GameDifficulty.EASY) {
 						gamesPlayed3e++;
 
 						if (currentStreak3e <= 0) {
@@ -762,7 +762,7 @@ public class SolitaireBoard extends JFrame {
 						if (lossStreak3e > currentStreak3e) {
 							lossStreak3e = currentStreak3e;
 						}
-					} else if (difficulty == 2) {
+					} else if (difficulty == GameDifficulty.MEDIUM) {
 						gamesPlayed3m++;
 
 						if (currentStreak3m <= 0) {
@@ -788,7 +788,7 @@ public class SolitaireBoard extends JFrame {
 						}
 					}
 				} else if (drawCount == 1) {
-					if (difficulty == 1) {
+					if (difficulty == GameDifficulty.EASY) {
 						gamesPlayed1e++;
 
 						if (currentStreak1e <= 0) {
@@ -800,7 +800,7 @@ public class SolitaireBoard extends JFrame {
 						if (lossStreak1e > currentStreak1e) {
 							lossStreak1e = currentStreak1e;
 						}
-					} else if (difficulty == 2) {
+					} else if (difficulty == GameDifficulty.MEDIUM) {
 						gamesPlayed1m++;
 
 						if (currentStreak1m <= 0) {
@@ -881,8 +881,8 @@ public class SolitaireBoard extends JFrame {
 			output.writeInt(winAnimationStatus);
 			output.writeInt(winSoundsStatus);
 			output.writeInt(dealDeck.getDeckThroughs());
-			output.writeInt(difficulty);
-			output.writeInt(newDifficulty);
+			output.writeInt(difficulty.getValue());
+			output.writeInt(newDifficulty.getValue());
 			output.writeInt(discardPile.getNumViewableCards());
 
 			File savedFile = new File(fileLocation + "frs-savedgame.dat");
@@ -1079,28 +1079,20 @@ public class SolitaireBoard extends JFrame {
 		}
 	}
 
-	public int getDifficulty() {
+	public GameDifficulty getDifficulty() {
 		return difficulty;
 	}
 
-	public void setDifficulty(int difficulty) {
-		if (difficulty > 3 || difficulty < 1) {
-			this.difficulty = 2;
-		} else {
-			this.difficulty = difficulty;
-		}
+	public void setDifficulty(GameDifficulty difficulty) {
+		this.difficulty = difficulty;
 	}
 
-	public int getNewDifficulty() {
+	public GameDifficulty getNewDifficulty() {
 		return newDifficulty;
 	}
 
-	public void setNewDifficulty(int newDifficulty) {
-		if (newDifficulty > 3 || newDifficulty < 1) {
-			this.newDifficulty = 2;
-		} else {
-			this.newDifficulty = newDifficulty;
-		}
+	public void setNewDifficulty(GameDifficulty newDifficulty) {
+		this.newDifficulty = newDifficulty;
 	}
 
 	public void setDeckThroughs(int deckThroughs) {
