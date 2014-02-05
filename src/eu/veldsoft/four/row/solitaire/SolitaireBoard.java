@@ -55,20 +55,22 @@ public class SolitaireBoard extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Find better OOP modeling alternative!
-	 * Use enumerated type for card back. 
+	 * 
+	 */
+	private static final int INITIAL_CARDS_NUMBER_IN_COLUMN = 5;
+
+	/**
+	 * Find better OOP modeling alternative! Use enumerated type for card back.
 	 */
 	static int deckNumber = 3;
 
 	/**
-	 * Can be 1 or 3.
-	 * Should be only here!
+	 * Can be 1 or 3. Should be only here!
 	 */
 	static int drawCount = 1;
 
 	/**
-	 * Find better OOP modeling alternative!
-	 * Use enumerated type for card back. 
+	 * Find better OOP modeling alternative! Use enumerated type for card back.
 	 */
 	static int backgroundNumber = 2;
 
@@ -140,8 +142,7 @@ public class SolitaireBoard extends JFrame {
 	private int winSoundsStatus = 0;
 
 	/**
-	 * 1 = easy, 2 = medium, 3 = hard
-	 * Should be only here!
+	 * 1 = easy, 2 = medium, 3 = hard Should be only here!
 	 */
 	private GameDifficulty difficulty = GameDifficulty.MEDIUM;
 
@@ -178,7 +179,7 @@ public class SolitaireBoard extends JFrame {
 
 		mainPanel.changeBackground(backgroundNumber);
 
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < columns.length; i++) {
 			columns[i] = new Column();
 			columns[i].addMouseListener(ml);
 		}
@@ -188,7 +189,7 @@ public class SolitaireBoard extends JFrame {
 		mainPanel.add(columns[2], SolitaireLayout.COLUMN_THREE);
 		mainPanel.add(columns[3], SolitaireLayout.COLUMN_FOUR);
 
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < cells.length; i++) {
 			cells[i] = new SingleCell();
 			cells[i].addMouseListener(ml);
 		}
@@ -204,7 +205,7 @@ public class SolitaireBoard extends JFrame {
 		mainPanel.add(dealDeck, SolitaireLayout.DECK);
 		mainPanel.add(discardPile, SolitaireLayout.DISCARD_PILE);
 
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < acePiles.length; i++) {
 			switch (i) {
 			case 0:
 				acePiles[i] = new AcePile(CardSuit.SPADES);
@@ -248,17 +249,24 @@ public class SolitaireBoard extends JFrame {
 	private void dealOutBoard() {
 		LinkedList<Card> cards = (LinkedList<Card>) deck.getDeck();
 
-		for (int i = 0; i < 6; i++) {
-			for (int j = 0; j < 4; j++) {
+		/*
+		 * Fill five cards by column.
+		 */
+		for (int i = 0; i < INITIAL_CARDS_NUMBER_IN_COLUMN; i++) {
+			for (int j = 0; j < columns.length && j < cells.length; j++) {
 				Card card = cards.getLast();
 				cards.removeLast();
-
-				if (i < 5) {
-					columns[j].addCard(card);
-				} else {
-					cells[j].addCard(card);
-				}
+				columns[j].addCard(card);
 			}
+		}
+
+		/*
+		 * Fill cards in buffer area.
+		 */
+		for (int j = 0; j < columns.length && j < cells.length; j++) {
+			Card card = cards.getLast();
+			cards.removeLast();
+			cells[j].addCard(card);
 		}
 
 		dealDeck.setDrawCount(newDrawCount);
@@ -365,7 +373,7 @@ public class SolitaireBoard extends JFrame {
 	}
 
 	private void clearBoard() {
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < columns.length; i++) {
 			while (!columns[i].isEmpty()) {
 				columns[i].pop();
 			}
@@ -373,7 +381,7 @@ public class SolitaireBoard extends JFrame {
 			columns[i].repaint();
 		}
 
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < cells.length; i++) {
 			while (!cells[i].isEmpty()) {
 				cells[i].pop();
 			}
@@ -381,7 +389,7 @@ public class SolitaireBoard extends JFrame {
 			cells[i].repaint();
 		}
 
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < acePiles.length; i++) {
 			while (!acePiles[i].isEmpty()) {
 				acePiles[i].pop();
 			}
@@ -1378,15 +1386,15 @@ public class SolitaireBoard extends JFrame {
 			}
 		}
 
-		for (int i = 0; i < 4; i++) {
-			if (cells[i].isEmpty()) {
+		for (int i = 0; i < cells.length; i++) {
+			if (cells[i].isEmpty() == true) {
 				String hintString = "Move any available card to Cell "
 						+ (i + 1);
 				hints.add(hintString);
 			}
 		}
 
-		if (!hints.isEmpty()) {
+		if (hints.isEmpty() == false) {
 			String string = "";
 
 			for (int i = 0; i < hints.size(); i++) {
@@ -1430,7 +1438,7 @@ public class SolitaireBoard extends JFrame {
 		private boolean rightClicked = false;
 
 		private void checkWin() {
-			for (int i = 0; i < 4; i++) {
+			for (int i = 0; i < acePiles.length; i++) {
 				if (acePiles[i].isEmpty()
 						|| acePiles[i].peek().getNumber().equals(CardRank.KING) == false) {
 					return;
@@ -1549,7 +1557,7 @@ public class SolitaireBoard extends JFrame {
 					return;
 				}
 
-				for (int i = 0; i < 4; i++) {
+				for (int i = 0; i < acePiles.length; i++) {
 					if (!acePiles[i].isEmpty()
 							&& source.peek().getSuit()
 									.equals(acePiles[i].peek().getSuit())
@@ -1576,7 +1584,7 @@ public class SolitaireBoard extends JFrame {
 					}
 				}
 
-				for (int i = 0; i < 4; i++) {
+				for (int i = 0; i < cells.length; i++) {
 					if (cells[i].isEmpty()) {
 						Card card = source.pop();
 						card.unhighlight();
