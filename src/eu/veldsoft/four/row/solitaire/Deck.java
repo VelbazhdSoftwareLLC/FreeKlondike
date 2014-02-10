@@ -33,18 +33,18 @@ public class Deck {
 	/**
 	 * 
 	 */
-	private List<Card> deck = new LinkedList<Card>();
+	private Deck() {
+	}
 
 	/**
 	 * 
+	 * @param deck
 	 */
-	public void shuffle() {
+	private static void shuffle(List<Card> deck) {
 		int numbers[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
 				16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
 				32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47,
 				48, 49, 50, 51, 52 };
-
-		deck.clear();
 
 		/*
 		 * Shuffle integer values.
@@ -65,7 +65,10 @@ public class Deck {
 	 * 
 	 * @return
 	 */
-	public List<Card> getDeck() {
+	public static List<Card> getFullShuffledDeck() {
+		List<Card> deck = new LinkedList<Card>();
+		shuffle(deck);
+
 		return deck;
 	}
 
@@ -75,8 +78,9 @@ public class Deck {
 	 * 
 	 * @return
 	 */
-	public List<Card> getDeck(LinkedList<Integer> numbers) {
-		deck = new LinkedList<Card>();
+	public static List<Card> getDeckSubsetByCardNumbers(
+			LinkedList<Integer> numbers) {
+		List<Card> deck = new LinkedList<Card>();
 
 		for (int i = 0; i < numbers.size(); i++) {
 			if (numbers.get(i) > 0) {

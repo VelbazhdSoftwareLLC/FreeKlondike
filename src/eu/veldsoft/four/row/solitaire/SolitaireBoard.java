@@ -81,11 +81,6 @@ public class SolitaireBoard extends JFrame {
 	private int newDrawCount = drawCount;
 
 	/**
-	 * Create default-backed deck (auto shuffles).
-	 */
-	private Deck deck = new Deck();
-
-	/**
 	 * The four columns for the main playing field.
 	 */
 	private Column[] columns = new Column[4];
@@ -174,9 +169,6 @@ public class SolitaireBoard extends JFrame {
 		mainPanel = new SolitairePanel();
 		mainPanel.setLayout(new SolitaireLayout());
 
-		deck = new Deck();
-		deck.shuffle();
-
 		mainPanel.changeBackground(backgroundNumber);
 
 		for (int i = 0; i < columns.length; i++) {
@@ -247,7 +239,7 @@ public class SolitaireBoard extends JFrame {
 	}
 
 	private void dealOutBoard() {
-		LinkedList<Card> cards = (LinkedList<Card>) deck.getDeck();
+		LinkedList<Card> cards = (LinkedList<Card>) Deck.getFullShuffledDeck();
 
 		/*
 		 * Fill five cards by column.
@@ -300,7 +292,7 @@ public class SolitaireBoard extends JFrame {
 
 	private void dealOutCustomBoard(LinkedList<Integer> numbers,
 			int numViewableCards) {
-		LinkedList<Card> cards = (LinkedList<Card>) deck.getDeck(numbers);
+		LinkedList<Card> cards = (LinkedList<Card>) Deck.getDeckSubsetByCardNumbers(numbers);
 
 		int pileNumber = 0;
 		int cardNumber = -1;
@@ -430,9 +422,6 @@ public class SolitaireBoard extends JFrame {
 				return;
 			}
 		}
-
-		deck = new Deck();
-		deck.shuffle();
 
 		/*
 		 * Remove cards from ace piles. Set numTimesThroughDeck back to 1.
