@@ -21,7 +21,6 @@ package eu.veldsoft.four.row.solitaire;
 
 import java.util.List;
 import java.util.LinkedList;
-import java.util.logging.Logger;
 
 /**
  * Class: Deck
