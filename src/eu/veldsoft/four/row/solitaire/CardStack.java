@@ -64,13 +64,13 @@ public class CardStack extends JLayeredPane {
 
 	public Card push(Card card) {
 		addCard(card);
-		
+
 		return card;
 	}
 
 	public CardStack push(CardStack stack) {
 		addStack(stack);
-		
+
 		/*
 		 * Returns empty stack.
 		 */

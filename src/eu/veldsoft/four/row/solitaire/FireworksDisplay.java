@@ -43,17 +43,17 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 
 	public final int NUM_FIREWORKS;
-	
+
 	public final int FIREWORKS_SIZE;
-	
+
 	public static final int SET_DELAY = 10;
-	
+
 	public static final int FIREWORKS_TIME = 30;
 
 	private int[] x;
-	
+
 	private int[] y;
-	
+
 	private Color[] colors;
 
 	/**

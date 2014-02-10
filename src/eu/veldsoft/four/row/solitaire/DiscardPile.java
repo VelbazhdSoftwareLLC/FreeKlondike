@@ -70,7 +70,8 @@ public class DiscardPile extends CardStack {
 	}
 
 	public CardStack push(CardStack stack) {
-		if (SolitaireBoard.drawCount != 1 || (SolitaireBoard.drawCount == 1 && stack.length() == 1)) {
+		if (SolitaireBoard.drawCount != 1
+				|| (SolitaireBoard.drawCount == 1 && stack.length() == 1)) {
 			cardsLeftFromDraw = 0;
 
 			while (stack.isEmpty() == false) {

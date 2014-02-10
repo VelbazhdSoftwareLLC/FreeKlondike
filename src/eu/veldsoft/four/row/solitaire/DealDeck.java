@@ -177,7 +177,8 @@ public class DealDeck extends CardStack {
 				int tempDrawCount = SolitaireBoard.drawCount;
 				CardStack tempStack = new CardStack();
 
-				while (SolitaireBoard.drawCount > 1 && tempDrawCount > 0 && !isEmpty()) {
+				while (SolitaireBoard.drawCount > 1 && tempDrawCount > 0
+						&& !isEmpty()) {
 					Card card = super.pop();
 
 					card.setFaceUp();

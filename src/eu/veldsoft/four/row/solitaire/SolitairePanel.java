@@ -49,7 +49,8 @@ public class SolitairePanel extends JPanel {
 	 */
 	public SolitairePanel() {
 		URL imageURL = this.getClass().getResource(
-				"images/backgrounds/background" + SolitaireBoard.backgroundNumber + ".jpg");
+				"images/backgrounds/background"
+						+ SolitaireBoard.backgroundNumber + ".jpg");
 
 		if (imageURL != null) {
 			background = new ImageIcon(imageURL).getImage();

@@ -718,8 +718,9 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 							"About Game", JOptionPane.INFORMATION_MESSAGE);
 		} else if (e.getSource() == checkUpdate) {
 			try {
-				Desktop.getDesktop().browse(
-						new URI("http://github.com/TodorBalabanov/FourRowSolitaire/"));
+				Desktop.getDesktop()
+						.browse(new URI(
+								"http://github.com/TodorBalabanov/FourRowSolitaire/"));
 			} catch (Exception ex) {
 				System.out.println(ex);
 			}
