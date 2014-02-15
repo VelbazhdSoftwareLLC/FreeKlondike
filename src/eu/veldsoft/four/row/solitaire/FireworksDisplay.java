@@ -131,7 +131,7 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 	}
 
 	public Color randomColor() {
-		switch (Common.PRNG.nextInt(11)) {
+		switch (Common.PRNG.nextInt(10)) {
 		case 0:
 			return Color.RED;
 		case 1:
@@ -144,13 +144,13 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 			return Color.ORANGE;
 		case 5:
 			return Color.CYAN;
-		case 7:
+		case 6:
 			return Color.MAGENTA;
-		case 8:
+		case 7:
 			return Color.PINK;
-		case 9:
+		case 8:
 			return Color.WHITE;
-		case 10:
+		case 9:
 			return CUSTOM_COLOR_1;
 		}
 
