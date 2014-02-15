@@ -54,6 +54,9 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * 
+	 */
 	public static final String version = ".63";
 
 	private JMenuBar menuBar = new JMenuBar();

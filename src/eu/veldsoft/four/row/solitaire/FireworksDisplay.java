@@ -50,6 +50,8 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 
 	public static final int FIREWORKS_TIME = 30;
 
+	private static final Color CUSTOM_COLOR_1 = new Color(153, 50, 205);
+
 	private int[] x;
 
 	private int[] y;
@@ -92,13 +94,13 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 		num = 0;
 
 		for (int i = 0; i < x.length; i++) {
-			x[i] = (int) (Math.random() * 300) + 300;
+			x[i] = Common.PRNG.nextInt(300) + 300;
 
 			for (int j = 0; j < FIREWORKS_SIZE; j++) {
 				int xOffset = Common.PRNG.nextInt(151);
-				double signCheck = Math.random();
+				int signCheck = Common.PRNG.nextInt();
 
-				if (signCheck <= .5) {
+				if (signCheck <= 0) {
 					xx[i][j] = -xOffset;
 				} else {
 					xx[i][j] = xOffset;
@@ -107,13 +109,13 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 		}
 
 		for (int i = 0; i < y.length; i++) {
-			y[i] = (int) (Math.random() * 200) + 300;
+			y[i] = Common.PRNG.nextInt(200) + 300;
 
 			for (int j = 0; j < FIREWORKS_SIZE; j++) {
 				int yOffset = Common.PRNG.nextInt(151);
-				double signCheck = Math.random();
+				int signCheck = Common.PRNG.nextInt();
 
-				if (signCheck <= .5) {
+				if (signCheck <= 0) {
 					yy[i][j] = -yOffset;
 				} else {
 					yy[i][j] = yOffset;
@@ -129,29 +131,30 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 	}
 
 	public Color randomColor() {
-		double rand = Math.random();
-
-		if (rand <= .1) {
+		switch (Common.PRNG.nextInt(11)) {
+		case 0:
 			return Color.RED;
-		} else if (rand <= .2) {
+		case 1:
 			return Color.BLUE;
-		} else if (rand <= .3) {
+		case 2:
 			return Color.YELLOW;
-		} else if (rand <= .4) {
+		case 3:
 			return Color.GREEN;
-		} else if (rand <= .5) {
+		case 4:
 			return Color.ORANGE;
-		} else if (rand <= .6) {
+		case 5:
 			return Color.CYAN;
-		} else if (rand <= .7) {
+		case 7:
 			return Color.MAGENTA;
-		} else if (rand <= .8) {
+		case 8:
 			return Color.PINK;
-		} else if (rand <= .9) {
+		case 9:
 			return Color.WHITE;
-		} else {
-			return new Color(153, 50, 205);
+		case 10:
+			return CUSTOM_COLOR_1;
 		}
+
+		return null;
 	}
 
 	public void paint(Graphics g) {

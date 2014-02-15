@@ -68,9 +68,9 @@ public class DealDeck extends CardStack {
 		discardPile = discard;
 
 		if (SolitaireBoard.drawCount == 3) {
-			deckThroughLimit = ThroughLIimit.MEDIUM.getThroughs() + 1;
+			deckThroughLimit = ThroughLimit.MEDIUM.getThroughs() + 1;
 		} else {
-			deckThroughLimit = ThroughLIimit.MEDIUM.getThroughs();
+			deckThroughLimit = ThroughLimit.MEDIUM.getThroughs();
 		}
 	}
 
@@ -121,9 +121,9 @@ public class DealDeck extends CardStack {
 	 */
 	public void setDrawCount(int draw) {
 		if (SolitaireBoard.drawCount == 3) {
-			deckThroughLimit = ThroughLIimit.MEDIUM.getThroughs() + 1;
+			deckThroughLimit = ThroughLimit.MEDIUM.getThroughs() + 1;
 		} else {
-			deckThroughLimit = ThroughLIimit.MEDIUM.getThroughs();
+			deckThroughLimit = ThroughLimit.MEDIUM.getThroughs();
 		}
 	}
 
@@ -133,11 +133,11 @@ public class DealDeck extends CardStack {
 	 */
 	public void setDifficulty(GameDifficulty difficulty) {
 		if (difficulty == GameDifficulty.EASY) {
-			deckThroughLimit = ThroughLIimit.EASY.getThroughs();
+			deckThroughLimit = ThroughLimit.EASY.getThroughs();
 		} else if (difficulty == GameDifficulty.HARD) {
-			deckThroughLimit = ThroughLIimit.HARD.getThroughs();
+			deckThroughLimit = ThroughLimit.HARD.getThroughs();
 		} else if (difficulty == GameDifficulty.MEDIUM) {
-			deckThroughLimit = ThroughLIimit.MEDIUM.getThroughs();
+			deckThroughLimit = ThroughLimit.MEDIUM.getThroughs();
 		}
 
 		/*
@@ -161,7 +161,7 @@ public class DealDeck extends CardStack {
 	 * 
 	 */
 	public synchronized Card pop() {
-		if (!isEmpty()) {
+		if (isEmpty() == false) {
 			/*
 			 * Verify there are still cards remaining.
 			 */
@@ -178,7 +178,7 @@ public class DealDeck extends CardStack {
 				CardStack tempStack = new CardStack();
 
 				while (SolitaireBoard.drawCount > 1 && tempDrawCount > 0
-						&& !isEmpty()) {
+						&& isEmpty() == false) {
 					Card card = super.pop();
 
 					card.setFaceUp();
@@ -202,7 +202,7 @@ public class DealDeck extends CardStack {
 				this.repaint();
 				return discardPile.peek();
 			}
-		} else if (!discardPile.isEmpty()
+		} else if (discardPile.isEmpty() == false
 				&& numTimesThroughDeck < deckThroughLimit) {
 			for (int i = discardPile.length(); i > 0; i--) {
 				Card card = discardPile.pop();
@@ -227,7 +227,7 @@ public class DealDeck extends CardStack {
 	 * 
 	 */
 	public synchronized void undoPop() {
-		while (!isEmpty()) {
+		while (isEmpty() == false) {
 			Card card = super.pop();
 			card.setFaceUp();
 			discardPile.push(card);
@@ -274,7 +274,7 @@ public class DealDeck extends CardStack {
 	public void paint(Graphics g) {
 		super.paint(g);
 
-		if (isEmpty()) {
+		if (isEmpty() == true) {
 			return;
 		}
 

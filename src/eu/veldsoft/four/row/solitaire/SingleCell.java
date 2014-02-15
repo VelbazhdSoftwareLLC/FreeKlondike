@@ -35,8 +35,14 @@ public class SingleCell extends CardStack {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * 
+	 * @param card
+	 * 
+	 * @return
+	 */
 	public Card push(Card card) {
-		if (isEmpty()) {
+		if (isEmpty() == true) {
 			super.push(card);
 			return card;
 		}
@@ -44,10 +50,22 @@ public class SingleCell extends CardStack {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @param p
+	 * 
+	 * @return
+	 */
 	public Card getCardAtLocation(Point p) {
 		return peek();
 	}
 
+	/**
+	 * 
+	 * @param card
+	 * 
+	 * @return
+	 */
 	public boolean isValidMove(Card card) {
 		if (isEmpty() == true) {
 			return true;
@@ -56,10 +74,20 @@ public class SingleCell extends CardStack {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @param stack
+	 * 
+	 * @return
+	 */
 	public boolean isValidMove(CardStack stack) {
 		return false;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public CardStack getAvailableCards() {
 		if (isEmpty() == true) {
 			return (null);

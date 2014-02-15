@@ -19,7 +19,7 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-public enum ThroughLIimit {
+public enum ThroughLimit {
 	/**
 	 * Number of deck throughs for each difficulty. Three card draw adds 1 to
 	 * each.
@@ -35,7 +35,7 @@ public enum ThroughLIimit {
 	 * 
 	 * @param throughs
 	 */
-	private ThroughLIimit(int throughs) {
+	private ThroughLimit(int throughs) {
 		this.throughs = throughs;
 	}
 

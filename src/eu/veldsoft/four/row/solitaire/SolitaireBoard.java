@@ -292,7 +292,8 @@ public class SolitaireBoard extends JFrame {
 
 	private void dealOutCustomBoard(LinkedList<Integer> numbers,
 			int numViewableCards) {
-		LinkedList<Card> cards = (LinkedList<Card>) Deck.getDeckSubsetByCardNumbers(numbers);
+		LinkedList<Card> cards = (LinkedList<Card>) Deck
+				.getDeckSubsetByCardNumbers(numbers);
 
 		int pileNumber = 0;
 		int cardNumber = -1;
@@ -308,37 +309,9 @@ public class SolitaireBoard extends JFrame {
 				continue;
 			}
 
-			if (pileNumber == 0) {
-				cells[0].addCard(cards.get(cardNumber));
-			} else if (pileNumber == 1) {
-				cells[1].addCard(cards.get(cardNumber));
-			} else if (pileNumber == 2) {
-				cells[2].addCard(cards.get(cardNumber));
-			} else if (pileNumber == 3) {
-				cells[3].addCard(cards.get(cardNumber));
-			}
-
-			else if (pileNumber == 4) {
-				columns[0].addCard(cards.get(cardNumber));
-			} else if (pileNumber == 5) {
-				columns[1].addCard(cards.get(cardNumber));
-			} else if (pileNumber == 6) {
-				columns[2].addCard(cards.get(cardNumber));
-			} else if (pileNumber == 7) {
-				columns[3].addCard(cards.get(cardNumber));
-			}
-
-			else if (pileNumber == 8) {
-				acePiles[0].addCard(cards.get(cardNumber));
-			} else if (pileNumber == 9) {
-				acePiles[1].addCard(cards.get(cardNumber));
-			} else if (pileNumber == 10) {
-				acePiles[2].addCard(cards.get(cardNumber));
-			} else if (pileNumber == 11) {
-				acePiles[3].addCard(cards.get(cardNumber));
-			}
-
-			else if (pileNumber == 12) {
+			if (0 <= pileNumber && pileNumber <= 11) {
+				acePiles[pileNumber % 4].addCard(cards.get(cardNumber));
+			} else if (pileNumber == 12) {
 				Card card = cards.get(cardNumber);
 				card.setFaceDown();
 				dealDeck.addCard(card);
@@ -366,7 +339,7 @@ public class SolitaireBoard extends JFrame {
 
 	private void clearBoard() {
 		for (int i = 0; i < columns.length; i++) {
-			while (!columns[i].isEmpty()) {
+			while (columns[i].isEmpty() == false) {
 				columns[i].pop();
 			}
 
@@ -374,7 +347,7 @@ public class SolitaireBoard extends JFrame {
 		}
 
 		for (int i = 0; i < cells.length; i++) {
-			while (!cells[i].isEmpty()) {
+			while (cells[i].isEmpty() == false) {
 				cells[i].pop();
 			}
 
@@ -382,20 +355,20 @@ public class SolitaireBoard extends JFrame {
 		}
 
 		for (int i = 0; i < acePiles.length; i++) {
-			while (!acePiles[i].isEmpty()) {
+			while (acePiles[i].isEmpty() == false) {
 				acePiles[i].pop();
 			}
 
 			acePiles[i].repaint();
 		}
 
-		while (!dealDeck.isEmpty()) {
+		while (dealDeck.isEmpty() == false) {
 			dealDeck.pop();
 		}
 
 		dealDeck.repaint();
 
-		while (!discardPile.isEmpty()) {
+		while (discardPile.isEmpty() == false) {
 			discardPile.pop();
 		}
 

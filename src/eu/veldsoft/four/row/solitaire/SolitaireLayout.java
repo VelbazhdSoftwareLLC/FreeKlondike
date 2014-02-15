@@ -69,9 +69,6 @@ public class SolitaireLayout implements LayoutManager {
 	private Component cellThree;
 	private Component cellFour;
 
-	public SolitaireLayout() {
-	}
-
 	public void addLayoutComponent(String name, Component component) {
 		if (name.equals(COLUMN_ONE)) {
 			colOne = component;

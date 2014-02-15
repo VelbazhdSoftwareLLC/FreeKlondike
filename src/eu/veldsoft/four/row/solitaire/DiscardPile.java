@@ -37,6 +37,9 @@ public class DiscardPile extends CardStack {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * 
+	 */
 	private int cardsLeftFromDraw = 0;
 
 	public int getNumViewableCards() {
@@ -121,12 +124,12 @@ public class DiscardPile extends CardStack {
 	public void paint(Graphics g) {
 		super.paint(g);
 
-		if (!isEmpty() && SolitaireBoard.drawCount == 1) {
+		if (isEmpty() == false && SolitaireBoard.drawCount == 1) {
 			for (int i = 0; i < length(); i++) {
 				Image image = getCardAtLocation(i).getImage();
 				g.drawImage(image, 0, 0, null);
 			}
-		} else if (!isEmpty() && SolitaireBoard.drawCount == 3) {
+		} else if (isEmpty() == false && SolitaireBoard.drawCount == 3) {
 			if (cardsLeftFromDraw > 0) {
 				for (int i = 0; i < length() - cardsLeftFromDraw + 1; i++) {
 					Image image = getCardAtLocation(i).getImage();

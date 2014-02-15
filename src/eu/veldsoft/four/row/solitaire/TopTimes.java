@@ -63,7 +63,7 @@ public class TopTimes extends JFrame implements ActionListener, KeyListener {
 
 	private JButton jButton;
 
-	/*
+	/**
 	 * Constructor
 	 */
 	public TopTimes() {
