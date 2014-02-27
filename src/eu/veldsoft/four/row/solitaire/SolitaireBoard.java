@@ -132,10 +132,6 @@ public class SolitaireBoard extends JFrame {
 
 	private boolean timerToRun = false;
 
-	private int winAnimationStatus = 0;
-
-	private int winSoundsStatus = 0;
-
 	/**
 	 * 1 = easy, 2 = medium, 3 = hard Should be only here!
 	 */
@@ -309,7 +305,11 @@ public class SolitaireBoard extends JFrame {
 				continue;
 			}
 
-			if (0 <= pileNumber && pileNumber <= 11) {
+			if (0 <= pileNumber && pileNumber <= 3) {
+				cells[pileNumber % 4].addCard(cards.get(cardNumber));
+			} else if (4 <= pileNumber && pileNumber <= 7) {
+				columns[pileNumber % 4].addCard(cards.get(cardNumber));
+			} else if (8 <= pileNumber && pileNumber <= 11) {
 				acePiles[pileNumber % 4].addCard(cards.get(cardNumber));
 			} else if (pileNumber == 12) {
 				Card card = cards.get(cardNumber);
@@ -848,8 +848,8 @@ public class SolitaireBoard extends JFrame {
 			/*
 			 * Finish saving options.
 			 */
-			output.writeInt(winAnimationStatus);
-			output.writeInt(winSoundsStatus);
+			output.writeInt(WinScreen.animation);
+			output.writeInt(WinScreen.sounds);
 			output.writeInt(dealDeck.getDeckThroughs());
 			output.writeInt(difficulty.getValue());
 			output.writeInt(newDifficulty.getValue());
@@ -1023,30 +1023,6 @@ public class SolitaireBoard extends JFrame {
 
 	public void setTimer(int time) {
 		timerCount = time;
-	}
-
-	public int getWinAnimationStatus() {
-		return winAnimationStatus;
-	}
-
-	public void setWinAnimationStatus(int animation) {
-		winAnimationStatus = animation;
-
-		if (winAnimationStatus != 0 && winAnimationStatus != 1) {
-			winAnimationStatus = 0;
-		}
-	}
-
-	public int getWinSoundsStatus() {
-		return winSoundsStatus;
-	}
-
-	public void setWinSoundsStatus(int sounds) {
-		winSoundsStatus = sounds;
-
-		if (winSoundsStatus != 0 && winSoundsStatus != 1) {
-			winSoundsStatus = 0;
-		}
 	}
 
 	public GameDifficulty getDifficulty() {
@@ -1407,8 +1383,8 @@ public class SolitaireBoard extends JFrame {
 				}
 			}
 
-			if (winAnimationStatus != 0 || winSoundsStatus != 0) {
-				new WinScreen(winAnimationStatus, winSoundsStatus);
+			if (WinScreen.animation != 0 || WinScreen.sounds != 0) {
+				new WinScreen();
 			}
 
 			if (timerToRun) {

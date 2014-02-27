@@ -288,8 +288,8 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 		super.setBackgroundNumber(backgroundNumber);
 		super.setTimerStatus(timerStatus);
 		super.setNewDrawCount(newDrawCount);
-		super.setWinAnimationStatus(winAnimation);
-		super.setWinSoundsStatus(winSounds);
+		WinScreen.animation = winAnimation;
+		WinScreen.sounds = winSounds;
 		super.setDrawCount(drawCount);
 
 		if (GameDifficulty.EASY.getValue() == difficulty) {
@@ -648,9 +648,8 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 			}
 		} else if (e.getSource() == options) {
 			ChangeOptions co = new ChangeOptions(this, super.getNewDrawCount(),
-					super.getTimerNextGameStatus(),
-					super.getWinAnimationStatus(), super.getWinSoundsStatus(),
-					super.getNewDifficulty().getValue());
+					super.getTimerNextGameStatus(), WinScreen.animation,
+					WinScreen.sounds, super.getNewDifficulty().getValue());
 			int drawCount = co.getDrawCount();
 			int timerStatus = co.getTimer();
 			int animationStatus = co.getAnimation();
@@ -660,8 +659,8 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 			if (drawCount != -1) {
 				super.setNewDrawCount(drawCount);
 				super.setTimerStatus(timerStatus);
-				super.setWinAnimationStatus(animationStatus);
-				super.setWinSoundsStatus(soundsStatus);
+				WinScreen.animation = animationStatus;
+				WinScreen.sounds = soundsStatus;
 				if (GameDifficulty.EASY.getValue() == difficulty) {
 					super.setDifficulty(GameDifficulty.EASY);
 				} else if (GameDifficulty.MEDIUM.getValue() == difficulty) {
