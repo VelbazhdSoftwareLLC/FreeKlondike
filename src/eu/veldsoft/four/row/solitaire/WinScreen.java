@@ -19,18 +19,17 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.io.File;
-import java.net.URL;
-
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.net.URL;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.Sequence;
 import javax.sound.midi.Sequencer;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.event.MouseInputAdapter;
 
 /**
