@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Four Row Solitaire</string>
+
+    <string name="new_game_button">New Game</string>
+
+    <string name="undo_last_move_button">Undo Last Move</string>
+
+    <string name="hint_button">Hint</string>
+
+    <string name="statistics_button">Statistics</string>
+
+    <string name="options_button">Options</string>
+
+    <string name="change_appearance_button">Change Appearance</string>
+
+    <string name="best_times_button">Best Times</string>
+
+    <string name="view_help_button">View Help</string>
+
+    <string name="about_game_button">About Game</string>
+
+    <string name="check_for_updates_button">Check for Updates</string>
+
+    <string name="exit_button">Exit</string>
+
+</resources>
