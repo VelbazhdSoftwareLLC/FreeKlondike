@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="eu.veldsoft.four.row.solitaire.AboutGameActivity"
+            android:label="@string/title_activity_about_game" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.four.row.solitaire.HelpActivity"
+            android:label="@string/title_activity_help" >
+        </activity>
     </application>
 
 </manifest>

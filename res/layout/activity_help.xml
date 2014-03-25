@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HelpActivity" >
+
+    <Button
+        android:id="@+id/ok_help_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/help_ok" >
+
+        <requestFocus />
+    </Button>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:freezesText="true"
+        android:inputType="textMultiLine"
+        android:longClickable="false"
+        android:scrollbars="vertical"
+        android:text="@string/help_text" >
+    </EditText>
+
+</LinearLayout>
