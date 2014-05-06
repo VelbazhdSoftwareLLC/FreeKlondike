@@ -114,8 +114,7 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 		backgroundPanel.setLayout(new FlowLayout());
 
 		ButtonGroup backgroundsBG = new ButtonGroup();
-
-		for (int i = 0; i < NUM_BACKGROUNDS; i++) {
+		for (int i = 0; i < backgrounds.length; i++) {
 			backgrounds[i] = new JRadioButton("Background " + (i + 1));
 			backgroundsBG.add(backgrounds[i]);
 			backgroundPanel.add(backgrounds[i]);
