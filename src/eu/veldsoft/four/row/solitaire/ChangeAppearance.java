@@ -94,14 +94,12 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 
 		ButtonGroup cardBacks = new ButtonGroup();
 		
-		int counter=0;
-		for(JRadioButton deck:decks)
+		for(int i=0;i<decks.length;i++)
 		{
-			deck = new JRadioButton("Deck " + (counter+1));
-			cardBacks.add(deck);
-			cardBackPanel.add(deck);
-			deck.addActionListener(this);
-			counter++;
+			decks[i] = new JRadioButton("Deck " + (i+1));
+			cardBacks.add(decks[i]);
+			cardBackPanel.add(decks[i]);
+			decks[i].addActionListener(this);
 		}
 
 		if (deckNumber <= decks.length) {
