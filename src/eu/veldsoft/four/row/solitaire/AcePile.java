@@ -64,12 +64,11 @@ public class AcePile extends CardStack {
 	 * @return
 	 */
 	public Card push(Card card) {
-		if (isValidMove(card) == true) {
+		if (isValidMove(card) == false) {
+			return null;
+		}
 			super.push(card);
 			return (card);
-		}
-
-		return null;
 	}
 
 	/**

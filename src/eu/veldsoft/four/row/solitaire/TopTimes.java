@@ -632,14 +632,15 @@ public class TopTimes extends JFrame implements ActionListener, KeyListener {
 	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+		if (e.getKeyCode() != KeyEvent.VK_ENTER) {
+			return;
+		}
 			names[pos] = ((JTextField) e.getSource());
 			names[pos].setEditable(false);
 			names[pos].setBorder(null);
 			names[pos].getCaret().setVisible(false);
 			names[pos].removeKeyListener(this);
 			saveData();
-		}
 	}
 
 	@Override

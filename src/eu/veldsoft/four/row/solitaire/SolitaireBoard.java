@@ -1046,7 +1046,9 @@ public class SolitaireBoard extends JFrame {
 	}
 
 	public synchronized void undoMove() {
-		if (!sourceList.isEmpty()) {
+		if (sourceList.isEmpty()) {
+			return;
+		}
 			/*
 			 * If player is holding on to a card.
 			 */
@@ -1144,7 +1146,6 @@ public class SolitaireBoard extends JFrame {
 				numCards.removeLast();
 				numCardsInDiscardView.removeLast();
 			}
-		}
 	}
 
 	@SuppressWarnings("fallthrough")
@@ -1709,11 +1710,12 @@ public class SolitaireBoard extends JFrame {
 
 	private class TimerListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == timer) {
+			if (e.getSource() != timer) {
+				return;
+			}
 				timerCount++;
 				timerLabel.setText("Time: " + timerCount);
 				statusBar.repaint();
-			}
 		}
 	}
 

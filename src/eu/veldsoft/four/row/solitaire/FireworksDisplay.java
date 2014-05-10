@@ -500,7 +500,9 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == timer) {
+		if (e.getSource() != timer) {
+			return;
+		}
 			if (num >= FIREWORKS_TIME) {
 				num = 0;
 				numSets++;
@@ -515,6 +517,5 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 			} else {
 				repaint();
 			}
-		}
 	}
 }
