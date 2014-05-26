@@ -20,6 +20,7 @@
 package eu.veldsoft.four.row.solitaire;
 
 /**
+ * enum class CardRank
  * 
  * @author Todor Balabanov
  */
@@ -31,7 +32,12 @@ public enum CardRank {
 	 * 
 	 */
 	private int index;
-
+	/**
+	 * Returns card index.
+	 * 
+	 * @param index
+	 * @return
+	 */
 	public static CardRank getValue(int index) {
 		switch (index) {
 		case 1:
@@ -66,6 +72,7 @@ public enum CardRank {
 	}
 
 	/**
+	 * Setter
 	 * 
 	 * @param index
 	 */
@@ -74,6 +81,7 @@ public enum CardRank {
 	}
 
 	/**
+	 * Getter
 	 * 
 	 * @return
 	 */
@@ -82,6 +90,7 @@ public enum CardRank {
 	}
 
 	/**
+	 * Checks if the picked card is lesser than the bottom card on a random column.
 	 * 
 	 * @param card
 	 * 
@@ -129,6 +138,7 @@ public enum CardRank {
 	}
 
 	/**
+	 * Checks if the picked card is greater than the top card on a random final column.
 	 * 
 	 * @param card
 	 * 

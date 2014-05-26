@@ -20,6 +20,7 @@
 package eu.veldsoft.four.row.solitaire;
 
 /**
+ * class enum CardColor
  * 
  * @author Todor Balabanov
  */
@@ -32,6 +33,7 @@ public enum CardColor {
 	private int index;
 
 	/**
+	 * Setter
 	 * 
 	 * @param index
 	 */
@@ -40,6 +42,7 @@ public enum CardColor {
 	}
 
 	/**
+	 * Getter
 	 * 
 	 * @return
 	 */

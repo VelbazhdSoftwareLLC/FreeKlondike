@@ -32,6 +32,7 @@ public enum CardSuit {
 	private String name;
 
 	/**
+	 * Setter
 	 * 
 	 * @param name
 	 */
@@ -40,6 +41,7 @@ public enum CardSuit {
 	}
 
 	/**
+	 * Getter
 	 * 
 	 * @return
 	 */

@@ -1049,103 +1049,103 @@ public class SolitaireBoard extends JFrame {
 		if (sourceList.isEmpty()) {
 			return;
 		}
-			/*
-			 * If player is holding on to a card.
-			 */
-			if (sourceList.size() > destinationList.size()) {
-				CardStack tempSource = sourceList.getLast();
-				sourceList.removeLast();
+		/*
+		 * If player is holding on to a card.
+		 */
+		if (sourceList.size() > destinationList.size()) {
+			CardStack tempSource = sourceList.getLast();
+			sourceList.removeLast();
 
-				int num = numCards.getLast();
-				numCards.removeLast();
+			int num = numCards.getLast();
+			numCards.removeLast();
 
-				int numDiscard = numCardsInDiscardView.getLast();
-				numCardsInDiscardView.removeLast();
+			int numDiscard = numCardsInDiscardView.getLast();
+			numCardsInDiscardView.removeLast();
 
-				if (num == 1) {
-					discardPile.setView(numDiscard);
-					tempSource.peek().unhighlight();
-
-					ml.clickedCard = null;
-					ml.hasSelected = false;
-					ml.singleCardSelected = false;
-					ml.temp = null;
-				} else {
-					for (int i = 0; i < num; i++) {
-						tempSource.getCardAtLocation(
-								tempSource.length() - i - 1).unhighlight();
-					}
-
-					ml.clickedCard = null;
-					ml.hasSelected = false;
-					ml.temp = null;
-				}
-
-				tempSource.repaint();
-			} else if (!(sourceList.getLast() instanceof DealDeck)) {
-				CardStack tempSource = sourceList.getLast();
-				CardStack tempDest = destinationList.getLast();
-				int num = numCards.getLast();
-				int numDiscard = numCardsInDiscardView.getLast();
-
-				sourceList.removeLast();
-				destinationList.removeLast();
-				numCards.removeLast();
-				numCardsInDiscardView.removeLast();
-
-				if (num == 1) {
-					tempSource.addCard(tempDest.pop());
-				} else {
-					CardStack temp = tempDest.undoStack(num);
-					tempSource.addStack(temp);
-				}
-
+			if (num == 1) {
 				discardPile.setView(numDiscard);
-				tempSource.repaint();
-				tempDest.repaint();
-			}
-			/*
-			 * The last draw from the deck didn't reset the discard pile to make
-			 * it an empty pile.
-			 */
-			else if (sourceList.getLast() instanceof DealDeck
-					&& !destinationList.getLast().isEmpty()) {
-				int num = numCards.getLast();
-				int numDiscard = numCardsInDiscardView.getLast();
+				tempSource.peek().unhighlight();
 
-				sourceList.removeLast();
-				destinationList.removeLast();
-				numCards.removeLast();
-				numCardsInDiscardView.removeLast();
-
+				ml.clickedCard = null;
+				ml.hasSelected = false;
+				ml.singleCardSelected = false;
+				ml.temp = null;
+			} else {
 				for (int i = 0; i < num; i++) {
-					Card card = discardPile.undoPop();
-					card.setFaceDown();
-					dealDeck.addCard(card);
+					tempSource.getCardAtLocation(tempSource.length() - i - 1)
+							.unhighlight();
 				}
 
-				discardPile.setView(numDiscard);
-				dealDeck.repaint();
-				discardPile.repaint();
+				ml.clickedCard = null;
+				ml.hasSelected = false;
+				ml.temp = null;
 			}
-			/*
-			 * Last move was a reset on the discard pile.
-			 */
-			else if (sourceList.getLast() instanceof DealDeck) {
-				dealDeck.undoPop();
 
-				int numDiscard = numCardsInDiscardView.getLast();
-				discardPile.setView(numDiscard);
+			tempSource.repaint();
+		} else if (!(sourceList.getLast() instanceof DealDeck)) {
+			CardStack tempSource = sourceList.getLast();
+			CardStack tempDest = destinationList.getLast();
+			int num = numCards.getLast();
+			int numDiscard = numCardsInDiscardView.getLast();
 
-				discardPile.repaint();
-				discardPile.revalidate();
-				dealDeck.repaint();
+			sourceList.removeLast();
+			destinationList.removeLast();
+			numCards.removeLast();
+			numCardsInDiscardView.removeLast();
 
-				sourceList.removeLast();
-				destinationList.removeLast();
-				numCards.removeLast();
-				numCardsInDiscardView.removeLast();
+			if (num == 1) {
+				tempSource.addCard(tempDest.pop());
+			} else {
+				CardStack temp = tempDest.undoStack(num);
+				tempSource.addStack(temp);
 			}
+
+			discardPile.setView(numDiscard);
+			tempSource.repaint();
+			tempDest.repaint();
+		}
+		/*
+		 * The last draw from the deck didn't reset the discard pile to make it
+		 * an empty pile.
+		 */
+		else if (sourceList.getLast() instanceof DealDeck
+				&& !destinationList.getLast().isEmpty()) {
+			int num = numCards.getLast();
+			int numDiscard = numCardsInDiscardView.getLast();
+
+			sourceList.removeLast();
+			destinationList.removeLast();
+			numCards.removeLast();
+			numCardsInDiscardView.removeLast();
+
+			for (int i = 0; i < num; i++) {
+				Card card = discardPile.undoPop();
+				card.setFaceDown();
+				dealDeck.addCard(card);
+			}
+
+			discardPile.setView(numDiscard);
+			dealDeck.repaint();
+			discardPile.repaint();
+		}
+		/*
+		 * Last move was a reset on the discard pile.
+		 */
+		else if (sourceList.getLast() instanceof DealDeck) {
+			dealDeck.undoPop();
+
+			int numDiscard = numCardsInDiscardView.getLast();
+			discardPile.setView(numDiscard);
+
+			discardPile.repaint();
+			discardPile.revalidate();
+			dealDeck.repaint();
+
+			sourceList.removeLast();
+			destinationList.removeLast();
+			numCards.removeLast();
+			numCardsInDiscardView.removeLast();
+		}
 	}
 
 	@SuppressWarnings("fallthrough")
@@ -1713,9 +1713,9 @@ public class SolitaireBoard extends JFrame {
 			if (e.getSource() != timer) {
 				return;
 			}
-				timerCount++;
-				timerLabel.setText("Time: " + timerCount);
-				statusBar.repaint();
+			timerCount++;
+			timerLabel.setText("Time: " + timerCount);
+			statusBar.repaint();
 		}
 	}
 
