@@ -67,7 +67,7 @@ public class MenuActivity extends Activity {
 										R.string.check_for_updates_url))));
 					}
 				});
-		
+
 		((Button) findViewById(R.id.exit_button))
 				.setOnClickListener(new OnClickListener() {
 					@Override

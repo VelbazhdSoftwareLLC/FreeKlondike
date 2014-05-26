@@ -48,6 +48,7 @@ import javax.swing.UIManager;
  * 
  * @author Matt Stephen
  */
+
 public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 	/**
 	 * 
@@ -349,6 +350,11 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 		}
 	}
 
+	/**
+	 * void Main()
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		@SuppressWarnings("unused")
 		FourRowSolitaire fourRowSolitaire = new FourRowSolitaire();

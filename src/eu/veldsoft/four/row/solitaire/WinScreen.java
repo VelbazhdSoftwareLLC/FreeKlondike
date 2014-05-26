@@ -44,12 +44,12 @@ public class WinScreen extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	//TODO Use shared preferences. Change int with enum.
+
+	// TODO Use shared preferences. Change int with enum.
 	static int animation = 0;
-	
-	//TODO Use shared preferences. Change int with enum.
-	static int sounds = 0;	
+
+	// TODO Use shared preferences. Change int with enum.
+	static int sounds = 0;
 
 	private SoundThread sound = null;
 

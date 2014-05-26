@@ -37,6 +37,7 @@ public class Deck {
 	}
 
 	/**
+	 * Shuffling cards
 	 * 
 	 * @param deck
 	 */

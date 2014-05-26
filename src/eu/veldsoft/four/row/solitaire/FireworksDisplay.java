@@ -503,19 +503,19 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 		if (e.getSource() != timer) {
 			return;
 		}
-			if (num >= FIREWORKS_TIME) {
-				num = 0;
-				numSets++;
+		if (num >= FIREWORKS_TIME) {
+			num = 0;
+			numSets++;
 
-				startValue = Common.PRNG.nextInt(x.length / 2);
-			}
+			startValue = Common.PRNG.nextInt(x.length / 2);
+		}
 
-			num++;
+		num++;
 
-			if (numSets >= 26) {
-				timer.stop();
-			} else {
-				repaint();
-			}
+		if (numSets >= 26) {
+			timer.stop();
+		} else {
+			repaint();
+		}
 	}
 }
