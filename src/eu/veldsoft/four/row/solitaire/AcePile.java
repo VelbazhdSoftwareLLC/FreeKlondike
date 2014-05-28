@@ -51,7 +51,7 @@ public class AcePile extends CardStack {
 	}
 
 	/**
-	 * Returns the piles suit.
+	 * Returns the pile's suit.
 	 * 
 	 * @return
 	 */
