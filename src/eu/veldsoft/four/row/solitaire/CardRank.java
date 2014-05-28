@@ -72,6 +72,7 @@ public enum CardRank {
 	}
 
 	/**
+	 * Setting the card's rank.
 	 * Sets the parameter index to be equal to the argument index.
 	 * 
 	 * @param index
@@ -81,7 +82,7 @@ public enum CardRank {
 	}
 
 	/**
-	 * Returns the value of the parameter index.
+	 * Returns the card's rank.
 	 * 
 	 * @return
 	 */

@@ -42,7 +42,7 @@ public class AcePile extends CardStack {
 	private CardSuit suit;
 
 	/**
-	 * Sets the stack's suit.
+	 * Sets the stack's suit to be equal to the argument suit.
 	 * 
 	 * @param suit
 	 */
