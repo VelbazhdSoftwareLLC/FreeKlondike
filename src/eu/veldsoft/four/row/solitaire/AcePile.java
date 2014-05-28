@@ -42,6 +42,7 @@ public class AcePile extends CardStack {
 	private CardSuit suit;
 
 	/**
+	 * Sets the stack's suit.
 	 * 
 	 * @param suit
 	 */
@@ -50,6 +51,7 @@ public class AcePile extends CardStack {
 	}
 
 	/**
+	 * Returns the stack's suit.
 	 * 
 	 * @return
 	 */
@@ -58,6 +60,7 @@ public class AcePile extends CardStack {
 	}
 
 	/**
+	 * Pushes a card onto the foundation stack if possible
 	 * 
 	 * @param card
 	 * 
@@ -82,6 +85,7 @@ public class AcePile extends CardStack {
 	}
 
 	/**
+	 * Checks if its possible to put a certain card onto the foundation stack
 	 * 
 	 * @param card
 	 * 
@@ -102,7 +106,8 @@ public class AcePile extends CardStack {
 	}
 
 	/**
-	 * 
+	 * If trying to move an entire stack of two or more cards on top of 
+	 * one of the foundation piles returns false
 	 * @param stack
 	 * 
 	 * @return

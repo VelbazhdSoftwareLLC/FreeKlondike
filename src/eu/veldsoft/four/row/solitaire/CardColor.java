@@ -32,6 +32,7 @@ public enum CardColor {
 	private int index;
 
 	/**
+	 * Sets the parameter index to be equal to the argument index (0 or 1)
 	 * 
 	 * @param index
 	 */
@@ -40,6 +41,7 @@ public enum CardColor {
 	}
 
 	/**
+	 * Returns the value of the parameter index (0 or 1).
 	 * 
 	 * @return
 	 */
