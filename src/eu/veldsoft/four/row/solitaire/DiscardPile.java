@@ -38,23 +38,37 @@ public class DiscardPile extends CardStack {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 
+	 * Cards left from the last draw from the deal deck. 
 	 */
 	private int cardsLeftFromDraw = 0;
 
+	/**
+	 * Returns the cards left from the last draw from the deal deck.
+	 * @return
+	 */
 	public int getNumViewableCards() {
 		return cardsLeftFromDraw;
 	}
 
+	/**
+	 * Sets the number of cards left from the last draw from the deck.
+	 * @param numViewableCards
+	 */
 	public void setView(int numViewableCards) {
 		cardsLeftFromDraw = numViewableCards;
 	}
 
+	/**
+	 * Adds a card to the pile of currently viewable cards.
+	 */
 	public void addCard(Card card) {
 		cardsLeftFromDraw++;
 		super.addCard(card);
 	}
 
+	/**
+	 * Adds stack of cards to the pile of currently viewable cards.
+	 */
 	public void addStack(CardStack stack) {
 		for (int i = stack.length(); i > 0; i--) {
 			Card card = stack.pop();
@@ -62,6 +76,9 @@ public class DiscardPile extends CardStack {
 		}
 	}
 
+	/**
+	 * Adds a card to the pile of currently viewable cards and returns the card added.
+	 */
 	public Card push(Card card) {
 		if (SolitaireBoard.drawCount == 1) {
 			cardsLeftFromDraw = 0;
@@ -72,6 +89,9 @@ public class DiscardPile extends CardStack {
 		return card;
 	}
 
+	/**
+	 * Adds a stack of cards to the pile of currently viewable cards and returns the cards added.
+	 */
 	public CardStack push(CardStack stack) {
 		if (SolitaireBoard.drawCount != 1
 				|| (SolitaireBoard.drawCount == 1 && stack.length() == 1)) {
@@ -85,6 +105,9 @@ public class DiscardPile extends CardStack {
 		return stack;
 	}
 
+	/**
+	 * Pops cards out of the stack of viewable cards.
+	 */
 	public synchronized Card pop() {
 		Card card = super.pop();
 
@@ -101,14 +124,24 @@ public class DiscardPile extends CardStack {
 		return card;
 	}
 
+	/**
+	 * Used to undo the pop.
+	 * @return
+	 */
 	public synchronized Card undoPop() {
 		return super.pop();
 	}
 
+	/**
+	 * Returns a card located at the position of a mouse click.
+	 */
 	public Card getCardAtLocation(Point p) {
 		return peek();
 	}
 
+	/**
+	 * Checks if a card move is valid.
+	 */
 	public boolean isValidMove(Card card) {
 		if (card.getSource().equals("Deck")) {
 			return true;
@@ -117,10 +150,18 @@ public class DiscardPile extends CardStack {
 		return false;
 	}
 
+	/**
+	 * The stack moves are always false.
+	 */
 	public boolean isValidMove(CardStack stack) {
 		return false;
 	}
 
+	/**
+	 * Paint procedure.
+	 * 
+	 * @param g Graphic context.
+	 */
 	public void paint(Graphics g) {
 		super.paint(g);
 
@@ -155,6 +196,9 @@ public class DiscardPile extends CardStack {
 		}
 	}
 
+	/**
+	 * Returns the stack of available cards.
+	 */
 	public CardStack getAvailableCards() {
 		if (isEmpty() == true) {
 			return (null);

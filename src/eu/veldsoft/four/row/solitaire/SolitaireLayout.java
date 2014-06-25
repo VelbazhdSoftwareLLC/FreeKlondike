@@ -69,6 +69,9 @@ public class SolitaireLayout implements LayoutManager {
 	private Component cellThree;
 	private Component cellFour;
 
+	/**
+	 * Adds components (cards) to the board. The user can interact with the cards.
+	 */
 	public void addLayoutComponent(String name, Component component) {
 		if (name.equals(COLUMN_ONE)) {
 			colOne = component;
@@ -107,6 +110,9 @@ public class SolitaireLayout implements LayoutManager {
 		}
 	}
 
+	/**
+	 * Removes a component from the game board.
+	 */
 	public void removeLayoutComponent(Component component) {
 		if (colOne == component) {
 			colOne = null;
@@ -153,6 +159,9 @@ public class SolitaireLayout implements LayoutManager {
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
 
+	/**
+	 * Sets the component's (card's) bounds by x and y and sets its width and height.
+	 */
 	public void layoutContainer(Container parent) {
 		Component component;
 

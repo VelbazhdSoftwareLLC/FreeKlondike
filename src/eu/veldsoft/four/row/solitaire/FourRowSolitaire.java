@@ -77,6 +77,9 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 	private JMenuItem about = new JMenuItem("About Game");
 	private JMenuItem checkUpdate = new JMenuItem("Check for Updates");
 
+	/**
+	 * Manages the game menu bar.
+	 */
 	public FourRowSolitaire() {
 		checkForUpdate();
 
@@ -138,6 +141,9 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 		loadData();
 	}
 
+	/**
+	 * Checks for game updates. Notifies the user.
+	 */
 	private void checkForUpdate() {
 		try {
 			URL url = new URL(
@@ -160,6 +166,9 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 		}
 	}
 
+	/**
+	 * Used to load the game data like difficulty, sounds, animations, previously saved games etc.
+	 */
 	private void loadData() {
 		String fileLocation = System.getProperty("user.home")
 				+ System.getProperty("file.separator");
@@ -349,11 +358,18 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 		}
 	}
 
+	/**
+	 * Main function. Executes the game.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		@SuppressWarnings("unused")
 		FourRowSolitaire fourRowSolitaire = new FourRowSolitaire();
 	}
 
+	/**
+	 * Manages the game and the help menu.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == newGame) {
 			super.newGame(GameState.GAME_LOST);
