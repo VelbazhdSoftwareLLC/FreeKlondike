@@ -47,6 +47,8 @@ public class CardStack extends JLayeredPane {
 	/**
 	 * For starting the game.
 	 * 
+	 * Used to add a card to a stack.
+	 * 
 	 * @param card
 	 */
 	public void addCard(Card card) {
@@ -54,20 +56,36 @@ public class CardStack extends JLayeredPane {
 		card.setBounds(0, 0, 72, 96);
 		add(card, 0);
 	}
-
+	/**
+	 * Used to add a bunch of cards to a stack.
+	 * 
+	 * @param stack
+	 */
 	public void addStack(CardStack stack) {
 		while (stack.isEmpty() == false) {
 			Card card = stack.pop();
 			addCard(card);
 		}
 	}
-
+	/**
+	 * Used to add a card to a stack and then to return the moved card.
+	 * 
+	 * @param card
+	 * 
+	 * @return
+	 */
 	public Card push(Card card) {
 		addCard(card);
-
+		
 		return card;
 	}
-
+	/**
+	 * Used to add a bunch of cards to a card stack and then to return empty stack.
+	 * 
+	 * @param stack
+	 * 
+	 * @return
+	 */
 	public CardStack push(CardStack stack) {
 		addStack(stack);
 
@@ -76,7 +94,11 @@ public class CardStack extends JLayeredPane {
 		 */
 		return stack;
 	}
-
+	/**
+	 * Used to pop the top card out of a stack.
+	 * 
+	 * @return
+	 */
 	public synchronized Card pop() {
 		Card card = peek();
 
@@ -85,7 +107,13 @@ public class CardStack extends JLayeredPane {
 
 		return card;
 	}
-
+	/**
+	 * Temporary reverses the cards in a stack.
+	 * 
+	 * @param stack
+	 * 
+	 * @return
+	 */
 	public CardStack pop(CardStack stack) {
 		/*
 		 * Temporary reverse pop of entire stack transfer.
@@ -100,7 +128,11 @@ public class CardStack extends JLayeredPane {
 
 		return temp;
 	}
-
+	/**
+	 * Pops the top card out of a stack if possible. If not - returns null.
+	 * 
+	 * @return
+	 */
 	public synchronized Card peek() {
 		if (cards.isEmpty()) {
 			return null;
@@ -108,15 +140,29 @@ public class CardStack extends JLayeredPane {
 
 		return cards.lastElement();
 	}
-
+	/**
+	 * Checks if a stack is empty (has no cards inside).
+	 * 
+	 * @return
+	 */
 	public boolean isEmpty() {
 		return cards.size() == 0;
 	}
-
+	/**
+	 * Returns the stack's length.
+	 * 
+	 * @return
+	 */
 	public int length() {
 		return cards.size();
 	}
-
+	/**
+	 * Searches the stack for a specific card and returns its location in the stack.
+	 * 
+	 * @param card
+	 * 
+	 * @return
+	 */
 	public synchronized int search(Card card) {
 		int i = cards.lastIndexOf(card);
 
@@ -127,6 +173,13 @@ public class CardStack extends JLayeredPane {
 		return -1;
 	}
 
+	/**
+	 * Returns the card located at a specified location within the stack.
+	 * 
+	 * @param index
+	 * 
+	 * @return
+	 */
 	public Card getCardAtLocation(int index) {
 		if (index < cards.size()) {
 			return cards.get(index);
@@ -134,7 +187,14 @@ public class CardStack extends JLayeredPane {
 
 		return null;
 	}
-
+	
+	/**
+	 * Returns the card located at the coordinates of a mouse click.
+	 * 
+	 * @param p
+	 * 
+	 * @return
+	 */
 	public Card getCardAtLocation(Point p) {
 		if (cards.isEmpty()) {
 			return null;
@@ -163,6 +223,7 @@ public class CardStack extends JLayeredPane {
 	 * Verifies that the card is a part of a valid stack.
 	 * 
 	 * @param index
+	 * 
 	 * @return
 	 */
 	private boolean isValidCard(int index) {
@@ -203,7 +264,16 @@ public class CardStack extends JLayeredPane {
 
 		return true;
 	}
-
+	
+	/**
+	 * Searches the stack for a specific card. Creates a new temporary stack.
+	 * Clones the cards from the end towards the beginning of the stack into the temp stack.
+	 * Stops after it reaches the specific card.
+	 * 
+	 * @param card
+	 * 
+	 * @return
+	 */
 	public CardStack getStack(Card card) {
 		CardStack temp = new CardStack();
 		int index = search(card);
@@ -216,6 +286,15 @@ public class CardStack extends JLayeredPane {
 		return temp;
 	}
 
+	/**
+	 * Searches the stack for a specified location, creates a temporary stack,
+	 * Clones the cards from the end towards the begining of the stack,
+	 * stops when it reaches the specified location.
+	 * 
+	 * @param numCards
+	 * 
+	 * @return
+	 */
 	public CardStack getStack(int numCards) {
 		CardStack temp = new CardStack();
 		int index = length() - numCards;
@@ -228,6 +307,13 @@ public class CardStack extends JLayeredPane {
 		return temp;
 	}
 
+	/**
+	 * Used to undo the last stack move.
+	 * 
+	 * @param numCards
+	 * 
+	 * @return
+	 */
 	public CardStack undoStack(int numCards) {
 		CardStack temp = new CardStack();
 
@@ -238,22 +324,53 @@ public class CardStack extends JLayeredPane {
 		return temp;
 	}
 
+	/**
+	 * Checks if the move is valid.
+	 * Always returns false.
+	 * 
+	 * @param card
+	 * 
+	 * @return
+	 */
 	public boolean isValidMove(Card card) {
 		return false;
 	}
 
+	/**
+	 * Checks if the move is valid.
+	 * Always returns false.
+	 * 
+	 * @param stack
+	 * 
+	 * @return
+	 */
 	public boolean isValidMove(CardStack stack) {
 		return false;
 	}
 
+	/**
+	 * Returns the first card from a stack.
+	 * 
+	 * @return
+	 */
 	public Card getBottom() {
 		return cards.firstElement();
 	}
 
+	/**
+	 * Returns the available cards from a deck.
+	 * 
+	 * @return
+	 */
 	public CardStack getAvailableCards() {
 		return null;
 	}
 
+	/**
+	 * Paint procedure. 
+	 * 
+	 * @param g Graphic context.
+	 */
 	public void paint(Graphics g) {
 		super.paint(g);
 

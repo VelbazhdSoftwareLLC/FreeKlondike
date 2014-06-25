@@ -43,6 +43,7 @@ public class AcePile extends CardStack {
 
 	/**
 	 * Sets the pile's suit to be equal to the argument suit.
+	 * Can be Spades, Clubs, Hearts or Diamonds
 	 * 
 	 * @param suit
 	 */
@@ -60,7 +61,7 @@ public class AcePile extends CardStack {
 	}
 
 	/**
-	 * Pushes a card onto the foundation stack if possible
+	 * Pushes a card onto the foundation stack if possible.
 	 * 
 	 * @param card
 	 * 
@@ -75,6 +76,8 @@ public class AcePile extends CardStack {
 	}
 
 	/**
+	 * Returns the top card from a stack of cards.
+	 * The card must be clicked first.
 	 * 
 	 * @param point
 	 * 
@@ -85,7 +88,7 @@ public class AcePile extends CardStack {
 	}
 
 	/**
-	 * Checks if its possible to put a certain card onto the foundation stack
+	 * Checks if its possible to put a certain card on top of a foundation pile.
 	 * 
 	 * @param card
 	 * 
@@ -107,7 +110,8 @@ public class AcePile extends CardStack {
 
 	/**
 	 * If trying to move an entire stack of two or more cards on top of 
-	 * one of the foundation piles returns false
+	 * one of the foundation piles returns false.
+	 * 
 	 * @param stack
 	 * 
 	 * @return
@@ -117,8 +121,9 @@ public class AcePile extends CardStack {
 	}
 
 	/**
+	 * Paint procedure.
 	 * 
-	 * @param g
+	 * @param g Graphic context.
 	 */
 	public void paint(Graphics g) {
 		super.paint(g);

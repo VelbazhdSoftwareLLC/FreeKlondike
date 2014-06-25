@@ -158,10 +158,15 @@ public class Card extends JComponent {
 	}
 
 	/**
+	 * Private card constructor
+	 * Sets the card's suit, number, full number and back image. Also sets it face-up.
 	 * 
 	 * @param suit
+	 * 
 	 * @param number
+	 * 
 	 * @param deckNumber
+	 * 
 	 * @param fullNumber
 	 */
 	private Card(CardSuit suit, CardRank number, int fullNumber) {
@@ -183,6 +188,7 @@ public class Card extends JComponent {
 	}
 
 	/**
+	 * Sets the card's highlighted front image,
 	 * 
 	 */
 	public void highlight() {
@@ -203,6 +209,7 @@ public class Card extends JComponent {
 	}
 
 	/**
+	 * Unhighlights a highlighted card. Sets back its unhighlighted face image.
 	 * 
 	 */
 	public void unhighlight() {
@@ -212,6 +219,7 @@ public class Card extends JComponent {
 	}
 
 	/**
+	 * Checks if the card is highlighted and returns the result(true/false).
 	 * 
 	 * @return
 	 */
@@ -220,6 +228,7 @@ public class Card extends JComponent {
 	}
 
 	/**
+	 * Sets the card face-up and sets its face image.
 	 * 
 	 */
 	public void setFaceUp() {
@@ -237,6 +246,7 @@ public class Card extends JComponent {
 	}
 
 	/**
+	 * Sets the card face-down and sets its back image.
 	 * 
 	 */
 	public void setFaceDown() {
@@ -254,6 +264,7 @@ public class Card extends JComponent {
 	}
 
 	/**
+	 * Checks if the card is facing up and returns the result(true/false).
 	 * 
 	 * @return
 	 */
@@ -262,6 +273,7 @@ public class Card extends JComponent {
 	}
 
 	/**
+	 * Sets the card's face image and highlighted face image based on its suit and rank.
 	 * 
 	 */
 	private void initializeCardImageString() {
@@ -332,6 +344,7 @@ public class Card extends JComponent {
 	}
 
 	/**
+	 * Returns the card's buffered image (either back or front).
 	 * 
 	 * @return
 	 */
@@ -340,6 +353,7 @@ public class Card extends JComponent {
 	}
 
 	/**
+	 * Returns the card's number.
 	 * 
 	 * @return
 	 */
@@ -348,6 +362,7 @@ public class Card extends JComponent {
 	}
 
 	/**
+	 * Returns the card's suit.
 	 * 
 	 * @return
 	 */
@@ -356,6 +371,7 @@ public class Card extends JComponent {
 	}
 
 	/**
+	 * Returns the card's color.
 	 * 
 	 * @return
 	 */
@@ -364,6 +380,7 @@ public class Card extends JComponent {
 	}
 
 	/**
+	 * Returns the card's full number.
 	 * 
 	 * @return
 	 */
@@ -372,6 +389,7 @@ public class Card extends JComponent {
 	}
 
 	/**
+	 * Notifies the discard pile of moves from the deck.
 	 * 
 	 * @return
 	 */
@@ -380,6 +398,7 @@ public class Card extends JComponent {
 	}
 
 	/**
+	 * Used to set the location of a moved card.
 	 * 
 	 * @param source
 	 */
@@ -397,6 +416,7 @@ public class Card extends JComponent {
 	}
 
 	/**
+	 * Clone a card, that includes the card's suit, number and full number.
 	 * 
 	 * @return
 	 */

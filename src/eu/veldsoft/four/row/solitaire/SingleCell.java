@@ -36,6 +36,7 @@ public class SingleCell extends CardStack {
 	private static final long serialVersionUID = 1L;
 
 	/**
+	 * If the move is valid, pushes a card into the cell.
 	 * 
 	 * @param card
 	 * 
@@ -51,6 +52,7 @@ public class SingleCell extends CardStack {
 	}
 
 	/**
+	 * Returns the card located at the coordinates of a mouse click.
 	 * 
 	 * @param p
 	 * 
@@ -61,6 +63,7 @@ public class SingleCell extends CardStack {
 	}
 
 	/**
+	 * Checks if the move is valid. If the cell is empty returns true, otherwise returns false.
 	 * 
 	 * @param card
 	 * 
@@ -75,6 +78,7 @@ public class SingleCell extends CardStack {
 	}
 
 	/**
+	 * If trying to move more than one card into the cell returns false.
 	 * 
 	 * @param stack
 	 * 
@@ -85,6 +89,7 @@ public class SingleCell extends CardStack {
 	}
 
 	/**
+	 * Returns the card from the cell. If there is no card - returns null.
 	 * 
 	 * @return
 	 */

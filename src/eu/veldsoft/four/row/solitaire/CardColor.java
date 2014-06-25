@@ -41,7 +41,7 @@ public enum CardColor {
 	}
 
 	/**
-	 * Returns the card's color (BLACK or RED).
+	 * Returns the card's color number.
 	 * 
 	 * @return
 	 */

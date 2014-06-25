@@ -33,6 +33,8 @@ public class Column extends CardStack {
 	private static final long serialVersionUID = 1L;
 
 	/**
+	 * If its possible to move a card to the top of the column - moves it
+	 * otherwise returns null.
 	 * 
 	 * @param card
 	 * 
@@ -48,6 +50,8 @@ public class Column extends CardStack {
 	}
 
 	/**
+	 * Checks if its possible to move a card to the top of one of the four columns.
+	 * The card must be lesser by one and to have different color than the current top card.
 	 * 
 	 * @param card
 	 * 
@@ -67,6 +71,8 @@ public class Column extends CardStack {
 	}
 
 	/**
+	 * Checks if its possible to move a stack of cards on top of one of the four columns.
+	 * The bottom card from the stack must be lesser by one than the top card from the column.
 	 * 
 	 * @param stack
 	 * 
@@ -77,6 +83,9 @@ public class Column extends CardStack {
 	}
 
 	/**
+	 * Creates a stack and adds all of the available cards from a column into it.
+	 * The available cards are: the first card and every other after the first one that is
+	 * lesser and with different color than the previous one. Then returns the stack.
 	 * 
 	 * @return
 	 */

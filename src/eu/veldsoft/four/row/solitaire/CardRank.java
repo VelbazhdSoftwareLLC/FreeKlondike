@@ -36,6 +36,7 @@ public enum CardRank {
 	 * Returns the card's rank based on the argument index.
 	 * 
 	 * @param index
+	 * 
 	 * @return
 	 */
 	public static CardRank getValue(int index) {
@@ -72,8 +73,8 @@ public enum CardRank {
 	}
 
 	/**
-	 * Setting the card's rank by setting the parameter index to be equal 
-	 * to the argument index.
+	 * Setting the card's rank based on the argument index. 
+	 * The argument represents one of the 13 ranks.
 	 * 
 	 * @param index
 	 */
@@ -91,8 +92,8 @@ public enum CardRank {
 	}
 
 	/**
-	 * Checks if the current card we're holding is lesser than the current bottom card 
-	 * on one of the starting piles.
+	 * Checks if the current card we're holding is lesser than the current top card 
+	 * on one of the columns.
 	 * 
 	 * @param card
 	 * 
@@ -144,6 +145,7 @@ public enum CardRank {
 	 * of the foundation piles.
 	 * 
 	 * @param card
+	 * 
 	 * @return
 	 */
 	public boolean isGreaterByOneThan(final CardRank card) {

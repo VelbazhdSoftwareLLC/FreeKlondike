@@ -61,6 +61,7 @@ public class DealDeck extends CardStack {
 	private boolean redealable = true;
 
 	/**
+	 * Sets the discard pile and the deck through limit, based on the draw count.
 	 * 
 	 * @param discard
 	 */
@@ -75,21 +76,21 @@ public class DealDeck extends CardStack {
 	}
 
 	/**
-	 * 
+	 * Used to reset the numTimesThroughDeck counter.
 	 */
 	public void reset() {
 		numTimesThroughDeck = 1;
 	}
 
 	/**
-	 * 
+	 * Used to decrease the numTimesThroughDeck counter.
 	 */
 	private void undone() {
 		numTimesThroughDeck--;
 	}
 
 	/**
-	 * 
+	 * Returns the numTimesThroughDeck counter.
 	 * @return
 	 */
 	public int getDeckThroughs() {
@@ -97,6 +98,7 @@ public class DealDeck extends CardStack {
 	}
 
 	/**
+	 * Sets the numTimesThroughDeck counter to be equal to the argument throughs.
 	 * 
 	 * @param throughs
 	 */
@@ -105,6 +107,7 @@ public class DealDeck extends CardStack {
 	}
 
 	/**
+	 * Used to set the deal pile. Accepts a list of shuffled cards.
 	 * 
 	 * @param cards
 	 */
@@ -116,6 +119,7 @@ public class DealDeck extends CardStack {
 	}
 
 	/**
+	 * Used to set the deck through limit based on the draw count.
 	 * 
 	 * @param draw
 	 */
@@ -128,6 +132,7 @@ public class DealDeck extends CardStack {
 	}
 
 	/**
+	 * Used to set the deck through limit based on the game difficulty.
 	 * 
 	 * @param difficulty
 	 */
@@ -150,6 +155,8 @@ public class DealDeck extends CardStack {
 	}
 
 	/**
+	 * Returns false if the deck through limit has been reached (no deals left).
+	 * Otherwise returns true (there are deals left).
 	 * 
 	 * @return
 	 */
@@ -158,7 +165,9 @@ public class DealDeck extends CardStack {
 	}
 
 	/**
-	 * 
+	 * Pops card(s) out of the deal deck based on the draw count. 
+	 * Pushes the card(s) into the discard pile. When the deck through limit has been reached,
+	 * displays an error dialog, that notifies the user. Then forbids the pops from the deal deck.
 	 */
 	public synchronized Card pop() {
 		if (isEmpty() == false) {
@@ -224,7 +233,7 @@ public class DealDeck extends CardStack {
 	}
 
 	/**
-	 * 
+	 * Used to undo the last move if it was a reset on the discard pile.
 	 */
 	public synchronized void undoPop() {
 		while (isEmpty() == false) {
@@ -244,6 +253,7 @@ public class DealDeck extends CardStack {
 	}
 
 	/**
+	 * Returns a clicked card.
 	 * 
 	 * @param point
 	 */
@@ -252,6 +262,7 @@ public class DealDeck extends CardStack {
 	}
 
 	/**
+	 * Checks if a certain card move is valid. Always returns false.
 	 * 
 	 * @param card
 	 */
@@ -260,6 +271,7 @@ public class DealDeck extends CardStack {
 	}
 
 	/**
+	 * Checks if a card stack move is valid. Always returns false.
 	 * 
 	 * @param stack
 	 */

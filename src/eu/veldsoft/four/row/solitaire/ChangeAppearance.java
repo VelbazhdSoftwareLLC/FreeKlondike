@@ -71,6 +71,13 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 	private JLabel cardBackLabel = new JLabel();
 	private JLabel backgroundLabel = new JLabel();
 
+	/**
+	 * Manages the Change Appearance dialog box.
+	 * 
+	 * @param parent
+	 * @param deckNumber
+	 * @param backgroundNumber
+	 */
 	public ChangeAppearance(JFrame parent, int deckNumber, int backgroundNumber) {
 		setTitle("Change Appearance");
 		setSize(400, 300);
@@ -85,6 +92,10 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 		setVisible(true);
 	}
 
+	/**
+	 * Manages the settings that can be changed via the Change Appearance menu.
+	 * The menu is used to set card back image and background image.
+	 */
 	private void setup() {
 		/*
 		 * Card backs.
@@ -168,6 +179,12 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 		ok.addActionListener(this);
 	}
 
+	/**
+	 * Returns the number that is used to set the card back image.
+	 * The number represents the one of the images.
+	 * 
+	 * @return
+	 */
 	public int getDeckNumber() {
 		if (!exited) {
 			return deckNumber;
@@ -176,6 +193,12 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 		return -1;
 	}
 
+	/**
+	 * Returns the number that is used to set the background image.
+	 * The number represents one of the images.
+	 * 
+	 * @return
+	 */
 	public int getBackgroundNumber() {
 		if (!exited) {
 			return backgroundNumber;
@@ -184,6 +207,10 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 		return -1;
 	}
 
+	/**
+	 * Sets active card back and/or background, depending on what's been
+	 * selected from the menu.
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == decks[0]) {
 			deckNumber = 1;

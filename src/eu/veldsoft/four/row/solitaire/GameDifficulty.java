@@ -35,6 +35,7 @@ public enum GameDifficulty {
 	private int value;
 
 	/**
+	 * Sets the game difficulty based on the argument value.
 	 * 
 	 * @param value
 	 */
@@ -43,6 +44,7 @@ public enum GameDifficulty {
 	}
 
 	/**
+	 * Returns the game difficulty value.
 	 * 
 	 * @return
 	 */

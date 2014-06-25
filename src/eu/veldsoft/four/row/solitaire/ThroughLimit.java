@@ -32,6 +32,7 @@ public enum ThroughLimit {
 	private int throughs;
 
 	/**
+	 * Sets the number of deck throughs. 
 	 * 
 	 * @param throughs
 	 */
@@ -40,6 +41,7 @@ public enum ThroughLimit {
 	}
 
 	/**
+	 * Returns the number of deck throughs.
 	 * 
 	 * @return
 	 */

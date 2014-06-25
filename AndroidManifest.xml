@@ -30,6 +30,10 @@
             android:name="eu.veldsoft.four.row.solitaire.HelpActivity"
             android:label="@string/title_activity_help" >
         </activity>
+        <activity
+            android:name="eu.veldsoft.four.row.solitaire.BestTimesActivity"
+            android:label="@string/title_activity_best_times" >
+        </activity>
     </application>
 
 </manifest>
