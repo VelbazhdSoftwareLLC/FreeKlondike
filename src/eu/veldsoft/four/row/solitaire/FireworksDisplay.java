@@ -74,6 +74,13 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 
 	private Timer timer = new Timer(100, this);
 
+	/**
+	 * Sets the number of fireworks to be fired as well as their size.
+	 * 
+	 * @param num
+	 * 
+	 * @param size
+	 */
 	public FireworksDisplay(int num, int size) {
 		NUM_FIREWORKS = num;
 		FIREWORKS_SIZE = size;
@@ -130,6 +137,11 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 		timer.start();
 	}
 
+	/**
+	 * Generates a random number representing one of the colors below.
+	 * 
+	 * @return
+	 */
 	public Color randomColor() {
 		switch (Common.PRNG.nextInt(10)) {
 		case 0:

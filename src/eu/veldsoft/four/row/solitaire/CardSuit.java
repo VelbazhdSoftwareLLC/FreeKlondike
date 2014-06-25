@@ -20,6 +20,7 @@
 package eu.veldsoft.four.row.solitaire;
 
 /**
+ * Manages the card suit.
  * 
  * @author Todor Balabanov
  */
@@ -32,6 +33,7 @@ public enum CardSuit {
 	private String name;
 
 	/**
+	 * Sets the card suit.
 	 * 
 	 * @param name
 	 */
@@ -40,6 +42,7 @@ public enum CardSuit {
 	}
 
 	/**
+	 * Returns the card suit.
 	 * 
 	 * @return
 	 */
