@@ -14,14 +14,14 @@ public class BestTimesActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_best_times);
-		
+
 		((Button) findViewById(R.id.ok_best_times))
-		.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				finish();
-			}
-		});
+				.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						finish();
+					}
+				});
 
 	}
 }
