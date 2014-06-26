@@ -23,5 +23,8 @@
     <string name="title_activity_best_times">Best Times</string>
     <string name="clear_times_button">Clear Times</string>
     <string name="best_times_ok">OK</string>
-
+    <string name="title_activity_statistics">Statistics</string>
+    <string name="statistics_ok">OK</string>
+    <string name="reset_button">Reset</string>
+    
 </resources>
