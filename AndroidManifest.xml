@@ -34,6 +34,10 @@
             android:name="eu.veldsoft.four.row.solitaire.BestTimesActivity"
             android:label="@string/title_activity_best_times" >
         </activity>
+        <activity
+            android:name="eu.veldsoft.four.row.solitaire.StatisticsActivity"
+            android:label="@string/title_activity_statistics" >
+        </activity>
     </application>
 
 </manifest>
