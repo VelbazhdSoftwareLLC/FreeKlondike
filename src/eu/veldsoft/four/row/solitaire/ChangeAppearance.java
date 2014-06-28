@@ -48,7 +48,7 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static final int NUM_DECKS = 3;
+	public static final int NUM_DECKS = 4;
 	public static final int NUM_BACKGROUNDS = 3;
 
 	public static final int FRS_DECK = 3;
@@ -224,7 +224,12 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 			deckNumber = 3;
 			cardBackLabel.setIcon(new ImageIcon(this.getClass().getResource(
 					"images/cardbacks/cardback" + deckNumber + ".png")));
-		}
+		}else if(e.getSource()==decks[3]) {
+				deckNumber = 4;
+				cardBackLabel.setIcon(new ImageIcon(this.getClass().getResource(
+						"images/cardbacks/cardback" + deckNumber + ".png")));
+			}
+		
 
 		else if (e.getSource() == backgrounds[0]) {
 			backgroundNumber = 1;
