@@ -153,7 +153,7 @@ public class SolitaireBoard extends JFrame {
 	 */
 	public SolitaireBoard() {
 		setTitle("Four Row Solitaire");
-		setSize(800, 700);
+		setSize(806, 700);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);

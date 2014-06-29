@@ -161,54 +161,56 @@ public class SolitaireLayout implements LayoutManager {
 
 	/**
 	 * Sets the component's (card's) bounds by x and y and sets its width and height.
+	 * 
+	 * @param parent
 	 */
 	public void layoutContainer(Container parent) {
 		Component component;
 
 		if ((component = colOne) != null) {
-			component.setBounds(81, 115, 72, 800);
+			component.setBounds(95, 151, 72, 800);
 		}
 		if ((component = colTwo) != null) {
-			component.setBounds(164, 115, 72, 800);
+			component.setBounds(191, 151, 72, 800);
 		}
 		if ((component = colThree) != null) {
-			component.setBounds(247, 115, 72, 800);
+			component.setBounds(287, 151, 72, 800);
 		}
 		if ((component = colFour) != null) {
-			component.setBounds(330, 115, 72, 800);
+			component.setBounds(383, 151, 72, 800);
 		}
 
 		if ((component = aceSpades) != null) {
-			component.setBounds(568, 3, 72, 96);
+			component.setBounds(568, 31, 72, 96);
 		}
 		if ((component = aceClubs) != null) {
-			component.setBounds(650, 3, 72, 96);
+			component.setBounds(664, 31, 72, 96);
 		}
 		if ((component = aceDiamonds) != null) {
-			component.setBounds(568, 110, 72, 96);
+			component.setBounds(568, 149, 72, 96);
 		}
 		if ((component = aceHearts) != null) {
-			component.setBounds(650, 110, 72, 96);
+			component.setBounds(664, 149, 72, 96);
 		}
 
 		if ((component = discardPile) != null) {
-			component.setBounds(650, 318, 102, 96);
+			component.setBounds(664, 333, 102, 96);
 		}
 		if ((component = deck) != null) {
-			component.setBounds(568, 318, 72, 96);
+			component.setBounds(568, 333, 72, 96);
 		}
 
 		if ((component = cellOne) != null) {
-			component.setBounds(81, 3, 72, 96);
+			component.setBounds(95, 31, 72, 96);
 		}
 		if ((component = cellTwo) != null) {
-			component.setBounds(164, 3, 72, 96);
+			component.setBounds(191, 31, 72, 96);
 		}
 		if ((component = cellThree) != null) {
-			component.setBounds(247, 3, 72, 96);
+			component.setBounds(287, 31, 72, 96);
 		}
 		if ((component = cellFour) != null) {
-			component.setBounds(330, 3, 72, 96);
+			component.setBounds(383, 31, 72, 96);
 		}
 	}
 }
