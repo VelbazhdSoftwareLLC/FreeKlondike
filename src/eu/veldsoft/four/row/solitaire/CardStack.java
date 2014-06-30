@@ -95,7 +95,7 @@ public class CardStack extends JLayeredPane {
 		return stack;
 	}
 	/**
-	 * Used to pop the top card out of a stack.
+	 * Pops the top card out of a stack.
 	 * 
 	 * @return
 	 */

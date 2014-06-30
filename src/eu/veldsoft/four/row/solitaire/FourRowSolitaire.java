@@ -360,6 +360,7 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 
 	/**
 	 * Main function. Executes the game.
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -368,7 +369,9 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 	}
 
 	/**
-	 * Manages the game and the help menu.
+	 * Manages the game and the help menus.
+	 * 
+	 * @param e
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == newGame) {

@@ -300,6 +300,13 @@ public class SolitaireBoard extends JFrame {
 		mainPanel.revalidate();
 	}
 
+	/**
+	 * Used to deal the cards on the board after opening a saved game.
+	 * 
+	 * @param numbers
+	 * 
+	 * @param numViewableCards
+	 */
 	private void dealOutCustomBoard(LinkedList<Integer> numbers,
 			int numViewableCards) {
 		LinkedList<Card> cards = (LinkedList<Card>) Deck
@@ -999,6 +1006,7 @@ public class SolitaireBoard extends JFrame {
 
 	/**
 	 * Sets draw count.
+	 * 
 	 * @param draw
 	 */
 	public void setDrawCount(int draw) {
@@ -1020,6 +1028,7 @@ public class SolitaireBoard extends JFrame {
 
 	/**
 	 * Sets the new draw count.
+	 * 
 	 * @param draw
 	 */
 	public void setNewDrawCount(int draw) {
@@ -1086,6 +1095,7 @@ public class SolitaireBoard extends JFrame {
 
 	/**
 	 * Returns the timer status.
+	 * 
 	 * @return
 	 */
 	public int getTimerStatus() {
@@ -1115,6 +1125,7 @@ public class SolitaireBoard extends JFrame {
 
 	/**
 	 * Sets the timer counter.
+	 * 
 	 * @param time
 	 */
 	public void setTimer(int time) {
@@ -1159,6 +1170,7 @@ public class SolitaireBoard extends JFrame {
 
 	/**
 	 * Sets the number of times through deck.
+	 * 
 	 * @param deckThroughs
 	 */
 	public void setDeckThroughs(int deckThroughs) {
@@ -1477,9 +1489,9 @@ public class SolitaireBoard extends JFrame {
 	}
 
 	/**
-	 * Manages the mouse moves.
+	 * Manages the mouse events.
 	 * 
-	 * @author Konstantin Tsanov
+	 * @author Todor Balabanov
 	 *
 	 */
 	private class MyMouseListener extends MouseInputAdapter {
@@ -1508,6 +1520,9 @@ public class SolitaireBoard extends JFrame {
 		 */
 		private boolean rightClicked = false;
 
+		/**
+		 * Checks if the game is won
+		 */
 		private void checkWin() {
 			for (int i = 0; i < acePiles.length; i++) {
 				if (acePiles[i].isEmpty()
@@ -1562,6 +1577,11 @@ public class SolitaireBoard extends JFrame {
 			}
 		}
 
+		/**
+		 * Mouse-pressed event.
+		 * 
+		 * @param e
+		 */
 		public void mousePressed(MouseEvent e) {
 			if (e.getButton() == MouseEvent.BUTTON3
 					&& e.getSource() == discardPile) {
@@ -1575,6 +1595,11 @@ public class SolitaireBoard extends JFrame {
 			}
 		}
 
+		/**
+		 * Mouse-released event.
+		 * 
+		 * @param e
+		 */
 		public void mouseReleased(MouseEvent e) {
 			if (e.getButton() == MouseEvent.BUTTON3 && tempCard != null) {
 				discardPile.push(tempCard);
@@ -1584,6 +1609,11 @@ public class SolitaireBoard extends JFrame {
 			}
 		}
 
+		/**
+		 * Mouse-clicked event.
+		 * 
+		 * @param e
+		 */
 		public void mouseClicked(MouseEvent e) {
 			discardPile.repaint();
 			discardPile.revalidate();
@@ -1843,10 +1873,16 @@ public class SolitaireBoard extends JFrame {
 	/**
 	 * Timer displaying.
 	 * 
-	 * @author Konstantin Tsanov
+	 * @author Todor Balabanov
 	 *
 	 */
 	private class TimerListener implements ActionListener {
+		
+		/**
+		 * Action performed
+		 * 
+		 * @param e
+		 */
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() != timer) {
 				return;
@@ -1860,10 +1896,16 @@ public class SolitaireBoard extends JFrame {
 	/**
 	 * Manages the window events.
 	 * 
-	 * @author Konstantin Tsanov
+	 * @author Todor Balabanov
 	 *
 	 */
 	public class MyWindowListener extends WindowAdapter {
+		
+		/**
+		 * On closing the main window:
+		 * 
+		 * @param e
+		 */
 		public void windowClosing(WindowEvent e) {
 			int save = JOptionPane
 					.showConfirmDialog(

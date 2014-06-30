@@ -71,6 +71,10 @@ public class SolitaireLayout implements LayoutManager {
 
 	/**
 	 * Adds components (cards) to the board. The user can interact with the cards.
+	 * 
+	 * @param name
+	 * 
+	 * @param component
 	 */
 	public void addLayoutComponent(String name, Component component) {
 		if (name.equals(COLUMN_ONE)) {
@@ -112,6 +116,8 @@ public class SolitaireLayout implements LayoutManager {
 
 	/**
 	 * Removes a component from the game board.
+	 * 
+	 * @param component
 	 */
 	public void removeLayoutComponent(Component component) {
 		if (colOne == component) {
@@ -151,16 +157,26 @@ public class SolitaireLayout implements LayoutManager {
 		}
 	}
 
+	/**
+	 * Implemented, unsupported function.
+	 * 
+	 * @param parent
+	 */
 	public Dimension preferredLayoutSize(Container parent) {
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
 
+	/**
+	 * Implemented, unsupported function.
+	 * 
+	 * @param parent.
+	 */
 	public Dimension minimumLayoutSize(Container parent) {
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
 
 	/**
-	 * Sets the component's (card's) bounds by x and y and sets its width and height.
+	 * Sets the component's (card's) bounds by x and y and sets their width and height.
 	 * 
 	 * @param parent
 	 */

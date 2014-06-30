@@ -75,7 +75,9 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 	 * Manages the Change Appearance dialog box.
 	 * 
 	 * @param parent
+	 * 
 	 * @param deckNumber
+	 * 
 	 * @param backgroundNumber
 	 */
 	public ChangeAppearance(JFrame parent, int deckNumber, int backgroundNumber) {
@@ -210,6 +212,8 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 	/**
 	 * Sets active card back and/or background, depending on what's been
 	 * selected from the menu.
+	 * 
+	 * @param e
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == decks[0]) {
