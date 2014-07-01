@@ -39,6 +39,24 @@ public class MenuActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu);
 
+		((Button) findViewById(R.id.statistics_button))
+				.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						MenuActivity.this.startActivity(new Intent(
+								MenuActivity.this, StatisticsActivity.class));
+					}
+				});
+
+		((Button) findViewById(R.id.best_times_button))
+				.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						MenuActivity.this.startActivity(new Intent(
+								MenuActivity.this, BestTimesActivity.class));
+					}
+				});
+
 		((Button) findViewById(R.id.view_help_button))
 				.setOnClickListener(new OnClickListener() {
 					@Override
@@ -67,7 +85,7 @@ public class MenuActivity extends Activity {
 										R.string.check_for_updates_url))));
 					}
 				});
-		
+
 		((Button) findViewById(R.id.exit_button))
 				.setOnClickListener(new OnClickListener() {
 					@Override

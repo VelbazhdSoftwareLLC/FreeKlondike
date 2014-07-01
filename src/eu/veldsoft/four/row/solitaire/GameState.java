@@ -20,6 +20,7 @@
 package eu.veldsoft.four.row.solitaire;
 
 /**
+ * Represents the game states.
  * 
  * @author Todor Balabanov
  */

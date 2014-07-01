@@ -45,7 +45,7 @@ public class SolitairePanel extends JPanel {
 	private Image background;
 
 	/**
-	 * 
+	 *Sets the field image.
 	 */
 	public SolitairePanel() {
 		URL imageURL = this.getClass().getResource(
@@ -58,6 +58,8 @@ public class SolitairePanel extends JPanel {
 	}
 
 	/**
+	 * Used to change the background image, based on the argument back. 
+	 * The number represents a certain background image.
 	 * 
 	 * @param back
 	 */
@@ -74,6 +76,11 @@ public class SolitairePanel extends JPanel {
 		repaint();
 	}
 
+	/**
+	 * Draws the board's background.
+	 * 
+	 * @param g
+	 */
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(background, 0, 0, null);

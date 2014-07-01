@@ -53,6 +53,10 @@ public class WinScreen extends JFrame {
 
 	private SoundThread sound = null;
 
+	/**
+	 * If the sound settings are on, plays the win sounds.
+	 * If the animation settings are on, fires the fireworks.
+	 */
 	public WinScreen() {
 		setUndecorated(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -100,6 +104,12 @@ public class WinScreen extends JFrame {
 		});
 	}
 
+	/**
+	 * Creates the sound thread. The sound thread is called only when the sounds are turned on.
+	 * Manages the sounds.
+	 * 
+	 * @author Todor Balabanov
+	 */
 	private class SoundThread extends Thread {
 		public Sequencer sequencer;
 

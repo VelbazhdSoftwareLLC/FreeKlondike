@@ -88,6 +88,21 @@ public class ChangeOptions extends JDialog implements ActionListener {
 
 	private boolean exited = true;
 
+	/**
+	 * Manages the Change Options menu.
+	 * 
+	 * @param parent
+	 * 
+	 * @param currentDraw
+	 * 
+	 * @param timer
+	 * 
+	 * @param animation
+	 * 
+	 * @param sounds
+	 * 
+	 * @param difficulty
+	 */
 	public ChangeOptions(JFrame parent, int currentDraw, int timer,
 			int animation, int sounds, int difficulty) {
 		setTitle("Options");
@@ -106,6 +121,11 @@ public class ChangeOptions extends JDialog implements ActionListener {
 		setVisible(true);
 	}
 
+	/**
+	 * Manages the settings that can be changed via the Change Appearance menu.
+	 * The menu is used to set difficulty, card draw count, timer, sounds and animations.
+	 * 
+	 */
 	private void setup() {
 		ButtonGroup drawCards = new ButtonGroup();
 		drawCards.add(drawOne);
@@ -199,6 +219,11 @@ public class ChangeOptions extends JDialog implements ActionListener {
 		ok.addActionListener(this);
 	}
 
+	/**
+	 * Returns the draw count (1 or 3).
+	 * 
+	 * @return
+	 */
 	public int getDrawCount() {
 		if (!exited) {
 			return drawCount;
@@ -208,6 +233,11 @@ public class ChangeOptions extends JDialog implements ActionListener {
 
 	}
 
+	/**
+	 * Returns whether the timer is switched on or not (1 or 0).
+	 * 
+	 * @return
+	 */
 	public int getTimer() {
 		if (!exited) {
 			return timer;
@@ -216,6 +246,11 @@ public class ChangeOptions extends JDialog implements ActionListener {
 		return -1;
 	}
 
+	/**
+	 * Returns whether the animations are switched on or not (1 or 0).
+	 * 
+	 * @return
+	 */
 	public int getAnimation() {
 		if (!exited) {
 			return animation;
@@ -224,6 +259,11 @@ public class ChangeOptions extends JDialog implements ActionListener {
 		return -1;
 	}
 
+	/**
+	 * Returns whether the sounds are switched on or not (1 or 0).
+	 * 
+	 * @return
+	 */
 	public int getSounds() {
 		if (!exited) {
 			return sounds;
@@ -232,10 +272,22 @@ public class ChangeOptions extends JDialog implements ActionListener {
 		return -1;
 	}
 
+	/**
+	 * Returns the current difficulty (1-easy,2-medium or 3-hard).
+	 * 
+	 * @return
+	 */
 	public int getDifficulty() {
 		return difficulty;
 	}
 
+	/**
+	 * Depending on the action performed turns on and off the timer, animations or sounds,
+	 * changes the difficulty and/or the draw count.
+	 * Lastly - used to save these changes.
+	 * 
+	 * @param e
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == drawOne) {
 			drawCount = 1;

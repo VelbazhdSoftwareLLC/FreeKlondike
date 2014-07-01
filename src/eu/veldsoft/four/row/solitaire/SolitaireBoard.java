@@ -147,9 +147,13 @@ public class SolitaireBoard extends JFrame {
 
 	private LinkedList<Integer> numCardsInDiscardView = new LinkedList<Integer>();
 
+	/**
+	 * Sets the board's window name, size, location, close button option,
+	 * makes it unresizable and puts the logo on it.
+	 */
 	public SolitaireBoard() {
 		setTitle("Four Row Solitaire");
-		setSize(800, 700);
+		setSize(806, 700);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
@@ -161,6 +165,13 @@ public class SolitaireBoard extends JFrame {
 		addWindowListener(wl);
 	}
 
+	/**
+	 * Creates the solitaire board.
+	 * 
+	 * @param cards
+	 * 
+	 * @param numViewableCards
+	 */
 	public void createBoard(LinkedList<Integer> cards, int numViewableCards) {
 		mainPanel = new SolitairePanel();
 		mainPanel.setLayout(new SolitaireLayout());
@@ -234,6 +245,9 @@ public class SolitaireBoard extends JFrame {
 		}
 	}
 
+	/**
+	 * Deals the cards.
+	 */
 	private void dealOutBoard() {
 		LinkedList<Card> cards = (LinkedList<Card>) Deck.getFullShuffledDeck();
 
@@ -286,6 +300,13 @@ public class SolitaireBoard extends JFrame {
 		mainPanel.revalidate();
 	}
 
+	/**
+	 * Used to deal the cards on the board after opening a saved game.
+	 * 
+	 * @param numbers
+	 * 
+	 * @param numViewableCards
+	 */
 	private void dealOutCustomBoard(LinkedList<Integer> numbers,
 			int numViewableCards) {
 		LinkedList<Card> cards = (LinkedList<Card>) Deck
@@ -337,6 +358,9 @@ public class SolitaireBoard extends JFrame {
 		mainPanel.revalidate();
 	}
 
+	/**
+	 * Clears the board.
+	 */
 	private void clearBoard() {
 		for (int i = 0; i < columns.length; i++) {
 			while (columns[i].isEmpty() == false) {
@@ -375,6 +399,11 @@ public class SolitaireBoard extends JFrame {
 		discardPile.repaint();
 	}
 
+	/**
+	 * For starting a new game.
+	 * 
+	 * @param winOrLoss
+	 */
 	public void newGame(GameState winOrLoss) {
 		/*
 		 * If the game was won, the win was already reported.
@@ -409,14 +438,25 @@ public class SolitaireBoard extends JFrame {
 		numCardsInDiscardView.clear();
 	}
 
+	/**
+	 * Used to reset the stats.
+	 */
 	public void resetStats() {
 		recordGame(GameState.RESET_STATS);
 	}
 
+	/**
+	 * Save options.
+	 */
 	public void saveOptions() {
 		recordGame(GameState.DO_NOTHING);
 	}
 
+	/**
+	 * Manages the game states.
+	 * 
+	 * @param winOrLoss
+	 */
 	private void recordGame(GameState winOrLoss) {
 		int count = 0, temp = 0;
 		int gamesPlayed1e = 0, gamesWon1e = 0, winStreak1e = 0, lossStreak1e = 0, currentStreak1e = 0;
@@ -941,6 +981,13 @@ public class SolitaireBoard extends JFrame {
 		}
 	}
 
+	/**
+	 * Manages the appaearance.
+	 * 
+	 * @param deck
+	 * 
+	 * @param background
+	 */
 	public void setAppearance(int deck, int background) {
 		deckNumber = deck;
 		backgroundNumber = background;
@@ -948,10 +995,20 @@ public class SolitaireBoard extends JFrame {
 		mainPanel.changeBackground(backgroundNumber);
 	}
 
+	/**
+	 * Returns the draw count.
+	 * 
+	 * @return
+	 */
 	public int getDrawCount() {
 		return drawCount;
 	}
 
+	/**
+	 * Sets draw count.
+	 * 
+	 * @param draw
+	 */
 	public void setDrawCount(int draw) {
 		drawCount = draw;
 
@@ -960,10 +1017,20 @@ public class SolitaireBoard extends JFrame {
 		}
 	}
 
+	/**
+	 * Returns the new draw count.
+	 * 
+	 * @return
+	 */
 	public int getNewDrawCount() {
 		return newDrawCount;
 	}
 
+	/**
+	 * Sets the new draw count.
+	 * 
+	 * @param draw
+	 */
 	public void setNewDrawCount(int draw) {
 		newDrawCount = draw;
 
@@ -972,10 +1039,20 @@ public class SolitaireBoard extends JFrame {
 		}
 	}
 
+	/**
+	 * Returns the deck number.
+	 * 
+	 * @return
+	 */
 	public int getDeckNumber() {
 		return deckNumber;
 	}
 
+	/**
+	 * Sets the deck number.
+	 * 
+	 * @param deckNum
+	 */
 	public void setDeckNumber(int deckNum) {
 		deckNumber = deckNum;
 
@@ -984,10 +1061,20 @@ public class SolitaireBoard extends JFrame {
 		}
 	}
 
+	/**
+	 * Returns the background number.
+	 * 
+	 * @return
+	 */
 	public int getBackgroundNumber() {
 		return backgroundNumber;
 	}
 
+	/**
+	 * Sets the background number.
+	 * 
+	 * @param backNum
+	 */
 	public void setBackgroundNumber(int backNum) {
 		backgroundNumber = backNum;
 
@@ -997,10 +1084,20 @@ public class SolitaireBoard extends JFrame {
 		}
 	}
 
+	/**
+	 * Returns next game timer status.
+	 * 
+	 * @return
+	 */
 	public int getTimerNextGameStatus() {
 		return timerToRunNextGame;
 	}
 
+	/**
+	 * Returns the timer status.
+	 * 
+	 * @return
+	 */
 	public int getTimerStatus() {
 		if (timer.isRunning()) {
 			return 1;
@@ -1009,6 +1106,11 @@ public class SolitaireBoard extends JFrame {
 		}
 	}
 
+	/**
+	 * Sets timer status.
+	 * 
+	 * @param timerInt
+	 */
 	public void setTimerStatus(int timerInt) {
 		if (timerInt == 1) {
 			timerToRunNextGame = 1;
@@ -1021,30 +1123,63 @@ public class SolitaireBoard extends JFrame {
 		}
 	}
 
+	/**
+	 * Sets the timer counter.
+	 * 
+	 * @param time
+	 */
 	public void setTimer(int time) {
 		timerCount = time;
 	}
 
+	/**
+	 * Returns game difficulty.
+	 * 
+	 * @return
+	 */
 	public GameDifficulty getDifficulty() {
 		return difficulty;
 	}
 
+	/**
+	 * Sets game difficulty.
+	 * 
+	 * @param difficulty
+	 */
 	public void setDifficulty(GameDifficulty difficulty) {
 		this.difficulty = difficulty;
 	}
 
+	/**
+	 * Returns the new difficulty.
+	 * 
+	 * @return
+	 */
 	public GameDifficulty getNewDifficulty() {
 		return newDifficulty;
 	}
 
+	/**
+	 * Sets the new difficulty.
+	 * 
+	 * @param newDifficulty
+	 */
 	public void setNewDifficulty(GameDifficulty newDifficulty) {
 		this.newDifficulty = newDifficulty;
 	}
 
+	/**
+	 * Sets the number of times through deck.
+	 * 
+	 * @param deckThroughs
+	 */
 	public void setDeckThroughs(int deckThroughs) {
 		dealDeck.setDeckThroughs(deckThroughs);
 	}
 
+	/**
+	 * Used to undo a made move.
+	 */
 	public synchronized void undoMove() {
 		if (sourceList.isEmpty()) {
 			return;
@@ -1149,6 +1284,9 @@ public class SolitaireBoard extends JFrame {
 	}
 
 	@SuppressWarnings("fallthrough")
+	/**
+	 * Manages the hints.
+	 */
 	public void getHint() {
 		CardStack source = new CardStack();
 		CardStack destination = new CardStack();
@@ -1350,6 +1488,12 @@ public class SolitaireBoard extends JFrame {
 		}
 	}
 
+	/**
+	 * Manages the mouse events.
+	 * 
+	 * @author Todor Balabanov
+	 *
+	 */
 	private class MyMouseListener extends MouseInputAdapter {
 		/**
 		 * If true, the player hasn't completed a move.
@@ -1376,6 +1520,9 @@ public class SolitaireBoard extends JFrame {
 		 */
 		private boolean rightClicked = false;
 
+		/**
+		 * Checks if the game is won
+		 */
 		private void checkWin() {
 			for (int i = 0; i < acePiles.length; i++) {
 				if (acePiles[i].isEmpty()
@@ -1430,6 +1577,11 @@ public class SolitaireBoard extends JFrame {
 			}
 		}
 
+		/**
+		 * Mouse-pressed event.
+		 * 
+		 * @param e
+		 */
 		public void mousePressed(MouseEvent e) {
 			if (e.getButton() == MouseEvent.BUTTON3
 					&& e.getSource() == discardPile) {
@@ -1443,6 +1595,11 @@ public class SolitaireBoard extends JFrame {
 			}
 		}
 
+		/**
+		 * Mouse-released event.
+		 * 
+		 * @param e
+		 */
 		public void mouseReleased(MouseEvent e) {
 			if (e.getButton() == MouseEvent.BUTTON3 && tempCard != null) {
 				discardPile.push(tempCard);
@@ -1452,6 +1609,11 @@ public class SolitaireBoard extends JFrame {
 			}
 		}
 
+		/**
+		 * Mouse-clicked event.
+		 * 
+		 * @param e
+		 */
 		public void mouseClicked(MouseEvent e) {
 			discardPile.repaint();
 			discardPile.revalidate();
@@ -1708,7 +1870,19 @@ public class SolitaireBoard extends JFrame {
 		}
 	}
 
+	/**
+	 * Timer displaying.
+	 * 
+	 * @author Todor Balabanov
+	 *
+	 */
 	private class TimerListener implements ActionListener {
+		
+		/**
+		 * Action performed
+		 * 
+		 * @param e
+		 */
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() != timer) {
 				return;
@@ -1719,7 +1893,19 @@ public class SolitaireBoard extends JFrame {
 		}
 	}
 
+	/**
+	 * Manages the window events.
+	 * 
+	 * @author Todor Balabanov
+	 *
+	 */
 	public class MyWindowListener extends WindowAdapter {
+		
+		/**
+		 * On closing the main window:
+		 * 
+		 * @param e
+		 */
 		public void windowClosing(WindowEvent e) {
 			int save = JOptionPane
 					.showConfirmDialog(
