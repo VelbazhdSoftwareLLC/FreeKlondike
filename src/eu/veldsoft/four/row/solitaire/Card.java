@@ -188,8 +188,7 @@ public class Card extends JComponent {
 	}
 
 	/**
-	 * Sets the card's highlighted front image,
-	 * 
+	 * Sets the card's highlighted front image.
 	 */
 	public void highlight() {
 		highlighted = true;
@@ -210,7 +209,6 @@ public class Card extends JComponent {
 
 	/**
 	 * Unhighlights a highlighted card. Sets back its unhighlighted face image.
-	 * 
 	 */
 	public void unhighlight() {
 		highlighted = false;
@@ -229,7 +227,6 @@ public class Card extends JComponent {
 
 	/**
 	 * Sets the card face-up and sets its face image.
-	 * 
 	 */
 	public void setFaceUp() {
 		faceUp = true;
@@ -247,7 +244,6 @@ public class Card extends JComponent {
 
 	/**
 	 * Sets the card face-down and sets its back image.
-	 * 
 	 */
 	public void setFaceDown() {
 		faceUp = false;
@@ -407,8 +403,9 @@ public class Card extends JComponent {
 	}
 
 	/**
+	 * Paint procedure.
 	 * 
-	 * @param g
+	 * @param g Graphic context.
 	 */
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);

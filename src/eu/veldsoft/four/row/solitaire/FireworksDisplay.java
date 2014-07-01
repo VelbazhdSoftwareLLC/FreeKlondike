@@ -95,6 +95,9 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 		setBackground(Color.BLACK);
 	}
 
+	/**
+	 * Fires the fireworks.
+	 */
 	public void restartDisplay() {
 		timer.stop();
 
@@ -169,6 +172,11 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 		return null;
 	}
 
+	/**
+	 * Paint procedure.
+	 * 
+	 * @param g
+	 */
 	public void paint(Graphics g) {
 		super.paint(g);
 
@@ -511,6 +519,11 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 		}
 	}
 
+	/**
+	 * Action performed.
+	 * 
+	 * @param e
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() != timer) {
 			return;

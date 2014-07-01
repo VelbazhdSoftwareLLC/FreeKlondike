@@ -44,6 +44,7 @@ public class DiscardPile extends CardStack {
 
 	/**
 	 * Returns the cards left from the last draw from the deal deck.
+	 * 
 	 * @return
 	 */
 	public int getNumViewableCards() {
@@ -52,6 +53,7 @@ public class DiscardPile extends CardStack {
 
 	/**
 	 * Sets the number of cards left from the last draw from the deck.
+	 * 
 	 * @param numViewableCards
 	 */
 	public void setView(int numViewableCards) {
@@ -60,6 +62,8 @@ public class DiscardPile extends CardStack {
 
 	/**
 	 * Adds a card to the pile of currently viewable cards.
+	 * 
+	 * @param card
 	 */
 	public void addCard(Card card) {
 		cardsLeftFromDraw++;
@@ -68,6 +72,8 @@ public class DiscardPile extends CardStack {
 
 	/**
 	 * Adds stack of cards to the pile of currently viewable cards.
+	 * 
+	 * @param stack
 	 */
 	public void addStack(CardStack stack) {
 		for (int i = stack.length(); i > 0; i--) {
@@ -78,6 +84,10 @@ public class DiscardPile extends CardStack {
 
 	/**
 	 * Adds a card to the pile of currently viewable cards and returns the card added.
+	 * 
+	 * @param card
+	 * 
+	 * @return
 	 */
 	public Card push(Card card) {
 		if (SolitaireBoard.drawCount == 1) {
@@ -91,6 +101,10 @@ public class DiscardPile extends CardStack {
 
 	/**
 	 * Adds a stack of cards to the pile of currently viewable cards and returns the cards added.
+	 * 
+	 * @param stack
+	 * 
+	 * @return
 	 */
 	public CardStack push(CardStack stack) {
 		if (SolitaireBoard.drawCount != 1
@@ -107,6 +121,8 @@ public class DiscardPile extends CardStack {
 
 	/**
 	 * Pops cards out of the stack of viewable cards.
+	 * 
+	 * @return
 	 */
 	public synchronized Card pop() {
 		Card card = super.pop();
@@ -126,6 +142,7 @@ public class DiscardPile extends CardStack {
 
 	/**
 	 * Used to undo the pop.
+	 * 
 	 * @return
 	 */
 	public synchronized Card undoPop() {
@@ -134,6 +151,10 @@ public class DiscardPile extends CardStack {
 
 	/**
 	 * Returns a card located at the position of a mouse click.
+	 * 
+	 * @param p
+	 *
+	 * @return
 	 */
 	public Card getCardAtLocation(Point p) {
 		return peek();
@@ -141,6 +162,10 @@ public class DiscardPile extends CardStack {
 
 	/**
 	 * Checks if a card move is valid.
+	 * 
+	 * @param card
+	 * 
+	 * @return
 	 */
 	public boolean isValidMove(Card card) {
 		if (card.getSource().equals("Deck")) {
@@ -152,6 +177,10 @@ public class DiscardPile extends CardStack {
 
 	/**
 	 * The stack moves are always false.
+	 * 
+	 * @param stack
+	 * 
+	 * @return
 	 */
 	public boolean isValidMove(CardStack stack) {
 		return false;
@@ -198,6 +227,8 @@ public class DiscardPile extends CardStack {
 
 	/**
 	 * Returns the stack of available cards.
+	 * 
+	 * @return
 	 */
 	public CardStack getAvailableCards() {
 		if (isEmpty() == true) {

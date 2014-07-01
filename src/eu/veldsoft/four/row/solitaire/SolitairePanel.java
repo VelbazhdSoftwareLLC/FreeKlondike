@@ -78,6 +78,8 @@ public class SolitairePanel extends JPanel {
 
 	/**
 	 * Draws the board's background.
+	 * 
+	 * @param g
 	 */
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);

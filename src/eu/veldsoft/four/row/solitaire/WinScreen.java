@@ -108,8 +108,7 @@ public class WinScreen extends JFrame {
 	 * Creates the sound thread. The sound thread is called only when the sounds are turned on.
 	 * Manages the sounds.
 	 * 
-	 * @author Konstantin Tsanov
-	 *
+	 * @author Todor Balabanov
 	 */
 	private class SoundThread extends Thread {
 		public Sequencer sequencer;

@@ -248,6 +248,7 @@ public class ChangeOptions extends JDialog implements ActionListener {
 
 	/**
 	 * Returns whether the animations are switched on or not (1 or 0).
+	 * 
 	 * @return
 	 */
 	public int getAnimation() {
@@ -260,6 +261,7 @@ public class ChangeOptions extends JDialog implements ActionListener {
 
 	/**
 	 * Returns whether the sounds are switched on or not (1 or 0).
+	 * 
 	 * @return
 	 */
 	public int getSounds() {
@@ -272,6 +274,7 @@ public class ChangeOptions extends JDialog implements ActionListener {
 
 	/**
 	 * Returns the current difficulty (1-easy,2-medium or 3-hard).
+	 * 
 	 * @return
 	 */
 	public int getDifficulty() {
@@ -282,6 +285,8 @@ public class ChangeOptions extends JDialog implements ActionListener {
 	 * Depending on the action performed turns on and off the timer, animations or sounds,
 	 * changes the difficulty and/or the draw count.
 	 * Lastly - used to save these changes.
+	 * 
+	 * @param e
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == drawOne) {

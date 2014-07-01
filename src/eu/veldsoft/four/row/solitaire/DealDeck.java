@@ -91,6 +91,7 @@ public class DealDeck extends CardStack {
 
 	/**
 	 * Returns the numTimesThroughDeck counter.
+	 * 
 	 * @return
 	 */
 	public int getDeckThroughs() {
@@ -280,6 +281,7 @@ public class DealDeck extends CardStack {
 	}
 
 	/**
+	 * Paint procedure.
 	 * 
 	 * @param g
 	 */
