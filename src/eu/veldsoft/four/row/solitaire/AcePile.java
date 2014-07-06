@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ import java.awt.Point;
  * 
  * Description: The AcePile class manages one of the four foundation stacks.
  * 
- * @author Matt Stephen
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public class AcePile extends CardStack {
 	/**
@@ -42,8 +42,8 @@ public class AcePile extends CardStack {
 	private CardSuit suit;
 
 	/**
-	 * Sets the pile's suit to be equal to the argument suit.
-	 * Can be Spades, Clubs, Hearts or Diamonds
+	 * Sets the pile's suit to be equal to the argument suit. Can be Spades,
+	 * Clubs, Hearts or Diamonds
 	 * 
 	 * @param suit
 	 */
@@ -71,13 +71,13 @@ public class AcePile extends CardStack {
 		if (isValidMove(card) == false) {
 			return null;
 		}
-			super.push(card);
-			return (card);
+		super.push(card);
+		return (card);
 	}
 
 	/**
-	 * Returns the top card from a stack of cards.
-	 * The card must be clicked first.
+	 * Returns the top card from a stack of cards. The card must be clicked
+	 * first.
 	 * 
 	 * @param point
 	 * 
@@ -109,8 +109,8 @@ public class AcePile extends CardStack {
 	}
 
 	/**
-	 * If trying to move an entire stack of two or more cards on top of 
-	 * one of the foundation piles returns false.
+	 * If trying to move an entire stack of two or more cards on top of one of
+	 * the foundation piles returns false.
 	 * 
 	 * @param stack
 	 * 
@@ -123,7 +123,8 @@ public class AcePile extends CardStack {
 	/**
 	 * Paint procedure.
 	 * 
-	 * @param g Graphic context.
+	 * @param g
+	 *            Graphic context.
 	 */
 	public void paint(Graphics g) {
 		super.paint(g);

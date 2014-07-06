@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+        <PreferenceCategory android:textSize="32sp" android:title="Appearance" android:padding ="10dp" ></PreferenceCategory>
+         <ListPreference 
+            android:defaultValue ="1"
+            android:entries ="@array/card_back_titles"
+            android:entryValues="@array/card_back_values"
+            android:key="card_backs"
+            android:title="@string/pref_card_back"
+            />
+        <ListPreference 
+            android:defaultValue ="1"
+            android:entries ="@array/background_titles"
+            android:entryValues="@array/background_values"
+            android:key="backgrounds"
+            android:title="@string/pref_background"
+            />
+    </PreferenceScreen>

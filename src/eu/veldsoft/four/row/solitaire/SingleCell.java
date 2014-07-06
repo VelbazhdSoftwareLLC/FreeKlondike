@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ import java.awt.Point;
  * Description: The SingleCell class manages an individual cell that can only
  * hold one card.
  * 
- * @author Matt Stephen
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public class SingleCell extends CardStack {
 	/**
@@ -63,7 +63,8 @@ public class SingleCell extends CardStack {
 	}
 
 	/**
-	 * Checks if the move is valid. If the cell is empty returns true, otherwise returns false.
+	 * Checks if the move is valid. If the cell is empty returns true, otherwise
+	 * returns false.
 	 * 
 	 * @param card
 	 * 

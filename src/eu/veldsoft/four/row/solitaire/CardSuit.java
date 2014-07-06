@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -22,13 +22,28 @@ package eu.veldsoft.four.row.solitaire;
 /**
  * Manages the card suit.
  * 
- * @author Todor Balabanov
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public enum CardSuit {
-	SPADES("Spades"), CLUBS("Clubs"), HEARTS("Hearts"), DIAMONDS("Diamonds");
+	/**
+	 * Enum list.
+	 */
+	SPADES("Spades"),
+	/**
+	 * 
+	 */
+	CLUBS("Clubs"),
+	/**
+	 * 
+	 */
+	HEARTS("Hearts"),
+	/**
+	 * 
+	 */
+	DIAMONDS("Diamonds");
 
 	/**
-	 * 	
+	 * Suit name.
 	 */
 	private String name;
 

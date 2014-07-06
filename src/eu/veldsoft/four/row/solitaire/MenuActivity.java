@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ import android.widget.Button;
 
 /**
  * 
- * @author Todor Balabanov
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public class MenuActivity extends Activity {
 
@@ -39,6 +39,15 @@ public class MenuActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu);
 
+		((Button) findViewById(R.id.new_game_button))
+		.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				MenuActivity.this.startActivity(new Intent(
+						MenuActivity.this, GameActivity.class));
+			}
+		});
+		
 		((Button) findViewById(R.id.statistics_button))
 				.setOnClickListener(new OnClickListener() {
 					@Override
@@ -54,6 +63,15 @@ public class MenuActivity extends Activity {
 					public void onClick(View v) {
 						MenuActivity.this.startActivity(new Intent(
 								MenuActivity.this, BestTimesActivity.class));
+					}
+				});
+
+		((Button) findViewById(R.id.settings_button))
+				.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						MenuActivity.this.startActivity(new Intent(
+								MenuActivity.this, SettingsActivity.class));
 					}
 				});
 

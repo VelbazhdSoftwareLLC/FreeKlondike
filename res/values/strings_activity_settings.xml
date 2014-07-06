@@ -1,0 +1,58 @@
+<resources>
+
+    <string name="title_activity_settings">Settings</string>
+    <string name="pref_card_draw">Card Draw</string>
+    <string-array name="pref_card_draw_titles">
+        <item>Draw One</item>
+        <item>Draw Three</item>
+    </string-array>
+    <string-array name="pref_card_draw_values">
+        <item>1</item>
+        <item>3</item>
+    </string-array>
+    
+     <string name="pref_game_diff">Difficulty</string>
+    <string-array name="pref_diff_titles">
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+    </string-array>
+    <string-array name="pref_diff_values">
+        <item>-1</item>
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string name="pref_timer">Enable timer</string>
+    <string name="pref_animations">Enable animations</string>
+    <string name="pref_sounds">Enable sounds</string>
+    
+   <string name="pref_card_back">Card Back</string>
+   <string-array name="card_back_titles">
+       <item>Back 1</item>
+       <item>Back 2</item>
+       <item>Back 3</item>
+       <item>Back 4</item>
+   </string-array>
+   <string-array name="card_back_values">
+       <item>1</item>
+       <item>2</item>
+       <item>3</item>
+       <item>4</item>
+   </string-array>
+   
+   <string name="pref_background">Background</string>
+   <string-array name="background_titles">
+       <item>Background 1</item>
+       <item>Background 2</item>
+       <item>Background 3</item>
+   </string-array>
+   <string-array name="background_values">
+       <item>1</item>
+       <item>2</item>
+       <item>3</item>
+   </string-array>
+   <string name="four_row_solitaire">Four Row Solitaire</string>
+    <!-- Strings related to Settings -->
+
+    <string name="pref_ringtone_silent">Silent</string>
+</resources>

@@ -7,8 +7,7 @@
     <string name="undo_last_move_button">Undo Last Move</string>
     <string name="hint_button">Hint</string>
     <string name="statistics_button">Statistics</string>
-    <string name="options_button">Options</string>
-    <string name="change_appearance_button">Change Appearance</string>
+    <string name="settings_button">Settings</string>
     <string name="best_times_button">Best Times</string>
     <string name="view_help_button">View Help</string>
     <string name="about_game_button">About Game</string>
@@ -26,5 +25,6 @@
     <string name="title_activity_statistics">Statistics</string>
     <string name="statistics_ok">OK</string>
     <string name="reset_button">Reset</string>
-    
+    <string name="title_activity_game">GameActivity</string>
+
 </resources>

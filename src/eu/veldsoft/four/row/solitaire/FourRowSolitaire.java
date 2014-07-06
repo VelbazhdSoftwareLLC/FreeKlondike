@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -46,7 +46,7 @@ import javax.swing.UIManager;
  * Description: The FourRowSolitaire class adds a menu to the SolitaireBoard
  * Frame.
  * 
- * @author Matt Stephen
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 	/**
@@ -59,22 +59,68 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 	 */
 	public static final String version = ".63";
 
+	/**
+	 * Menu bar.
+	 */
 	private JMenuBar menuBar = new JMenuBar();
 
+	/**
+	 * Game menu.
+	 */
 	private JMenu game = new JMenu("Game");
+	/**
+	 * Help menu.
+	 */
 	private JMenu helpMenu = new JMenu("Help");
 
+	/**
+	 * Submenus.
+	 * 
+	 * New game.
+	 */
 	private JMenuItem newGame = new JMenuItem("New Game");
+	/**
+	 * Undo
+	 */
 	private JMenuItem undo = new JMenuItem("Undo Last Move");
+	/**
+	 * Hint.
+	 */
 	private JMenuItem hint = new JMenuItem("Hint");
+	/**
+	 * Statistics.
+	 */
 	private JMenuItem statistics = new JMenuItem("Statistics");
+	/**
+	 * Options.
+	 */
 	private JMenuItem options = new JMenuItem("Options");
+	/**
+	 * Change Appearance.
+	 */
 	private JMenuItem appearance = new JMenuItem("Change Appearance");
+	/**
+	 * Best Times.
+	 */
 	private JMenuItem topTimes = new JMenuItem("Best Times");
+	/**
+	 * Exit.
+	 */
 	private JMenuItem exit = new JMenuItem("Exit");
 
+	/**
+	 * Submenus.
+	 * 
+	 * View Help.
+	 */
 	private JMenuItem help = new JMenuItem("View Help");
+	/**
+	 * About Game.
+	 */
 	private JMenuItem about = new JMenuItem("About Game");
+	/**
+	 * Check for Updates.
+	 */
 	private JMenuItem checkUpdate = new JMenuItem("Check for Updates");
 
 	/**
@@ -167,7 +213,8 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 	}
 
 	/**
-	 * Used to load the game data like difficulty, sounds, animations, previously saved games etc.
+	 * Used to load the game data like difficulty, sounds, animations,
+	 * previously saved games etc.
 	 */
 	private void loadData() {
 		String fileLocation = System.getProperty("user.home")
@@ -732,7 +779,7 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 					.showMessageDialog(
 							this,
 							"Four Row Solitaire was created by Matt Stephen and\n"
-									+ "programmed by Matt Stephen and Todor Balabanov.\n"
+									+ "programmed by Matt Stephen, Todor Balabanov, Konstantin Tsanov and Ventsislav Medarov.\n"
 									+ "\nYou can modify this code in accordance with GPL v3.0.\n"
 									+ "\nTo check if there is a newer version, go to:\n"
 									+ "github.com/TodorBalabanov/FourRowSolitaire",

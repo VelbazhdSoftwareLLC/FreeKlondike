@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ import javax.swing.JLayeredPane;
  * 
  * Description: The Cardstack class manages a location for cards to be placed.
  * 
- * @author Matt Stephen
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public class CardStack extends JLayeredPane {
 	/**
@@ -40,7 +40,7 @@ public class CardStack extends JLayeredPane {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 
+	 * Stack of cards.
 	 */
 	protected Vector<Card> cards = new Vector<Card>();
 
@@ -56,6 +56,7 @@ public class CardStack extends JLayeredPane {
 		card.setBounds(0, 0, 72, 96);
 		add(card, 0);
 	}
+
 	/**
 	 * Used to add a bunch of cards to a stack.
 	 * 
@@ -67,6 +68,7 @@ public class CardStack extends JLayeredPane {
 			addCard(card);
 		}
 	}
+
 	/**
 	 * Used to add a card to a stack and then to return the moved card.
 	 * 
@@ -76,11 +78,13 @@ public class CardStack extends JLayeredPane {
 	 */
 	public Card push(Card card) {
 		addCard(card);
-		
+
 		return card;
 	}
+
 	/**
-	 * Used to add a bunch of cards to a card stack and then to return empty stack.
+	 * Used to add a bunch of cards to a card stack and then to return empty
+	 * stack.
 	 * 
 	 * @param stack
 	 * 
@@ -94,6 +98,7 @@ public class CardStack extends JLayeredPane {
 		 */
 		return stack;
 	}
+
 	/**
 	 * Pops the top card out of a stack.
 	 * 
@@ -107,6 +112,7 @@ public class CardStack extends JLayeredPane {
 
 		return card;
 	}
+
 	/**
 	 * Temporary reverses the cards in a stack.
 	 * 
@@ -128,6 +134,7 @@ public class CardStack extends JLayeredPane {
 
 		return temp;
 	}
+
 	/**
 	 * Pops the top card out of a stack if possible. If not - returns null.
 	 * 
@@ -140,6 +147,7 @@ public class CardStack extends JLayeredPane {
 
 		return cards.lastElement();
 	}
+
 	/**
 	 * Checks if a stack is empty (has no cards inside).
 	 * 
@@ -148,6 +156,7 @@ public class CardStack extends JLayeredPane {
 	public boolean isEmpty() {
 		return cards.size() == 0;
 	}
+
 	/**
 	 * Returns the stack's length.
 	 * 
@@ -156,8 +165,10 @@ public class CardStack extends JLayeredPane {
 	public int length() {
 		return cards.size();
 	}
+
 	/**
-	 * Searches the stack for a specific card and returns its location in the stack.
+	 * Searches the stack for a specific card and returns its location in the
+	 * stack.
 	 * 
 	 * @param card
 	 * 
@@ -187,7 +198,7 @@ public class CardStack extends JLayeredPane {
 
 		return null;
 	}
-	
+
 	/**
 	 * Returns the card located at the coordinates of a mouse click.
 	 * 
@@ -264,11 +275,11 @@ public class CardStack extends JLayeredPane {
 
 		return true;
 	}
-	
+
 	/**
 	 * Searches the stack for a specific card. Creates a new temporary stack.
-	 * Clones the cards from the end towards the beginning of the stack into the temp stack.
-	 * Stops after it reaches the specific card.
+	 * Clones the cards from the end towards the beginning of the stack into the
+	 * temp stack. Stops after it reaches the specific card.
 	 * 
 	 * @param card
 	 * 
@@ -288,8 +299,8 @@ public class CardStack extends JLayeredPane {
 
 	/**
 	 * Searches the stack for a specified location, creates a temporary stack,
-	 * Clones the cards from the end towards the begining of the stack,
-	 * stops when it reaches the specified location.
+	 * Clones the cards from the end towards the begining of the stack, stops
+	 * when it reaches the specified location.
 	 * 
 	 * @param numCards
 	 * 
@@ -325,8 +336,7 @@ public class CardStack extends JLayeredPane {
 	}
 
 	/**
-	 * Checks if the move is valid.
-	 * Always returns false.
+	 * Checks if the move is valid. Always returns false.
 	 * 
 	 * @param card
 	 * 
@@ -337,8 +347,7 @@ public class CardStack extends JLayeredPane {
 	}
 
 	/**
-	 * Checks if the move is valid.
-	 * Always returns false.
+	 * Checks if the move is valid. Always returns false.
 	 * 
 	 * @param stack
 	 * 
@@ -367,9 +376,10 @@ public class CardStack extends JLayeredPane {
 	}
 
 	/**
-	 * Paint procedure. 
+	 * Paint procedure.
 	 * 
-	 * @param g Graphic context.
+	 * @param g
+	 *            Graphic context.
 	 */
 	public void paint(Graphics g) {
 		super.paint(g);

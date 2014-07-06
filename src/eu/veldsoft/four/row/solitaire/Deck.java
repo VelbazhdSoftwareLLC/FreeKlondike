@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ import java.util.List;
  * 
  * Description: The Deck class holds all the Cards to form a 52 card deck.
  * 
- * @author Matt Stephen
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public class Deck {
 	/**
@@ -37,8 +37,9 @@ public class Deck {
 	}
 
 	/**
-	 * Shuffles the integers in the array. Each integer represents a card.
-	 * Thus shuffling the cards. Then fills the deck with cards, equal to the elements in the array.
+	 * Shuffles the integers in the array. Each integer represents a card. Thus
+	 * shuffling the cards. Then fills the deck with cards, equal to the
+	 * elements in the array.
 	 * 
 	 * @param deck
 	 */
@@ -76,9 +77,9 @@ public class Deck {
 	}
 
 	/**
-	 * Creates a deck, then fills it with cards, based on the argument (list of integers). 
-	 * Each integer will represent a card in the deck. 
-	 * Then returns the deck.
+	 * Creates a deck, then fills it with cards, based on the argument (list of
+	 * integers). Each integer will represent a card in the deck. Then returns
+	 * the deck.
 	 * 
 	 * @param numbers
 	 * 

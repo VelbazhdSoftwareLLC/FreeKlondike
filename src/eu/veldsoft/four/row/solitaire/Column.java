@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -24,7 +24,7 @@ package eu.veldsoft.four.row.solitaire;
  * 
  * Description: The Column class manages a single column on the board.
  * 
- * @author Matt Stephen
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public class Column extends CardStack {
 	/**
@@ -50,8 +50,9 @@ public class Column extends CardStack {
 	}
 
 	/**
-	 * Checks if its possible to move a card to the top of one of the four columns.
-	 * The card must be lesser by one and to have different color than the current top card.
+	 * Checks if its possible to move a card to the top of one of the four
+	 * columns. The card must be lesser by one and to have different color than
+	 * the current top card.
 	 * 
 	 * @param card
 	 * 
@@ -71,8 +72,9 @@ public class Column extends CardStack {
 	}
 
 	/**
-	 * Checks if its possible to move a stack of cards on top of one of the four columns.
-	 * The bottom card from the stack must be lesser by one than the top card from the column.
+	 * Checks if its possible to move a stack of cards on top of one of the four
+	 * columns. The bottom card from the stack must be lesser by one than the
+	 * top card from the column.
 	 * 
 	 * @param stack
 	 * 
@@ -83,9 +85,10 @@ public class Column extends CardStack {
 	}
 
 	/**
-	 * Creates a stack and adds all of the available cards from a column into it.
-	 * The available cards are: the first card and every other after the first one that is
-	 * lesser and with different color than the previous one. Then returns the stack.
+	 * Creates a stack and adds all of the available cards from a column into
+	 * it. The available cards are: the first card and every other after the
+	 * first one that is lesser and with different color than the previous one.
+	 * Then returns the stack.
 	 * 
 	 * @return
 	 */

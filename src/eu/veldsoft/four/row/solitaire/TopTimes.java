@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, 2012 by pavlosn
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, 2012 by pavlosn
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -42,7 +42,7 @@ import javax.swing.JTextField;
  * Description: The TopTimes class manages the scoreboard, saves names and
  * times, also discards them.
  * 
- * @author pavlosn
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public class TopTimes extends JFrame implements ActionListener, KeyListener {
 	/**
@@ -50,6 +50,9 @@ public class TopTimes extends JFrame implements ActionListener, KeyListener {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * 
+	 */
 	private final int NUM_OF_RECORDS = 10;
 
 	private JTextField names[] = new JTextField[NUM_OF_RECORDS];
@@ -625,6 +628,10 @@ public class TopTimes extends JFrame implements ActionListener, KeyListener {
 		jButton.setEnabled(false);
 	}
 
+	/**
+	 * 
+	 * @param
+	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}
@@ -640,12 +647,13 @@ public class TopTimes extends JFrame implements ActionListener, KeyListener {
 		if (e.getKeyCode() != KeyEvent.VK_ENTER) {
 			return;
 		}
-			names[pos] = ((JTextField) e.getSource());
-			names[pos].setEditable(false);
-			names[pos].setBorder(null);
-			names[pos].getCaret().setVisible(false);
-			names[pos].removeKeyListener(this);
-			saveData();
+
+		names[pos] = ((JTextField) e.getSource());
+		names[pos].setEditable(false);
+		names[pos].setBorder(null);
+		names[pos].getCaret().setVisible(false);
+		names[pos].removeKeyListener(this);
+		saveData();
 	}
 
 	@Override

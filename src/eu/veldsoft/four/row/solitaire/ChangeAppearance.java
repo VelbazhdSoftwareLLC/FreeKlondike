@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -40,7 +40,7 @@ import javax.swing.JRadioButton;
  * Description: The ChangeAppearance class manages the ability to change the
  * background or card backs.
  * 
- * @author Matt Stephen
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public class ChangeAppearance extends JDialog implements ActionListener {
 	/**
@@ -48,27 +48,59 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Number of card backs.
+	 */
 	public static final int NUM_DECKS = 4;
+	/**
+	 * Number of card backgrounds.
+	 */
 	public static final int NUM_BACKGROUNDS = 3;
-
+	/**
+	 * Default deck number.
+	 */
 	public static final int FRS_DECK = 3;
+	/**
+	 * Default background number.
+	 */
 	public static final int FRS_BACKGROUND = 2;
 
+	/**
+	 * Array of buttons, used to select card back.
+	 */
 	private JRadioButton[] decks = new JRadioButton[NUM_DECKS];
 
+	/**
+	 * Array of buttons, used to select background.
+	 */
 	private JRadioButton[] backgrounds = new JRadioButton[NUM_BACKGROUNDS];
 
+	/**
+	 * OK button.
+	 */
 	private JButton ok = new JButton("Choose This Setup");
 
+	/**
+	 * Default deck number.
+	 */
 	public int deckNumber = 3;
+	/**
+	 * Default background number.
+	 */
 	public int backgroundNumber = 2;
 
+	/**
+	 * Exited.
+	 */
 	private boolean exited = true;
 
 	/**
 	 * To hold the image previews.
 	 */
 	private JLabel cardBackLabel = new JLabel();
+	/**
+	 * To hold the image previews.
+	 */
 	private JLabel backgroundLabel = new JLabel();
 
 	/**
@@ -106,8 +138,8 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 		cardBackPanel.setLayout(new FlowLayout());
 
 		ButtonGroup cardBacks = new ButtonGroup();
-		
-		for(int i = 0; i < decks.length; i++) {
+
+		for (int i = 0; i < decks.length; i++) {
 			decks[i] = new JRadioButton("Deck " + (i + 1));
 			cardBacks.add(decks[i]);
 			cardBackPanel.add(decks[i]);
@@ -182,8 +214,8 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 	}
 
 	/**
-	 * Returns the number that is used to set the card back image.
-	 * The number represents the one of the images.
+	 * Returns the number that is used to set the card back image. The number
+	 * represents the one of the images.
 	 * 
 	 * @return
 	 */
@@ -196,8 +228,8 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 	}
 
 	/**
-	 * Returns the number that is used to set the background image.
-	 * The number represents one of the images.
+	 * Returns the number that is used to set the background image. The number
+	 * represents one of the images.
 	 * 
 	 * @return
 	 */
@@ -228,12 +260,11 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 			deckNumber = 3;
 			cardBackLabel.setIcon(new ImageIcon(this.getClass().getResource(
 					"images/cardbacks/cardback" + deckNumber + ".png")));
-		}else if(e.getSource()==decks[3]) {
-				deckNumber = 4;
-				cardBackLabel.setIcon(new ImageIcon(this.getClass().getResource(
-						"images/cardbacks/cardback" + deckNumber + ".png")));
-			}
-		
+		} else if (e.getSource() == decks[3]) {
+			deckNumber = 4;
+			cardBackLabel.setIcon(new ImageIcon(this.getClass().getResource(
+					"images/cardbacks/cardback" + deckNumber + ".png")));
+		}
 
 		else if (e.getSource() == backgrounds[0]) {
 			backgroundNumber = 1;
