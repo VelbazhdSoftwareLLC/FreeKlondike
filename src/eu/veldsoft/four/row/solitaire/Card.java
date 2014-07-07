@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ import javax.swing.JComponent;
  * Description: The Card class holds information pertaining to 1 out of the 52
  * cards per deck.
  * 
- * @author Matt Stephen
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public class Card extends JComponent {
 	/**
@@ -59,17 +59,17 @@ public class Card extends JComponent {
 			null };
 
 	/**
-	 * 
+	 * Card suit.
 	 */
 	private CardSuit cardSuit;
 
 	/**
-	 * 
+	 * Card number.
 	 */
 	private CardRank cardNumber;
 
 	/**
-	 * 
+	 * Card color.
 	 */
 	private CardColor cardColor;
 
@@ -99,12 +99,12 @@ public class Card extends JComponent {
 	private String cardHighlighted;
 
 	/**
-	 * 
+	 * Is the card currently set face-up.
 	 */
 	private boolean faceUp = false;
 
 	/**
-	 * 
+	 * Is the card currently highlighted.
 	 */
 	private boolean highlighted = false;
 
@@ -117,6 +117,8 @@ public class Card extends JComponent {
 	 * It is used instead of constructor. Implement lazy initialization.
 	 * 
 	 * @param number
+	 * 
+	 * @return
 	 */
 	public static Card valueBy(int number) {
 		int index = number - 1;
@@ -158,8 +160,8 @@ public class Card extends JComponent {
 	}
 
 	/**
-	 * Private card constructor
-	 * Sets the card's suit, number, full number and back image. Also sets it face-up.
+	 * Private card constructor Sets the card's suit, number, full number and
+	 * back image. Also sets it face-up.
 	 * 
 	 * @param suit
 	 * 
@@ -269,7 +271,8 @@ public class Card extends JComponent {
 	}
 
 	/**
-	 * Sets the card's face image and highlighted face image based on its suit and rank.
+	 * Sets the card's face image and highlighted face image based on its suit
+	 * and rank.
 	 * 
 	 */
 	private void initializeCardImageString() {
@@ -405,7 +408,8 @@ public class Card extends JComponent {
 	/**
 	 * Paint procedure.
 	 * 
-	 * @param g Graphic context.
+	 * @param g
+	 *            Graphic context.
 	 */
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);

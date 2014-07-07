@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ import javax.swing.JPanel;
  * 
  * Description: The Solitaire Panel is the main playing field view.
  * 
- * @author Matt Stephen
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public class SolitairePanel extends JPanel {
 	/**
@@ -45,7 +45,7 @@ public class SolitairePanel extends JPanel {
 	private Image background;
 
 	/**
-	 *Sets the field image.
+	 * Sets the field image.
 	 */
 	public SolitairePanel() {
 		URL imageURL = this.getClass().getResource(
@@ -58,8 +58,8 @@ public class SolitairePanel extends JPanel {
 	}
 
 	/**
-	 * Used to change the background image, based on the argument back. 
-	 * The number represents a certain background image.
+	 * Used to change the background image, based on the argument back. The
+	 * number represents a certain background image.
 	 * 
 	 * @param back
 	 */

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+        <PreferenceCategory android:title="Options" android:padding ="10dp"></PreferenceCategory>
+        <ListPreference 
+            android:defaultValue ="1"
+            android:entries ="@array/pref_card_draw_titles"
+            android:entryValues="@array/pref_card_draw_values"
+            android:key="card_draw"
+            android:title="@string/pref_card_draw"
+            />
+        <ListPreference 
+            android:defaultValue ="-1"
+            android:entries ="@array/pref_diff_titles"
+            android:entryValues="@array/pref_diff_values"
+            android:key="select_diff"
+            android:title="@string/pref_game_diff"
+            />
+        <CheckBoxPreference 
+            android:defaultValue="true"
+            android:key="timer_checkbox"
+            android:title="@string/pref_timer"
+            />
+        <CheckBoxPreference 
+            android:defaultValue="true"
+            android:key="anim_checkbox"
+            android:title="@string/pref_animations"/>
+        <CheckBoxPreference 
+            android:defaultValue="true"
+            android:key="sounds_checkbox"
+            android:title="@string/pref_sounds"/>
+    </PreferenceScreen>

@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -20,14 +20,22 @@
 package eu.veldsoft.four.row.solitaire;
 
 /**
+ * Card colors.
  * 
- * @author Todor Balabanov
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public enum CardColor {
-	BLACK(0), RED(1);
-
+	/**
+	 * Enum list.
+	 */
+	BLACK(0),
 	/**
 	 * 
+	 */
+	RED(1);
+
+	/**
+	 * Color index.
 	 */
 	private int index;
 

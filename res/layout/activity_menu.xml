@@ -51,57 +51,50 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
-    <Button
-        android:id="@+id/statistics_button"
+        <Button
+            android:id="@+id/statistics_button"
             style="@android:attr/buttonBarButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/statistics_button" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/statistics_button" />
 
-    <Button
-        android:id="@+id/options_button"
-            style="@android:attr/buttonBarButtonStyle"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/options_button" />
+        <Button
+            android:id="@+id/best_times_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/best_times_button" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/change_appearance_button"
+        android:id="@+id/settings_button"
+        style="@android:attr/buttonBarButtonStyle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/change_appearance_button" />
-
-    <Button
-        android:id="@+id/best_times_button"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/best_times_button" />
+        android:text="@string/settings_button" />
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:background="@android:color/darker_gray" />
 
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
-    <Button
-        android:id="@+id/view_help_button"
+        <Button
+            android:id="@+id/view_help_button"
             style="@android:attr/buttonBarButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/view_help_button" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/view_help_button" />
 
-    <Button
-        android:id="@+id/about_game_button"
+        <Button
+            android:id="@+id/about_game_button"
             style="@android:attr/buttonBarButtonStyle"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/about_game_button" />
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_game_button" />
     </LinearLayout>
 
     <Button

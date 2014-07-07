@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ import java.awt.Point;
  * Description: The DiscardPile class manages the stack of Cards discarded from
  * the deck.
  * 
- * @author Matt Stephen
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public class DiscardPile extends CardStack {
 	/**
@@ -38,7 +38,7 @@ public class DiscardPile extends CardStack {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Cards left from the last draw from the deal deck. 
+	 * Cards left from the last draw from the deal deck.
 	 */
 	private int cardsLeftFromDraw = 0;
 
@@ -83,7 +83,8 @@ public class DiscardPile extends CardStack {
 	}
 
 	/**
-	 * Adds a card to the pile of currently viewable cards and returns the card added.
+	 * Adds a card to the pile of currently viewable cards and returns the card
+	 * added.
 	 * 
 	 * @param card
 	 * 
@@ -100,7 +101,8 @@ public class DiscardPile extends CardStack {
 	}
 
 	/**
-	 * Adds a stack of cards to the pile of currently viewable cards and returns the cards added.
+	 * Adds a stack of cards to the pile of currently viewable cards and returns
+	 * the cards added.
 	 * 
 	 * @param stack
 	 * 
@@ -153,7 +155,7 @@ public class DiscardPile extends CardStack {
 	 * Returns a card located at the position of a mouse click.
 	 * 
 	 * @param p
-	 *
+	 * 
 	 * @return
 	 */
 	public Card getCardAtLocation(Point p) {
@@ -189,7 +191,8 @@ public class DiscardPile extends CardStack {
 	/**
 	 * Paint procedure.
 	 * 
-	 * @param g Graphic context.
+	 * @param g
+	 *            Graphic context.
 	 */
 	public void paint(Graphics g) {
 		super.paint(g);

@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -46,7 +46,7 @@ import javax.swing.event.MouseInputAdapter;
  * 
  * Description: The SolitaireBoard class manages the entire playing field.
  * 
- * @author Matt Stephen
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public class SolitaireBoard extends JFrame {
 	/**
@@ -120,16 +120,34 @@ public class SolitaireBoard extends JFrame {
 	 */
 	public MyWindowListener wl = new MyWindowListener();
 
+	/**
+	 * Timer.
+	 */
 	private Timer timer = new Timer(1000, new TimerListener());
 
+	/**
+	 * Status bar.
+	 */
 	private JPanel statusBar = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
+	/**
+	 * Timer label.
+	 */
 	private JLabel timerLabel = new JLabel("Time: OFF");
 
+	/**
+	 * Timer count.
+	 */
 	private int timerCount = 0;
 
+	/**
+	 * Timer to next game.
+	 */
 	private int timerToRunNextGame = 0;
 
+	/**
+	 * Timer to run.
+	 */
 	private boolean timerToRun = false;
 
 	/**
@@ -137,19 +155,34 @@ public class SolitaireBoard extends JFrame {
 	 */
 	private GameDifficulty difficulty = GameDifficulty.MEDIUM;
 
+	/**
+	 * Game difficulty.
+	 */
 	private GameDifficulty newDifficulty = difficulty;
 
+	/**
+	 * 
+	 */
 	private LinkedList<CardStack> sourceList = new LinkedList<CardStack>();
 
+	/**
+	 * 
+	 */
 	private LinkedList<CardStack> destinationList = new LinkedList<CardStack>();
 
+	/**
+	 * 
+	 */
 	private LinkedList<Integer> numCards = new LinkedList<Integer>();
 
+	/**
+	 * 
+	 */
 	private LinkedList<Integer> numCardsInDiscardView = new LinkedList<Integer>();
 
 	/**
-	 * Sets the board's window name, size, location, close button option,
-	 * makes it unresizable and puts the logo on it.
+	 * Sets the board's window name, size, location, close button option, makes
+	 * it unresizable and puts the logo on it.
 	 */
 	public SolitaireBoard() {
 		setTitle("Four Row Solitaire");
@@ -1178,115 +1211,115 @@ public class SolitaireBoard extends JFrame {
 	}
 
 	/**
-	 * Used to undo a made move.
+	 * Used to undo a move.
 	 */
 	public synchronized void undoMove() {
 		if (sourceList.isEmpty()) {
 			return;
 		}
-			/*
-			 * If player is holding on to a card.
-			 */
-			if (sourceList.size() > destinationList.size()) {
-				CardStack tempSource = sourceList.getLast();
-				sourceList.removeLast();
+		/*
+		 * If player is holding on to a card.
+		 */
+		if (sourceList.size() > destinationList.size()) {
+			CardStack tempSource = sourceList.getLast();
+			sourceList.removeLast();
 
-				int num = numCards.getLast();
-				numCards.removeLast();
+			int num = numCards.getLast();
+			numCards.removeLast();
 
-				int numDiscard = numCardsInDiscardView.getLast();
-				numCardsInDiscardView.removeLast();
+			int numDiscard = numCardsInDiscardView.getLast();
+			numCardsInDiscardView.removeLast();
 
-				if (num == 1) {
-					discardPile.setView(numDiscard);
-					tempSource.peek().unhighlight();
-
-					ml.clickedCard = null;
-					ml.hasSelected = false;
-					ml.singleCardSelected = false;
-					ml.temp = null;
-				} else {
-					for (int i = 0; i < num; i++) {
-						tempSource.getCardAtLocation(
-								tempSource.length() - i - 1).unhighlight();
-					}
-
-					ml.clickedCard = null;
-					ml.hasSelected = false;
-					ml.temp = null;
-				}
-
-				tempSource.repaint();
-			} else if (!(sourceList.getLast() instanceof DealDeck)) {
-				CardStack tempSource = sourceList.getLast();
-				CardStack tempDest = destinationList.getLast();
-				int num = numCards.getLast();
-				int numDiscard = numCardsInDiscardView.getLast();
-
-				sourceList.removeLast();
-				destinationList.removeLast();
-				numCards.removeLast();
-				numCardsInDiscardView.removeLast();
-
-				if (num == 1) {
-					tempSource.addCard(tempDest.pop());
-				} else {
-					CardStack temp = tempDest.undoStack(num);
-					tempSource.addStack(temp);
-				}
-
+			if (num == 1) {
 				discardPile.setView(numDiscard);
-				tempSource.repaint();
-				tempDest.repaint();
-			}
-			/*
-			 * The last draw from the deck didn't reset the discard pile to make
-			 * it an empty pile.
-			 */
-			else if (sourceList.getLast() instanceof DealDeck
-					&& !destinationList.getLast().isEmpty()) {
-				int num = numCards.getLast();
-				int numDiscard = numCardsInDiscardView.getLast();
+				tempSource.peek().unhighlight();
 
-				sourceList.removeLast();
-				destinationList.removeLast();
-				numCards.removeLast();
-				numCardsInDiscardView.removeLast();
-
+				ml.clickedCard = null;
+				ml.hasSelected = false;
+				ml.singleCardSelected = false;
+				ml.temp = null;
+			} else {
 				for (int i = 0; i < num; i++) {
-					Card card = discardPile.undoPop();
-					card.setFaceDown();
-					dealDeck.addCard(card);
+					tempSource.getCardAtLocation(tempSource.length() - i - 1)
+							.unhighlight();
 				}
 
-				discardPile.setView(numDiscard);
-				dealDeck.repaint();
-				discardPile.repaint();
+				ml.clickedCard = null;
+				ml.hasSelected = false;
+				ml.temp = null;
 			}
-			/*
-			 * Last move was a reset on the discard pile.
-			 */
-			else if (sourceList.getLast() instanceof DealDeck) {
-				dealDeck.undoPop();
 
-				int numDiscard = numCardsInDiscardView.getLast();
-				discardPile.setView(numDiscard);
+			tempSource.repaint();
+		} else if (!(sourceList.getLast() instanceof DealDeck)) {
+			CardStack tempSource = sourceList.getLast();
+			CardStack tempDest = destinationList.getLast();
+			int num = numCards.getLast();
+			int numDiscard = numCardsInDiscardView.getLast();
 
-				discardPile.repaint();
-				discardPile.revalidate();
-				dealDeck.repaint();
+			sourceList.removeLast();
+			destinationList.removeLast();
+			numCards.removeLast();
+			numCardsInDiscardView.removeLast();
 
-				sourceList.removeLast();
-				destinationList.removeLast();
-				numCards.removeLast();
-				numCardsInDiscardView.removeLast();
+			if (num == 1) {
+				tempSource.addCard(tempDest.pop());
+			} else {
+				CardStack temp = tempDest.undoStack(num);
+				tempSource.addStack(temp);
 			}
+
+			discardPile.setView(numDiscard);
+			tempSource.repaint();
+			tempDest.repaint();
+		}
+		/*
+		 * The last draw from the deck didn't reset the discard pile to make it
+		 * an empty pile.
+		 */
+		else if (sourceList.getLast() instanceof DealDeck
+				&& !destinationList.getLast().isEmpty()) {
+			int num = numCards.getLast();
+			int numDiscard = numCardsInDiscardView.getLast();
+
+			sourceList.removeLast();
+			destinationList.removeLast();
+			numCards.removeLast();
+			numCardsInDiscardView.removeLast();
+
+			for (int i = 0; i < num; i++) {
+				Card card = discardPile.undoPop();
+				card.setFaceDown();
+				dealDeck.addCard(card);
+			}
+
+			discardPile.setView(numDiscard);
+			dealDeck.repaint();
+			discardPile.repaint();
+		}
+		/*
+		 * Last move was a reset on the discard pile.
+		 */
+		else if (sourceList.getLast() instanceof DealDeck) {
+			dealDeck.undoPop();
+
+			int numDiscard = numCardsInDiscardView.getLast();
+			discardPile.setView(numDiscard);
+
+			discardPile.repaint();
+			discardPile.revalidate();
+			dealDeck.repaint();
+
+			sourceList.removeLast();
+			destinationList.removeLast();
+			numCards.removeLast();
+			numCardsInDiscardView.removeLast();
+		}
 	}
 
-	@SuppressWarnings("fallthrough")
 	/**
 	 * Manages the hints.
 	 */
+	@SuppressWarnings("fallthrough")
 	public void getHint() {
 		CardStack source = new CardStack();
 		CardStack destination = new CardStack();
@@ -1491,8 +1524,9 @@ public class SolitaireBoard extends JFrame {
 	/**
 	 * Manages the mouse events.
 	 * 
-	 * @author Todor Balabanov
-	 *
+	 * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav
+	 *         Medarov
+	 * 
 	 */
 	private class MyMouseListener extends MouseInputAdapter {
 		/**
@@ -1505,9 +1539,21 @@ public class SolitaireBoard extends JFrame {
 		 */
 		private boolean singleCardSelected = false;
 
+		/**
+		 * 
+		 */
 		private Card clickedCard;
+		/**
+		 * 
+		 */
 		private CardStack source;
+		/**
+		 * 
+		 */
 		private CardStack destination;
+		/**
+		 * 
+		 */
 		private CardStack temp;
 
 		/**
@@ -1873,11 +1919,12 @@ public class SolitaireBoard extends JFrame {
 	/**
 	 * Timer displaying.
 	 * 
-	 * @author Todor Balabanov
-	 *
+	 * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav
+	 *         Medarov
+	 * 
 	 */
 	private class TimerListener implements ActionListener {
-		
+
 		/**
 		 * Action performed
 		 * 
@@ -1887,20 +1934,21 @@ public class SolitaireBoard extends JFrame {
 			if (e.getSource() != timer) {
 				return;
 			}
-				timerCount++;
-				timerLabel.setText("Time: " + timerCount);
-				statusBar.repaint();
+			timerCount++;
+			timerLabel.setText("Time: " + timerCount);
+			statusBar.repaint();
 		}
 	}
 
 	/**
 	 * Manages the window events.
 	 * 
-	 * @author Todor Balabanov
-	 *
+	 * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav
+	 *         Medarov
+	 * 
 	 */
 	public class MyWindowListener extends WindowAdapter {
-		
+
 		/**
 		 * On closing the main window:
 		 * 

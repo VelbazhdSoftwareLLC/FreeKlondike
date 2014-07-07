@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ import javax.swing.JOptionPane;
  * Description: The DealDeck class manages the leftover cards after the deal
  * out.
  * 
- * @author Matt Stephen
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public class DealDeck extends CardStack {
 	/**
@@ -46,22 +46,23 @@ public class DealDeck extends CardStack {
 	private DiscardPile discardPile;
 
 	/**
-	 * 
+	 * Counter. Counts how many times we've gone through the deck.
 	 */
 	private int numTimesThroughDeck = 1;
 
 	/**
-	 * 
+	 * Deck through limit. An integer, representing the allowed number of deck throughs.
 	 */
 	private int deckThroughLimit;
 
 	/**
-	 * 
+	 * True by default. Keeps track if the deck is redealable.
 	 */
 	private boolean redealable = true;
 
 	/**
-	 * Sets the discard pile and the deck through limit, based on the draw count.
+	 * Sets the discard pile and the deck through limit, based on the draw
+	 * count.
 	 * 
 	 * @param discard
 	 */
@@ -99,7 +100,8 @@ public class DealDeck extends CardStack {
 	}
 
 	/**
-	 * Sets the numTimesThroughDeck counter to be equal to the argument throughs.
+	 * Sets the numTimesThroughDeck counter to be equal to the argument
+	 * throughs.
 	 * 
 	 * @param throughs
 	 */
@@ -166,9 +168,10 @@ public class DealDeck extends CardStack {
 	}
 
 	/**
-	 * Pops card(s) out of the deal deck based on the draw count. 
-	 * Pushes the card(s) into the discard pile. When the deck through limit has been reached,
-	 * displays an error dialog, that notifies the user. Then forbids the pops from the deal deck.
+	 * Pops card(s) out of the deal deck based on the draw count. Pushes the
+	 * card(s) into the discard pile. When the deck through limit has been
+	 * reached, displays an error dialog, that notifies the user. Then forbids
+	 * the pops from the deal deck.
 	 */
 	public synchronized Card pop() {
 		if (isEmpty() == false) {

@@ -2,7 +2,7 @@
 
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ import javax.swing.Timer;
  * Description: The FireworksDisplay class manages the win animation for Four
  * Row Solitaire.
  * 
- * @author Matt Stephen
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public class FireworksDisplay extends JPanel implements ActionListener {
 	/**
@@ -42,20 +42,38 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Number of fireworks.
+	 */
 	public final int NUM_FIREWORKS;
 
+	/**
+	 * Fireworks size.
+	 */
 	public final int FIREWORKS_SIZE;
 
+	/**
+	 * Delay.
+	 */
 	public static final int SET_DELAY = 10;
 
+	/**
+	 * 
+	 */
 	public static final int FIREWORKS_TIME = 30;
 
+	/**
+	 * Custom color.
+	 */
 	private static final Color CUSTOM_COLOR_1 = new Color(153, 50, 205);
 
 	private int[] x;
 
 	private int[] y;
 
+	/**
+	 * Array of colors.
+	 */
 	private Color[] colors;
 
 	/**
@@ -72,6 +90,9 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 	private int numSets = 0;
 	private int startValue = 0;
 
+	/**
+	 * Timer.
+	 */
 	private Timer timer = new Timer(100, this);
 
 	/**
@@ -528,19 +549,19 @@ public class FireworksDisplay extends JPanel implements ActionListener {
 		if (e.getSource() != timer) {
 			return;
 		}
-			if (num >= FIREWORKS_TIME) {
-				num = 0;
-				numSets++;
+		if (num >= FIREWORKS_TIME) {
+			num = 0;
+			numSets++;
 
-				startValue = Common.PRNG.nextInt(x.length / 2);
-			}
+			startValue = Common.PRNG.nextInt(x.length / 2);
+		}
 
-			num++;
+		num++;
 
-			if (numSets >= 26) {
-				timer.stop();
-			} else {
-				repaint();
-			}
+		if (numSets >= 26) {
+			timer.stop();
+		} else {
+			repaint();
+		}
 	}
 }

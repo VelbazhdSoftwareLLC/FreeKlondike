@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -41,7 +41,7 @@ import javax.swing.border.TitledBorder;
  * Description: The ChangeOptions class manages several game options, such as
  * the draw count (1 or 3).
  * 
- * @author Matt Stephen
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public class ChangeOptions extends JDialog implements ActionListener {
 	/**
@@ -49,11 +49,22 @@ public class ChangeOptions extends JDialog implements ActionListener {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Default draw count.
+	 */
 	private int drawCount = 1;
 
+	/**
+	 * Draw count buttons.
+	 */
 	private JRadioButton drawOne = new JRadioButton("Draw One");
+	/**
+	 * Radio button.
+	 */
 	private JRadioButton drawThree = new JRadioButton("Draw Three");
-
+	/**
+	 * Checkbox.
+	 */
 	private JCheckBox timerCheck = new JCheckBox("Timer");
 
 	/**
@@ -61,6 +72,9 @@ public class ChangeOptions extends JDialog implements ActionListener {
 	 */
 	private int timer = 0;
 
+	/**
+	 * Checkbox.
+	 */
 	private JCheckBox winAnimationCheck = new JCheckBox("Win Animation");
 
 	/**
@@ -68,6 +82,9 @@ public class ChangeOptions extends JDialog implements ActionListener {
 	 */
 	private int animation = 0;
 
+	/**
+	 * Sounds on/off checkbox.
+	 */
 	private JCheckBox winSoundsCheck = new JCheckBox("Win Sounds");
 
 	/**
@@ -80,12 +97,27 @@ public class ChangeOptions extends JDialog implements ActionListener {
 	 */
 	private int difficulty = 2;
 
+	/**
+	 * Difficulty radio buttons.
+	 */
 	private JRadioButton easy = new JRadioButton("Easy");
+	/**
+	 * Radio button.
+	 */
 	private JRadioButton medium = new JRadioButton("Medium", true);
+	/**
+	 * Radio button.
+	 */
 	private JRadioButton hard = new JRadioButton("Hard");
 
+	/**
+	 * 'Accept options' button.
+	 */
 	private JButton ok = new JButton("Accept Options");
 
+	/**
+	 * Exited boolean
+	 */
 	private boolean exited = true;
 
 	/**
@@ -123,7 +155,8 @@ public class ChangeOptions extends JDialog implements ActionListener {
 
 	/**
 	 * Manages the settings that can be changed via the Change Appearance menu.
-	 * The menu is used to set difficulty, card draw count, timer, sounds and animations.
+	 * The menu is used to set difficulty, card draw count, timer, sounds and
+	 * animations.
 	 * 
 	 */
 	private void setup() {
@@ -282,9 +315,9 @@ public class ChangeOptions extends JDialog implements ActionListener {
 	}
 
 	/**
-	 * Depending on the action performed turns on and off the timer, animations or sounds,
-	 * changes the difficulty and/or the draw count.
-	 * Lastly - used to save these changes.
+	 * Depending on the action performed turns on and off the timer, animations
+	 * or sounds, changes the difficulty and/or the draw count. Lastly - used to
+	 * save these changes.
 	 * 
 	 * @param e
 	 */

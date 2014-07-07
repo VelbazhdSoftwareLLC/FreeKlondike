@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -37,25 +37,28 @@ import javax.swing.event.MouseInputAdapter;
  * 
  * Description: The WinScreen class manages the win animation and sounds window.
  * 
- * @author Matt Stephen
+ * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
  */
 public class WinScreen extends JFrame {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	//TODO Use shared preferences. Change int with enum.
-	static int animation = 0;
-	
-	//TODO Use shared preferences. Change int with enum.
-	static int sounds = 0;	
 
+	// TODO Use shared preferences. Change int with enum.
+	static int animation = 0;
+
+	// TODO Use shared preferences. Change int with enum.
+	static int sounds = 0;
+
+	/**
+	 * Sound threat.
+	 */
 	private SoundThread sound = null;
 
 	/**
-	 * If the sound settings are on, plays the win sounds.
-	 * If the animation settings are on, fires the fireworks.
+	 * If the sound settings are on, plays the win sounds. If the animation
+	 * settings are on, fires the fireworks.
 	 */
 	public WinScreen() {
 		setUndecorated(true);
@@ -105,14 +108,17 @@ public class WinScreen extends JFrame {
 	}
 
 	/**
-	 * Creates the sound thread. The sound thread is called only when the sounds are turned on.
-	 * Manages the sounds.
+	 * Creates the sound thread. The sound thread is called only when the sounds
+	 * are turned on. Manages the sounds.
 	 * 
-	 * @author Todor Balabanov
+	 * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
 	 */
 	private class SoundThread extends Thread {
 		public Sequencer sequencer;
 
+		/**
+		 * 
+		 */
 		public void run() {
 			/*
 			 * To hold choice.
