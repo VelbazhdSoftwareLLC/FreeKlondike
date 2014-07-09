@@ -34,6 +34,8 @@ import java.awt.LayoutManager;
  */
 public class SolitaireLayout implements LayoutManager {
 	/**
+	 * Names of columns.
+	 * 
 	 * Column One.
 	 */
 	public static final String COLUMN_ONE = "Column One";
@@ -94,24 +96,63 @@ public class SolitaireLayout implements LayoutManager {
 	public static final String CELL_FOUR = "Cell Four";
 
 	/**
-	 * Components.
+	 * Column components. Column one.
 	 */
 	private Component colOne;
+	/**
+	 * Column Two.
+	 */
 	private Component colTwo;
+	/**
+	 * Column Three.
+	 */
 	private Component colThree;
+	/**
+	 * Column Four.
+	 */
 	private Component colFour;
 
+	/**
+	 * Spades Ace Pile.
+	 */
 	private Component aceSpades;
+	/**
+	 * Clubs Ace Pile.
+	 */
 	private Component aceClubs;
+	/**
+	 * Diamonds Ace Pile.
+	 */
 	private Component aceDiamonds;
+	/**
+	 * Hearts Ace Pile.
+	 */
 	private Component aceHearts;
 
+	/**
+	 * Discard Pile.
+	 */
 	private Component discardPile;
+	/**
+	 * Deck.
+	 */
 	private Component deck;
 
+	/**
+	 * Cell One.
+	 */
 	private Component cellOne;
+	/**
+	 * Cell Two.
+	 */
 	private Component cellTwo;
+	/**
+	 * Cell Three.
+	 */
 	private Component cellThree;
+	/**
+	 * Cell Four.
+	 */
 	private Component cellFour;
 
 	/**

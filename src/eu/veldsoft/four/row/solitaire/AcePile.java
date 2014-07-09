@@ -123,8 +123,7 @@ public class AcePile extends CardStack {
 	/**
 	 * Paint procedure.
 	 * 
-	 * @param g
-	 *            Graphic context.
+	 * @param g  Graphic context.
 	 */
 	public void paint(Graphics g) {
 		super.paint(g);
