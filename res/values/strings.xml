@@ -26,5 +26,12 @@
     <string name="title_activity_statistics">Statistics</string>
     <string name="statistics_ok">OK</string>
     <string name="reset_button">Reset</string>
-    
+    <string name="title_activity_statistics_tab0">StatisticsTab0Activity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_statistics_tab1">StatisticsTab1Activity</string>
+    <string name="title_activity_statistics_tab2">StatisticsTab2Activity</string>
+    <string name="title_activity_statistics_tab3">StatisticsTab3Activity</string>
+    <string name="title_activity_statistics_tab4">StatisticsTab4Activity</string>
+    <string name="title_activity_statistics_tab5">StatisticsTab5Activity</string>
+
 </resources>
