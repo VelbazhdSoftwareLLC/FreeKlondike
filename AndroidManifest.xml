@@ -25,32 +25,62 @@
         </activity>
         <activity
             android:name="eu.veldsoft.four.row.solitaire.AboutGameActivity"
-            android:label="@string/title_activity_about_game"
+            android:label="@string/title_activity_about_game" 
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="eu.veldsoft.four.row.solitaire.HelpActivity"
-            android:label="@string/title_activity_help"
+            android:label="@string/title_activity_help" 
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="eu.veldsoft.four.row.solitaire.BestTimesActivity"
-            android:label="@string/title_activity_best_times"
+            android:label="@string/title_activity_best_times" 
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="eu.veldsoft.four.row.solitaire.StatisticsActivity"
-            android:label="@string/title_activity_statistics"
+            android:label="@string/title_activity_statistics" 
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="eu.veldsoft.four.row.solitaire.SettingsActivity"
-            android:label="@string/title_activity_settings"
+            android:label="@string/title_activity_settings" 
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="eu.veldsoft.four.row.solitaire.GameActivity"
-            android:label="@string/title_activity_game"
+            android:label="@string/title_activity_game" 
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.four.row.solitaire.StatisticsTab0Activity"
+            android:label="@string/title_activity_statistics_tab0" 
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.four.row.solitaire.StatisticsTab1Activity"
+            android:label="@string/title_activity_statistics_tab1" 
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.four.row.solitaire.StatisticsTab2Activity"
+            android:label="@string/title_activity_statistics_tab2" 
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.four.row.solitaire.StatisticsTab3Activity"
+            android:label="@string/title_activity_statistics_tab3" 
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.four.row.solitaire.StatisticsTab4Activity"
+            android:label="@string/title_activity_statistics_tab4" 
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.four.row.solitaire.StatisticsTab5Activity"
+            android:label="@string/title_activity_statistics_tab5" 
             android:screenOrientation="portrait" >
         </activity>
     </application>
