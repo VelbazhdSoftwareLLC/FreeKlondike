@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -48,7 +48,7 @@ import javax.swing.UIManager;
  * 
  * @author Matt Stephen
  */
-public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
+public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
 	
 	/**
 	 * 
@@ -726,7 +726,7 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 		} else if (e.getSource() == options) {
 			ChangeOptions co = new ChangeOptions(this, super.getNewDrawCount(),
 					super.getTimerNextGameStatus(), WinScreen.animation,
-					WinScreen.sounds, super.getNewDifficulty().getValue());
+					WinScreen.sounds, super.getNewDifficulty());
 			int drawCount = co.getDrawCount();
 			int timerStatus = co.getTimer();
 			int animationStatus = co.getAnimation();

@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -27,6 +27,17 @@ import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
+
+/**
+ * 
+ * @author Todor Balabanov
+ */
+class CardComponent extends JComponent {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+}
 
 /**
  * Class: Card
@@ -177,9 +188,9 @@ class Card extends JComponent {
 		this.cardNumber = number;
 		this.fullCardNumber = fullNumber;
 
-		if (SolitaireBoard.deckNumber >= 1
-				&& SolitaireBoard.deckNumber <= ChangeAppearance.NUM_DECKS) {
-			cardBack = "images/cardbacks/cardback" + SolitaireBoard.deckNumber
+		if (SolitaireFrame.deckNumber >= 1
+				&& SolitaireFrame.deckNumber <= ChangeAppearance.NUM_DECKS) {
+			cardBack = "images/cardbacks/cardback" + SolitaireFrame.deckNumber
 					+ ".png";
 		} else {
 			cardBack = "images/cardbacks/cardback3.png";
