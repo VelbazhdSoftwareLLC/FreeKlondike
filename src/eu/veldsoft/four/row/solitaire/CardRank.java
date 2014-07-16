@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -21,61 +21,75 @@ package eu.veldsoft.four.row.solitaire;
 
 /**
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Todor Balabanov
  */
-public enum CardRank {
+enum CardRank {
+	
 	/**
 	 * Enum list.
 	 */
 	ACE(1),
+	
 	/**
 	 * 
 	 */
 	TWO(2),
+	
 	/**
 	 * 
 	 */
 	THREE(3),
+	
 	/**
 	 * 
 	 */
 	FOUR(4),
+	
 	/**
 	 * 
 	 */
 	FIVE(5),
+	
 	/**
 	 * 
 	 */
 	SIX(6),
+	
 	/**
 	 * 
 	 */
 	SEVEN(7),
+	
 	/**
 	 * 
 	 */
 	EIGHT(8),
+	
 	/**
 	 * 
 	 */
 	NINE(9),
+	
 	/**
 	 * 
 	 */
 	TEN(10),
+	
 	/**
 	 * 
 	 */
 	JACK(11),
+	
 	/**
 	 * 
 	 */
 	QUEEN(12),
+	
 	/**
 	 * 
 	 */
 	KING(13);
+	
 
 	/**
 	 * Rank index.

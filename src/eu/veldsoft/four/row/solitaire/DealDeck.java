@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -32,9 +32,10 @@ import javax.swing.JOptionPane;
  * Description: The DealDeck class manages the leftover cards after the deal
  * out.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Matt Stephen
  */
-public class DealDeck extends CardStack {
+class DealDeck extends CardStack {
+	
 	/**
 	 * 
 	 */
@@ -51,7 +52,8 @@ public class DealDeck extends CardStack {
 	private int numTimesThroughDeck = 1;
 
 	/**
-	 * Deck through limit. An integer, representing the allowed number of deck throughs.
+	 * Deck through limit. An integer, representing the allowed number of deck
+	 * throughs.
 	 */
 	private int deckThroughLimit;
 

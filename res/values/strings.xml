@@ -1,8 +1,8 @@
-
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="check_for_updates_url">http://github.com/TodorBalabanov/FourRowSolitaire</string>
+    <string name="ebinqo_url">http://ebinqo.com/</string>
     <string name="app_name">Four Row Solitaire</string>
     <string name="new_game_button">New Game</string>
     <string name="undo_last_move_button">Undo Last Move</string>
@@ -27,12 +27,14 @@
     <string name="statistics_ok">OK</string>
     <string name="reset_button">Reset</string>
     <string name="title_activity_game">Four Row Solitaire</string>
-    <string name="title_activity_statistics_tab0">StatisticsTab0Activity</string>
-    <string name="title_activity_statistics_tab1">StatisticsTab1Activity</string>
-    <string name="title_activity_statistics_tab2">StatisticsTab2Activity</string>
-    <string name="title_activity_statistics_tab3">StatisticsTab3Activity</string>
-    <string name="title_activity_statistics_tab4">StatisticsTab4Activity</string>
-    <string name="title_activity_statistics_tab5">StatisticsTab5Activity</string>
+    <string name="title_activity_statistics_tab0">Statistics 1E</string>
+    <string name="title_activity_statistics_tab1">Statistics 3E</string>
+    <string name="title_activity_statistics_tab2">Statistics 1M</string>
+    <string name="title_activity_statistics_tab3">Statistics 3M</string>
+    <string name="title_activity_statistics_tab4">Statistics 1H</string>
+    <string name="title_activity_statistics_tab5">Statistics 3H</string>
+    <string name="new_option">New</string>
+    <string name="undo_option">Undo</string>
+    <string name="hint_option">Hint</string>
 
 </resources>
-

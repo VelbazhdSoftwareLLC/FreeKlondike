@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -30,23 +30,27 @@ import java.awt.LayoutManager;
  * Description: The SolitaireLayout class manages the layout for the Solitaire
  * board.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Matt Stephen
  */
-public class SolitaireLayout implements LayoutManager {
+class SolitaireLayout implements LayoutManager {
+	
 	/**
 	 * Names of columns.
 	 * 
 	 * Column One.
 	 */
 	public static final String COLUMN_ONE = "Column One";
+
 	/**
 	 * Column Two.
 	 */
 	public static final String COLUMN_TWO = "Column Two";
+
 	/**
 	 * Column Three.
 	 */
 	public static final String COLUMN_THREE = "Column Three";
+
 	/**
 	 * Column Four.
 	 */
@@ -56,14 +60,17 @@ public class SolitaireLayout implements LayoutManager {
 	 * Spaces Ace Pile.
 	 */
 	public static final String SPADES_ACE_PILE = "Spaces Ace Pile";
+
 	/**
 	 * Clubs Ace Pile.
 	 */
 	public static final String CLUBS_ACE_PILE = "Clubs Ace Pile";
+
 	/**
 	 * Diamonds Ace Pile.
 	 */
 	public static final String DIAMONDS_ACE_PILE = "Diamonds Ace Pile";
+
 	/**
 	 * Hears Ace Pile.
 	 */
@@ -73,6 +80,7 @@ public class SolitaireLayout implements LayoutManager {
 	 * Discard Pile.
 	 */
 	public static final String DISCARD_PILE = "Discard Pile";
+
 	/**
 	 * Deck.
 	 */
@@ -82,14 +90,17 @@ public class SolitaireLayout implements LayoutManager {
 	 * Cell One.
 	 */
 	public static final String CELL_ONE = "Cell One";
+
 	/**
 	 * Cell Two.
 	 */
 	public static final String CELL_TWO = "Cell Two";
+
 	/**
 	 * Cell Three.
 	 */
 	public static final String CELL_THREE = "Cell Three";
+
 	/**
 	 * Cell Four.
 	 */
@@ -99,14 +110,17 @@ public class SolitaireLayout implements LayoutManager {
 	 * Column components. Column one.
 	 */
 	private Component colOne;
+
 	/**
 	 * Column Two.
 	 */
 	private Component colTwo;
+
 	/**
 	 * Column Three.
 	 */
 	private Component colThree;
+
 	/**
 	 * Column Four.
 	 */
@@ -116,14 +130,17 @@ public class SolitaireLayout implements LayoutManager {
 	 * Spades Ace Pile.
 	 */
 	private Component aceSpades;
+
 	/**
 	 * Clubs Ace Pile.
 	 */
 	private Component aceClubs;
+
 	/**
 	 * Diamonds Ace Pile.
 	 */
 	private Component aceDiamonds;
+
 	/**
 	 * Hearts Ace Pile.
 	 */
@@ -133,6 +150,7 @@ public class SolitaireLayout implements LayoutManager {
 	 * Discard Pile.
 	 */
 	private Component discardPile;
+
 	/**
 	 * Deck.
 	 */
@@ -142,14 +160,17 @@ public class SolitaireLayout implements LayoutManager {
 	 * Cell One.
 	 */
 	private Component cellOne;
+
 	/**
 	 * Cell Two.
 	 */
 	private Component cellTwo;
+
 	/**
 	 * Cell Three.
 	 */
 	private Component cellThree;
+
 	/**
 	 * Cell Four.
 	 */
@@ -162,6 +183,8 @@ public class SolitaireLayout implements LayoutManager {
 	 * @param name
 	 * 
 	 * @param component
+	 * 
+	 * @author Konstantin Tsanov
 	 */
 	public void addLayoutComponent(String name, Component component) {
 		if (name.equals(COLUMN_ONE)) {
@@ -205,6 +228,8 @@ public class SolitaireLayout implements LayoutManager {
 	 * Removes a component from the game board.
 	 * 
 	 * @param component
+	 * 
+	 * @author Konstantin Tsanov
 	 */
 	public void removeLayoutComponent(Component component) {
 		if (colOne == component) {

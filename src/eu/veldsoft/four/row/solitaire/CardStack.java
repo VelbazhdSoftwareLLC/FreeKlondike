@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -27,13 +27,26 @@ import java.util.Vector;
 import javax.swing.JLayeredPane;
 
 /**
+ * 
+ * @author Todor Balabanov
+ */
+class CardLayeredPane extends JLayeredPane {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+}
+
+/**
  * Class: CardStack
  * 
  * Description: The Cardstack class manages a location for cards to be placed.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Matt Stephen
  */
-public class CardStack extends JLayeredPane {
+class CardStack extends JLayeredPane {
+	
 	/**
 	 * 
 	 */

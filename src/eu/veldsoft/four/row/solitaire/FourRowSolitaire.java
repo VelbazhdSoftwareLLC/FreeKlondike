@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -46,9 +46,10 @@ import javax.swing.UIManager;
  * Description: The FourRowSolitaire class adds a menu to the SolitaireBoard
  * Frame.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Matt Stephen
  */
-public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
+public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
+	
 	/**
 	 * 
 	 */
@@ -68,6 +69,7 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 	 * Game menu.
 	 */
 	private JMenu game = new JMenu("Game");
+	
 	/**
 	 * Help menu.
 	 */
@@ -79,30 +81,37 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 	 * New game.
 	 */
 	private JMenuItem newGame = new JMenuItem("New Game");
+	
 	/**
 	 * Undo
 	 */
 	private JMenuItem undo = new JMenuItem("Undo Last Move");
+	
 	/**
 	 * Hint.
 	 */
 	private JMenuItem hint = new JMenuItem("Hint");
+	
 	/**
 	 * Statistics.
 	 */
 	private JMenuItem statistics = new JMenuItem("Statistics");
+	
 	/**
 	 * Options.
 	 */
 	private JMenuItem options = new JMenuItem("Options");
+	
 	/**
 	 * Change Appearance.
 	 */
 	private JMenuItem appearance = new JMenuItem("Change Appearance");
+	
 	/**
 	 * Best Times.
 	 */
 	private JMenuItem topTimes = new JMenuItem("Best Times");
+	
 	/**
 	 * Exit.
 	 */
@@ -114,10 +123,12 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 	 * View Help.
 	 */
 	private JMenuItem help = new JMenuItem("View Help");
+	
 	/**
 	 * About Game.
 	 */
 	private JMenuItem about = new JMenuItem("About Game");
+	
 	/**
 	 * Check for Updates.
 	 */
@@ -715,7 +726,7 @@ public class FourRowSolitaire extends SolitaireBoard implements ActionListener {
 		} else if (e.getSource() == options) {
 			ChangeOptions co = new ChangeOptions(this, super.getNewDrawCount(),
 					super.getTimerNextGameStatus(), WinScreen.animation,
-					WinScreen.sounds, super.getNewDifficulty().getValue());
+					WinScreen.sounds, super.getNewDifficulty());
 			int drawCount = co.getDrawCount();
 			int timerStatus = co.getTimer();
 			int animationStatus = co.getAnimation();

@@ -9,6 +9,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+/**
+ * 
+ * @author Ina Baltadzhieva
+ */
 public class StatisticsTab0Activity extends Activity {
 
 	@Override

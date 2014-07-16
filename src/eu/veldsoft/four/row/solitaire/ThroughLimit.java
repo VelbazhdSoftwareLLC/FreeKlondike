@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -23,18 +23,21 @@ package eu.veldsoft.four.row.solitaire;
  * 
  * Number of deck throughs for each difficulty. Three card draw adds 1 to each.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Todor Balabanov
  * 
  */
-public enum ThroughLimit {
+enum ThroughLimit {
+	
 	/**
 	 * Enum list.
 	 */
 	EASY(3),
+	
 	/**
 	 * 
 	 */
 	MEDIUM(2),
+	
 	/**
 	 * 
 	 */

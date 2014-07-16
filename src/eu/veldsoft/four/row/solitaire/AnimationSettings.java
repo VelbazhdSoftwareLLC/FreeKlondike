@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -16,19 +16,22 @@
  You should have received a copy of the GNU General Public License
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package eu.veldsoft.four.row.solitaire;
 
 /**
  * Animation settings on/off
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Todor Balabanov
  * 
  */
-public enum AnimationSettings {
+enum AnimationSettings {
+	
 	/**
 	 * 
 	 */
 	OFF,
+	
 	/**
 	 * 
 	 */
