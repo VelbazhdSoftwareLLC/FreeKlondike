@@ -46,6 +46,30 @@
             android:name="eu.veldsoft.four.row.solitaire.GameActivity"
             android:label="@string/title_activity_game" >
         </activity>
+        <activity
+            android:name="eu.veldsoft.four.row.solitaire.StatisticsTab0Activity"
+            android:label="@string/title_activity_statistics_tab0" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.four.row.solitaire.StatisticsTab1Activity"
+            android:label="@string/title_activity_statistics_tab1" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.four.row.solitaire.StatisticsTab2Activity"
+            android:label="@string/title_activity_statistics_tab2" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.four.row.solitaire.StatisticsTab3Activity"
+            android:label="@string/title_activity_statistics_tab3" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.four.row.solitaire.StatisticsTab4Activity"
+            android:label="@string/title_activity_statistics_tab4" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.four.row.solitaire.StatisticsTab5Activity"
+            android:label="@string/title_activity_statistics_tab5" >
+        </activity>
     </application>
 
 </manifest>
