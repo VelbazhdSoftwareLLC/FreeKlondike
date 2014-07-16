@@ -22,13 +22,15 @@ package eu.veldsoft.four.row.solitaire;
 /**
  * Card colors.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Todor Balabanov
  */
-public enum CardColor {
+enum CardColor {
+	
 	/**
 	 * Enum list.
 	 */
 	BLACK(0),
+	
 	/**
 	 * 
 	 */

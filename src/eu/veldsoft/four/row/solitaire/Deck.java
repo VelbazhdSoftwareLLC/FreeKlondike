@@ -27,11 +27,12 @@ import java.util.List;
  * 
  * Description: The Deck class holds all the Cards to form a 52 card deck.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Matt Stephen
  */
-public class Deck {
+class Deck {
+	
 	/**
-	 * 
+	 * Constructor
 	 */
 	private Deck() {
 	}

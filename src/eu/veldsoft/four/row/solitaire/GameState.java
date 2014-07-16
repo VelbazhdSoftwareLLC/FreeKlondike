@@ -22,25 +22,29 @@ package eu.veldsoft.four.row.solitaire;
 /**
  * Represents the game states.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Todor Balabanov
  */
-public enum GameState {
+enum GameState {
 	/**
 	 * Game states.
 	 */
 	GAME_LOST,
+
 	/**
 	 * 
 	 */
 	GAME_WON,
+
 	/**
 	 * 
 	 */
 	RESET_STATS,
+
 	/**
 	 * 
 	 */
 	DO_NOTHING,
+
 	/**
 	 * 
 	 */

@@ -24,9 +24,10 @@ import java.util.Random;
 /**
  * Project common functionality.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Todor Balabanov
  */
-public class Common {
+class Common {
+	
 	/**
 	 * Common PRNG used in the scope of the project.
 	 */

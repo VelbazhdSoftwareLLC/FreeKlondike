@@ -16,19 +16,22 @@
  You should have received a copy of the GNU General Public License
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package eu.veldsoft.four.row.solitaire;
 
 /**
  * Animation settings on/off
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Todor Balabanov
  * 
  */
-public enum AnimationSettings {
+enum AnimationSettings {
+	
 	/**
 	 * 
 	 */
 	OFF,
+	
 	/**
 	 * 
 	 */

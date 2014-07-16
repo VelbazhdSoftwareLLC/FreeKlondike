@@ -41,9 +41,10 @@ import javax.swing.border.TitledBorder;
  * Description: The ChangeOptions class manages several game options, such as
  * the draw count (1 or 3).
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Matt Stephen
  */
-public class ChangeOptions extends JDialog implements ActionListener {
+class ChangeOptions extends JDialog implements ActionListener {
+	
 	/**
 	 * 
 	 */
@@ -58,10 +59,12 @@ public class ChangeOptions extends JDialog implements ActionListener {
 	 * Draw count buttons.
 	 */
 	private JRadioButton drawOne = new JRadioButton("Draw One");
+	
 	/**
 	 * Radio button.
 	 */
 	private JRadioButton drawThree = new JRadioButton("Draw Three");
+	
 	/**
 	 * Checkbox.
 	 */
@@ -101,10 +104,12 @@ public class ChangeOptions extends JDialog implements ActionListener {
 	 * Difficulty radio buttons.
 	 */
 	private JRadioButton easy = new JRadioButton("Easy");
+	
 	/**
 	 * Radio button.
 	 */
 	private JRadioButton medium = new JRadioButton("Medium", true);
+	
 	/**
 	 * Radio button.
 	 */

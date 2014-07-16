@@ -22,21 +22,25 @@ package eu.veldsoft.four.row.solitaire;
 /**
  * Manages the card suit.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Todor Balabanov
  */
-public enum CardSuit {
+enum CardSuit {
+	
 	/**
 	 * Enum list.
 	 */
 	SPADES("Spades"),
+	
 	/**
 	 * 
 	 */
 	CLUBS("Clubs"),
+	
 	/**
 	 * 
 	 */
 	HEARTS("Hearts"),
+	
 	/**
 	 * 
 	 */

@@ -42,9 +42,10 @@ import javax.swing.JTextField;
  * Description: The TopTimes class manages the scoreboard, saves names and
  * times, also discards them.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Konstantin Tsanov
  */
-public class TopTimes extends JFrame implements ActionListener, KeyListener {
+class TopTimes extends JFrame implements ActionListener, KeyListener {
+	
 	/**
 	 * 
 	 */
@@ -55,16 +56,34 @@ public class TopTimes extends JFrame implements ActionListener, KeyListener {
 	 */
 	private final int NUM_OF_RECORDS = 10;
 
+	/**
+	 * 
+	 */
 	private JTextField names[] = new JTextField[NUM_OF_RECORDS];
 
+	/**
+	 * 
+	 */
 	private JLabel times[] = new JLabel[NUM_OF_RECORDS];
 
+	/**
+	 * 
+	 */
 	private JLabel jLabel[] = new JLabel[NUM_OF_RECORDS];
 
+	/**
+	 * 
+	 */
 	private JSeparator jSeparator[] = new JSeparator[NUM_OF_RECORDS];
 
+	/**
+	 * 
+	 */
 	private int pos;
 
+	/**
+	 * 
+	 */
 	private JButton jButton;
 
 	/**

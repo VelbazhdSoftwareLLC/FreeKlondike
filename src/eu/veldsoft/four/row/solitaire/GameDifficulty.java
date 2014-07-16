@@ -21,21 +21,25 @@ package eu.veldsoft.four.row.solitaire;
 
 /**
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Todor Balabanov
  */
-public enum GameDifficulty {
+enum GameDifficulty {
+	
 	/**
 	 * 
 	 */
 	EASY(1),
+	
 	/**
 	 * 
 	 */
 	MEDIUM(2),
+	
 	/**
 	 * 
 	 */
 	HARD(3);
+	
 	/**
 	 * 
 	 */

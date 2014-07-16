@@ -16,6 +16,7 @@
  You should have received a copy of the GNU General Public License
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package eu.veldsoft.four.row.solitaire;
 
 import android.app.Activity;
@@ -29,10 +30,10 @@ import android.widget.Button;
 /**
  * Manages the "Statistics" android menu.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Konstantin Tsanov
  * 
  */
-public class StatisticsActivity extends Activity {
+class StatisticsActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

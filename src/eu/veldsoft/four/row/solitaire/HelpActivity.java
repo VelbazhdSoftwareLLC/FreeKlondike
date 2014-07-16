@@ -28,7 +28,7 @@ import android.widget.Button;
 /**
  * Manages the "View Help" android menu.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Konstantin Tsanov
  * 
  */
 public class HelpActivity extends Activity {
@@ -45,11 +45,4 @@ public class HelpActivity extends Activity {
 					}
 				});
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.help, menu);
-		return true;
-	}
-
 }

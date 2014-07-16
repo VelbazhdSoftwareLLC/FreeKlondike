@@ -28,7 +28,7 @@ import android.widget.Button;
 /**
  * Manages the "About Game" android menu.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Konstantin Tsanov
  * 
  */
 public class AboutGameActivity extends Activity {
@@ -46,11 +46,4 @@ public class AboutGameActivity extends Activity {
 					}
 				});
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.about_game, menu);
-		return true;
-	}
-
 }

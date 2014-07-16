@@ -30,7 +30,7 @@ import android.widget.Button;
 
 /**
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Todor Balabanov
  */
 public class MenuActivity extends Activity {
 
@@ -40,14 +40,14 @@ public class MenuActivity extends Activity {
 		setContentView(R.layout.activity_menu);
 
 		((Button) findViewById(R.id.new_game_button))
-		.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				MenuActivity.this.startActivity(new Intent(
-						MenuActivity.this, GameActivity.class));
-			}
-		});
-		
+				.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						MenuActivity.this.startActivity(new Intent(
+								MenuActivity.this, GameActivity.class));
+					}
+				});
+
 		((Button) findViewById(R.id.statistics_button))
 				.setOnClickListener(new OnClickListener() {
 					@Override
@@ -113,11 +113,4 @@ public class MenuActivity extends Activity {
 					}
 				});
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.menu, menu);
-		return true;
-	}
-
 }

@@ -32,9 +32,10 @@ import javax.swing.JOptionPane;
  * Description: The DealDeck class manages the leftover cards after the deal
  * out.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Matt Stephen
  */
-public class DealDeck extends CardStack {
+class DealDeck extends CardStack {
+	
 	/**
 	 * 
 	 */
@@ -51,7 +52,8 @@ public class DealDeck extends CardStack {
 	private int numTimesThroughDeck = 1;
 
 	/**
-	 * Deck through limit. An integer, representing the allowed number of deck throughs.
+	 * Deck through limit. An integer, representing the allowed number of deck
+	 * throughs.
 	 */
 	private int deckThroughLimit;
 

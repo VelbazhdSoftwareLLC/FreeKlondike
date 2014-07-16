@@ -2,6 +2,7 @@
 <resources>
 
     <string name="check_for_updates_url">http://github.com/TodorBalabanov/FourRowSolitaire</string>
+    <string name="ebinqo_url">http://ebinqo.com/</string>
     <string name="app_name">Four Row Solitaire</string>
     <string name="new_game_button">New Game</string>
     <string name="undo_last_move_button">Undo Last Move</string>
@@ -26,5 +27,8 @@
     <string name="statistics_ok">OK</string>
     <string name="reset_button">Reset</string>
     <string name="title_activity_game">GameActivity</string>
+    <string name="new_option">New</string>
+    <string name="undo_option">Undo</string>
+    <string name="hint_option">Hint</string>
 
 </resources>

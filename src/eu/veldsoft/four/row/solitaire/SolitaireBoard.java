@@ -19,13 +19,14 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+//import java.awt.BorderLayout;
+//import java.awt.FlowLayout;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
+//import java.awt.event.MouseEvent;
+//import java.awt.event.WindowAdapter;
+//import java.awt.event.WindowEvent;
+import java.awt.HeadlessException;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -33,26 +34,76 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.LinkedList;
 
-import javax.swing.ImageIcon;
+//import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.Timer;
-import javax.swing.event.MouseInputAdapter;
+//import javax.swing.JLabel;
+//import javax.swing.JOptionPane;
+//import javax.swing.JPanel;
+
+//import javax.swing.Timer;
+//import javax.swing.event.MouseInputAdapter;
+
+/**
+ * 
+ * @author Konstantin Tsanov
+ * 
+ */
+// TODO Get it out as separate Java file.
+class SolitaireFrame extends JFrame {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Solitaire Board.
+	 */
+	private SolitaireBoard board = new SolitaireBoard();
+
+	/**
+	 * Timer.
+	 */
+	private Timer timer = new Timer(1000, new TimerListener());
+
+	/**
+	 * Status bar.
+	 */
+	private JPanel statusBar = new JPanel(new FlowLayout(FlowLayout.CENTER));
+
+	/**
+	 * Timer label.
+	 */
+	private JLabel timerLabel = new JLabel("Time: OFF");
+
+	/**
+	 * 
+	 * @throws HeadlessException
+	 */
+	public SolitaireFrame() throws HeadlessException {
+		super();
+		setTitle("Four Row Solitaire");
+		setSize(806, 700);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+		setIconImage(new ImageIcon(getClass().getResource("images/logo.png"))
+				.getImage());
+
+		setVisible(true);
+
+		addWindowListener(wl);
+	}
+}
 
 /**
  * Class: SolitaireBoard
  * 
  * Description: The SolitaireBoard class manages the entire playing field.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Matt Stephen
  */
-public class SolitaireBoard extends JFrame {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+class SolitaireBoard {
 
 	/**
 	 * 
@@ -121,21 +172,6 @@ public class SolitaireBoard extends JFrame {
 	public MyWindowListener wl = new MyWindowListener();
 
 	/**
-	 * Timer.
-	 */
-	private Timer timer = new Timer(1000, new TimerListener());
-
-	/**
-	 * Status bar.
-	 */
-	private JPanel statusBar = new JPanel(new FlowLayout(FlowLayout.CENTER));
-
-	/**
-	 * Timer label.
-	 */
-	private JLabel timerLabel = new JLabel("Time: OFF");
-
-	/**
 	 * Timer count.
 	 */
 	private int timerCount = 0;
@@ -161,22 +197,22 @@ public class SolitaireBoard extends JFrame {
 	private GameDifficulty newDifficulty = difficulty;
 
 	/**
-	 * 
+	 * Source.
 	 */
 	private LinkedList<CardStack> sourceList = new LinkedList<CardStack>();
 
 	/**
-	 * 
+	 * Destination.
 	 */
 	private LinkedList<CardStack> destinationList = new LinkedList<CardStack>();
 
 	/**
-	 * 
+	 * Card numbers.
 	 */
 	private LinkedList<Integer> numCards = new LinkedList<Integer>();
 
 	/**
-	 * 
+	 * The cards from the discard pile.
 	 */
 	private LinkedList<Integer> numCardsInDiscardView = new LinkedList<Integer>();
 
@@ -185,17 +221,6 @@ public class SolitaireBoard extends JFrame {
 	 * it unresizable and puts the logo on it.
 	 */
 	public SolitaireBoard() {
-		setTitle("Four Row Solitaire");
-		setSize(806, 700);
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setResizable(false);
-		setIconImage(new ImageIcon(getClass().getResource("images/logo.png"))
-				.getImage());
-
-		setVisible(true);
-
-		addWindowListener(wl);
 	}
 
 	/**
@@ -1524,11 +1549,11 @@ public class SolitaireBoard extends JFrame {
 	/**
 	 * Manages the mouse events.
 	 * 
-	 * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav
-	 *         Medarov
+	 * @author Todor Balabanov
 	 * 
 	 */
 	private class MyMouseListener extends MouseInputAdapter {
+		
 		/**
 		 * If true, the player hasn't completed a move.
 		 */
@@ -1543,14 +1568,17 @@ public class SolitaireBoard extends JFrame {
 		 * 
 		 */
 		private Card clickedCard;
+		
 		/**
 		 * 
 		 */
 		private CardStack source;
+		
 		/**
 		 * 
 		 */
 		private CardStack destination;
+		
 		/**
 		 * 
 		 */
@@ -1919,8 +1947,7 @@ public class SolitaireBoard extends JFrame {
 	/**
 	 * Timer displaying.
 	 * 
-	 * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav
-	 *         Medarov
+	 * @author Todor Balabanov
 	 * 
 	 */
 	private class TimerListener implements ActionListener {
@@ -1943,8 +1970,7 @@ public class SolitaireBoard extends JFrame {
 	/**
 	 * Manages the window events.
 	 * 
-	 * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav
-	 *         Medarov
+	 * @author Todor Balabanov
 	 * 
 	 */
 	public class MyWindowListener extends WindowAdapter {

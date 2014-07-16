@@ -40,9 +40,10 @@ import javax.swing.JRadioButton;
  * Description: The ChangeAppearance class manages the ability to change the
  * background or card backs.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Matt Stephen
  */
-public class ChangeAppearance extends JDialog implements ActionListener {
+class ChangeAppearance extends JDialog implements ActionListener {
+	
 	/**
 	 * 
 	 */
@@ -52,14 +53,17 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 	 * Number of card backs.
 	 */
 	public static final int NUM_DECKS = 4;
+	
 	/**
 	 * Number of card backgrounds.
 	 */
 	public static final int NUM_BACKGROUNDS = 3;
+	
 	/**
 	 * Default deck number.
 	 */
 	public static final int FRS_DECK = 3;
+	
 	/**
 	 * Default background number.
 	 */
@@ -84,6 +88,7 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 	 * Default deck number.
 	 */
 	public int deckNumber = 3;
+	
 	/**
 	 * Default background number.
 	 */
@@ -98,6 +103,7 @@ public class ChangeAppearance extends JDialog implements ActionListener {
 	 * To hold the image previews.
 	 */
 	private JLabel cardBackLabel = new JLabel();
+	
 	/**
 	 * To hold the image previews.
 	 */

@@ -24,9 +24,10 @@ package eu.veldsoft.four.row.solitaire;
  * 
  * Description: The Column class manages a single column on the board.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Matt Stephen
  */
-public class Column extends CardStack {
+class Column extends CardStack {
+	
 	/**
 	 * 
 	 */

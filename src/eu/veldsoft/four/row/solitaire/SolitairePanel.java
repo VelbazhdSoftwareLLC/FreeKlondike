@@ -31,9 +31,10 @@ import javax.swing.JPanel;
  * 
  * Description: The Solitaire Panel is the main playing field view.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Matt Stephen
  */
-public class SolitairePanel extends JPanel {
+class SolitairePanel extends JPanel {
+	
 	/**
 	 * 
 	 */

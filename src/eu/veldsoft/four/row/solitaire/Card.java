@@ -34,9 +34,10 @@ import javax.swing.JComponent;
  * Description: The Card class holds information pertaining to 1 out of the 52
  * cards per deck.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
+ * @author Matt Stephen
  */
-public class Card extends JComponent {
+class Card extends JComponent {
+	
 	/**
 	 * 
 	 */
