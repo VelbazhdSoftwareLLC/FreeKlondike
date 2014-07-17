@@ -535,7 +535,7 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * 
 	 */
-	private SolitairePanel mainPanel;
+	private SolitairePanel mainPanel = null;
 
 	/**
 	 * Status bar.
@@ -737,6 +737,7 @@ class SolitaireFrame extends JFrame {
 						backgroundNumber, timerCount, timerToRunNextGame,
 						timerToRun);
 				board.newGame(winOrLoss);
+				dealOutBoard();
 			}
 		}
 
@@ -851,6 +852,12 @@ class SolitaireFrame extends JFrame {
 		p1.add(mainPanel, BorderLayout.CENTER);
 		p1.add(statusBar, BorderLayout.SOUTH);
 		add(p1);
+
+		if (cards != null) {
+			dealOutCustomBoard(cards, numViewableCards);
+		} else {
+			dealOutBoard();
+		}
 	}
 
 	/**

@@ -157,12 +157,6 @@ class SolitaireBoard {
 				break;
 			}
 		}
-
-		if (cards != null) {
-			dealOutCustomBoard(cards, numViewableCards);
-		} else {
-			dealOutBoard();
-		}
 	}
 
 	/**
@@ -305,7 +299,7 @@ class SolitaireBoard {
 		 */
 		clearBoard();
 		dealDeck.reset();
-		dealOutBoard();
+		//TODO Remove -> dealOutBoard();
 
 		sourceList.clear();
 		destinationList.clear();
