@@ -119,6 +119,8 @@ class FireworksDisplay extends JPanel implements ActionListener {
 	 * @param num
 	 * 
 	 * @param size
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public FireworksDisplay(int num, int size) {
 		NUM_FIREWORKS = num;
@@ -136,6 +138,8 @@ class FireworksDisplay extends JPanel implements ActionListener {
 
 	/**
 	 * Fires the fireworks.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void restartDisplay() {
 		timer.stop();
@@ -183,6 +187,8 @@ class FireworksDisplay extends JPanel implements ActionListener {
 	 * Generates a random number representing one of the colors below.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public Color randomColor() {
 		switch (Common.PRNG.nextInt(10)) {
@@ -215,6 +221,8 @@ class FireworksDisplay extends JPanel implements ActionListener {
 	 * Paint procedure.
 	 * 
 	 * @param g
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void paint(Graphics g) {
 		super.paint(g);
@@ -562,6 +570,8 @@ class FireworksDisplay extends JPanel implements ActionListener {
 	 * Action performed.
 	 * 
 	 * @param e
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() != timer) {

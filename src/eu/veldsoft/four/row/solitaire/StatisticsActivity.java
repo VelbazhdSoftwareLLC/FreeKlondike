@@ -37,6 +37,14 @@ import android.widget.TabHost.TabSpec;
  */
 public class StatisticsActivity extends TabActivity {
 
+	
+	/**
+	 * On creation.
+	 * 
+	 * @param savedInstanceState
+	 * 
+	 * @author Konstantin Tsanov
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

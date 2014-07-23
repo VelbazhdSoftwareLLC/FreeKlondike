@@ -33,6 +33,11 @@ import android.widget.Button;
  */
 public class HelpActivity extends Activity {
 
+	/**
+	 * On creation.
+	 * 
+	 * @author Konstantin Tsanov
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

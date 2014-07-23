@@ -45,7 +45,7 @@ public class GameActivity extends Activity {
 	/**
 	 * 
 	 */
-	private SolitaireBoard board = null;//new SolitaireBoard();
+	private SolitaireBoard board = null;// new SolitaireBoard();
 
 	/**
 	 * On creation.
@@ -53,6 +53,8 @@ public class GameActivity extends Activity {
 	 * @param menu
 	 * 
 	 * @return
+	 * 
+	 * @author Konstantin Tsanov
 	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -67,6 +69,8 @@ public class GameActivity extends Activity {
 	 * @param item
 	 * 
 	 * @return
+	 * 
+	 * @author Konstantin Tsanov
 	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -75,50 +79,54 @@ public class GameActivity extends Activity {
 			/*
 			 * Ask the user for new game confirmation.
 			 */
-			// AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			//
-			// builder.setTitle("Confirm");
-			// builder.setMessage("Are you sure?");
-			//
-			// builder.setPositiveButton("YES",
-			// new DialogInterface.OnClickListener() {
-			//
-			// public void onClick(DialogInterface dialog, int which) {
-			// dialog.dismiss();
-			// }
-			//
-			// });
-			//
-			// builder.setNegativeButton("NO",
-			// new DialogInterface.OnClickListener() {
-			//
-			// @Override
-			// public void onClick(DialogInterface dialog, int which) {
-			// // Do nothing
-			// dialog.dismiss();
-			// }
-			// });
-			//
-			// AlertDialog alert = builder.create();
-			// alert.show();
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-			if (true) {
-				board.recordGame(GameState.GAME_LOST, 0, 0, 0, 0, false);
-				board.newGame(GameState.GAME_LOST);
-			}
+			builder.setTitle("Confirm");
+			builder.setMessage("Are you sure?");
+
+			builder.setPositiveButton("YES",
+					new DialogInterface.OnClickListener() {
+
+						public void onClick(DialogInterface dialog, int which) {
+							// board.recordGame(GameState.GAME_LOST, 0, 0, 0, 0,
+							// false);
+							// board.newGame(GameState.GAME_LOST);
+							dialog.dismiss();
+						}
+
+					});
+
+			builder.setNegativeButton("NO",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.dismiss();
+						}
+					});
+
+			AlertDialog alert = builder.create();
+			alert.show();
 			break;
 		case R.id.undo_last_move:
-			board.undoMove();
+			// board.undoMove();
 			break;
 		case R.id.hint:
-			String hint[] = board.getHint();
-			Toast.makeText(GameActivity.this, hint[0] + " " + hint[1],
-					Toast.LENGTH_SHORT).show();
+			// String hint[] = board.getHint();
+			// Toast.makeText(GameActivity.this, hint[0] + " " + hint[1],
+			// Toast.LENGTH_SHORT).show();
 			break;
 		}
 		return true;
 	}
-
+	
+	/**
+	 * On creation.
+	 * 
+	 * @param savedInstanceState
+	 * 
+	 * @author Konstantin Tsanov
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

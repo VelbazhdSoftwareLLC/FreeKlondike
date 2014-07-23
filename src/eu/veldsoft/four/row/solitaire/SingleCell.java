@@ -42,8 +42,10 @@ class SingleCell extends CardStack {
 	 * @param card
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
-	public Card push(Card card) {
+	public CardComponent push(CardComponent card) {
 		if (isEmpty() == true) {
 			super.push(card);
 			return card;
@@ -58,8 +60,10 @@ class SingleCell extends CardStack {
 	 * @param p
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
-	public Card getCardAtLocation(Point p) {
+	public CardComponent getCardAtLocation(Point p) {
 		return peek();
 	}
 
@@ -70,8 +74,10 @@ class SingleCell extends CardStack {
 	 * @param card
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(Card card) {
+	public boolean isValidMove(CardComponent card) {
 		if (isEmpty() == true) {
 			return true;
 		}
@@ -85,6 +91,8 @@ class SingleCell extends CardStack {
 	 * @param stack
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public boolean isValidMove(CardStack stack) {
 		return false;
@@ -94,6 +102,8 @@ class SingleCell extends CardStack {
 	 * Returns the card from the cell. If there is no card - returns null.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public CardStack getAvailableCards() {
 		if (isEmpty() == true) {

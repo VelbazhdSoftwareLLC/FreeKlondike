@@ -66,6 +66,8 @@ class WinScreen extends JFrame {
 	/**
 	 * If the sound settings are on, plays the win sounds. If the animation
 	 * settings are on, fires the fireworks.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public WinScreen() {
 		setUndecorated(true);
@@ -128,6 +130,8 @@ class WinScreen extends JFrame {
 
 		/**
 		 * To play the sound.
+		 * 
+		 * @author Todor Balabanov
 		 */
 		public void run() {
 			/*

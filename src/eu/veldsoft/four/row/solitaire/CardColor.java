@@ -46,6 +46,8 @@ enum CardColor {
 	 * index (0 or 1)
 	 * 
 	 * @param index
+	 * 
+	 * @author Todor Balabanov
 	 */
 	private CardColor(int index) {
 		this.index = index;
@@ -55,6 +57,8 @@ enum CardColor {
 	 * Returns the card's color number.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public int getIndex() {
 		return index;

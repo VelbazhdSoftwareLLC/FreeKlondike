@@ -184,7 +184,7 @@ class SolitaireLayout implements LayoutManager {
 	 * 
 	 * @param component
 	 * 
-	 * @author Konstantin Tsanov
+	 * @author Todor Balabanov
 	 */
 	public void addLayoutComponent(String name, Component component) {
 		if (name.equals(COLUMN_ONE)) {
@@ -229,7 +229,7 @@ class SolitaireLayout implements LayoutManager {
 	 * 
 	 * @param component
 	 * 
-	 * @author Konstantin Tsanov
+	 * @author Todor Balabanov
 	 */
 	public void removeLayoutComponent(Component component) {
 		if (colOne == component) {
@@ -273,6 +273,8 @@ class SolitaireLayout implements LayoutManager {
 	 * Implemented, unsupported function.
 	 * 
 	 * @param parent
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public Dimension preferredLayoutSize(Container parent) {
 		throw new UnsupportedOperationException("Not supported yet.");
@@ -282,6 +284,8 @@ class SolitaireLayout implements LayoutManager {
 	 * Implemented, unsupported function.
 	 * 
 	 * @param parent
+	 * 
+	 * @author Todor Balabanov
 	 *            .
 	 */
 	public Dimension minimumLayoutSize(Container parent) {
@@ -293,6 +297,8 @@ class SolitaireLayout implements LayoutManager {
 	 * height.
 	 * 
 	 * @param parent
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void layoutContainer(Container parent) {
 		Component component;

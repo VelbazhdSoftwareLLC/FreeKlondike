@@ -42,7 +42,7 @@ import javax.swing.JTextField;
  * Description: The TopTimes class manages the scoreboard, saves names and
  * times, also discards them.
  * 
- * @author Konstantin Tsanov
+ * @author Todor Balabanov
  */
 class TopTimes extends JFrame implements ActionListener, KeyListener {
 	
@@ -88,6 +88,8 @@ class TopTimes extends JFrame implements ActionListener, KeyListener {
 
 	/**
 	 * Constructor.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public TopTimes() {
 		initComponents();
@@ -95,6 +97,8 @@ class TopTimes extends JFrame implements ActionListener, KeyListener {
 
 	/**
 	 * Initializes the GUI components.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	private void initComponents() {
 		for (int i = 0; i < names.length; i++) {
@@ -544,6 +548,8 @@ class TopTimes extends JFrame implements ActionListener, KeyListener {
 
 	/**
 	 * Loads the saved times and names.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void loadData() {
 		String fileLocation = System.getProperty("user.home")
@@ -571,6 +577,8 @@ class TopTimes extends JFrame implements ActionListener, KeyListener {
 	 * Action performed.
 	 * 
 	 * @param e
+	 * 
+	 * @author Todor Balabanov
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -585,6 +593,8 @@ class TopTimes extends JFrame implements ActionListener, KeyListener {
 
 	/**
 	 * Discard all the data and saves the changes.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	private void clearData() {
 		String fileLocation = System.getProperty("user.home")
@@ -607,6 +617,8 @@ class TopTimes extends JFrame implements ActionListener, KeyListener {
 
 	/**
 	 * Saves the data into frs-topTimes file.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	private void saveData() {
 		String fileLocation = System.getProperty("user.home")
@@ -630,6 +642,8 @@ class TopTimes extends JFrame implements ActionListener, KeyListener {
 	 * 
 	 * @param newTime
 	 *            this parameter is the new time to save.
+	 *            
+	 * @author Todor Balabanov
 	 */
 	public void setProperties(int newTime) {
 		for (int j = NUM_OF_RECORDS - 1; (j >= 1) && (j > pos); j--) {
@@ -650,6 +664,8 @@ class TopTimes extends JFrame implements ActionListener, KeyListener {
 	/**
 	 * 
 	 * @param
+	 * 
+	 * @author Todor Balabanov
 	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -660,6 +676,8 @@ class TopTimes extends JFrame implements ActionListener, KeyListener {
 	 * the function stores the new name.
 	 * 
 	 * @param e
+	 * 
+	 * @author Todor Balabanov
 	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -674,7 +692,14 @@ class TopTimes extends JFrame implements ActionListener, KeyListener {
 		names[pos].removeKeyListener(this);
 		saveData();
 	}
-
+	
+	/**
+	 * On key released.
+	 * 
+	 * @param e
+	 * 
+	 * @author Todor Balabanov
+	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
 	}
@@ -687,6 +712,8 @@ class TopTimes extends JFrame implements ActionListener, KeyListener {
 	 *            ten times.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public int IsTopTime(int newTime) {
 		for (int i = 0; i < NUM_OF_RECORDS; i++) {

@@ -136,6 +136,8 @@ public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
 
 	/**
 	 * Manages the game menu bar.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public FourRowSolitaire() {
 		checkForUpdate();
@@ -200,6 +202,8 @@ public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
 
 	/**
 	 * Checks for game updates. Notifies the user.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	private void checkForUpdate() {
 		try {
@@ -226,6 +230,8 @@ public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
 	/**
 	 * Used to load the game data like difficulty, sounds, animations,
 	 * previously saved games etc.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	private void loadData() {
 		String fileLocation = System.getProperty("user.home")
@@ -420,6 +426,8 @@ public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
 	 * Main function. Executes the game.
 	 * 
 	 * @param args
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public static void main(String[] args) {
 		@SuppressWarnings("unused")
@@ -430,6 +438,8 @@ public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
 	 * Manages the game and the help menus.
 	 * 
 	 * @param e
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == newGame) {

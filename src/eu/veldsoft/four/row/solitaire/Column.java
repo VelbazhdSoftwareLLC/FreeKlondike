@@ -40,8 +40,10 @@ class Column extends CardStack {
 	 * @param card
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
-	public Card push(Card card) {
+	public CardComponent push(CardComponent card) {
 		if (isValidMove(card) == true) {
 			super.push(card);
 			return card;
@@ -58,14 +60,16 @@ class Column extends CardStack {
 	 * @param card
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(Card card) {
-		if (isEmpty() == true && card.getNumber().equals(CardRank.KING)) {
+	public boolean isValidMove(CardComponent card) {
+		if (isEmpty() == true && card.getCard().getNumber().equals(CardRank.KING)) {
 			return true;
 		}
 
-		if (isEmpty() == false && card.getColor() != peek().getColor()
-				&& card.getNumber().isGreaterByOneThan(peek().getNumber())) {
+		if (isEmpty() == false && card.getCard().getColor() != peek().getCard().getColor()
+				&& card.getCard().getNumber().isGreaterByOneThan(peek().getCard().getNumber())) {
 			return true;
 		}
 
@@ -80,6 +84,8 @@ class Column extends CardStack {
 	 * @param stack
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public boolean isValidMove(CardStack stack) {
 		return isValidMove(stack.peek());
@@ -92,6 +98,8 @@ class Column extends CardStack {
 	 * Then returns the stack.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public CardStack getAvailableCards() {
 		if (isEmpty() == true) {
@@ -102,11 +110,11 @@ class Column extends CardStack {
 		stack.addCard(cards.get(length() - 1));
 
 		for (int index = length() - 2; index >= 0; index--) {
-			Card card = cards.get(index);
+			CardComponent card = cards.get(index);
 
-			if (card.getColor() != stack.peek().getColor()
-					&& card.getNumber().isLessByOneThan(
-							stack.peek().getNumber())) {
+			if (card.getCard().getColor() != stack.peek().getCard().getColor()
+					&& card.getCard().getNumber().isLessByOneThan(
+							stack.peek().getCard().getNumber())) {
 				stack.addCard(card);
 			} else {
 				break;

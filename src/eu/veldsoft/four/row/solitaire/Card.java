@@ -19,25 +19,7 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.URL;
 import java.util.logging.Logger;
-
-import javax.imageio.ImageIO;
-import javax.swing.JComponent;
-
-/**
- * 
- * @author Todor Balabanov
- */
-class CardComponent extends JComponent {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-}
 
 /**
  * Class: Card
@@ -47,12 +29,7 @@ class CardComponent extends JComponent {
  * 
  * @author Matt Stephen
  */
-class Card extends JComponent {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+class Card {
 
 	/**
 	 * 
@@ -61,54 +38,24 @@ class Card extends JComponent {
 			.toString());
 
 	/**
-	 * Card instances.
-	 */
-	private static Card cards[] = { null, null, null, null, null, null, null,
-			null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null, null, null, null, null, null, null, null, null,
-			null };
-
-	/**
 	 * Card suit.
 	 */
-	private CardSuit cardSuit;
+	private CardSuit suit;
 
 	/**
 	 * Card number.
 	 */
-	private CardRank cardNumber;
+	private CardRank rank;
 
 	/**
 	 * Card color.
 	 */
-	private CardColor cardColor;
+	private CardColor color;
 
 	/**
 	 * 1 - 52
 	 */
 	private int fullCardNumber;
-
-	/**
-	 * Takes either card back or front.
-	 */
-	private BufferedImage image;
-
-	/**
-	 * The back design.
-	 */
-	private String cardBack;
-
-	/**
-	 * The card front.
-	 */
-	private String cardImageString;
-
-	/**
-	 * The highlighted card front.
-	 */
-	private String cardHighlighted;
 
 	/**
 	 * Is the card currently set face-up.
@@ -126,52 +73,6 @@ class Card extends JComponent {
 	private String location = "";
 
 	/**
-	 * It is used instead of constructor. Implement lazy initialization.
-	 * 
-	 * @param number
-	 * 
-	 * @return
-	 */
-	public static Card valueBy(int number) {
-		int index = number - 1;
-
-		if (cards[index] == null) {
-			if (number >= 1 && number <= 13) {
-				/*
-				 * To make the cardNumber 1-13 you do not need to do anything.
-				 */
-				cards[index] = new Card(CardSuit.SPADES,
-						CardRank.getValue(number), number);
-			} else if (number >= 14 && number <= 26) {
-				/*
-				 * To make the cardNumber 1-13 instead of 14-26.
-				 */
-				cards[index] = new Card(CardSuit.CLUBS,
-						CardRank.getValue(number - 13), number);
-			} else if (number >= 27 && number <= 39) {
-				/*
-				 * To make the cardNumber 1-13 instead of 27-39.
-				 */
-				cards[index] = new Card(CardSuit.DIAMONDS,
-						CardRank.getValue(number - 26), number);
-			} else if (number >= 40 && number <= 52) {
-				/*
-				 * To make the cardNumber 1-13 instead of 40-52.
-				 */
-				cards[index] = new Card(CardSuit.HEARTS,
-						CardRank.getValue(number - 39), number);
-			} else {
-				/*
-				 * Let user know the card is invalid.
-				 */
-				LOGGER.info("Invalid card!");
-			}
-		}
-
-		return (cards[index]);
-	}
-
-	/**
 	 * Private card constructor Sets the card's suit, number, full number and
 	 * back image. Also sets it face-up.
 	 * 
@@ -182,47 +83,28 @@ class Card extends JComponent {
 	 * @param deckNumber
 	 * 
 	 * @param fullNumber
+	 * 
+	 * @author Todor Balabanov
 	 */
-	private Card(CardSuit suit, CardRank number, int fullNumber) {
-		this.cardSuit = suit;
-		this.cardNumber = number;
+	public Card(CardSuit suit, CardRank number, int fullNumber) {
+		this.suit = suit;
+		this.rank = number;
 		this.fullCardNumber = fullNumber;
-
-		if (SolitaireFrame.deckNumber >= 1
-				&& SolitaireFrame.deckNumber <= ChangeAppearance.NUM_DECKS) {
-			cardBack = "images/cardbacks/cardback" + SolitaireFrame.deckNumber
-					+ ".png";
-		} else {
-			cardBack = "images/cardbacks/cardback3.png";
-		}
-
-		initializeCardImageString();
-
-		setFaceUp();
 	}
 
 	/**
 	 * Sets the card's highlighted front image.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void highlight() {
 		highlighted = true;
-
-		try {
-			URL imageURL = this.getClass().getResource(cardHighlighted);
-
-			if (imageURL != null) {
-				image = ImageIO.read(imageURL);
-			}
-		} catch (IOException ex) {
-			System.err
-					.println("Error in creating highlighted card face image.");
-		}
-
-		repaint();
 	}
 
 	/**
 	 * Unhighlights a highlighted card. Sets back its unhighlighted face image.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void unhighlight() {
 		highlighted = false;
@@ -234,6 +116,8 @@ class Card extends JComponent {
 	 * Checks if the card is highlighted and returns the result(true/false).
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public boolean isHighlighted() {
 		return highlighted;
@@ -241,159 +125,116 @@ class Card extends JComponent {
 
 	/**
 	 * Sets the card face-up and sets its face image.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void setFaceUp() {
 		faceUp = true;
-
-		try {
-			URL imageURL = this.getClass().getResource(cardImageString);
-
-			if (imageURL != null) {
-				image = ImageIO.read(imageURL);
-			}
-		} catch (IOException ex) {
-			System.err.println("Error in creating card face image.");
-		}
 	}
 
 	/**
 	 * Sets the card face-down and sets its back image.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void setFaceDown() {
 		faceUp = false;
-
-		try {
-			URL imageURL = this.getClass().getResource(cardBack);
-
-			if (imageURL != null) {
-				image = ImageIO.read(imageURL);
-			}
-		} catch (IOException ex) {
-			System.err.println("Error in creating card back image.");
-		}
 	}
 
 	/**
 	 * Checks if the card is facing up and returns the result(true/false).
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public boolean isFaceUp() {
 		return faceUp;
 	}
 
 	/**
-	 * Sets the card's face image and highlighted face image based on its suit
-	 * and rank.
-	 * 
-	 */
-	private void initializeCardImageString() {
-		cardImageString = "images/cardfaces/";
-		cardHighlighted = "images/highlightedfaces/";
-
-		if (cardSuit.equals(CardSuit.SPADES)) {
-			cardImageString += "s";
-			cardHighlighted += "s";
-			cardColor = CardColor.BLACK;
-		} else if (cardSuit.equals(CardSuit.CLUBS)) {
-			cardImageString += "c";
-			cardHighlighted += "c";
-			cardColor = CardColor.BLACK;
-		} else if (cardSuit.equals(CardSuit.DIAMONDS)) {
-			cardImageString += "d";
-			cardHighlighted += "d";
-			cardColor = CardColor.RED;
-		} else if (cardSuit.equals(CardSuit.HEARTS)) {
-			cardImageString += "h";
-			cardHighlighted += "h";
-			cardColor = CardColor.RED;
-		}
-
-		if (cardNumber.equals(CardRank.ACE)) {
-			cardImageString += "Ace";
-			cardHighlighted += "Ace";
-		} else if (cardNumber.equals(CardRank.TWO)) {
-			cardImageString += "Two";
-			cardHighlighted += "Two";
-		} else if (cardNumber.equals(CardRank.THREE)) {
-			cardImageString += "Three";
-			cardHighlighted += "Three";
-		} else if (cardNumber.equals(CardRank.FOUR)) {
-			cardImageString += "Four";
-			cardHighlighted += "Four";
-		} else if (cardNumber.equals(CardRank.FIVE)) {
-			cardImageString += "Five";
-			cardHighlighted += "Five";
-		} else if (cardNumber.equals(CardRank.SIX)) {
-			cardImageString += "Six";
-			cardHighlighted += "Six";
-		} else if (cardNumber.equals(CardRank.SEVEN)) {
-			cardImageString += "Seven";
-			cardHighlighted += "Seven";
-		} else if (cardNumber.equals(CardRank.EIGHT)) {
-			cardImageString += "Eight";
-			cardHighlighted += "Eight";
-		} else if (cardNumber.equals(CardRank.NINE)) {
-			cardImageString += "Nine";
-			cardHighlighted += "Nine";
-		} else if (cardNumber.equals(CardRank.TEN)) {
-			cardImageString += "Ten";
-			cardHighlighted += "Ten";
-		} else if (cardNumber.equals(CardRank.JACK)) {
-			cardImageString += "Jack";
-			cardHighlighted += "Jack";
-		} else if (cardNumber.equals(CardRank.QUEEN)) {
-			cardImageString += "Queen";
-			cardHighlighted += "Queen";
-		} else if (cardNumber.equals(CardRank.KING)) {
-			cardImageString += "King";
-			cardHighlighted += "King";
-		}
-
-		cardImageString += ".png";
-		cardHighlighted += "H.png";
-	}
-
-	/**
-	 * Returns the card's buffered image (either back or front).
-	 * 
-	 * @return
-	 */
-	public BufferedImage getImage() {
-		return image;
-	}
-
-	/**
 	 * Returns the card's number.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public CardRank getNumber() {
-		return cardNumber;
+		return rank;
 	}
 
 	/**
 	 * Returns the card's suit.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public CardSuit getSuit() {
-		return cardSuit;
+		return suit;
 	}
 
 	/**
 	 * Returns the card's color.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public CardColor getColor() {
-		return cardColor;
+		return color;
+	}
+
+	/**
+	 * Returns the card's rank.
+	 * 
+	 * @return
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public CardRank getRank() {
+		return rank;
+	}
+
+	/**
+	 * Sets the card's rank.
+	 * 
+	 * @param rank
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public void setRank(CardRank rank) {
+		this.rank = rank;
+	}
+
+	/**
+	 * Sets the card's suit.
+	 * 
+	 * @param suit
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public void setSuit(CardSuit suit) {
+		this.suit = suit;
+	}
+
+	/**
+	 * Sets the card's color.
+	 * 
+	 * @param color
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public void setColor(CardColor color) {
+		this.color = color;
 	}
 
 	/**
 	 * Returns the card's full number.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public int getFullNumber() {
 		return fullCardNumber;
@@ -403,6 +244,8 @@ class Card extends JComponent {
 	 * Notifies the discard pile of moves from the deck.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public String getSource() {
 		return location;
@@ -412,28 +255,21 @@ class Card extends JComponent {
 	 * Used to set the location of a moved card.
 	 * 
 	 * @param source
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void setSource(String source) {
 		location = source;
 	}
 
 	/**
-	 * Paint procedure.
-	 * 
-	 * @param g
-	 *            Graphic context.
-	 */
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		g.drawImage(image, 0, 0, null);
-	}
-
-	/**
 	 * Clone a card, that includes the card's suit, number and full number.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public Card clone() {
-		return new Card(cardSuit, cardNumber, fullCardNumber);
+		return this;
 	}
 }

@@ -47,10 +47,12 @@ class SolitairePanel extends JPanel {
 
 	/**
 	 * Sets the field image.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public SolitairePanel() {
 		URL imageURL = this.getClass().getResource(
-				"images/backgrounds/background"
+				"images/vanya/backgrounds/background"
 						+ SolitaireFrame.backgroundNumber + ".jpg");
 
 		if (imageURL != null) {
@@ -63,12 +65,14 @@ class SolitairePanel extends JPanel {
 	 * number represents a certain background image.
 	 * 
 	 * @param back
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void changeBackground(int back) {
 		SolitaireFrame.backgroundNumber = back;
 
 		URL imageURL = this.getClass().getResource(
-				"images/backgrounds/background" + back + ".jpg");
+				"images/vanya/backgrounds/background" + back + ".jpg");
 
 		if (imageURL != null) {
 			background = new ImageIcon(imageURL).getImage();
@@ -81,6 +85,8 @@ class SolitairePanel extends JPanel {
 	 * Draws the board's background.
 	 * 
 	 * @param g
+	 * 
+	 * @author Todor Balabanov
 	 */
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);

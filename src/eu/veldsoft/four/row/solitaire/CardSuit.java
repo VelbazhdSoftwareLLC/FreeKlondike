@@ -27,24 +27,29 @@ package eu.veldsoft.four.row.solitaire;
 enum CardSuit {
 	
 	/**
-	 * Enum list.
+	 * Spades enum constant.
 	 */
-	SPADES("Spades"),
+	SPADES(0, "Spades"),
 	
 	/**
 	 * 
 	 */
-	CLUBS("Clubs"),
+	CLUBS(1, "Clubs"),
 	
 	/**
 	 * 
 	 */
-	HEARTS("Hearts"),
+	DIAMONDS(2, "Diamonds"),
 	
 	/**
 	 * 
 	 */
-	DIAMONDS("Diamonds");
+	HEARTS(3, "Hearts");
+
+	/**
+	 * Suit name.
+	 */
+	private int index;
 
 	/**
 	 * Suit name.
@@ -54,16 +59,34 @@ enum CardSuit {
 	/**
 	 * Sets the card suit.
 	 * 
-	 * @param name
+	 * @param index Suit index.
+	 * 
+	 * @param name Suit name.
+	 * 
+	 * @author Todor Balabanov
 	 */
-	private CardSuit(String name) {
+	private CardSuit(int index, String name) {
+		this.index = index;
 		this.name = name;
+	}
+
+	/**
+	 * Index of the suit.
+	 * 
+	 * @return Index to be used for the suit.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public int getIndex() {
+		return index;
 	}
 
 	/**
 	 * Returns the card suit.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public String getName() {
 		return name;

@@ -1,3 +1,22 @@
+/*
+ This file is a part of Four Row Solitaire
+
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
+
+ Four Row Solitaire is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ Four Row Solitaire is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package eu.veldsoft.four.row.solitaire;
 
 import java.awt.BorderLayout;
@@ -21,7 +40,7 @@ import javax.swing.event.MouseInputAdapter;
 
 /**
  * 
- * @author Konstantin Tsanov
+ * @author Todor Balabanov
  * 
  */
 class SolitaireFrame extends JFrame {
@@ -37,6 +56,8 @@ class SolitaireFrame extends JFrame {
 		 * On closing the main window:
 		 * 
 		 * @param e
+		 * 
+		 * @author Todor Balabanov
 		 */
 		public void windowClosing(WindowEvent e) {
 			int save = JOptionPane
@@ -72,6 +93,8 @@ class SolitaireFrame extends JFrame {
 		 * Action performed
 		 * 
 		 * @param e
+		 * 
+		 * @author Todor Balabanov
 		 */
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() != timer) {
@@ -103,7 +126,7 @@ class SolitaireFrame extends JFrame {
 		/**
 		 * 
 		 */
-		private Card clickedCard;
+		private CardComponent clickedCard;
 
 		/**
 		 * 
@@ -123,7 +146,7 @@ class SolitaireFrame extends JFrame {
 		/**
 		 * For right clicking discard pile view.
 		 */
-		private Card tempCard;
+		private CardComponent tempCard;
 
 		/**
 		 * To prevent clicking cards from the right click view.
@@ -132,11 +155,14 @@ class SolitaireFrame extends JFrame {
 
 		/**
 		 * Checks if the game is won
+		 * 
+		 * @author Todor Balabanov
 		 */
 		private void checkWin() {
 			for (int i = 0; i < board.acePiles.length; i++) {
+				// TODO Check for all cards not only for the King.
 				if (board.acePiles[i].isEmpty()
-						|| board.acePiles[i].peek().getNumber()
+						|| board.acePiles[i].peek().getCard().getNumber()
 								.equals(CardRank.KING) == false) {
 					return;
 				}
@@ -195,10 +221,13 @@ class SolitaireFrame extends JFrame {
 				System.exit(0);
 			}
 		}
+
 		/**
 		 * Mouse-pressed event.
 		 * 
 		 * @param e
+		 * 
+		 * @author Todor Balabanov
 		 */
 		public void mousePressed(MouseEvent e) {
 			if (e.getButton() == MouseEvent.BUTTON3
@@ -217,6 +246,8 @@ class SolitaireFrame extends JFrame {
 		 * Mouse-released event.
 		 * 
 		 * @param e
+		 * 
+		 * @author Todor Balabanov
 		 */
 		public void mouseReleased(MouseEvent e) {
 			if (e.getButton() == MouseEvent.BUTTON3 && tempCard != null) {
@@ -231,6 +262,8 @@ class SolitaireFrame extends JFrame {
 		 * Mouse-clicked event.
 		 * 
 		 * @param e
+		 * 
+		 * @author Todor Balabanov
 		 */
 		public void mouseClicked(MouseEvent e) {
 			board.discardPile.repaint();
@@ -242,33 +275,15 @@ class SolitaireFrame extends JFrame {
 
 			if ((e.getButton() != MouseEvent.BUTTON1) || rightClicked) {
 				return;
-			}
-
-			else if (e.getClickCount() == 2 && hasSelected
+			} else if (e.getClickCount() == 2 && hasSelected
 					&& singleCardSelected) {
-				if (source.peek().getNumber().equals(CardRank.ACE)) {
-					if (source.peek().getSuit().equals(CardSuit.SPADES)) {
-						Card card = source.pop();
-						card.unhighlight();
-						board.acePiles[0].push(card);
-						board.destinationList.add(board.acePiles[0]);
-					} else if (source.peek().getSuit().equals(CardSuit.CLUBS)) {
-						Card card = source.pop();
-						card.unhighlight();
-						board.acePiles[1].push(card);
-						board.destinationList.add(board.acePiles[1]);
-					} else if (source.peek().getSuit()
-							.equals(CardSuit.DIAMONDS)) {
-						Card card = source.pop();
-						card.unhighlight();
-						board.acePiles[2].push(card);
-						board.destinationList.add(board.acePiles[2]);
-					} else if (source.peek().getSuit().equals(CardSuit.HEARTS)) {
-						Card card = source.pop();
-						card.unhighlight();
-						board.acePiles[3].push(card);
-						board.destinationList.add(board.acePiles[3]);
-					}
+				if (source.peek().getCard().getNumber().equals(CardRank.ACE)) {
+					CardComponent card = source.pop();
+					AcePile pile = board.acePiles[card.getCard().getSuit().getIndex()];
+					card.unhighlight();
+					
+					pile.push(card);
+					board.destinationList.add(pile);
 
 					hasSelected = false;
 					source.repaint();
@@ -278,15 +293,20 @@ class SolitaireFrame extends JFrame {
 
 				for (int i = 0; i < board.acePiles.length; i++) {
 					if (!board.acePiles[i].isEmpty()
-							&& source.peek().getSuit()
-									.equals(board.acePiles[i].peek().getSuit())
 							&& source
 									.peek()
+									.getCard()
+									.getSuit()
+									.equals(board.acePiles[i].peek().getCard()
+											.getSuit())
+							&& source
+									.peek()
+									.getCard()
 									.getNumber()
 									.isLessByOneThan(
-											(board.acePiles[i].peek()
+											(board.acePiles[i].peek().getCard()
 													.getNumber()))) {
-						Card card = source.pop();
+						CardComponent card = source.pop();
 						card.unhighlight();
 						board.acePiles[i].push(card);
 
@@ -296,7 +316,7 @@ class SolitaireFrame extends JFrame {
 						source.repaint();
 						repaint();
 
-						if (card.getNumber().equals(CardRank.KING)) {
+						if (card.getCard().getNumber().equals(CardRank.KING)) {
 							checkWin();
 						}
 
@@ -306,7 +326,7 @@ class SolitaireFrame extends JFrame {
 
 				for (int i = 0; i < board.cells.length; i++) {
 					if (board.cells[i].isEmpty()) {
-						Card card = source.pop();
+						CardComponent card = source.pop();
 						card.unhighlight();
 						board.cells[i].push(card);
 
@@ -422,7 +442,7 @@ class SolitaireFrame extends JFrame {
 
 				if (singleCardSelected) {
 					if (destination.isValidMove(clickedCard)) {
-						Card card = source.pop();
+						CardComponent card = source.pop();
 						card.unhighlight();
 						destination.push(card);
 
@@ -432,7 +452,7 @@ class SolitaireFrame extends JFrame {
 						board.destinationList.add(destination);
 
 						if (destination instanceof AcePile
-								&& clickedCard.getNumber()
+								&& clickedCard.getCard().getNumber()
 										.equals(CardRank.KING)) {
 							repaint();
 							checkWin();
@@ -455,7 +475,7 @@ class SolitaireFrame extends JFrame {
 						CardStack stack = new CardStack();
 
 						for (int i = temp.length(); i > 0; i--) {
-							Card card = source.pop();
+							CardComponent card = source.pop();
 							card.unhighlight();
 
 							stack.push(card);
@@ -552,7 +572,6 @@ class SolitaireFrame extends JFrame {
 	 */
 	private MyMouseListener ml = new MyMouseListener();
 
-
 	/**
 	 * 
 	 */
@@ -561,6 +580,8 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * 
 	 * @throws HeadlessException
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public SolitaireFrame() throws HeadlessException {
 		super();
@@ -569,8 +590,8 @@ class SolitaireFrame extends JFrame {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
-		setIconImage(new ImageIcon(getClass().getResource("images/logo.png"))
-				.getImage());
+		setIconImage(new ImageIcon(getClass().getResource(
+				"images/vanya/logo.png")).getImage());
 
 		setVisible(true);
 
@@ -581,6 +602,8 @@ class SolitaireFrame extends JFrame {
 	 * Returns the deck number.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public int getDeckNumber() {
 		return deckNumber;
@@ -590,6 +613,8 @@ class SolitaireFrame extends JFrame {
 	 * Sets the deck number.
 	 * 
 	 * @param deckNum
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void setDeckNumber(int deckNum) {
 		deckNumber = deckNum;
@@ -603,6 +628,8 @@ class SolitaireFrame extends JFrame {
 	 * Returns the background number.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public int getBackgroundNumber() {
 		return backgroundNumber;
@@ -612,6 +639,8 @@ class SolitaireFrame extends JFrame {
 	 * Sets the background number.
 	 * 
 	 * @param backNum
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void setBackgroundNumber(int backNum) {
 		backgroundNumber = backNum;
@@ -626,6 +655,8 @@ class SolitaireFrame extends JFrame {
 	 * Sets the timer counter.
 	 * 
 	 * @param time
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void setTimer(int time) {
 		timerCount = time;
@@ -635,6 +666,8 @@ class SolitaireFrame extends JFrame {
 	 * Returns the timer status.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public int getTimerStatus() {
 		if (timer.isRunning()) {
@@ -648,6 +681,8 @@ class SolitaireFrame extends JFrame {
 	 * Returns next game timer status.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public int getTimerNextGameStatus() {
 		return timerToRunNextGame;
@@ -657,6 +692,8 @@ class SolitaireFrame extends JFrame {
 	 * Sets timer status.
 	 * 
 	 * @param timerInt
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void setTimerStatus(int timerInt) {
 		if (timerInt == 1) {
@@ -671,11 +708,13 @@ class SolitaireFrame extends JFrame {
 	}
 
 	/**
-	 * Manages the appaearance.
+	 * Manages the appearance.
 	 * 
 	 * @param deck
 	 * 
 	 * @param background
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void setAppearance(int deck, int background) {
 		deckNumber = deck;
@@ -722,6 +761,8 @@ class SolitaireFrame extends JFrame {
 	 * For starting a new game.
 	 * 
 	 * @param winOrLoss
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void newGame(GameState winOrLoss) {
 		/*
@@ -745,6 +786,8 @@ class SolitaireFrame extends JFrame {
 
 	/**
 	 * Used to reset the stats.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void resetStats() {
 		board.recordGame(GameState.RESET_STATS, deckNumber, backgroundNumber,
@@ -753,6 +796,8 @@ class SolitaireFrame extends JFrame {
 
 	/**
 	 * Save options.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void saveOptions() {
 		board.recordGame(GameState.DO_NOTHING, deckNumber, backgroundNumber,
@@ -763,6 +808,8 @@ class SolitaireFrame extends JFrame {
 	 * Manages the game states.
 	 * 
 	 * @param winOrLoss
+	 * 
+	 * @author Todor Balabanov
 	 */
 	void recordGame(GameState winOrLoss) {
 		board.recordGame(winOrLoss, deckNumber, backgroundNumber, timerCount,

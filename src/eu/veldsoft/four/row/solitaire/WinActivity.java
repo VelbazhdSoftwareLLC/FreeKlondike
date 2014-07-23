@@ -23,43 +23,26 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.Toast;
+import android.view.SurfaceView;
 
 /**
  * 
- * @author Ina Baltadzhieva
+ * @author Konstantin Tsanov
+ *
  */
-public class StatisticsTab2Activity extends Activity {
+public class WinActivity extends Activity {
+	private SurfaceView surface = null;
 
 	/**
 	 * On creation.
 	 * 
-	 * @param savedInstanceState
-	 * 
-	 * @author Ina Baltadzhieva
+	 * @author Konstantin Tsanov
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_statistics_tab2);
-
-		((Button) findViewById(R.id.ok_statistics))
-				.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						finish();
-					}
-				});
-		((Button) findViewById(R.id.reset_statistics))
-				.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						Toast.makeText(getApplicationContext(), "Reset 3!",
-								Toast.LENGTH_SHORT).show();
-					}
-				});
+		setContentView(R.layout.activity_win);
+		
+		surface = (SurfaceView) findViewById(R.id.surfaceView1);
 	}
 }
