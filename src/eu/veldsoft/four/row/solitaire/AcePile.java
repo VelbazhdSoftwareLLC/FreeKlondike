@@ -75,7 +75,6 @@ class AcePile extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public CardComponent push(CardComponent card) {
-		System.err.println(isValidMove(card));
 		if (isValidMove(card) == false) {
 			return null;
 		}
@@ -137,6 +136,32 @@ class AcePile extends CardStack {
 	}
 
 	/**
+	 * 
+	 * @return
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public boolean isFull() {
+		if (isEmpty() == true || length() != 13) {
+			return (false);
+		}
+
+		for (int i = 0; i < cards.size() - 1; i++) {
+			if (cards.get(i).getCard().getColor() != cards.get(i + 1).getCard()
+					.getColor()) {
+				return (false);
+			}
+
+			if (cards.get(i).getCard().getNumber()
+					.isLessByOneThan(cards.get(i + 1).getCard().getNumber()) == true) {
+				return (false);
+			}
+		}
+
+		return (true);
+	}
+
+	/**
 	 * Paint procedure.
 	 * 
 	 * @param g
@@ -144,10 +169,10 @@ class AcePile extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
+	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
 
-		// TODO Draw only last image.
 		for (int i = 0; i < length(); i++) {
 			Image image = getCardAtLocation(i).getImage();
 			g.drawImage(image, 0, 0, null);

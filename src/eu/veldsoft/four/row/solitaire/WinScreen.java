@@ -40,7 +40,7 @@ import javax.swing.event.MouseInputAdapter;
  * @author Matt Stephen
  */
 class WinScreen extends JFrame {
-	
+
 	/**
 	 * 
 	 */

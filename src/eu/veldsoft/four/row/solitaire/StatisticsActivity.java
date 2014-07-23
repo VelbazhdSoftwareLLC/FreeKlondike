@@ -32,12 +32,10 @@ import android.widget.TabHost.TabSpec;
 /**
  * Manages the "Statistics" android menu.
  * 
- * @author Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov
- * 
+ * @author Todor Balabanov
  */
 public class StatisticsActivity extends TabActivity {
 
-	
 	/**
 	 * On creation.
 	 * 

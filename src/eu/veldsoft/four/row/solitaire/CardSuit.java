@@ -25,22 +25,22 @@ package eu.veldsoft.four.row.solitaire;
  * @author Todor Balabanov
  */
 enum CardSuit {
-	
+
 	/**
 	 * Spades enum constant.
 	 */
 	SPADES(0, "Spades"),
-	
+
 	/**
 	 * 
 	 */
 	CLUBS(1, "Clubs"),
-	
+
 	/**
 	 * 
 	 */
 	DIAMONDS(2, "Diamonds"),
-	
+
 	/**
 	 * 
 	 */
@@ -59,9 +59,11 @@ enum CardSuit {
 	/**
 	 * Sets the card suit.
 	 * 
-	 * @param index Suit index.
+	 * @param index
+	 *            Suit index.
 	 * 
-	 * @param name Suit name.
+	 * @param name
+	 *            Suit name.
 	 * 
 	 * @author Todor Balabanov
 	 */

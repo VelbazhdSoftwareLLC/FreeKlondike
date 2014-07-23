@@ -24,22 +24,22 @@ package eu.veldsoft.four.row.solitaire;
  * @author Todor Balabanov
  */
 enum GameDifficulty {
-	
+
 	/**
 	 * 
 	 */
 	EASY(1),
-	
+
 	/**
 	 * 
 	 */
 	MEDIUM(2),
-	
+
 	/**
 	 * 
 	 */
 	HARD(3);
-	
+
 	/**
 	 * 
 	 */

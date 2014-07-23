@@ -20,7 +20,6 @@
 package eu.veldsoft.four.row.solitaire;
 
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Point;
 import java.util.Vector;
 
@@ -439,22 +438,11 @@ class CardStack extends JLayeredPane {
 	 * 
 	 * @param g
 	 *            Graphic context.
-	 *            
+	 * 
 	 * @author Todor Balabanov
 	 */
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-
-		// TODO Parent class should not perform drawing!!!
-		if (isEmpty()) {
-			return;
-		}
-
-		// TODO Parent class should not perform drawing!!!
-		for (int i = 0; i < cards.size(); i++) {
-			Image image = cards.get(i).getImage();
-			g.drawImage(image, 0, i * 25, null);
-		}
 	}
 }

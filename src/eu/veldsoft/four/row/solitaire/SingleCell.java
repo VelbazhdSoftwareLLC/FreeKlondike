@@ -19,6 +19,7 @@
 
 package eu.veldsoft.four.row.solitaire;
 
+import java.awt.Graphics;
 import java.awt.Point;
 
 /**
@@ -30,7 +31,7 @@ import java.awt.Point;
  * @author Matt Stephen
  */
 class SingleCell extends CardStack {
-	
+
 	/**
 	 * 
 	 */
@@ -114,5 +115,24 @@ class SingleCell extends CardStack {
 		stack.addCard(peek());
 
 		return stack;
+	}
+
+	/**
+	 * Paint procedure.
+	 * 
+	 * @param g
+	 *            Graphic context.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	@Override
+	public void paint(Graphics g) {
+		super.paint(g);
+
+		if (isEmpty()) {
+			return;
+		}
+		
+		g.drawImage(cards.get(cards.size()-1).getImage(), 0, 0, null);
 	}
 }

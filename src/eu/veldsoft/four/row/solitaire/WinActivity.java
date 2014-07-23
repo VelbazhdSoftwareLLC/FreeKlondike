@@ -28,7 +28,7 @@ import android.view.SurfaceView;
 /**
  * 
  * @author Konstantin Tsanov
- *
+ * 
  */
 public class WinActivity extends Activity {
 	private SurfaceView surface = null;
@@ -42,7 +42,7 @@ public class WinActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_win);
-		
+
 		surface = (SurfaceView) findViewById(R.id.surfaceView1);
 	}
 }

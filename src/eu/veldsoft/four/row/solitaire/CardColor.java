@@ -25,12 +25,12 @@ package eu.veldsoft.four.row.solitaire;
  * @author Todor Balabanov
  */
 enum CardColor {
-	
+
 	/**
 	 * Enum list.
 	 */
 	BLACK(0),
-	
+
 	/**
 	 * 
 	 */

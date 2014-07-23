@@ -160,10 +160,7 @@ class SolitaireFrame extends JFrame {
 		 */
 		private void checkWin() {
 			for (int i = 0; i < board.acePiles.length; i++) {
-				// TODO Check for all cards not only for the King.
-				if (board.acePiles[i].isEmpty()
-						|| board.acePiles[i].peek().getCard().getNumber()
-								.equals(CardRank.KING) == false) {
+				if(board.acePiles[i].isFull() == false) {
 					return;
 				}
 			}
@@ -279,9 +276,10 @@ class SolitaireFrame extends JFrame {
 					&& singleCardSelected) {
 				if (source.peek().getCard().getNumber().equals(CardRank.ACE)) {
 					CardComponent card = source.pop();
-					AcePile pile = board.acePiles[card.getCard().getSuit().getIndex()];
+					AcePile pile = board.acePiles[card.getCard().getSuit()
+							.getIndex()];
 					card.unhighlight();
-					
+
 					pile.push(card);
 					board.destinationList.add(pile);
 

@@ -141,7 +141,8 @@ class CardComponent extends JComponent {
 	}
 
 	/**
-	 * Constructor. Sets the card's parameters, sets it face up and gets its image.
+	 * Constructor. Sets the card's parameters, sets it face up and gets its
+	 * image.
 	 * 
 	 * @param suit
 	 * 
@@ -154,14 +155,14 @@ class CardComponent extends JComponent {
 	private CardComponent(CardSuit suit, CardRank number, int fullNumber) {
 		if (SolitaireFrame.deckNumber >= 1
 				&& SolitaireFrame.deckNumber <= ChangeAppearance.NUM_DECKS) {
-			cardBack = "images/vanya/cardbacks/cardback" + SolitaireFrame.deckNumber
-					+ ".png";
+			cardBack = "images/vanya/cardbacks/cardback"
+					+ SolitaireFrame.deckNumber + ".png";
 		} else {
 			cardBack = "images/vanya/cardbacks/cardback3.png";
 		}
 
 		card = new Card(suit, number, fullNumber);
-		
+
 		initializeCardImageString();
 
 		setFaceUp();
@@ -185,7 +186,7 @@ class CardComponent extends JComponent {
 	 */
 	public void highlight() {
 		card.highlight();
-		
+
 		try {
 			URL imageURL = this.getClass().getResource(cardHighlighted);
 
@@ -257,9 +258,9 @@ class CardComponent extends JComponent {
 	 * @author Todor Balabanov
 	 */
 	public Card getCard() {
-		return( card );
+		return (card);
 	}
-	
+
 	/**
 	 * Sets the card's face image and highlighted face image based on its suit
 	 * and rank.

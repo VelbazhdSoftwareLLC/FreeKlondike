@@ -34,7 +34,7 @@ import javax.swing.JPanel;
  * @author Matt Stephen
  */
 class SolitairePanel extends JPanel {
-	
+
 	/**
 	 * 
 	 */

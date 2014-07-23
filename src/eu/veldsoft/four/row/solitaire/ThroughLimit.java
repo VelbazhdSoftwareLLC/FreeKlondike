@@ -20,24 +20,22 @@
 package eu.veldsoft.four.row.solitaire;
 
 /**
- * 
  * Number of deck throughs for each difficulty. Three card draw adds 1 to each.
  * 
  * @author Todor Balabanov
- * 
  */
 enum ThroughLimit {
-	
+
 	/**
-	 * Enum list.
+	 * 
 	 */
 	EASY(3),
-	
+
 	/**
 	 * 
 	 */
 	MEDIUM(2),
-	
+
 	/**
 	 * 
 	 */

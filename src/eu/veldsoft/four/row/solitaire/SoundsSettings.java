@@ -23,11 +23,10 @@ package eu.veldsoft.four.row.solitaire;
  * Sound settings on/off
  * 
  * @author Todor Balabanov
- * 
  */
 enum SoundsSettings {
 	/**
-	 * Enum list.
+	 *
 	 */
 	OFF,
 

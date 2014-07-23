@@ -16,11 +16,11 @@
  You should have received a copy of the GNU General Public License
  along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package eu.veldsoft.four.row.solitaire;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;

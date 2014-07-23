@@ -33,7 +33,7 @@ import java.awt.LayoutManager;
  * @author Matt Stephen
  */
 class SolitaireLayout implements LayoutManager {
-	
+
 	/**
 	 * Names of columns.
 	 * 
@@ -285,8 +285,7 @@ class SolitaireLayout implements LayoutManager {
 	 * 
 	 * @param parent
 	 * 
-	 * @author Todor Balabanov
-	 *            .
+	 * @author Todor Balabanov .
 	 */
 	public Dimension minimumLayoutSize(Container parent) {
 		throw new UnsupportedOperationException("Not supported yet.");

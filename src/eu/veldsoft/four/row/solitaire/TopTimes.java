@@ -45,7 +45,7 @@ import javax.swing.JTextField;
  * @author Todor Balabanov
  */
 class TopTimes extends JFrame implements ActionListener, KeyListener {
-	
+
 	/**
 	 * 
 	 */
@@ -642,7 +642,7 @@ class TopTimes extends JFrame implements ActionListener, KeyListener {
 	 * 
 	 * @param newTime
 	 *            this parameter is the new time to save.
-	 *            
+	 * 
 	 * @author Todor Balabanov
 	 */
 	public void setProperties(int newTime) {
@@ -692,7 +692,7 @@ class TopTimes extends JFrame implements ActionListener, KeyListener {
 		names[pos].removeKeyListener(this);
 		saveData();
 	}
-	
+
 	/**
 	 * On key released.
 	 * 
