@@ -20,7 +20,6 @@
 package eu.veldsoft.four.row.solitaire;
 
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Point;
 import java.util.LinkedList;
 
@@ -35,7 +34,7 @@ import javax.swing.JOptionPane;
  * @author Matt Stephen
  */
 class DealDeck extends CardStack {
-	
+
 	/**
 	 * 
 	 */
@@ -320,6 +319,7 @@ class DealDeck extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
+	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
 
@@ -327,9 +327,6 @@ class DealDeck extends CardStack {
 			return;
 		}
 
-		for (int i = 0; i < length(); i++) {
-			Image image = getCardAtLocation(i).getImage();
-			g.drawImage(image, 0, 0, null);
-		}
+		g.drawImage(getCardAtLocation(length() - 1).getImage(), 0, 0, null);
 	}
 }

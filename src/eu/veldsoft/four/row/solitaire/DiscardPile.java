@@ -32,7 +32,7 @@ import java.awt.Point;
  * @author Matt Stephen
  */
 class DiscardPile extends CardStack {
-	
+
 	/**
 	 * 
 	 */
@@ -212,13 +212,32 @@ class DiscardPile extends CardStack {
 	}
 
 	/**
+	 * Returns the stack of available cards.
+	 * 
+	 * @return
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public CardStack getAvailableCards() {
+		if (isEmpty() == true) {
+			return (null);
+		}
+
+		CardStack stack = new CardStack();
+		stack.addCard(peek());
+
+		return stack;
+	}
+
+	/**
 	 * Paint procedure.
 	 * 
 	 * @param g
 	 *            Graphic context.
-	 *            
+	 * 
 	 * @author Todor Balabanov
 	 */
+	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
 
@@ -251,23 +270,5 @@ class DiscardPile extends CardStack {
 				}
 			}
 		}
-	}
-
-	/**
-	 * Returns the stack of available cards.
-	 * 
-	 * @return
-	 * 
-	 * @author Todor Balabanov
-	 */
-	public CardStack getAvailableCards() {
-		if (isEmpty() == true) {
-			return (null);
-		}
-
-		CardStack stack = new CardStack();
-		stack.addCard(peek());
-
-		return stack;
 	}
 }

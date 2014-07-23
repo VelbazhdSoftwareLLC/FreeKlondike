@@ -44,7 +44,7 @@ import javax.swing.border.TitledBorder;
  * @author Matt Stephen
  */
 class ChangeOptions extends JDialog implements ActionListener {
-	
+
 	/**
 	 * 
 	 */
@@ -59,12 +59,12 @@ class ChangeOptions extends JDialog implements ActionListener {
 	 * Draw count buttons.
 	 */
 	private JRadioButton drawOne = new JRadioButton("Draw One");
-	
+
 	/**
 	 * Radio button.
 	 */
 	private JRadioButton drawThree = new JRadioButton("Draw Three");
-	
+
 	/**
 	 * Checkbox.
 	 */
@@ -104,12 +104,12 @@ class ChangeOptions extends JDialog implements ActionListener {
 	 * Difficulty radio buttons.
 	 */
 	private JRadioButton easy = new JRadioButton("Easy");
-	
+
 	/**
 	 * Radio button.
 	 */
 	private JRadioButton medium = new JRadioButton("Medium", true);
-	
+
 	/**
 	 * Radio button.
 	 */

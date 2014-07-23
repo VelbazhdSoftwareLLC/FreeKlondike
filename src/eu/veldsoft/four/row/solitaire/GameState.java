@@ -26,7 +26,7 @@ package eu.veldsoft.four.row.solitaire;
  */
 enum GameState {
 	/**
-	 * Game states.
+	 * 
 	 */
 	GAME_LOST,
 

@@ -19,8 +19,6 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.util.logging.Logger;
-
 /**
  * Class: Card
  * 
@@ -30,13 +28,6 @@ import java.util.logging.Logger;
  * @author Matt Stephen
  */
 class Card {
-
-	/**
-	 * 
-	 */
-	private static final Logger LOGGER = Logger.getLogger(Class.class
-			.toString());
-
 	/**
 	 * Card suit.
 	 */

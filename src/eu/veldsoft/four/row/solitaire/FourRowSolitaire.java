@@ -49,7 +49,7 @@ import javax.swing.UIManager;
  * @author Matt Stephen
  */
 public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
-	
+
 	/**
 	 * 
 	 */
@@ -69,7 +69,7 @@ public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
 	 * Game menu.
 	 */
 	private JMenu game = new JMenu("Game");
-	
+
 	/**
 	 * Help menu.
 	 */
@@ -81,37 +81,37 @@ public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
 	 * New game.
 	 */
 	private JMenuItem newGame = new JMenuItem("New Game");
-	
+
 	/**
 	 * Undo
 	 */
 	private JMenuItem undo = new JMenuItem("Undo Last Move");
-	
+
 	/**
 	 * Hint.
 	 */
 	private JMenuItem hint = new JMenuItem("Hint");
-	
+
 	/**
 	 * Statistics.
 	 */
 	private JMenuItem statistics = new JMenuItem("Statistics");
-	
+
 	/**
 	 * Options.
 	 */
 	private JMenuItem options = new JMenuItem("Options");
-	
+
 	/**
 	 * Change Appearance.
 	 */
 	private JMenuItem appearance = new JMenuItem("Change Appearance");
-	
+
 	/**
 	 * Best Times.
 	 */
 	private JMenuItem topTimes = new JMenuItem("Best Times");
-	
+
 	/**
 	 * Exit.
 	 */
@@ -123,12 +123,12 @@ public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
 	 * View Help.
 	 */
 	private JMenuItem help = new JMenuItem("View Help");
-	
+
 	/**
 	 * About Game.
 	 */
 	private JMenuItem about = new JMenuItem("About Game");
-	
+
 	/**
 	 * Check for Updates.
 	 */

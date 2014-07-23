@@ -27,7 +27,7 @@ import java.util.Random;
  * @author Todor Balabanov
  */
 class Common {
-	
+
 	/**
 	 * Common PRNG used in the scope of the project.
 	 */

@@ -43,7 +43,7 @@ import javax.swing.JRadioButton;
  * @author Matt Stephen
  */
 class ChangeAppearance extends JDialog implements ActionListener {
-	
+
 	/**
 	 * 
 	 */
@@ -53,17 +53,17 @@ class ChangeAppearance extends JDialog implements ActionListener {
 	 * Number of card backs.
 	 */
 	public static final int NUM_DECKS = 4;
-	
+
 	/**
 	 * Number of card backgrounds.
 	 */
 	public static final int NUM_BACKGROUNDS = 3;
-	
+
 	/**
 	 * Default deck number.
 	 */
 	public static final int FRS_DECK = 3;
-	
+
 	/**
 	 * Default background number.
 	 */
@@ -88,7 +88,7 @@ class ChangeAppearance extends JDialog implements ActionListener {
 	 * Default deck number.
 	 */
 	public int deckNumber = 3;
-	
+
 	/**
 	 * Default background number.
 	 */
@@ -103,7 +103,7 @@ class ChangeAppearance extends JDialog implements ActionListener {
 	 * To hold the image previews.
 	 */
 	private JLabel cardBackLabel = new JLabel();
-	
+
 	/**
 	 * To hold the image previews.
 	 */

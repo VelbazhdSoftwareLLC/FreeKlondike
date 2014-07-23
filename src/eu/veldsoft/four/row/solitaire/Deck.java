@@ -30,7 +30,7 @@ import java.util.List;
  * @author Matt Stephen
  */
 class Deck {
-	
+
 	/**
 	 * Constructor.
 	 * 
