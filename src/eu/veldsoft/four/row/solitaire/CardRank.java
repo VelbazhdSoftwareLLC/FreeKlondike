@@ -20,6 +20,7 @@
 package eu.veldsoft.four.row.solitaire;
 
 /**
+ * Card rank enum.
  * 
  * @author Todor Balabanov
  */
@@ -102,6 +103,8 @@ enum CardRank {
 	 * @param index
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public static CardRank getValue(int index) {
 		switch (index) {
@@ -141,6 +144,8 @@ enum CardRank {
 	 * represents one of the 13 ranks.
 	 * 
 	 * @param index
+	 * 
+	 * @author Todor Balabanov
 	 */
 	private CardRank(int index) {
 		this.index = index;
@@ -150,6 +155,8 @@ enum CardRank {
 	 * Returns the card's rank.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public int getIndex() {
 		return index;
@@ -162,6 +169,8 @@ enum CardRank {
 	 * @param card
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public boolean isLessByOneThan(final CardRank card) {
 		if (this == TWO && card == ACE) {
@@ -211,6 +220,8 @@ enum CardRank {
 	 * @param card
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public boolean isGreaterByOneThan(final CardRank card) {
 		if (card == TWO && this == ACE) {

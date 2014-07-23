@@ -67,6 +67,8 @@ class DealDeck extends CardStack {
 	 * count.
 	 * 
 	 * @param discard
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public DealDeck(DiscardPile discard) {
 		discardPile = discard;
@@ -80,6 +82,8 @@ class DealDeck extends CardStack {
 
 	/**
 	 * Used to reset the numTimesThroughDeck counter.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void reset() {
 		numTimesThroughDeck = 1;
@@ -87,6 +91,8 @@ class DealDeck extends CardStack {
 
 	/**
 	 * Used to decrease the numTimesThroughDeck counter.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	private void undone() {
 		numTimesThroughDeck--;
@@ -96,6 +102,8 @@ class DealDeck extends CardStack {
 	 * Returns the numTimesThroughDeck counter.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public int getDeckThroughs() {
 		return numTimesThroughDeck;
@@ -106,6 +114,8 @@ class DealDeck extends CardStack {
 	 * throughs.
 	 * 
 	 * @param throughs
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void setDeckThroughs(int throughs) {
 		numTimesThroughDeck = throughs;
@@ -115,8 +125,10 @@ class DealDeck extends CardStack {
 	 * Used to set the deal pile. Accepts a list of shuffled cards.
 	 * 
 	 * @param cards
+	 * 
+	 * @author Todor Balabanov
 	 */
-	public void setDeck(LinkedList<Card> cards) {
+	public void setDeck(LinkedList<CardComponent> cards) {
 		for (int i = 0; i < cards.size(); i++) {
 			cards.get(i).setFaceDown();
 			addCard(cards.get(i));
@@ -127,6 +139,8 @@ class DealDeck extends CardStack {
 	 * Used to set the deck through limit based on the draw count.
 	 * 
 	 * @param draw
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void setDrawCount(int draw) {
 		if (SolitaireBoard.drawCount == 3) {
@@ -140,6 +154,8 @@ class DealDeck extends CardStack {
 	 * Used to set the deck through limit based on the game difficulty.
 	 * 
 	 * @param difficulty
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void setDifficulty(GameDifficulty difficulty) {
 		if (difficulty == GameDifficulty.EASY) {
@@ -164,6 +180,8 @@ class DealDeck extends CardStack {
 	 * Otherwise returns true (there are deals left).
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public boolean hasDealsLeft() {
 		return redealable;
@@ -174,14 +192,16 @@ class DealDeck extends CardStack {
 	 * card(s) into the discard pile. When the deck through limit has been
 	 * reached, displays an error dialog, that notifies the user. Then forbids
 	 * the pops from the deal deck.
+	 * 
+	 * @author Todor Balabanov
 	 */
-	public synchronized Card pop() {
+	public synchronized CardComponent pop() {
 		if (isEmpty() == false) {
 			/*
 			 * Verify there are still cards remaining.
 			 */
 			if (SolitaireBoard.drawCount == 1) {
-				Card card = super.pop();
+				CardComponent card = super.pop();
 
 				card.setFaceUp();
 				discardPile.push(card);
@@ -194,7 +214,7 @@ class DealDeck extends CardStack {
 
 				while (SolitaireBoard.drawCount > 1 && tempDrawCount > 0
 						&& isEmpty() == false) {
-					Card card = super.pop();
+					CardComponent card = super.pop();
 
 					card.setFaceUp();
 					tempStack.push(card);
@@ -220,9 +240,9 @@ class DealDeck extends CardStack {
 		} else if (discardPile.isEmpty() == false
 				&& numTimesThroughDeck < deckThroughLimit) {
 			for (int i = discardPile.length(); i > 0; i--) {
-				Card card = discardPile.pop();
+				CardComponent card = discardPile.pop();
 				card.setFaceDown();
-				card.setSource("Deck");
+				card.getCard().setSource("Deck");
 				push(card);
 			}
 
@@ -240,10 +260,12 @@ class DealDeck extends CardStack {
 
 	/**
 	 * Used to undo the last move if it was a reset on the discard pile.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public synchronized void undoPop() {
 		while (isEmpty() == false) {
-			Card card = super.pop();
+			CardComponent card = super.pop();
 			card.setFaceUp();
 			discardPile.push(card);
 		}
@@ -262,8 +284,10 @@ class DealDeck extends CardStack {
 	 * Returns a clicked card.
 	 * 
 	 * @param point
+	 * 
+	 * @author Todor Balabanov
 	 */
-	public Card getCardAtLocation(Point point) {
+	public CardComponent getCardAtLocation(Point point) {
 		return peek();
 	}
 
@@ -271,8 +295,10 @@ class DealDeck extends CardStack {
 	 * Checks if a certain card move is valid. Always returns false.
 	 * 
 	 * @param card
+	 * 
+	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(Card card) {
+	public boolean isValidMove(CardComponent card) {
 		return false;
 	}
 
@@ -280,6 +306,8 @@ class DealDeck extends CardStack {
 	 * Checks if a card stack move is valid. Always returns false.
 	 * 
 	 * @param stack
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public boolean isValidMove(CardStack stack) {
 		return false;
@@ -289,6 +317,8 @@ class DealDeck extends CardStack {
 	 * Paint procedure.
 	 * 
 	 * @param g
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void paint(Graphics g) {
 		super.paint(g);

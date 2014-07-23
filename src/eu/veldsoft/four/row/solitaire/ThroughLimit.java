@@ -52,6 +52,8 @@ enum ThroughLimit {
 	 * Sets the number of deck throughs.
 	 * 
 	 * @param throughs
+	 * 
+	 * @author Todor Balabanov
 	 */
 	private ThroughLimit(int throughs) {
 		this.throughs = throughs;
@@ -61,6 +63,8 @@ enum ThroughLimit {
 	 * Returns the number of deck throughs.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public int getThroughs() {
 		return throughs;

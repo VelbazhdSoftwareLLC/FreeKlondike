@@ -36,5 +36,6 @@
     <string name="new_option">New</string>
     <string name="undo_option">Undo</string>
     <string name="hint_option">Hint</string>
+    <string name="title_activity_win">You Win!</string>
 
 </resources>

@@ -139,6 +139,8 @@ class ChangeOptions extends JDialog implements ActionListener {
 	 * @param sounds
 	 * 
 	 * @param difficulty
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public ChangeOptions(JFrame parent, int currentDraw, int timer,
 			int animation, int sounds, int difficulty) {
@@ -163,6 +165,7 @@ class ChangeOptions extends JDialog implements ActionListener {
 	 * The menu is used to set difficulty, card draw count, timer, sounds and
 	 * animations.
 	 * 
+	 * @author Todor Balabanov
 	 */
 	private void setup() {
 		ButtonGroup drawCards = new ButtonGroup();
@@ -261,6 +264,8 @@ class ChangeOptions extends JDialog implements ActionListener {
 	 * Returns the draw count (1 or 3).
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public int getDrawCount() {
 		if (!exited) {
@@ -275,6 +280,8 @@ class ChangeOptions extends JDialog implements ActionListener {
 	 * Returns whether the timer is switched on or not (1 or 0).
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public int getTimer() {
 		if (!exited) {
@@ -288,6 +295,8 @@ class ChangeOptions extends JDialog implements ActionListener {
 	 * Returns whether the animations are switched on or not (1 or 0).
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public int getAnimation() {
 		if (!exited) {
@@ -301,6 +310,8 @@ class ChangeOptions extends JDialog implements ActionListener {
 	 * Returns whether the sounds are switched on or not (1 or 0).
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public int getSounds() {
 		if (!exited) {
@@ -314,6 +325,8 @@ class ChangeOptions extends JDialog implements ActionListener {
 	 * Returns the current difficulty (1-easy,2-medium or 3-hard).
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public int getDifficulty() {
 		return difficulty;
@@ -325,6 +338,8 @@ class ChangeOptions extends JDialog implements ActionListener {
 	 * save these changes.
 	 * 
 	 * @param e
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == drawOne) {

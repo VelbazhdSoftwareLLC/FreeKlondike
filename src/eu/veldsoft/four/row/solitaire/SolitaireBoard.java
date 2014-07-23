@@ -117,6 +117,8 @@ class SolitaireBoard {
 	/**
 	 * Sets the board's window name, size, location, close button option, makes
 	 * it unresizable and puts the logo on it.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public SolitaireBoard() {
 	}
@@ -125,9 +127,10 @@ class SolitaireBoard {
 	 * Creates the solitaire board.
 	 * 
 	 * @param cards
+	 * 
 	 * @param numViewableCards
 	 * 
-	 * @author Todor Balabanov 
+	 * @author Todor Balabanov
 	 */
 	public void createBoard(LinkedList<Integer> cards, int numViewableCards) {
 		for (int i = 0; i < columns.length; i++) {
@@ -165,26 +168,25 @@ class SolitaireBoard {
 	 * @author Todor Balabanov
 	 */
 	void dealOutBoard() {
-		LinkedList<Card> cards = (LinkedList<Card>) Deck.getFullShuffledDeck();
+		LinkedList<CardComponent> cards = (LinkedList<CardComponent>) Deck
+				.getFullShuffledDeck();
 
 		/*
 		 * Fill five cards by column.
 		 */
 		for (int i = 0; i < INITIAL_CARDS_NUMBER_IN_COLUMN; i++) {
-			for (int j = 0; j < columns.length && j < cells.length; j++) {
-				Card card = cards.getLast();
+			for (int j = 0; j < columns.length; j++) {
+				columns[j].addCard(cards.getLast());
 				cards.removeLast();
-				columns[j].addCard(card);
 			}
 		}
 
 		/*
 		 * Fill cards in buffer area.
 		 */
-		for (int j = 0; j < columns.length && j < cells.length; j++) {
-			Card card = cards.getLast();
+		for (int j = 0; j < cells.length; j++) {
+			cells[j].addCard(cards.getLast());
 			cards.removeLast();
-			cells[j].addCard(card);
 		}
 
 		dealDeck.setDrawCount(newDrawCount);
@@ -210,9 +212,8 @@ class SolitaireBoard {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	void dealOutCustomBoard(LinkedList<Integer> numbers,
-			int numViewableCards) {
-		LinkedList<Card> cards = (LinkedList<Card>) Deck
+	void dealOutCustomBoard(LinkedList<Integer> numbers, int numViewableCards) {
+		LinkedList<CardComponent> cards = (LinkedList<CardComponent>) Deck
 				.getDeckSubsetByCardNumbers(numbers);
 
 		int pileNumber = 0;
@@ -236,7 +237,7 @@ class SolitaireBoard {
 			} else if (8 <= pileNumber && pileNumber <= 11) {
 				acePiles[pileNumber % 4].addCard(cards.get(cardNumber));
 			} else if (pileNumber == 12) {
-				Card card = cards.get(cardNumber);
+				CardComponent card = cards.get(cardNumber);
 				card.setFaceDown();
 				dealDeck.addCard(card);
 			} else if (pileNumber == 13) {
@@ -249,6 +250,8 @@ class SolitaireBoard {
 
 	/**
 	 * Clears the board.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	private void clearBoard() {
 		for (int i = 0; i < columns.length; i++) {
@@ -292,6 +295,8 @@ class SolitaireBoard {
 	 * For starting a new game.
 	 * 
 	 * @param winOrLoss
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void newGame(GameState winOrLoss) {
 		/*
@@ -299,7 +304,6 @@ class SolitaireBoard {
 		 */
 		clearBoard();
 		dealDeck.reset();
-		//TODO Remove -> dealOutBoard();
 
 		sourceList.clear();
 		destinationList.clear();
@@ -311,15 +315,21 @@ class SolitaireBoard {
 	 * Manages the game states.
 	 * 
 	 * @param winOrLoss
-	 * @param timerCount 
-	 * @param backgroundNumber 
-	 * @param deckNumber 
+	 * 
+	 * @param timerCount
+	 * 
+	 * @param backgroundNumber
+	 * 
+	 * @param deckNumber
+	 * 
 	 * @param timerToRunNextGame
+	 * 
 	 * @param timerToRun
 	 * 
 	 * @author Todor Balabanov
 	 */
-	void recordGame(GameState winOrLoss, int deckNumber, int backgroundNumber, int timerCount, int timerToRunNextGame, boolean timerToRun) {
+	void recordGame(GameState winOrLoss, int deckNumber, int backgroundNumber,
+			int timerCount, int timerToRunNextGame, boolean timerToRun) {
 		int count = 0, temp = 0;
 		int gamesPlayed1e = 0, gamesWon1e = 0, winStreak1e = 0, lossStreak1e = 0, currentStreak1e = 0;
 		int gamesPlayed1m = 0, gamesWon1m = 0, winStreak1m = 0, lossStreak1m = 0, currentStreak1m = 0;
@@ -769,7 +779,8 @@ class SolitaireBoard {
 
 				for (int i = 0; i < cells.length; i++) {
 					if (!cells[i].isEmpty()) {
-						saved.writeInt(cells[i].peek().getFullNumber());
+						saved.writeInt(cells[i].peek().getCard()
+								.getFullNumber());
 						saved.writeInt(-1);
 					} else {
 						saved.writeInt(-1);
@@ -780,7 +791,7 @@ class SolitaireBoard {
 					if (!columns[i].isEmpty()) {
 						for (int j = 0; j < columns[i].length(); j++) {
 							saved.writeInt(columns[i].getCardAtLocation(j)
-									.getFullNumber());
+									.getCard().getFullNumber());
 						}
 
 						saved.writeInt(-1);
@@ -793,7 +804,7 @@ class SolitaireBoard {
 					if (!acePiles[i].isEmpty()) {
 						for (int j = 0; j < acePiles[i].length(); j++) {
 							saved.writeInt(acePiles[i].getCardAtLocation(j)
-									.getFullNumber());
+									.getCard().getFullNumber());
 						}
 
 						saved.writeInt(-1);
@@ -804,7 +815,7 @@ class SolitaireBoard {
 
 				if (!dealDeck.isEmpty()) {
 					for (int j = 0; j < dealDeck.length(); j++) {
-						saved.writeInt(dealDeck.getCardAtLocation(j)
+						saved.writeInt(dealDeck.getCardAtLocation(j).getCard()
 								.getFullNumber());
 					}
 
@@ -816,7 +827,7 @@ class SolitaireBoard {
 				if (!discardPile.isEmpty()) {
 					for (int j = 0; j < discardPile.length(); j++) {
 						saved.writeInt(discardPile.getCardAtLocation(j)
-								.getFullNumber());
+								.getCard().getFullNumber());
 					}
 
 					saved.writeInt(-1);
@@ -847,6 +858,8 @@ class SolitaireBoard {
 	 * Returns the draw count.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public int getDrawCount() {
 		return drawCount;
@@ -856,6 +869,8 @@ class SolitaireBoard {
 	 * Sets draw count.
 	 * 
 	 * @param draw
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void setDrawCount(int draw) {
 		drawCount = draw;
@@ -869,6 +884,8 @@ class SolitaireBoard {
 	 * Returns the new draw count.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public int getNewDrawCount() {
 		return newDrawCount;
@@ -878,6 +895,8 @@ class SolitaireBoard {
 	 * Sets the new draw count.
 	 * 
 	 * @param draw
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void setNewDrawCount(int draw) {
 		newDrawCount = draw;
@@ -891,6 +910,8 @@ class SolitaireBoard {
 	 * Returns game difficulty.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public GameDifficulty getDifficulty() {
 		return difficulty;
@@ -900,6 +921,8 @@ class SolitaireBoard {
 	 * Sets game difficulty.
 	 * 
 	 * @param difficulty
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void setDifficulty(GameDifficulty difficulty) {
 		this.difficulty = difficulty;
@@ -909,6 +932,8 @@ class SolitaireBoard {
 	 * Returns the new difficulty.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public GameDifficulty getNewDifficulty() {
 		return newDifficulty;
@@ -918,6 +943,8 @@ class SolitaireBoard {
 	 * Sets the new difficulty.
 	 * 
 	 * @param newDifficulty
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void setNewDifficulty(GameDifficulty newDifficulty) {
 		this.newDifficulty = newDifficulty;
@@ -927,6 +954,8 @@ class SolitaireBoard {
 	 * Sets the number of times through deck.
 	 * 
 	 * @param deckThroughs
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void setDeckThroughs(int deckThroughs) {
 		dealDeck.setDeckThroughs(deckThroughs);
@@ -934,12 +963,14 @@ class SolitaireBoard {
 
 	/**
 	 * Used to undo a move.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public synchronized void undoMove() {
 		if (sourceList.isEmpty()) {
 			return;
 		}
-		
+
 		/*
 		 * If player is holding on to a card.
 		 */
@@ -1001,7 +1032,7 @@ class SolitaireBoard {
 			numCardsInDiscardView.removeLast();
 
 			for (int i = 0; i < num; i++) {
-				Card card = discardPile.undoPop();
+				CardComponent card = discardPile.undoPop();
 				card.setFaceDown();
 				dealDeck.addCard(card);
 			}
@@ -1105,58 +1136,70 @@ class SolitaireBoard {
 							&& destination != source
 							&& !(destination instanceof SingleCell)) {
 						for (int k = temp.length() - 1; k >= 0; k--) {
-							Card card = temp.getCardAtLocation(k);
+							CardComponent card = temp.getCardAtLocation(k);
 
 							if (((destination instanceof AcePile)
-									&& card.getSuit().equals(
-											((AcePile) destination).getSuit())
-									&& card.getNumber().isLessByOneThan(
-											destination.peek().getNumber()) && k == 0)
-									|| (!(destination instanceof AcePile)
-											&& card.getColor() != destination
-													.peek().getColor() && card
-											.getNumber().isGreaterByOneThan(
+									&& card.getCard()
+											.getSuit()
+											.equals(((AcePile) destination)
+													.getSuit())
+									&& card.getCard()
+											.getNumber()
+											.isLessByOneThan(
 													destination.peek()
+															.getCard()
+															.getNumber()) && k == 0)
+									|| (!(destination instanceof AcePile)
+											&& card.getCard().getColor() != destination
+													.peek().getCard()
+													.getColor() && card
+											.getCard()
+											.getNumber()
+											.isGreaterByOneThan(
+													destination.peek()
+															.getCard()
 															.getNumber()))) {
 								String hintString = "Move the ";
 
-								if (card.getNumber().equals(CardRank.JACK)) {
-									hintString += "Jack";
-								} else if (card.getNumber().equals(
-										CardRank.QUEEN)) {
-									hintString += "Queen";
-								} else if (card.getNumber().equals(
-										CardRank.KING)) {
-									hintString += "King";
-								} else if (card.getNumber()
-										.equals(CardRank.ACE)) {
-									hintString += "Ace";
-								} else {
-									hintString += card.getNumber();
-								}
-
-								hintString += " of " + card.getSuit() + " in "
-										+ sourceString + " to the ";
-
-								if (destination.peek().getNumber()
+								if (card.getCard().getNumber()
 										.equals(CardRank.JACK)) {
 									hintString += "Jack";
-								} else if (destination.peek().getNumber()
+								} else if (card.getCard().getNumber()
 										.equals(CardRank.QUEEN)) {
 									hintString += "Queen";
-								} else if (destination.peek().getNumber()
+								} else if (card.getCard().getNumber()
 										.equals(CardRank.KING)) {
 									hintString += "King";
-								} else if (destination.peek().getNumber()
+								} else if (card.getCard().getNumber()
 										.equals(CardRank.ACE)) {
 									hintString += "Ace";
 								} else {
-									hintString += destination.peek()
+									hintString += card.getCard().getNumber();
+								}
+
+								hintString += " of " + card.getCard().getSuit()
+										+ " in " + sourceString + " to the ";
+
+								if (destination.peek().getCard().getNumber()
+										.equals(CardRank.JACK)) {
+									hintString += "Jack";
+								} else if (destination.peek().getCard()
+										.getNumber().equals(CardRank.QUEEN)) {
+									hintString += "Queen";
+								} else if (destination.peek().getCard()
+										.getNumber().equals(CardRank.KING)) {
+									hintString += "King";
+								} else if (destination.peek().getCard()
+										.getNumber().equals(CardRank.ACE)) {
+									hintString += "Ace";
+								} else {
+									hintString += destination.peek().getCard()
 											.getNumber();
 								}
 
 								hintString += " of "
-										+ destination.peek().getSuit() + " in "
+										+ destination.peek().getCard()
+												.getSuit() + " in "
 										+ destinationString;
 
 								hints.add(hintString);
@@ -1171,14 +1214,15 @@ class SolitaireBoard {
 							&& destination != source
 							&& (destination instanceof Column)
 							&& destination.isEmpty()
-							&& (source.getBottom().getNumber()
+							&& (source.getBottom().getCard().getNumber()
 									.equals(CardRank.KING) == false || source instanceof SingleCell)) {
 						for (int k = 0; k < temp.length(); k++) {
-							Card card = temp.getCardAtLocation(k);
+							CardComponent card = temp.getCardAtLocation(k);
 
-							if (card.getNumber().equals(CardRank.KING)) {
+							if (card.getCard().getNumber()
+									.equals(CardRank.KING)) {
 								String hintString = "Move the King of "
-										+ card.getSuit() + " in "
+										+ card.getCard().getSuit() + " in "
 										+ sourceString + " to the empty "
 										+ destinationString;
 
@@ -1193,14 +1237,16 @@ class SolitaireBoard {
 					} else if (destination != null && destination != source
 							&& (destination instanceof AcePile)
 							&& destination.isEmpty()) {
-						Card card = temp.peek();
+						CardComponent card = temp.peek();
 
-						if (card.getNumber().equals(CardRank.ACE)
-								&& card.getSuit().equals(
-										((AcePile) destination).getSuit())) {
+						if (card.getCard().getNumber().equals(CardRank.ACE)
+								&& card.getCard()
+										.getSuit()
+										.equals(((AcePile) destination)
+												.getSuit())) {
 							String hintString = "Move the Ace of "
-									+ card.getSuit() + " in " + sourceString
-									+ " to " + destinationString;
+									+ card.getCard().getSuit() + " in "
+									+ sourceString + " to " + destinationString;
 
 							hints.add(hintString);
 							/*

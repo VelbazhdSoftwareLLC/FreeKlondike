@@ -31,7 +31,7 @@ import java.awt.Point;
  * @author Matt Stephen
  */
 class AcePile extends CardStack {
-	
+
 	/**
 	 * 
 	 */
@@ -47,6 +47,8 @@ class AcePile extends CardStack {
 	 * Clubs, Hearts or Diamonds
 	 * 
 	 * @param suit
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public AcePile(CardSuit suit) {
 		this.suit = suit;
@@ -56,6 +58,8 @@ class AcePile extends CardStack {
 	 * Returns the pile's suit.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public CardSuit getSuit() {
 		return suit;
@@ -67,8 +71,11 @@ class AcePile extends CardStack {
 	 * @param card
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
-	public Card push(Card card) {
+	public CardComponent push(CardComponent card) {
+		System.err.println(isValidMove(card));
 		if (isValidMove(card) == false) {
 			return null;
 		}
@@ -83,8 +90,10 @@ class AcePile extends CardStack {
 	 * @param point
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
-	public Card getCardAtLocation(Point point) {
+	public CardComponent getCardAtLocation(Point point) {
 		return peek();
 	}
 
@@ -94,15 +103,19 @@ class AcePile extends CardStack {
 	 * @param card
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(Card card) {
-		if (card.getSuit().equals(suit) == false) {
+	@Override
+	public boolean isValidMove(CardComponent card) {
+		if (card.getCard().getSuit().equals(suit) == false) {
 			return false;
 		}
 
-		if (isEmpty() && card.getNumber().equals(CardRank.ACE)) {
+		if (isEmpty() && card.getCard().getNumber().equals(CardRank.ACE)) {
 			return true;
-		} else if (card.getNumber().isLessByOneThan(peek().getNumber())) {
+		} else if (card.getCard().getNumber()
+				.isLessByOneThan(peek().getCard().getNumber())) {
 			return true;
 		}
 
@@ -116,6 +129,8 @@ class AcePile extends CardStack {
 	 * @param stack
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public boolean isValidMove(CardStack stack) {
 		return false;
@@ -126,10 +141,13 @@ class AcePile extends CardStack {
 	 * 
 	 * @param g
 	 *            Graphic context.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public void paint(Graphics g) {
 		super.paint(g);
 
+		// TODO Draw only last image.
 		for (int i = 0; i < length(); i++) {
 			Image image = getCardAtLocation(i).getImage();
 			g.drawImage(image, 0, 0, null);

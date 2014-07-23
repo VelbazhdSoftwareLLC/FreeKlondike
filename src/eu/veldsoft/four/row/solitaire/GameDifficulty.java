@@ -49,6 +49,8 @@ enum GameDifficulty {
 	 * Sets the game difficulty based on the argument value.
 	 * 
 	 * @param value
+	 * 
+	 * @author Todor Balabanov
 	 */
 	private GameDifficulty(int value) {
 		this.value = value;
@@ -58,6 +60,8 @@ enum GameDifficulty {
 	 * Returns the game difficulty value.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
 	public int getValue() {
 		return value;

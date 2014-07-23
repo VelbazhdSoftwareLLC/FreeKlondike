@@ -34,6 +34,13 @@ import android.widget.Button;
  */
 public class MenuActivity extends Activity {
 
+	/**
+	 * On Creation.
+	 * 
+	 * @param savedInstanceState
+	 * 
+	 * @author Konstantin Tsanov
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

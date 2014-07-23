@@ -32,7 +32,9 @@ import java.util.List;
 class Deck {
 	
 	/**
-	 * Constructor
+	 * Constructor.
+	 * 
+	 * @author Todor Balabanov
 	 */
 	private Deck() {
 	}
@@ -43,8 +45,10 @@ class Deck {
 	 * elements in the array.
 	 * 
 	 * @param deck
+	 * 
+	 * @author Todor Balabanov
 	 */
-	private static void shuffle(List<Card> deck) {
+	private static void shuffle(List<CardComponent> deck) {
 		int numbers[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
 				16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
 				32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47,
@@ -61,7 +65,7 @@ class Deck {
 		}
 
 		for (int i = 0; i < numbers.length; i++) {
-			deck.add(Card.valueBy(numbers[i]));
+			deck.add(CardComponent.valueBy(numbers[i]));
 		}
 	}
 
@@ -69,9 +73,11 @@ class Deck {
 	 * Creates a deck, shuffles it and returns it.
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
-	public static List<Card> getFullShuffledDeck() {
-		List<Card> deck = new LinkedList<Card>();
+	public static List<CardComponent> getFullShuffledDeck() {
+		List<CardComponent> deck = new LinkedList<CardComponent>();
 		shuffle(deck);
 
 		return deck;
@@ -85,14 +91,16 @@ class Deck {
 	 * @param numbers
 	 * 
 	 * @return
+	 * 
+	 * @author Todor Balabanov
 	 */
-	public static List<Card> getDeckSubsetByCardNumbers(
+	public static List<CardComponent> getDeckSubsetByCardNumbers(
 			LinkedList<Integer> numbers) {
-		List<Card> deck = new LinkedList<Card>();
+		List<CardComponent> deck = new LinkedList<CardComponent>();
 
 		for (int i = 0; i < numbers.size(); i++) {
 			if (numbers.get(i) > 0) {
-				deck.add(Card.valueBy(numbers.get(i)));
+				deck.add(CardComponent.valueBy(numbers.get(i)));
 			}
 		}
 
