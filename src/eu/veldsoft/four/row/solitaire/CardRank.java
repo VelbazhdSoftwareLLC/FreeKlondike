@@ -27,67 +27,67 @@ package eu.veldsoft.four.row.solitaire;
 enum CardRank {
 
 	/**
-	 * 
+	 * Ace enum constant.
 	 */
 	ACE(1),
 
 	/**
-	 * 
+	 * Two enum constant.
 	 */
 	TWO(2),
 
 	/**
-	 * 
+	 * Three enum constant.
 	 */
 	THREE(3),
 
 	/**
-	 * 
+	 * Four enum constant.
 	 */
 	FOUR(4),
 
 	/**
-	 * 
+	 * Five enum constant.
 	 */
 	FIVE(5),
 
 	/**
-	 * 
+	 * Six enum constant.
 	 */
 	SIX(6),
 
 	/**
-	 * 
+	 * Seven enum constant.
 	 */
 	SEVEN(7),
 
 	/**
-	 * 
+	 *Eight enum constant. 
 	 */
 	EIGHT(8),
 
 	/**
-	 * 
+	 * Nine enum constant.
 	 */
 	NINE(9),
 
 	/**
-	 * 
+	 * Ten enum constant.
 	 */
 	TEN(10),
 
 	/**
-	 * 
+	 * Jack enum constant.
 	 */
 	JACK(11),
 
 	/**
-	 * 
+	 * Queen enum constant.
 	 */
 	QUEEN(12),
 
 	/**
-	 * 
+	 * King enum constant.
 	 */
 	KING(13);
 
@@ -100,8 +100,10 @@ enum CardRank {
 	 * Returns the card's rank based on the argument index.
 	 * 
 	 * @param index
+	 * 		Index to be matched with enum constant.
 	 * 
 	 * @return
+	 * 		Matched enum constant.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -143,6 +145,7 @@ enum CardRank {
 	 * represents one of the 13 ranks.
 	 * 
 	 * @param index
+	 * 		Index to be used for the rank.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -153,7 +156,8 @@ enum CardRank {
 	/**
 	 * Returns the card's rank.
 	 * 
-	 * @return
+	 * @return index
+	 * 		Rank index.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -162,12 +166,14 @@ enum CardRank {
 	}
 
 	/**
-	 * Checks if the current card we're holding is lesser than the current top
+	 * Checks if the current card we're holding is lesser by one than the current top
 	 * card on one of the columns.
 	 * 
 	 * @param card
+	 * 		Current card we're holding.
 	 * 
 	 * @return
+	 * 		True if the current card is lesser by one than the top card on the column, otherwise false.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -213,12 +219,15 @@ enum CardRank {
 	}
 
 	/**
-	 * Checks if the current card we're holding is greater than the top card on
+	 * Checks if the current card we're holding is greater by one than the top card on
 	 * one of the foundation piles.
 	 * 
 	 * @param card
+	 * 		Current card we're holding.
 	 * 
 	 * @return
+	 * 		True if the current card we're holding is greater by one than the current top card on one of the foundation
+	 * 		piles, otherwise false.
 	 * 
 	 * @author Todor Balabanov
 	 */

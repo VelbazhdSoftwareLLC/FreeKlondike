@@ -113,10 +113,13 @@ class ChangeAppearance extends JDialog implements ActionListener {
 	 * Manages the Change Appearance dialog box.
 	 * 
 	 * @param parent
+	 * 		Change appearance frame.
 	 * 
 	 * @param deckNumber
+	 * 		The new card back we've chosen.
 	 * 
 	 * @param backgroundNumber
+	 * 		The new background we've chosen.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -227,7 +230,8 @@ class ChangeAppearance extends JDialog implements ActionListener {
 	 * Returns the number that is used to set the card back image. The number
 	 * represents the one of the images.
 	 * 
-	 * @return
+	 * @return 
+	 * 		The card back number if the dialog is still open, otherwise -1.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -243,7 +247,8 @@ class ChangeAppearance extends JDialog implements ActionListener {
 	 * Returns the number that is used to set the background image. The number
 	 * represents one of the images.
 	 * 
-	 * @return
+	 * @return 
+	 * 		The background number if the dialog is stil open, otherwise -1.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -260,6 +265,7 @@ class ChangeAppearance extends JDialog implements ActionListener {
 	 * selected from the menu.
 	 * 
 	 * @param e
+	 * 		Awaits for an action to be performed within the dialog.
 	 * 
 	 * @author Todor Balabanov
 	 */

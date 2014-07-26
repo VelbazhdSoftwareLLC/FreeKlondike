@@ -27,12 +27,12 @@ package eu.veldsoft.four.row.solitaire;
 enum CardColor {
 
 	/**
-	 * Enum list.
+	 * Black enum constant.
 	 */
 	BLACK(0),
 
 	/**
-	 * 
+	 * Red enum constant.
 	 */
 	RED(1);
 
@@ -46,6 +46,7 @@ enum CardColor {
 	 * index (0 or 1)
 	 * 
 	 * @param index
+	 * 		Index to be used for the color.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -56,7 +57,8 @@ enum CardColor {
 	/**
 	 * Returns the card's color number.
 	 * 
-	 * @return
+	 * @return index
+	 *		Color index. 
 	 * 
 	 * @author Todor Balabanov
 	 */

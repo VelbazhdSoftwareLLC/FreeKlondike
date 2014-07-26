@@ -127,8 +127,10 @@ class SolitaireBoard {
 	 * Creates the solitaire board.
 	 * 
 	 * @param cards
+	 * 		List of cards.
 	 * 
 	 * @param numViewableCards
+	 * 		Number of viewable cards.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -207,8 +209,10 @@ class SolitaireBoard {
 	 * Used to deal the cards on the board after opening a saved game.
 	 * 
 	 * @param numbers
+	 * 		List of integers.
 	 * 
 	 * @param numViewableCards
+	 * 		Number of viewable cards.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -295,6 +299,7 @@ class SolitaireBoard {
 	 * For starting a new game.
 	 * 
 	 * @param winOrLoss
+	 * 		Game state.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -315,16 +320,22 @@ class SolitaireBoard {
 	 * Manages the game states.
 	 * 
 	 * @param winOrLoss
+	 * 		Game state.
 	 * 
 	 * @param timerCount
+	 * 		Timer.
 	 * 
 	 * @param backgroundNumber
+	 * 		Background number.
 	 * 
 	 * @param deckNumber
+	 * 		Card back number.	
 	 * 
 	 * @param timerToRunNextGame
+	 * 		Timer to next game.
 	 * 
 	 * @param timerToRun
+	 * 		Timer to run.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -857,7 +868,8 @@ class SolitaireBoard {
 	/**
 	 * Returns the draw count.
 	 * 
-	 * @return
+	 * @return drawCount
+	 * 		Current draw count.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -869,6 +881,7 @@ class SolitaireBoard {
 	 * Sets draw count.
 	 * 
 	 * @param draw
+	 * 		Sets the new draw count.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -883,7 +896,8 @@ class SolitaireBoard {
 	/**
 	 * Returns the new draw count.
 	 * 
-	 * @return
+	 * @return newDrawCount
+	 * 		New draw count.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -895,6 +909,7 @@ class SolitaireBoard {
 	 * Sets the new draw count.
 	 * 
 	 * @param draw
+	 * 		New draw count to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -909,7 +924,8 @@ class SolitaireBoard {
 	/**
 	 * Returns game difficulty.
 	 * 
-	 * @return
+	 * @return difficulty
+	 * 		Current game difficulty.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -921,6 +937,7 @@ class SolitaireBoard {
 	 * Sets game difficulty.
 	 * 
 	 * @param difficulty
+	 * 		The new game difficulty.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -931,7 +948,8 @@ class SolitaireBoard {
 	/**
 	 * Returns the new difficulty.
 	 * 
-	 * @return
+	 * @return newDifficulty
+	 * 		New difficulty.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -943,6 +961,7 @@ class SolitaireBoard {
 	 * Sets the new difficulty.
 	 * 
 	 * @param newDifficulty
+	 * 		New difficulty to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -954,6 +973,7 @@ class SolitaireBoard {
 	 * Sets the number of times through deck.
 	 * 
 	 * @param deckThroughs
+	 * 		Deck throughs to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */

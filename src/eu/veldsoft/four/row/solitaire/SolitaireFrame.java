@@ -56,6 +56,7 @@ class SolitaireFrame extends JFrame {
 		 * On closing the main window:
 		 * 
 		 * @param e
+		 * 		On closing the main frame.
 		 * 
 		 * @author Todor Balabanov
 		 */
@@ -90,9 +91,10 @@ class SolitaireFrame extends JFrame {
 	private class TimerListener implements ActionListener {
 
 		/**
-		 * Action performed
+		 * Action performed.
 		 * 
 		 * @param e
+		 * 		On timer switched on.
 		 * 
 		 * @author Todor Balabanov
 		 */
@@ -169,6 +171,7 @@ class SolitaireFrame extends JFrame {
 				new WinScreen();
 			}
 
+			//TODO fix this thing.
 			if (timerToRun) {
 				final TopTimes top = new TopTimes();
 				int pos = top.IsTopTime(timerCount);
@@ -220,9 +223,10 @@ class SolitaireFrame extends JFrame {
 		}
 
 		/**
-		 * Mouse-pressed event.
+		 * On click on the discard pile.
 		 * 
 		 * @param e
+		 * 		Mouse pressed event.
 		 * 
 		 * @author Todor Balabanov
 		 */
@@ -240,9 +244,10 @@ class SolitaireFrame extends JFrame {
 		}
 
 		/**
-		 * Mouse-released event.
+		 * On mouse released on the deal deck.
 		 * 
 		 * @param e
+		 * 		Mouse released event.
 		 * 
 		 * @author Todor Balabanov
 		 */
@@ -256,9 +261,10 @@ class SolitaireFrame extends JFrame {
 		}
 
 		/**
-		 * Mouse-clicked event.
+		 * On mouse click.
 		 * 
 		 * @param e
+		 * 		Mouse-clicked event.
 		 * 
 		 * @author Todor Balabanov
 		 */
@@ -578,6 +584,8 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * 
 	 * @throws HeadlessException
+	 * 		Thrown when code that dephends on a keyboard,display or mouse is called in an environment
+	 * that does not support a keyboard, display or mouse.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -597,9 +605,10 @@ class SolitaireFrame extends JFrame {
 	}
 
 	/**
-	 * Returns the deck number.
+	 * Returns the card back number.
 	 * 
-	 * @return
+	 * @return deckNumber
+	 * 		Current card back number.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -608,9 +617,10 @@ class SolitaireFrame extends JFrame {
 	}
 
 	/**
-	 * Sets the deck number.
+	 * Sets the card back number.
 	 * 
 	 * @param deckNum
+	 * 		Card back number to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -625,7 +635,8 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * Returns the background number.
 	 * 
-	 * @return
+	 * @return backgroundNumber
+	 * 		Current background number.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -637,6 +648,7 @@ class SolitaireFrame extends JFrame {
 	 * Sets the background number.
 	 * 
 	 * @param backNum
+	 * 		To be used for the bacgroundNumber.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -653,6 +665,7 @@ class SolitaireFrame extends JFrame {
 	 * Sets the timer counter.
 	 * 
 	 * @param time
+	 * 		Timer.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -664,6 +677,7 @@ class SolitaireFrame extends JFrame {
 	 * Returns the timer status.
 	 * 
 	 * @return
+	 * 		Timer status.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -678,7 +692,8 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * Returns next game timer status.
 	 * 
-	 * @return
+	 * @return timerToRunNextGame
+	 * 		Timer to next game.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -690,6 +705,7 @@ class SolitaireFrame extends JFrame {
 	 * Sets timer status.
 	 * 
 	 * @param timerInt
+	 * 		To set the timer status.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -709,8 +725,10 @@ class SolitaireFrame extends JFrame {
 	 * Manages the appearance.
 	 * 
 	 * @param deck
+	 * 		Deck number to be set.
 	 * 
 	 * @param background
+	 * 		Background number to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -759,6 +777,7 @@ class SolitaireFrame extends JFrame {
 	 * For starting a new game.
 	 * 
 	 * @param winOrLoss
+	 * 		Game state.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -803,9 +822,10 @@ class SolitaireFrame extends JFrame {
 	}
 
 	/**
-	 * Manages the game states.
+	 * Used to record the game.
 	 * 
 	 * @param winOrLoss
+	 * 		Game state.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -818,8 +838,10 @@ class SolitaireFrame extends JFrame {
 	 * Used to deal the cards on the board after opening a saved game.
 	 * 
 	 * @param numbers
+	 * 		List of cards.
 	 * 
 	 * @param numViewableCards
+	 * 		Number of viewable cards.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -846,7 +868,10 @@ class SolitaireFrame extends JFrame {
 	 * Creates the solitaire board.
 	 * 
 	 * @param cards
+	 * 		List of integers.
+	 * 
 	 * @param numViewableCards
+	 * 		Number of viewable cards.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -932,6 +957,7 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * 
 	 * @param newDrawCount
+	 * 		New draw count to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -942,6 +968,7 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * 
 	 * @param drawCount
+	 * 		Draw count to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -952,6 +979,7 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * 
 	 * @param easy
+	 * 		Game difficulty to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -962,6 +990,7 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * 
 	 * @param easy
+	 * 		New game difficulty to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -972,6 +1001,7 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * 
 	 * @param deckThroughs
+	 * 		Deck throughs to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -981,7 +1011,8 @@ class SolitaireFrame extends JFrame {
 
 	/**
 	 * 
-	 * @return
+	 * @return board.getNewDrawCount()
+	 * 		New draw count.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -991,7 +1022,8 @@ class SolitaireFrame extends JFrame {
 
 	/**
 	 * 
-	 * @return
+	 * @return 
+	 * 		New difficulty value.
 	 * 
 	 * @author Todor Balabanov
 	 */

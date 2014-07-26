@@ -41,8 +41,10 @@ class SingleCell extends CardStack {
 	 * If the move is valid, pushes a card into the cell.
 	 * 
 	 * @param card
+	 * 		Card to be checked and pushed.
 	 * 
 	 * @return
+	 * 		Card if successful, otherwise null.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -59,8 +61,10 @@ class SingleCell extends CardStack {
 	 * Returns the card located at the coordinates of a mouse click.
 	 * 
 	 * @param p
+	 * 		Location of a mouse click.
 	 * 
-	 * @return
+	 * @return peek()
+	 * 		Card.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -73,8 +77,10 @@ class SingleCell extends CardStack {
 	 * returns false.
 	 * 
 	 * @param card
+	 * 		Card to be checked.
 	 * 
 	 * @return
+	 * 		True if valid or false if invalid.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -90,8 +96,10 @@ class SingleCell extends CardStack {
 	 * If trying to move more than one card into the cell returns false.
 	 * 
 	 * @param stack
+	 * 		Stack of cards.
 	 * 
-	 * @return
+	 * @return 
+	 * 		False, because the cell can hold maximum of one card.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -103,6 +111,7 @@ class SingleCell extends CardStack {
 	 * Returns the card from the cell. If there is no card - returns null.
 	 * 
 	 * @return
+	 * 		Stack with card.
 	 * 
 	 * @author Todor Balabanov
 	 */

@@ -65,6 +65,7 @@ class SolitairePanel extends JPanel {
 	 * number represents a certain background image.
 	 * 
 	 * @param back
+	 * 		Background number to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */

@@ -26,27 +26,27 @@ package eu.veldsoft.four.row.solitaire;
  */
 enum GameState {
 	/**
-	 * 
+	 * Game lost enum constant.
 	 */
 	GAME_LOST,
 
 	/**
-	 * 
+	 * Game won enum constant.
 	 */
 	GAME_WON,
 
 	/**
-	 * 
+	 * Reset stats enum constant.
 	 */
 	RESET_STATS,
 
 	/**
-	 * 
+	 * Do nothing enum constant.
 	 */
 	DO_NOTHING,
 
 	/**
-	 * 
+	 * Game saved enum constant.
 	 */
 	GAME_SAVED;
 }

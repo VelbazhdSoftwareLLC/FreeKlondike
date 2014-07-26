@@ -46,7 +46,8 @@ class AcePile extends CardStack {
 	 * Sets the pile's suit to be equal to the argument suit. Can be Spades,
 	 * Clubs, Hearts or Diamonds
 	 * 
-	 * @param suit
+	 * @param suit 
+	 * 			Suit to be used for the ace pile.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -57,7 +58,8 @@ class AcePile extends CardStack {
 	/**
 	 * Returns the pile's suit.
 	 * 
-	 * @return
+	 * @return suit
+	 * 			The pile's suit.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -69,8 +71,10 @@ class AcePile extends CardStack {
 	 * Pushes a card onto the foundation stack if possible.
 	 * 
 	 * @param card
+	 * 			Card to be pushed to the ace pile.
 	 * 
-	 * @return
+	 * @return card
+	 * 			The card that was pushed into the ace pile.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -87,8 +91,10 @@ class AcePile extends CardStack {
 	 * first.
 	 * 
 	 * @param point
+	 * 			The location of the mouse click.
 	 * 
-	 * @return
+	 * @return card
+	 * 			The card located at the location of the mouse click.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -100,8 +106,10 @@ class AcePile extends CardStack {
 	 * Checks if its possible to put a certain card on top of a foundation pile.
 	 * 
 	 * @param card
+	 * 		Card to be checked.
 	 * 
-	 * @return
+	 * @return 
+	 * 		true or false
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -126,8 +134,10 @@ class AcePile extends CardStack {
 	 * the foundation piles returns false.
 	 * 
 	 * @param stack
+	 * 		Stack of cards.
 	 * 
-	 * @return
+	 * @return false
+	 * 		Always returns false because of the order of the cards.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -136,8 +146,10 @@ class AcePile extends CardStack {
 	}
 
 	/**
+	 * Checks if an ace pile is full.
 	 * 
 	 * @return
+	 * 		true or false.
 	 * 
 	 * @author Todor Balabanov
 	 */
