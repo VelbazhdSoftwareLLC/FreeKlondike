@@ -426,6 +426,7 @@ public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
 	 * Main function. Executes the game.
 	 * 
 	 * @param args
+	 * 		Arguments to main.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -438,6 +439,7 @@ public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
 	 * Manages the game and the help menus.
 	 * 
 	 * @param e
+	 * 		Awaits for an action to be performed within the game menus.
 	 * 
 	 * @author Todor Balabanov
 	 */

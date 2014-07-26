@@ -27,17 +27,17 @@ package eu.veldsoft.four.row.solitaire;
 enum ThroughLimit {
 
 	/**
-	 * 
+	 * Easy enum constant.
 	 */
 	EASY(3),
 
 	/**
-	 * 
+	 * Medium enum constant.
 	 */
 	MEDIUM(2),
 
 	/**
-	 * 
+	 * Hard enum constant.
 	 */
 	HARD(1);
 
@@ -61,6 +61,7 @@ enum ThroughLimit {
 	 * Returns the number of deck throughs.
 	 * 
 	 * @return
+	 * 		Number of throughs.
 	 * 
 	 * @author Todor Balabanov
 	 */

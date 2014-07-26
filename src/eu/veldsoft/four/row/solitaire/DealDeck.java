@@ -66,6 +66,7 @@ class DealDeck extends CardStack {
 	 * count.
 	 * 
 	 * @param discard
+	 * 		Sets the discard pile.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -100,7 +101,8 @@ class DealDeck extends CardStack {
 	/**
 	 * Returns the numTimesThroughDeck counter.
 	 * 
-	 * @return
+	 * @return numTimesThroughDeck
+	 * 		The number of times we've gone through the deck.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -112,7 +114,8 @@ class DealDeck extends CardStack {
 	 * Sets the numTimesThroughDeck counter to be equal to the argument
 	 * throughs.
 	 * 
-	 * @param throughs
+	 * @param throughs	
+	 * 		To set how many times we've gone through the deck.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -124,6 +127,7 @@ class DealDeck extends CardStack {
 	 * Used to set the deal pile. Accepts a list of shuffled cards.
 	 * 
 	 * @param cards
+	 * 		List of shuffled cards.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -138,6 +142,7 @@ class DealDeck extends CardStack {
 	 * Used to set the deck through limit based on the draw count.
 	 * 
 	 * @param draw
+	 * 		Integer, based on which the deck through limit is set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -153,6 +158,8 @@ class DealDeck extends CardStack {
 	 * Used to set the deck through limit based on the game difficulty.
 	 * 
 	 * @param difficulty
+	 * 		Used to set the game difficulty.
+	 * 		
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -178,7 +185,8 @@ class DealDeck extends CardStack {
 	 * Returns false if the deck through limit has been reached (no deals left).
 	 * Otherwise returns true (there are deals left).
 	 * 
-	 * @return
+	 * @return redealable
+	 * 		True if the deck is redealable, false if it isn't.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -283,6 +291,7 @@ class DealDeck extends CardStack {
 	 * Returns a clicked card.
 	 * 
 	 * @param point
+	 * 		The location of the mouse click. 
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -294,6 +303,7 @@ class DealDeck extends CardStack {
 	 * Checks if a certain card move is valid. Always returns false.
 	 * 
 	 * @param card
+	 * 		Card to be checked.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -305,6 +315,7 @@ class DealDeck extends CardStack {
 	 * Checks if a card stack move is valid. Always returns false.
 	 * 
 	 * @param stack
+	 * 		Stack to be checked.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -315,7 +326,8 @@ class DealDeck extends CardStack {
 	/**
 	 * Paint procedure.
 	 * 
-	 * @param g
+	 * @param g 
+	 * 		Paint.
 	 * 
 	 * @author Todor Balabanov
 	 */

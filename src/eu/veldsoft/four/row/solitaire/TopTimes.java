@@ -577,6 +577,7 @@ class TopTimes extends JFrame implements ActionListener, KeyListener {
 	 * Action performed.
 	 * 
 	 * @param e
+	 * 		Event.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -663,7 +664,8 @@ class TopTimes extends JFrame implements ActionListener, KeyListener {
 
 	/**
 	 * 
-	 * @param
+	 * @param e
+	 * 		Event
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -676,6 +678,7 @@ class TopTimes extends JFrame implements ActionListener, KeyListener {
 	 * the function stores the new name.
 	 * 
 	 * @param e
+	 * 		Event.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -697,6 +700,7 @@ class TopTimes extends JFrame implements ActionListener, KeyListener {
 	 * On key released.
 	 * 
 	 * @param e
+	 * 		Event.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -712,6 +716,7 @@ class TopTimes extends JFrame implements ActionListener, KeyListener {
 	 *            ten times.
 	 * 
 	 * @return
+	 * 		Position where the new record is placed at.
 	 * 
 	 * @author Todor Balabanov
 	 */

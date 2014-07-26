@@ -32,17 +32,17 @@ enum CardSuit {
 	SPADES(0, "Spades"),
 
 	/**
-	 * 
+	 * Clubs enum constant.
 	 */
 	CLUBS(1, "Clubs"),
 
 	/**
-	 * 
+	 * Diamonds enum constant.
 	 */
 	DIAMONDS(2, "Diamonds"),
 
 	/**
-	 * 
+	 * Hearts enum constant.
 	 */
 	HEARTS(3, "Hearts");
 
@@ -60,10 +60,10 @@ enum CardSuit {
 	 * Sets the card suit.
 	 * 
 	 * @param index
-	 *            Suit index.
+	 *            Index to be used for the suit.
 	 * 
 	 * @param name
-	 *            Suit name.
+	 *            Name to be used for the suit.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -75,7 +75,8 @@ enum CardSuit {
 	/**
 	 * Index of the suit.
 	 * 
-	 * @return Index to be used for the suit.
+	 * @return 
+	 * 		Suit index.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -86,7 +87,8 @@ enum CardSuit {
 	/**
 	 * Returns the card suit.
 	 * 
-	 * @return
+	 * @return 
+	 * 		Suit name.
 	 * 
 	 * @author Todor Balabanov
 	 */

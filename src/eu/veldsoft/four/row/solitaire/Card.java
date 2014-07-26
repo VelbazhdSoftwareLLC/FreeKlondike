@@ -64,16 +64,17 @@ class Card {
 	private String location = "";
 
 	/**
-	 * Private card constructor Sets the card's suit, number, full number and
+	 * Card constructor Sets the card's suit, number, full number and
 	 * back image. Also sets it face-up.
 	 * 
 	 * @param suit
+	 * 		Card suit to be set.
 	 * 
 	 * @param number
-	 * 
-	 * @param deckNumber
+	 * 		Card number to be set.
 	 * 
 	 * @param fullNumber
+	 * 		Full card number to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -106,7 +107,8 @@ class Card {
 	/**
 	 * Checks if the card is highlighted and returns the result(true/false).
 	 * 
-	 * @return
+	 * @return highlighted
+	 * 		Whether the card is highlighted or not (true or false).
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -115,7 +117,7 @@ class Card {
 	}
 
 	/**
-	 * Sets the card face-up and sets its face image.
+	 * Sets the card face-up.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -124,7 +126,7 @@ class Card {
 	}
 
 	/**
-	 * Sets the card face-down and sets its back image.
+	 * Sets the card face-down.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -135,7 +137,8 @@ class Card {
 	/**
 	 * Checks if the card is facing up and returns the result(true/false).
 	 * 
-	 * @return
+	 * @return faceUp
+	 * 		Whether the card is set face-up or not (true or false).
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -146,7 +149,8 @@ class Card {
 	/**
 	 * Returns the card's number.
 	 * 
-	 * @return
+	 * @return rank
+	 * 		Card's rank.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -157,7 +161,8 @@ class Card {
 	/**
 	 * Returns the card's suit.
 	 * 
-	 * @return
+	 * @return suit
+	 * 		Card's suit.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -168,7 +173,8 @@ class Card {
 	/**
 	 * Returns the card's color.
 	 * 
-	 * @return
+	 * @return color
+	 * 		Card's color.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -179,7 +185,8 @@ class Card {
 	/**
 	 * Returns the card's rank.
 	 * 
-	 * @return
+	 * @return rank
+	 * 		Card's rank.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -191,6 +198,7 @@ class Card {
 	 * Sets the card's rank.
 	 * 
 	 * @param rank
+	 * 		Used to set the card's rank.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -202,6 +210,7 @@ class Card {
 	 * Sets the card's suit.
 	 * 
 	 * @param suit
+	 * 		Used to set the card's suit.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -213,6 +222,7 @@ class Card {
 	 * Sets the card's color.
 	 * 
 	 * @param color
+	 * 		Used to set the card's color.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -223,7 +233,8 @@ class Card {
 	/**
 	 * Returns the card's full number.
 	 * 
-	 * @return
+	 * @return fullCardNumber
+	 * 	 	Card's full number (in range 1-52)
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -234,7 +245,8 @@ class Card {
 	/**
 	 * Notifies the discard pile of moves from the deck.
 	 * 
-	 * @return
+	 * @return location
+	 * 		Current card location.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -246,6 +258,7 @@ class Card {
 	 * Used to set the location of a moved card.
 	 * 
 	 * @param source
+	 * 		Source to which the card has been moved.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -256,7 +269,8 @@ class Card {
 	/**
 	 * Clone a card, that includes the card's suit, number and full number.
 	 * 
-	 * @return
+	 * @return this
+	 * 		Copy of the card.
 	 * 
 	 * @author Todor Balabanov
 	 */

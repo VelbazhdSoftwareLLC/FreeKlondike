@@ -41,8 +41,10 @@ class Column extends CardStack {
 	 * otherwise returns null.
 	 * 
 	 * @param card
+	 * 		Card to be moved.
 	 * 
 	 * @return
+	 * 		Card if successful or null if not successful.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -61,8 +63,10 @@ class Column extends CardStack {
 	 * the current top card.
 	 * 
 	 * @param card
+	 * 		Card to be checked.
 	 * 
 	 * @return
+	 * 		True or false.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -88,8 +92,10 @@ class Column extends CardStack {
 	 * top card from the column.
 	 * 
 	 * @param stack
+	 * 		Stack to be pushed.
 	 * 
 	 * @return
+	 * 		True or false.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -103,7 +109,8 @@ class Column extends CardStack {
 	 * first one that is lesser and with different color than the previous one.
 	 * Then returns the stack.
 	 * 
-	 * @return
+	 * @return stack
+	 * 		Stack of cards.
 	 * 
 	 * @author Todor Balabanov
 	 */

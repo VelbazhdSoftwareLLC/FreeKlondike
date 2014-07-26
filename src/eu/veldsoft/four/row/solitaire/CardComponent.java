@@ -84,8 +84,10 @@ class CardComponent extends JComponent {
 	 * It is used instead of constructor. Implement lazy initialization.
 	 * 
 	 * @param number
+	 * 		Will be used to set the card's number.
 	 * 
 	 * @return
+	 * 		Card with updated card number.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -145,10 +147,13 @@ class CardComponent extends JComponent {
 	 * image.
 	 * 
 	 * @param suit
+	 * 		Card's suit to be set.
 	 * 
 	 * @param number
+	 * 		Card's number to be set.
 	 * 
 	 * @param fullNumber
+	 * 		Card's full number to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -171,7 +176,8 @@ class CardComponent extends JComponent {
 	/**
 	 * Returns the card's buffered image (either back or front).
 	 * 
-	 * @return
+	 * @return image
+	 * 		Buffered image..
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -253,7 +259,8 @@ class CardComponent extends JComponent {
 	/**
 	 * Returns a card.
 	 * 
-	 * @return
+	 * @return card
+	 * 		Card from a stack.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -337,7 +344,8 @@ class CardComponent extends JComponent {
 	/**
 	 * Clone a card, that includes the card's suit, number and full number.
 	 * 
-	 * @return
+	 * @return this
+	 * 		Copy of a card.
 	 * 
 	 * @author Todor Balabanov
 	 */
