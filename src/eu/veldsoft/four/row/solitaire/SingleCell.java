@@ -41,10 +41,9 @@ class SingleCell extends CardStack {
 	 * If the move is valid, pushes a card into the cell.
 	 * 
 	 * @param card
-	 * 		Card to be checked and pushed.
+	 *            Card to be checked and pushed.
 	 * 
-	 * @return
-	 * 		Card if successful, otherwise null.
+	 * @return Card if successful, otherwise null.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -61,10 +60,9 @@ class SingleCell extends CardStack {
 	 * Returns the card located at the coordinates of a mouse click.
 	 * 
 	 * @param p
-	 * 		Location of a mouse click.
+	 *            Location of a mouse click.
 	 * 
-	 * @return peek()
-	 * 		Card.
+	 * @return peek() Card.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -77,10 +75,9 @@ class SingleCell extends CardStack {
 	 * returns false.
 	 * 
 	 * @param card
-	 * 		Card to be checked.
+	 *            Card to be checked.
 	 * 
-	 * @return
-	 * 		True if valid or false if invalid.
+	 * @return True if valid or false if invalid.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -96,10 +93,9 @@ class SingleCell extends CardStack {
 	 * If trying to move more than one card into the cell returns false.
 	 * 
 	 * @param stack
-	 * 		Stack of cards.
+	 *            Stack of cards.
 	 * 
-	 * @return 
-	 * 		False, because the cell can hold maximum of one card.
+	 * @return False, because the cell can hold maximum of one card.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -110,8 +106,7 @@ class SingleCell extends CardStack {
 	/**
 	 * Returns the card from the cell. If there is no card - returns null.
 	 * 
-	 * @return
-	 * 		Stack with card.
+	 * @return Stack with card.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -141,7 +136,7 @@ class SingleCell extends CardStack {
 		if (isEmpty()) {
 			return;
 		}
-		
-		g.drawImage(cards.get(cards.size()-1).getImage(), 0, 0, null);
+
+		g.drawImage(cards.get(cards.size() - 1).getImage(), 0, 0, null);
 	}
 }

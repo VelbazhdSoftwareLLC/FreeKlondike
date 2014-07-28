@@ -46,8 +46,8 @@ class AcePile extends CardStack {
 	 * Sets the pile's suit to be equal to the argument suit. Can be Spades,
 	 * Clubs, Hearts or Diamonds
 	 * 
-	 * @param suit 
-	 * 			Suit to be used for the ace pile.
+	 * @param suit
+	 *            Suit to be used for the ace pile.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -58,8 +58,7 @@ class AcePile extends CardStack {
 	/**
 	 * Returns the pile's suit.
 	 * 
-	 * @return suit
-	 * 			The pile's suit.
+	 * @return suit The pile's suit.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -71,10 +70,9 @@ class AcePile extends CardStack {
 	 * Pushes a card onto the foundation stack if possible.
 	 * 
 	 * @param card
-	 * 			Card to be pushed to the ace pile.
+	 *            Card to be pushed to the ace pile.
 	 * 
-	 * @return card
-	 * 			The card that was pushed into the ace pile.
+	 * @return card The card that was pushed into the ace pile.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -91,10 +89,9 @@ class AcePile extends CardStack {
 	 * first.
 	 * 
 	 * @param point
-	 * 			The location of the mouse click.
+	 *            The location of the mouse click.
 	 * 
-	 * @return card
-	 * 			The card located at the location of the mouse click.
+	 * @return card The card located at the location of the mouse click.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -106,10 +103,9 @@ class AcePile extends CardStack {
 	 * Checks if its possible to put a certain card on top of a foundation pile.
 	 * 
 	 * @param card
-	 * 		Card to be checked.
+	 *            Card to be checked.
 	 * 
-	 * @return 
-	 * 		true or false
+	 * @return true or false
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -119,10 +115,10 @@ class AcePile extends CardStack {
 			return false;
 		}
 
-		if (isEmpty() && card.getCard().getNumber().equals(CardRank.ACE)) {
+		if (isEmpty() && card.getCard().getRank().equals(CardRank.ACE)) {
 			return true;
-		} else if (card.getCard().getNumber()
-				.isLessByOneThan(peek().getCard().getNumber())) {
+		} else if (card.getCard().getRank()
+				.isLessByOneThan(peek().getCard().getRank())) {
 			return true;
 		}
 
@@ -134,10 +130,9 @@ class AcePile extends CardStack {
 	 * the foundation piles returns false.
 	 * 
 	 * @param stack
-	 * 		Stack of cards.
+	 *            Stack of cards.
 	 * 
-	 * @return false
-	 * 		Always returns false because of the order of the cards.
+	 * @return false Always returns false because of the order of the cards.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -148,8 +143,7 @@ class AcePile extends CardStack {
 	/**
 	 * Checks if an ace pile is full.
 	 * 
-	 * @return
-	 * 		true or false.
+	 * @return true or false.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -164,8 +158,8 @@ class AcePile extends CardStack {
 				return (false);
 			}
 
-			if (cards.get(i).getCard().getNumber()
-					.isLessByOneThan(cards.get(i + 1).getCard().getNumber()) == true) {
+			if (cards.get(i).getCard().getRank()
+					.isLessByOneThan(cards.get(i + 1).getCard().getRank()) == true) {
 				return (false);
 			}
 		}

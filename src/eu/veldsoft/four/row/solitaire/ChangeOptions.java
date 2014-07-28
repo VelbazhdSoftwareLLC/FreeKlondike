@@ -129,22 +129,22 @@ class ChangeOptions extends JDialog implements ActionListener {
 	 * Manages the Change Options menu.
 	 * 
 	 * @param parent
-	 * 		Options frame.
+	 *            Options frame.
 	 * 
 	 * @param currentDraw
-	 * 		The new draw count we've chosen.
+	 *            The new draw count we've chosen.
 	 * 
 	 * @param timer
-	 * 		The new timer setting.
+	 *            The new timer setting.
 	 * 
 	 * @param animation
-	 * 		The new animation setting.
+	 *            The new animation setting.
 	 * 
 	 * @param sounds
-	 * 		The new time setting.
+	 *            The new time setting.
 	 * 
 	 * @param difficulty
-	 * 		The new difficulty we've chosen.
+	 *            The new difficulty we've chosen.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -269,8 +269,7 @@ class ChangeOptions extends JDialog implements ActionListener {
 	/**
 	 * Returns the draw count (1 or 3).
 	 * 
-	 * @return drawCount
-	 * 		The current draw count.
+	 * @return drawCount The current draw count.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -286,8 +285,7 @@ class ChangeOptions extends JDialog implements ActionListener {
 	/**
 	 * Returns whether the timer is switched on or not (1 or 0).
 	 * 
-	 * @return timer
-	 * 		Timer setting (on/off)
+	 * @return timer Timer setting (on/off)
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -302,8 +300,7 @@ class ChangeOptions extends JDialog implements ActionListener {
 	/**
 	 * Returns whether the animations are switched on or not (1 or 0).
 	 * 
-	 * @return animation
-	 * 		Animation setting (on/off).
+	 * @return animation Animation setting (on/off).
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -318,8 +315,7 @@ class ChangeOptions extends JDialog implements ActionListener {
 	/**
 	 * Returns whether the sounds are switched on or not (1 or 0).
 	 * 
-	 * @return sounds
-	 * 		Sound setting (on/off).
+	 * @return sounds Sound setting (on/off).
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -334,8 +330,7 @@ class ChangeOptions extends JDialog implements ActionListener {
 	/**
 	 * Returns the current difficulty (1-easy,2-medium or 3-hard).
 	 * 
-	 * @return difficulty
-	 * 		Current difficulty.
+	 * @return difficulty Current difficulty.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -349,7 +344,7 @@ class ChangeOptions extends JDialog implements ActionListener {
 	 * save these changes.
 	 * 
 	 * @param e
-	 * 		Action performed.
+	 *            Action performed.
 	 * 
 	 * @author Todor Balabanov
 	 */

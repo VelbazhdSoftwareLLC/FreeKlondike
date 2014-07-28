@@ -127,10 +127,10 @@ class SolitaireBoard {
 	 * Creates the solitaire board.
 	 * 
 	 * @param cards
-	 * 		List of cards.
+	 *            List of cards.
 	 * 
 	 * @param numViewableCards
-	 * 		Number of viewable cards.
+	 *            Number of viewable cards.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -209,10 +209,10 @@ class SolitaireBoard {
 	 * Used to deal the cards on the board after opening a saved game.
 	 * 
 	 * @param numbers
-	 * 		List of integers.
+	 *            List of integers.
 	 * 
 	 * @param numViewableCards
-	 * 		Number of viewable cards.
+	 *            Number of viewable cards.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -299,7 +299,7 @@ class SolitaireBoard {
 	 * For starting a new game.
 	 * 
 	 * @param winOrLoss
-	 * 		Game state.
+	 *            Game state.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -320,22 +320,22 @@ class SolitaireBoard {
 	 * Manages the game states.
 	 * 
 	 * @param winOrLoss
-	 * 		Game state.
+	 *            Game state.
 	 * 
 	 * @param timerCount
-	 * 		Timer.
+	 *            Timer.
 	 * 
 	 * @param backgroundNumber
-	 * 		Background number.
+	 *            Background number.
 	 * 
 	 * @param deckNumber
-	 * 		Card back number.	
+	 *            Card back number.
 	 * 
 	 * @param timerToRunNextGame
-	 * 		Timer to next game.
+	 *            Timer to next game.
 	 * 
 	 * @param timerToRun
-	 * 		Timer to run.
+	 *            Timer to run.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -868,8 +868,7 @@ class SolitaireBoard {
 	/**
 	 * Returns the draw count.
 	 * 
-	 * @return drawCount
-	 * 		Current draw count.
+	 * @return drawCount Current draw count.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -881,7 +880,7 @@ class SolitaireBoard {
 	 * Sets draw count.
 	 * 
 	 * @param draw
-	 * 		Sets the new draw count.
+	 *            Sets the new draw count.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -896,8 +895,7 @@ class SolitaireBoard {
 	/**
 	 * Returns the new draw count.
 	 * 
-	 * @return newDrawCount
-	 * 		New draw count.
+	 * @return newDrawCount New draw count.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -909,7 +907,7 @@ class SolitaireBoard {
 	 * Sets the new draw count.
 	 * 
 	 * @param draw
-	 * 		New draw count to be set.
+	 *            New draw count to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -924,8 +922,7 @@ class SolitaireBoard {
 	/**
 	 * Returns game difficulty.
 	 * 
-	 * @return difficulty
-	 * 		Current game difficulty.
+	 * @return difficulty Current game difficulty.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -937,7 +934,7 @@ class SolitaireBoard {
 	 * Sets game difficulty.
 	 * 
 	 * @param difficulty
-	 * 		The new game difficulty.
+	 *            The new game difficulty.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -948,8 +945,7 @@ class SolitaireBoard {
 	/**
 	 * Returns the new difficulty.
 	 * 
-	 * @return newDifficulty
-	 * 		New difficulty.
+	 * @return newDifficulty New difficulty.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -961,7 +957,7 @@ class SolitaireBoard {
 	 * Sets the new difficulty.
 	 * 
 	 * @param newDifficulty
-	 * 		New difficulty to be set.
+	 *            New difficulty to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -973,7 +969,7 @@ class SolitaireBoard {
 	 * Sets the number of times through deck.
 	 * 
 	 * @param deckThroughs
-	 * 		Deck throughs to be set.
+	 *            Deck throughs to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -1164,57 +1160,57 @@ class SolitaireBoard {
 											.equals(((AcePile) destination)
 													.getSuit())
 									&& card.getCard()
-											.getNumber()
+											.getRank()
 											.isLessByOneThan(
 													destination.peek()
 															.getCard()
-															.getNumber()) && k == 0)
+															.getRank()) && k == 0)
 									|| (!(destination instanceof AcePile)
 											&& card.getCard().getColor() != destination
 													.peek().getCard()
 													.getColor() && card
 											.getCard()
-											.getNumber()
+											.getRank()
 											.isGreaterByOneThan(
 													destination.peek()
 															.getCard()
-															.getNumber()))) {
+															.getRank()))) {
 								String hintString = "Move the ";
 
-								if (card.getCard().getNumber()
+								if (card.getCard().getRank()
 										.equals(CardRank.JACK)) {
 									hintString += "Jack";
-								} else if (card.getCard().getNumber()
+								} else if (card.getCard().getRank()
 										.equals(CardRank.QUEEN)) {
 									hintString += "Queen";
-								} else if (card.getCard().getNumber()
+								} else if (card.getCard().getRank()
 										.equals(CardRank.KING)) {
 									hintString += "King";
-								} else if (card.getCard().getNumber()
+								} else if (card.getCard().getRank()
 										.equals(CardRank.ACE)) {
 									hintString += "Ace";
 								} else {
-									hintString += card.getCard().getNumber();
+									hintString += card.getCard().getRank();
 								}
 
 								hintString += " of " + card.getCard().getSuit()
 										+ " in " + sourceString + " to the ";
 
-								if (destination.peek().getCard().getNumber()
+								if (destination.peek().getCard().getRank()
 										.equals(CardRank.JACK)) {
 									hintString += "Jack";
 								} else if (destination.peek().getCard()
-										.getNumber().equals(CardRank.QUEEN)) {
+										.getRank().equals(CardRank.QUEEN)) {
 									hintString += "Queen";
 								} else if (destination.peek().getCard()
-										.getNumber().equals(CardRank.KING)) {
+										.getRank().equals(CardRank.KING)) {
 									hintString += "King";
 								} else if (destination.peek().getCard()
-										.getNumber().equals(CardRank.ACE)) {
+										.getRank().equals(CardRank.ACE)) {
 									hintString += "Ace";
 								} else {
 									hintString += destination.peek().getCard()
-											.getNumber();
+											.getRank();
 								}
 
 								hintString += " of "
@@ -1234,13 +1230,12 @@ class SolitaireBoard {
 							&& destination != source
 							&& (destination instanceof Column)
 							&& destination.isEmpty()
-							&& (source.getBottom().getCard().getNumber()
+							&& (source.getBottom().getCard().getRank()
 									.equals(CardRank.KING) == false || source instanceof SingleCell)) {
 						for (int k = 0; k < temp.length(); k++) {
 							CardComponent card = temp.getCardAtLocation(k);
 
-							if (card.getCard().getNumber()
-									.equals(CardRank.KING)) {
+							if (card.getCard().getRank().equals(CardRank.KING)) {
 								String hintString = "Move the King of "
 										+ card.getCard().getSuit() + " in "
 										+ sourceString + " to the empty "
@@ -1259,7 +1254,7 @@ class SolitaireBoard {
 							&& destination.isEmpty()) {
 						CardComponent card = temp.peek();
 
-						if (card.getCard().getNumber().equals(CardRank.ACE)
+						if (card.getCard().getRank().equals(CardRank.ACE)
 								&& card.getCard()
 										.getSuit()
 										.equals(((AcePile) destination)

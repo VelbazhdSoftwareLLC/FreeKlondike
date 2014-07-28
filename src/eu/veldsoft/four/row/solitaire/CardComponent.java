@@ -84,10 +84,9 @@ class CardComponent extends JComponent {
 	 * It is used instead of constructor. Implement lazy initialization.
 	 * 
 	 * @param number
-	 * 		Will be used to set the card's number.
+	 *            Will be used to set the card's number.
 	 * 
-	 * @return
-	 * 		Card with updated card number.
+	 * @return Card with updated card number.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -147,23 +146,23 @@ class CardComponent extends JComponent {
 	 * image.
 	 * 
 	 * @param suit
-	 * 		Card's suit to be set.
+	 *            Card's suit to be set.
 	 * 
 	 * @param number
-	 * 		Card's number to be set.
+	 *            Card's number to be set.
 	 * 
 	 * @param fullNumber
-	 * 		Card's full number to be set.
+	 *            Card's full number to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
 	private CardComponent(CardSuit suit, CardRank number, int fullNumber) {
 		if (SolitaireFrame.deckNumber >= 1
 				&& SolitaireFrame.deckNumber <= ChangeAppearance.NUM_DECKS) {
-			cardBack = "images/vanya/cardbacks/cardback"
+			cardBack = SolitaireFrame.IMAGES_PATH + "/cardbacks/cardback"
 					+ SolitaireFrame.deckNumber + ".png";
 		} else {
-			cardBack = "images/vanya/cardbacks/cardback3.png";
+			cardBack = SolitaireFrame.IMAGES_PATH + "/cardbacks/cardback3.png";
 		}
 
 		card = new Card(suit, number, fullNumber);
@@ -176,8 +175,7 @@ class CardComponent extends JComponent {
 	/**
 	 * Returns the card's buffered image (either back or front).
 	 * 
-	 * @return image
-	 * 		Buffered image..
+	 * @return image Buffered image..
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -259,8 +257,7 @@ class CardComponent extends JComponent {
 	/**
 	 * Returns a card.
 	 * 
-	 * @return card
-	 * 		Card from a stack.
+	 * @return card Card from a stack.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -275,8 +272,8 @@ class CardComponent extends JComponent {
 	 * @author Todor Balabanov
 	 */
 	private void initializeCardImageString() {
-		cardImageString = "images/vanya/cardfaces/";
-		cardHighlighted = "images/vanya/highlightedfaces/";
+		cardImageString = SolitaireFrame.IMAGES_PATH + "/cardfaces/";
+		cardHighlighted = SolitaireFrame.IMAGES_PATH + "/highlightedfaces/";
 
 		if (card.getSuit().equals(CardSuit.SPADES)) {
 			cardImageString += "s";
@@ -344,8 +341,7 @@ class CardComponent extends JComponent {
 	/**
 	 * Clone a card, that includes the card's suit, number and full number.
 	 * 
-	 * @return this
-	 * 		Copy of a card.
+	 * @return this Copy of a card.
 	 * 
 	 * @author Todor Balabanov
 	 */

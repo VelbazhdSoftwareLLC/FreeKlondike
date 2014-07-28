@@ -28,7 +28,7 @@ package eu.veldsoft.four.row.solitaire;
 enum AnimationSettings {
 
 	/**
-	 *Off enum constant. 
+	 * Off enum constant.
 	 */
 	OFF,
 

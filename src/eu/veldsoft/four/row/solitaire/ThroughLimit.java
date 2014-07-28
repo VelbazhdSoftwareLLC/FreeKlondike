@@ -60,8 +60,7 @@ enum ThroughLimit {
 	/**
 	 * Returns the number of deck throughs.
 	 * 
-	 * @return
-	 * 		Number of throughs.
+	 * @return Number of throughs.
 	 * 
 	 * @author Todor Balabanov
 	 */

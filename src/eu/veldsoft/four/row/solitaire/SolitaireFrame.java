@@ -46,6 +46,11 @@ import javax.swing.event.MouseInputAdapter;
 class SolitaireFrame extends JFrame {
 
 	/**
+	 * Images resources path.
+	 */
+	final static String IMAGES_PATH = "images/vanya";
+
+	/**
 	 * Manages the window events.
 	 * 
 	 * @author Todor Balabanov
@@ -56,7 +61,7 @@ class SolitaireFrame extends JFrame {
 		 * On closing the main window:
 		 * 
 		 * @param e
-		 * 		On closing the main frame.
+		 *            On closing the main frame.
 		 * 
 		 * @author Todor Balabanov
 		 */
@@ -94,7 +99,7 @@ class SolitaireFrame extends JFrame {
 		 * Action performed.
 		 * 
 		 * @param e
-		 * 		On timer switched on.
+		 *            On timer switched on.
 		 * 
 		 * @author Todor Balabanov
 		 */
@@ -162,7 +167,7 @@ class SolitaireFrame extends JFrame {
 		 */
 		private void checkWin() {
 			for (int i = 0; i < board.acePiles.length; i++) {
-				if(board.acePiles[i].isFull() == false) {
+				if (board.acePiles[i].isFull() == false) {
 					return;
 				}
 			}
@@ -171,7 +176,7 @@ class SolitaireFrame extends JFrame {
 				new WinScreen();
 			}
 
-			//TODO fix this thing.
+			// TODO fix this thing.
 			if (timerToRun) {
 				final TopTimes top = new TopTimes();
 				int pos = top.IsTopTime(timerCount);
@@ -226,7 +231,7 @@ class SolitaireFrame extends JFrame {
 		 * On click on the discard pile.
 		 * 
 		 * @param e
-		 * 		Mouse pressed event.
+		 *            Mouse pressed event.
 		 * 
 		 * @author Todor Balabanov
 		 */
@@ -247,7 +252,7 @@ class SolitaireFrame extends JFrame {
 		 * On mouse released on the deal deck.
 		 * 
 		 * @param e
-		 * 		Mouse released event.
+		 *            Mouse released event.
 		 * 
 		 * @author Todor Balabanov
 		 */
@@ -264,7 +269,7 @@ class SolitaireFrame extends JFrame {
 		 * On mouse click.
 		 * 
 		 * @param e
-		 * 		Mouse-clicked event.
+		 *            Mouse-clicked event.
 		 * 
 		 * @author Todor Balabanov
 		 */
@@ -280,7 +285,7 @@ class SolitaireFrame extends JFrame {
 				return;
 			} else if (e.getClickCount() == 2 && hasSelected
 					&& singleCardSelected) {
-				if (source.peek().getCard().getNumber().equals(CardRank.ACE)) {
+				if (source.peek().getCard().getRank().equals(CardRank.ACE)) {
 					CardComponent card = source.pop();
 					AcePile pile = board.acePiles[card.getCard().getSuit()
 							.getIndex()];
@@ -306,10 +311,10 @@ class SolitaireFrame extends JFrame {
 							&& source
 									.peek()
 									.getCard()
-									.getNumber()
+									.getRank()
 									.isLessByOneThan(
 											(board.acePiles[i].peek().getCard()
-													.getNumber()))) {
+													.getRank()))) {
 						CardComponent card = source.pop();
 						card.unhighlight();
 						board.acePiles[i].push(card);
@@ -320,7 +325,7 @@ class SolitaireFrame extends JFrame {
 						source.repaint();
 						repaint();
 
-						if (card.getCard().getNumber().equals(CardRank.KING)) {
+						if (card.getCard().getRank().equals(CardRank.KING)) {
 							checkWin();
 						}
 
@@ -456,7 +461,7 @@ class SolitaireFrame extends JFrame {
 						board.destinationList.add(destination);
 
 						if (destination instanceof AcePile
-								&& clickedCard.getCard().getNumber()
+								&& clickedCard.getCard().getRank()
 										.equals(CardRank.KING)) {
 							repaint();
 							checkWin();
@@ -584,8 +589,9 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * 
 	 * @throws HeadlessException
-	 * 		Thrown when code that dephends on a keyboard,display or mouse is called in an environment
-	 * that does not support a keyboard, display or mouse.
+	 *             Thrown when code that dephends on a keyboard,display or mouse
+	 *             is called in an environment that does not support a keyboard,
+	 *             display or mouse.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -597,7 +603,7 @@ class SolitaireFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setIconImage(new ImageIcon(getClass().getResource(
-				"images/vanya/logo.png")).getImage());
+				SolitaireFrame.IMAGES_PATH + "/logo.png")).getImage());
 
 		setVisible(true);
 
@@ -607,8 +613,7 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * Returns the card back number.
 	 * 
-	 * @return deckNumber
-	 * 		Current card back number.
+	 * @return deckNumber Current card back number.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -620,7 +625,7 @@ class SolitaireFrame extends JFrame {
 	 * Sets the card back number.
 	 * 
 	 * @param deckNum
-	 * 		Card back number to be set.
+	 *            Card back number to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -635,8 +640,7 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * Returns the background number.
 	 * 
-	 * @return backgroundNumber
-	 * 		Current background number.
+	 * @return backgroundNumber Current background number.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -648,7 +652,7 @@ class SolitaireFrame extends JFrame {
 	 * Sets the background number.
 	 * 
 	 * @param backNum
-	 * 		To be used for the bacgroundNumber.
+	 *            To be used for the bacgroundNumber.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -665,7 +669,7 @@ class SolitaireFrame extends JFrame {
 	 * Sets the timer counter.
 	 * 
 	 * @param time
-	 * 		Timer.
+	 *            Timer.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -676,8 +680,7 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * Returns the timer status.
 	 * 
-	 * @return
-	 * 		Timer status.
+	 * @return Timer status.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -692,8 +695,7 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * Returns next game timer status.
 	 * 
-	 * @return timerToRunNextGame
-	 * 		Timer to next game.
+	 * @return timerToRunNextGame Timer to next game.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -705,7 +707,7 @@ class SolitaireFrame extends JFrame {
 	 * Sets timer status.
 	 * 
 	 * @param timerInt
-	 * 		To set the timer status.
+	 *            To set the timer status.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -725,10 +727,10 @@ class SolitaireFrame extends JFrame {
 	 * Manages the appearance.
 	 * 
 	 * @param deck
-	 * 		Deck number to be set.
+	 *            Deck number to be set.
 	 * 
 	 * @param background
-	 * 		Background number to be set.
+	 *            Background number to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -777,7 +779,7 @@ class SolitaireFrame extends JFrame {
 	 * For starting a new game.
 	 * 
 	 * @param winOrLoss
-	 * 		Game state.
+	 *            Game state.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -825,7 +827,7 @@ class SolitaireFrame extends JFrame {
 	 * Used to record the game.
 	 * 
 	 * @param winOrLoss
-	 * 		Game state.
+	 *            Game state.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -838,10 +840,10 @@ class SolitaireFrame extends JFrame {
 	 * Used to deal the cards on the board after opening a saved game.
 	 * 
 	 * @param numbers
-	 * 		List of cards.
+	 *            List of cards.
 	 * 
 	 * @param numViewableCards
-	 * 		Number of viewable cards.
+	 *            Number of viewable cards.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -868,10 +870,10 @@ class SolitaireFrame extends JFrame {
 	 * Creates the solitaire board.
 	 * 
 	 * @param cards
-	 * 		List of integers.
+	 *            List of integers.
 	 * 
 	 * @param numViewableCards
-	 * 		Number of viewable cards.
+	 *            Number of viewable cards.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -957,7 +959,7 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * 
 	 * @param newDrawCount
-	 * 		New draw count to be set.
+	 *            New draw count to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -968,7 +970,7 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * 
 	 * @param drawCount
-	 * 		Draw count to be set.
+	 *            Draw count to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -979,7 +981,7 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * 
 	 * @param easy
-	 * 		Game difficulty to be set.
+	 *            Game difficulty to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -990,7 +992,7 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * 
 	 * @param easy
-	 * 		New game difficulty to be set.
+	 *            New game difficulty to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -1001,7 +1003,7 @@ class SolitaireFrame extends JFrame {
 	/**
 	 * 
 	 * @param deckThroughs
-	 * 		Deck throughs to be set.
+	 *            Deck throughs to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -1011,8 +1013,7 @@ class SolitaireFrame extends JFrame {
 
 	/**
 	 * 
-	 * @return board.getNewDrawCount()
-	 * 		New draw count.
+	 * @return board.getNewDrawCount() New draw count.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -1022,8 +1023,7 @@ class SolitaireFrame extends JFrame {
 
 	/**
 	 * 
-	 * @return 
-	 * 		New difficulty value.
+	 * @return New difficulty value.
 	 * 
 	 * @author Todor Balabanov
 	 */

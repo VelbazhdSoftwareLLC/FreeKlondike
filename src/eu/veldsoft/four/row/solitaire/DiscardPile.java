@@ -46,8 +46,7 @@ class DiscardPile extends CardStack {
 	/**
 	 * Returns the cards left from the last draw from the deal deck.
 	 * 
-	 * @return cardsLeftFromDraw
-	 * 		Cards left.
+	 * @return cardsLeftFromDraw Cards left.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -59,7 +58,7 @@ class DiscardPile extends CardStack {
 	 * Sets the number of cards left from the last draw from the deck.
 	 * 
 	 * @param numViewableCards
-	 * 		Sets the number of viewable cards.
+	 *            Sets the number of viewable cards.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -71,7 +70,7 @@ class DiscardPile extends CardStack {
 	 * Adds a card to the pile of currently viewable cards.
 	 * 
 	 * @param card
-	 * 		Card to be added.
+	 *            Card to be added.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -84,7 +83,7 @@ class DiscardPile extends CardStack {
 	 * Adds stack of cards to the pile of currently viewable cards.
 	 * 
 	 * @param stack
-	 * 		Stack of cards to be added.
+	 *            Stack of cards to be added.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -100,10 +99,9 @@ class DiscardPile extends CardStack {
 	 * added.
 	 * 
 	 * @param card
-	 * 		Card to be added.
+	 *            Card to be added.
 	 * 
-	 * @return
-	 * 		The added card.
+	 * @return The added card.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -122,10 +120,9 @@ class DiscardPile extends CardStack {
 	 * the cards added.
 	 * 
 	 * @param stack
-	 * 		Stack to be added.
+	 *            Stack to be added.
 	 * 
-	 * @return stack
-	 * 		The added stack.
+	 * @return stack The added stack.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -145,8 +142,7 @@ class DiscardPile extends CardStack {
 	/**
 	 * Pops cards out of the stack of viewable cards.
 	 * 
-	 * @return card
-	 * 		Popped card.
+	 * @return card Popped card.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -169,8 +165,7 @@ class DiscardPile extends CardStack {
 	/**
 	 * Used to undo the pop.
 	 * 
-	 * @return
-	 * 		The card to be returned.
+	 * @return The card to be returned.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -182,10 +177,9 @@ class DiscardPile extends CardStack {
 	 * Returns a card located at the position of a mouse click.
 	 * 
 	 * @param p
-	 * 		Location of a mouse click.
+	 *            Location of a mouse click.
 	 * 
-	 * @return peek()
-	 * 		Card.
+	 * @return peek() Card.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -197,10 +191,9 @@ class DiscardPile extends CardStack {
 	 * Checks if a card move is valid.
 	 * 
 	 * @param card
-	 * 		Card to be checked.
+	 *            Card to be checked.
 	 * 
-	 * @return
-	 * 		True if the move is valid or false if it isn't.
+	 * @return True if the move is valid or false if it isn't.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -216,10 +209,9 @@ class DiscardPile extends CardStack {
 	 * The stack moves are always false.
 	 * 
 	 * @param stack
-	 * 		Stack of cards to be checked.
+	 *            Stack of cards to be checked.
 	 * 
-	 * @return
-	 * 		False.
+	 * @return False.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -230,8 +222,7 @@ class DiscardPile extends CardStack {
 	/**
 	 * Returns the stack of available cards.
 	 * 
-	 * @return stack
-	 * 		Stack of cards.
+	 * @return stack Stack of cards.
 	 * 
 	 * @author Todor Balabanov
 	 */

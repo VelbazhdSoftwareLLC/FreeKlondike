@@ -41,10 +41,9 @@ class Column extends CardStack {
 	 * otherwise returns null.
 	 * 
 	 * @param card
-	 * 		Card to be moved.
+	 *            Card to be moved.
 	 * 
-	 * @return
-	 * 		Card if successful or null if not successful.
+	 * @return Card if successful or null if not successful.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -63,23 +62,21 @@ class Column extends CardStack {
 	 * the current top card.
 	 * 
 	 * @param card
-	 * 		Card to be checked.
+	 *            Card to be checked.
 	 * 
-	 * @return
-	 * 		True or false.
+	 * @return True or false.
 	 * 
 	 * @author Todor Balabanov
 	 */
 	public boolean isValidMove(CardComponent card) {
-		if (isEmpty() == true
-				&& card.getCard().getNumber().equals(CardRank.KING)) {
+		if (isEmpty() == true && card.getCard().getRank().equals(CardRank.KING)) {
 			return true;
 		}
 
 		if (isEmpty() == false
 				&& card.getCard().getColor() != peek().getCard().getColor()
-				&& card.getCard().getNumber()
-						.isGreaterByOneThan(peek().getCard().getNumber())) {
+				&& card.getCard().getRank()
+						.isGreaterByOneThan(peek().getCard().getRank())) {
 			return true;
 		}
 
@@ -92,10 +89,9 @@ class Column extends CardStack {
 	 * top card from the column.
 	 * 
 	 * @param stack
-	 * 		Stack to be pushed.
+	 *            Stack to be pushed.
 	 * 
-	 * @return
-	 * 		True or false.
+	 * @return True or false.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -109,8 +105,7 @@ class Column extends CardStack {
 	 * first one that is lesser and with different color than the previous one.
 	 * Then returns the stack.
 	 * 
-	 * @return stack
-	 * 		Stack of cards.
+	 * @return stack Stack of cards.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -126,9 +121,8 @@ class Column extends CardStack {
 			CardComponent card = cards.get(index);
 
 			if (card.getCard().getColor() != stack.peek().getCard().getColor()
-					&& card.getCard()
-							.getNumber()
-							.isLessByOneThan(stack.peek().getCard().getNumber())) {
+					&& card.getCard().getRank()
+							.isLessByOneThan(stack.peek().getCard().getRank())) {
 				stack.addCard(card);
 			} else {
 				break;

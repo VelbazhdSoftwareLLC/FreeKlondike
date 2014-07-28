@@ -113,13 +113,13 @@ class ChangeAppearance extends JDialog implements ActionListener {
 	 * Manages the Change Appearance dialog box.
 	 * 
 	 * @param parent
-	 * 		Change appearance frame.
+	 *            Change appearance frame.
 	 * 
 	 * @param deckNumber
-	 * 		The new card back we've chosen.
+	 *            The new card back we've chosen.
 	 * 
 	 * @param backgroundNumber
-	 * 		The new background we've chosen.
+	 *            The new background we've chosen.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -190,13 +190,14 @@ class ChangeAppearance extends JDialog implements ActionListener {
 		buttonPanel.add(ok);
 
 		cardBackLabel.setIcon(new ImageIcon(this.getClass().getResource(
-				"images/vanya/cardbacks/cardback" + deckNumber + ".png")));
+				SolitaireFrame.IMAGES_PATH + "/cardbacks/cardback" + deckNumber
+						+ ".png")));
 		JPanel cardBackViewer = new JPanel();
 		cardBackViewer.add(cardBackLabel);
 
 		backgroundLabel.setIcon(new ImageIcon(this.getClass().getResource(
-				"images/vanya/backgrounds/background" + backgroundNumber
-						+ "small.jpg")));
+				SolitaireFrame.IMAGES_PATH + "/backgrounds/background"
+						+ backgroundNumber + "small.jpg")));
 		JPanel backgroundViewer = new JPanel();
 		backgroundViewer.add(backgroundLabel);
 
@@ -230,8 +231,7 @@ class ChangeAppearance extends JDialog implements ActionListener {
 	 * Returns the number that is used to set the card back image. The number
 	 * represents the one of the images.
 	 * 
-	 * @return 
-	 * 		The card back number if the dialog is still open, otherwise -1.
+	 * @return The card back number if the dialog is still open, otherwise -1.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -247,8 +247,7 @@ class ChangeAppearance extends JDialog implements ActionListener {
 	 * Returns the number that is used to set the background image. The number
 	 * represents one of the images.
 	 * 
-	 * @return 
-	 * 		The background number if the dialog is stil open, otherwise -1.
+	 * @return The background number if the dialog is stil open, otherwise -1.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -265,7 +264,7 @@ class ChangeAppearance extends JDialog implements ActionListener {
 	 * selected from the menu.
 	 * 
 	 * @param e
-	 * 		Awaits for an action to be performed within the dialog.
+	 *            Awaits for an action to be performed within the dialog.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -273,36 +272,40 @@ class ChangeAppearance extends JDialog implements ActionListener {
 		if (e.getSource() == decks[0]) {
 			deckNumber = 1;
 			cardBackLabel.setIcon(new ImageIcon(this.getClass().getResource(
-					"images/vanya/cardbacks/cardback" + deckNumber + ".png")));
+					SolitaireFrame.IMAGES_PATH + "/cardbacks/cardback"
+							+ deckNumber + ".png")));
 		} else if (e.getSource() == decks[1]) {
 			deckNumber = 2;
 			cardBackLabel.setIcon(new ImageIcon(this.getClass().getResource(
-					"images/vanya/cardbacks/cardback" + deckNumber + ".png")));
+					SolitaireFrame.IMAGES_PATH + "/cardbacks/cardback"
+							+ deckNumber + ".png")));
 		} else if (e.getSource() == decks[2]) {
 			deckNumber = 3;
 			cardBackLabel.setIcon(new ImageIcon(this.getClass().getResource(
-					"images/vanya/cardbacks/cardback" + deckNumber + ".png")));
+					SolitaireFrame.IMAGES_PATH + "/cardbacks/cardback"
+							+ deckNumber + ".png")));
 		} else if (e.getSource() == decks[3]) {
 			deckNumber = 4;
 			cardBackLabel.setIcon(new ImageIcon(this.getClass().getResource(
-					"images/vanya/cardbacks/cardback" + deckNumber + ".png")));
+					SolitaireFrame.IMAGES_PATH + "/cardbacks/cardback"
+							+ deckNumber + ".png")));
 		}
 
 		else if (e.getSource() == backgrounds[0]) {
 			backgroundNumber = 1;
 			backgroundLabel.setIcon(new ImageIcon(this.getClass().getResource(
-					"images/vanya/backgrounds/background" + backgroundNumber
-							+ "small.jpg")));
+					SolitaireFrame.IMAGES_PATH + "/backgrounds/background"
+							+ backgroundNumber + "small.jpg")));
 		} else if (e.getSource() == backgrounds[1]) {
 			backgroundNumber = 2;
 			backgroundLabel.setIcon(new ImageIcon(this.getClass().getResource(
-					"images/vanya/backgrounds/background" + backgroundNumber
-							+ "small.jpg")));
+					SolitaireFrame.IMAGES_PATH + "/backgrounds/background"
+							+ backgroundNumber + "small.jpg")));
 		} else if (e.getSource() == backgrounds[2]) {
 			backgroundNumber = 3;
 			backgroundLabel.setIcon(new ImageIcon(this.getClass().getResource(
-					"images/vanya/backgrounds/background" + backgroundNumber
-							+ "small.jpg")));
+					SolitaireFrame.IMAGES_PATH + "/backgrounds/background"
+							+ backgroundNumber + "small.jpg")));
 		}
 
 		else if (e.getSource() == ok) {

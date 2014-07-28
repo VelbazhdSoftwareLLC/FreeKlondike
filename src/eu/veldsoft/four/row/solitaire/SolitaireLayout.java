@@ -181,10 +181,10 @@ class SolitaireLayout implements LayoutManager {
 	 * cards.
 	 * 
 	 * @param name
-	 * 		Component name.
+	 *            Component name.
 	 * 
 	 * @param component
-	 * 		Component to e set.
+	 *            Component to e set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -230,7 +230,7 @@ class SolitaireLayout implements LayoutManager {
 	 * Removes a component from the game board.
 	 * 
 	 * @param component
-	 * 		Component to be removed.
+	 *            Component to be removed.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -276,7 +276,7 @@ class SolitaireLayout implements LayoutManager {
 	 * Implemented, unsupported function.
 	 * 
 	 * @param parent
-	 * 		Parent.
+	 *            Parent.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -288,7 +288,7 @@ class SolitaireLayout implements LayoutManager {
 	 * Implemented, unsupported function.
 	 * 
 	 * @param parent
-	 * 		Parent.
+	 *            Parent.
 	 * 
 	 * @author Todor Balabanov .
 	 */
@@ -301,7 +301,7 @@ class SolitaireLayout implements LayoutManager {
 	 * height.
 	 * 
 	 * @param parent
-	 * 		Parent.
+	 *            Parent.
 	 * 
 	 * @author Todor Balabanov
 	 */

@@ -65,7 +65,7 @@ class CardStack extends JLayeredPane {
 	 * Used to add a card to a stack.
 	 * 
 	 * @param card
-	 * 		Card to be added.
+	 *            Card to be added.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -79,7 +79,7 @@ class CardStack extends JLayeredPane {
 	 * Used to add a bunch of cards to a stack.
 	 * 
 	 * @param stack
-	 * 		Stack to be added.
+	 *            Stack to be added.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -93,10 +93,9 @@ class CardStack extends JLayeredPane {
 	 * Used to add a card to a stack and then to return the moved card.
 	 * 
 	 * @param card
-	 * 		Card to be added.
+	 *            Card to be added.
 	 * 
-	 * @return 
-	 * 		Added card.
+	 * @return Added card.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -111,10 +110,9 @@ class CardStack extends JLayeredPane {
 	 * stack.
 	 * 
 	 * @param stack
-	 * 		Stack to be added.
+	 *            Stack to be added.
 	 * 
-	 * @return
-	 * 		Empty stack.
+	 * @return Empty stack.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -130,8 +128,7 @@ class CardStack extends JLayeredPane {
 	/**
 	 * Pops the top card out of a stack.
 	 * 
-	 * @return card
-	 * 		The popped card.
+	 * @return card The popped card.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -148,10 +145,9 @@ class CardStack extends JLayeredPane {
 	 * Temporary reverses the cards in a stack.
 	 * 
 	 * @param stack
-	 * 		Stack to be reversed.
+	 *            Stack to be reversed.
 	 * 
-	 * @return
-	 * 		The reversed stack.
+	 * @return The reversed stack.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -173,8 +169,7 @@ class CardStack extends JLayeredPane {
 	/**
 	 * Pops the top card out of a stack if possible. If not - returns null.
 	 * 
-	 * @return
-	 * 		Card or null.
+	 * @return Card or null.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -189,8 +184,7 @@ class CardStack extends JLayeredPane {
 	/**
 	 * Checks if a stack is empty (has no cards inside).
 	 * 
-	 * @return
-	 * 		True or false, based on if the stack is empty or not.
+	 * @return True or false, based on if the stack is empty or not.
 	 */
 	public boolean isEmpty() {
 		return cards.size() == 0;
@@ -199,8 +193,7 @@ class CardStack extends JLayeredPane {
 	/**
 	 * Returns the stack's length.
 	 * 
-	 * @return
-	 * 		Stack's length. 
+	 * @return Stack's length.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -213,10 +206,10 @@ class CardStack extends JLayeredPane {
 	 * stack.
 	 * 
 	 * @param card
-	 * 		The card to be matched.
+	 *            The card to be matched.
 	 * 
-	 * @return
-	 * 		The location of the card or -1 if the card can't be found within the stack.
+	 * @return The location of the card or -1 if the card can't be found within
+	 *         the stack.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -234,10 +227,10 @@ class CardStack extends JLayeredPane {
 	 * Returns the card located at a specified location within the stack.
 	 * 
 	 * @param index
-	 * 		Location within the stack.
+	 *            Location within the stack.
 	 * 
-	 * @return
-	 * 		The card at this location. Or null if the index is greater than the stack's size.
+	 * @return The card at this location. Or null if the index is greater than
+	 *         the stack's size.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -253,10 +246,9 @@ class CardStack extends JLayeredPane {
 	 * Returns the card located at the coordinates of a mouse click.
 	 * 
 	 * @param p
-	 * 		Location of a mouse click.
+	 *            Location of a mouse click.
 	 * 
-	 * @return
-	 * 		The card at this location.
+	 * @return The card at this location.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -288,10 +280,9 @@ class CardStack extends JLayeredPane {
 	 * Verifies that the card is a part of a valid stack.
 	 * 
 	 * @param index
-	 * 		Index of the card to be verified.
+	 *            Index of the card to be verified.
 	 * 
-	 * @return
-	 * 		true or false
+	 * @return true or false
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -308,9 +299,9 @@ class CardStack extends JLayeredPane {
 					.getColor()
 					|| cards.get(i)
 							.getCard()
-							.getNumber()
+							.getRank()
 							.isLessByOneThan(
-									cards.get(i + 1).getCard().getNumber()) == false) {
+									cards.get(i + 1).getCard().getRank()) == false) {
 				return false;
 			}
 		}
@@ -322,9 +313,8 @@ class CardStack extends JLayeredPane {
 	 * Checks if clicked area is defined on a card in the stack.
 	 * 
 	 * @param p
-	 * 		Location of the click.
-	 * @return
-	 * 		True or false.
+	 *            Location of the click.
+	 * @return True or false.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -347,10 +337,9 @@ class CardStack extends JLayeredPane {
 	 * temp stack. Stops after it reaches the specific card.
 	 * 
 	 * @param card
-	 * 		Card to look for.
+	 *            Card to look for.
 	 * 
-	 * @return
-	 * 		Stack of cards.
+	 * @return Stack of cards.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -372,10 +361,9 @@ class CardStack extends JLayeredPane {
 	 * when it reaches the specified location.
 	 * 
 	 * @param numCards
-	 * 		Index.
+	 *            Index.
 	 * 
-	 * @return
-	 * 		Stack of cards.
+	 * @return Stack of cards.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -395,10 +383,9 @@ class CardStack extends JLayeredPane {
 	 * Used to undo the last stack move. Reverses the cards.
 	 * 
 	 * @param numCards
-	 * 		Number of cards in the stack.
+	 *            Number of cards in the stack.
 	 * 
-	 * @return
-	 * 		Reversed stack.
+	 * @return Reversed stack.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -413,14 +400,13 @@ class CardStack extends JLayeredPane {
 	}
 
 	/**
-	 * Checks if the move is valid. Always returns false.
-	 * The method is overridden by the child classes.
+	 * Checks if the move is valid. Always returns false. The method is
+	 * overridden by the child classes.
 	 * 
 	 * @param card
-	 * 		Card to be checked.
+	 *            Card to be checked.
 	 * 
-	 * @return
-	 * 		False
+	 * @return False
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -429,14 +415,13 @@ class CardStack extends JLayeredPane {
 	}
 
 	/**
-	 * Checks if the move is valid. Always returns false.
-	 * This method is overridden by the child classes.
+	 * Checks if the move is valid. Always returns false. This method is
+	 * overridden by the child classes.
 	 * 
 	 * @param stack
-	 * 		Stack of cards to be ckecked.
+	 *            Stack of cards to be ckecked.
 	 * 
-	 * @return
-	 * 		False.
+	 * @return False.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -447,8 +432,7 @@ class CardStack extends JLayeredPane {
 	/**
 	 * Returns the first card from a stack.
 	 * 
-	 * @return card
-	 * 		The first card from the stack of cards.
+	 * @return card The first card from the stack of cards.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -457,11 +441,10 @@ class CardStack extends JLayeredPane {
 	}
 
 	/**
-	 * Returns the available cards from a deck.
-	 * This method is overriden by the child classes.
+	 * Returns the available cards from a deck. This method is overriden by the
+	 * child classes.
 	 * 
-	 * @return 
-	 * 		Null.
+	 * @return Null.
 	 * 
 	 * @author Todor Balabanov
 	 */
