@@ -45,7 +45,7 @@ class Deck {
 	 * elements in the array.
 	 * 
 	 * @param deck
-	 * 		List of integers to be shuffled.
+	 *            List of integers to be shuffled.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -73,8 +73,7 @@ class Deck {
 	/**
 	 * Creates a deck, shuffles it and returns it.
 	 * 
-	 * @return
-	 * 		Shuffled deck.
+	 * @return Shuffled deck.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -91,10 +90,9 @@ class Deck {
 	 * the deck.
 	 * 
 	 * @param numbers
-	 * 		List of integers.
+	 *            List of integers.
 	 * 
-	 * @return deck
-	 * 		Ready to be used.
+	 * @return deck Ready to be used.
 	 * 
 	 * @author Todor Balabanov
 	 */

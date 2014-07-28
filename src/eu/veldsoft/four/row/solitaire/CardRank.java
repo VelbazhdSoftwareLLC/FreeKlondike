@@ -62,7 +62,7 @@ enum CardRank {
 	SEVEN(7),
 
 	/**
-	 *Eight enum constant. 
+	 * Eight enum constant.
 	 */
 	EIGHT(8),
 
@@ -100,10 +100,9 @@ enum CardRank {
 	 * Returns the card's rank based on the argument index.
 	 * 
 	 * @param index
-	 * 		Index to be matched with enum constant.
+	 *            Index to be matched with enum constant.
 	 * 
-	 * @return
-	 * 		Matched enum constant.
+	 * @return Matched enum constant.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -145,7 +144,7 @@ enum CardRank {
 	 * represents one of the 13 ranks.
 	 * 
 	 * @param index
-	 * 		Index to be used for the rank.
+	 *            Index to be used for the rank.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -156,8 +155,7 @@ enum CardRank {
 	/**
 	 * Returns the card's rank.
 	 * 
-	 * @return index
-	 * 		Rank index.
+	 * @return index Rank index.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -166,14 +164,14 @@ enum CardRank {
 	}
 
 	/**
-	 * Checks if the current card we're holding is lesser by one than the current top
-	 * card on one of the columns.
+	 * Checks if the current card we're holding is lesser by one than the
+	 * current top card on one of the columns.
 	 * 
 	 * @param card
-	 * 		Current card we're holding.
+	 *            Current card we're holding.
 	 * 
-	 * @return
-	 * 		True if the current card is lesser by one than the top card on the column, otherwise false.
+	 * @return True if the current card is lesser by one than the top card on
+	 *         the column, otherwise false.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -219,15 +217,14 @@ enum CardRank {
 	}
 
 	/**
-	 * Checks if the current card we're holding is greater by one than the top card on
-	 * one of the foundation piles.
+	 * Checks if the current card we're holding is greater by one than the top
+	 * card on one of the foundation piles.
 	 * 
 	 * @param card
-	 * 		Current card we're holding.
+	 *            Current card we're holding.
 	 * 
-	 * @return
-	 * 		True if the current card we're holding is greater by one than the current top card on one of the foundation
-	 * 		piles, otherwise false.
+	 * @return True if the current card we're holding is greater by one than the
+	 *         current top card on one of the foundation piles, otherwise false.
 	 * 
 	 * @author Todor Balabanov
 	 */

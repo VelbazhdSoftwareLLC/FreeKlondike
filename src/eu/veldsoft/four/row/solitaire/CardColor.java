@@ -46,7 +46,7 @@ enum CardColor {
 	 * index (0 or 1)
 	 * 
 	 * @param index
-	 * 		Index to be used for the color.
+	 *            Index to be used for the color.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -57,8 +57,7 @@ enum CardColor {
 	/**
 	 * Returns the card's color number.
 	 * 
-	 * @return index
-	 *		Color index. 
+	 * @return index Color index.
 	 * 
 	 * @author Todor Balabanov
 	 */

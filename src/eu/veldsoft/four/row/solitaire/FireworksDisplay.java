@@ -117,10 +117,10 @@ class FireworksDisplay extends JPanel implements ActionListener {
 	 * Sets the number of fireworks to be fired as well as their size.
 	 * 
 	 * @param num
-	 * 		Number of fireworks.
+	 *            Number of fireworks.
 	 * 
 	 * @param size
-	 * 		Fireworks size.
+	 *            Fireworks size.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -188,8 +188,7 @@ class FireworksDisplay extends JPanel implements ActionListener {
 	/**
 	 * Generates a random number representing one of the colors below.
 	 * 
-	 * @return
-	 * 		Color constant.
+	 * @return Color constant.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -224,7 +223,7 @@ class FireworksDisplay extends JPanel implements ActionListener {
 	 * Paint procedure.
 	 * 
 	 * @param g
-	 * 		Graphic context.
+	 *            Graphic context.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -573,8 +572,8 @@ class FireworksDisplay extends JPanel implements ActionListener {
 	/**
 	 * Action performed.
 	 * 
-	 * @param e 
-	 * 		Event.
+	 * @param e
+	 *            Event.
 	 * 
 	 * @author Todor Balabanov
 	 */

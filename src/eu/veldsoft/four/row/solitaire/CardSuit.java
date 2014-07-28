@@ -75,8 +75,7 @@ enum CardSuit {
 	/**
 	 * Index of the suit.
 	 * 
-	 * @return 
-	 * 		Suit index.
+	 * @return Suit index.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -87,8 +86,7 @@ enum CardSuit {
 	/**
 	 * Returns the card suit.
 	 * 
-	 * @return 
-	 * 		Suit name.
+	 * @return Suit name.
 	 * 
 	 * @author Todor Balabanov
 	 */

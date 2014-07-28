@@ -49,7 +49,7 @@ enum GameDifficulty {
 	 * Sets the game difficulty based on the argument value.
 	 * 
 	 * @param value
-	 * 		Index to be used for the difficulty.
+	 *            Index to be used for the difficulty.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -60,8 +60,7 @@ enum GameDifficulty {
 	/**
 	 * Returns the game difficulty value.
 	 * 
-	 * @return
-	 * 		Difficulty value.
+	 * @return Difficulty value.
 	 * 
 	 * @author Todor Balabanov
 	 */

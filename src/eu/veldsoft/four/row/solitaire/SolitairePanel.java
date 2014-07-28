@@ -52,7 +52,7 @@ class SolitairePanel extends JPanel {
 	 */
 	public SolitairePanel() {
 		URL imageURL = this.getClass().getResource(
-				"images/vanya/backgrounds/background"
+				SolitaireFrame.IMAGES_PATH + "/backgrounds/background"
 						+ SolitaireFrame.backgroundNumber + ".jpg");
 
 		if (imageURL != null) {
@@ -65,7 +65,7 @@ class SolitairePanel extends JPanel {
 	 * number represents a certain background image.
 	 * 
 	 * @param back
-	 * 		Background number to be set.
+	 *            Background number to be set.
 	 * 
 	 * @author Todor Balabanov
 	 */
@@ -73,7 +73,8 @@ class SolitairePanel extends JPanel {
 		SolitaireFrame.backgroundNumber = back;
 
 		URL imageURL = this.getClass().getResource(
-				"images/vanya/backgrounds/background" + back + ".jpg");
+				SolitaireFrame.IMAGES_PATH + "/backgrounds/background" + back
+						+ ".jpg");
 
 		if (imageURL != null) {
 			background = new ImageIcon(imageURL).getImage();
