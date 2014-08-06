@@ -19,6 +19,8 @@
 
 package eu.veldsoft.four.row.solitaire;
 
+import java.util.logging.Logger;
+
 /**
  * Class: Card
  * 
@@ -28,6 +30,23 @@ package eu.veldsoft.four.row.solitaire;
  * @author Matt Stephen
  */
 class Card {
+
+	/**
+	 * 
+	 */
+	private static final Logger LOGGER = Logger.getLogger(Class.class
+			.toString());
+
+	/**
+	 * Card instances.
+	 */
+	private static Card cards[] = { null, null, null, null, null, null, null,
+			null, null, null, null, null, null, null, null, null, null, null,
+			null, null, null, null, null, null, null, null, null, null, null,
+			null, null, null, null, null, null, null, null, null, null, null,
+			null, null, null, null, null, null, null, null, null, null, null,
+			null };
+
 	/**
 	 * Card suit.
 	 */
@@ -62,6 +81,55 @@ class Card {
 	 * To notify the discard pile of moves from the deck.
 	 */
 	private String location = "";
+
+	/**
+	 * It is used instead of constructor. Implement lazy initialization.
+	 * 
+	 * @param number
+	 *            Will be used to set the card's number.
+	 * 
+	 * @return Card with updated card number.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	static Card valueBy(int number) {
+		int index = number - 1;
+
+		if (cards[index] == null) {
+			if (number >= 1 && number <= 13) {
+				/*
+				 * To make the cardNumber 1-13 you do not need to do anything.
+				 */
+				cards[index] = new Card(CardSuit.SPADES,
+						CardRank.getValue(number), number);
+			} else if (number >= 14 && number <= 26) {
+				/*
+				 * To make the cardNumber 1-13 instead of 14-26.
+				 */
+				cards[index] = new Card(CardSuit.CLUBS,
+						CardRank.getValue(number - 13), number);
+			} else if (number >= 27 && number <= 39) {
+				/*
+				 * To make the cardNumber 1-13 instead of 27-39.
+				 */
+				cards[index] = new Card(CardSuit.DIAMONDS,
+						CardRank.getValue(number - 26), number);
+			} else if (number >= 40 && number <= 52) {
+				/*
+				 * To make the cardNumber 1-13 instead of 40-52.
+				 */
+				cards[index] = new Card(CardSuit.HEARTS,
+						CardRank.getValue(number - 39), number);
+			} else {
+				/*
+				 * Let user know the card is invalid.
+				 */
+				LOGGER.info("Invalid card!");
+			}
+		}
+
+		return (cards[index]);
+	}
 
 	/**
 	 * Card constructor Sets the card's suit, number, full number and back

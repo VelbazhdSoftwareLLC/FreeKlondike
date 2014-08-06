@@ -19,9 +19,6 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.Graphics;
-import java.awt.Point;
-
 /**
  * Class: SingleCell
  * 
@@ -33,11 +30,6 @@ import java.awt.Point;
 class SingleCell extends CardStack {
 
 	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	/**
 	 * If the move is valid, pushes a card into the cell.
 	 * 
 	 * @param card
@@ -47,27 +39,13 @@ class SingleCell extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent push(CardComponent card) {
+	public Card push(Card card) {
 		if (isEmpty() == true) {
 			super.push(card);
 			return card;
 		}
 
 		return null;
-	}
-
-	/**
-	 * Returns the card located at the coordinates of a mouse click.
-	 * 
-	 * @param p
-	 *            Location of a mouse click.
-	 * 
-	 * @return peek() Card.
-	 * 
-	 * @author Todor Balabanov
-	 */
-	public CardComponent getCardAtLocation(Point p) {
-		return peek();
 	}
 
 	/**
@@ -81,7 +59,7 @@ class SingleCell extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(CardComponent card) {
+	public boolean isValidMove(Card card) {
 		if (isEmpty() == true) {
 			return true;
 		}
@@ -119,24 +97,5 @@ class SingleCell extends CardStack {
 		stack.addCard(peek());
 
 		return stack;
-	}
-
-	/**
-	 * Paint procedure.
-	 * 
-	 * @param g
-	 *            Graphic context.
-	 * 
-	 * @author Todor Balabanov
-	 */
-	@Override
-	public void paint(Graphics g) {
-		super.paint(g);
-
-		if (isEmpty()) {
-			return;
-		}
-
-		g.drawImage(cards.get(cards.size() - 1).getImage(), 0, 0, null);
 	}
 }

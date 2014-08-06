@@ -19,9 +19,6 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.Graphics;
-import java.awt.Image;
-
 /**
  * Class: Column
  * 
@@ -30,11 +27,6 @@ import java.awt.Image;
  * @author Matt Stephen
  */
 class Column extends CardStack {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	/**
 	 * If its possible to move a card to the top of the column - moves it
@@ -47,7 +39,7 @@ class Column extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent push(CardComponent card) {
+	public Card push(Card card) {
 		if (isValidMove(card) == true) {
 			super.push(card);
 			return card;
@@ -68,15 +60,13 @@ class Column extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(CardComponent card) {
-		if (isEmpty() == true && card.getCard().getRank().equals(CardRank.KING)) {
+	public boolean isValidMove(Card card) {
+		if (isEmpty() == true && card.getRank().equals(CardRank.KING)) {
 			return true;
 		}
 
-		if (isEmpty() == false
-				&& card.getCard().getColor() != peek().getCard().getColor()
-				&& card.getCard().getRank()
-						.isGreaterByOneThan(peek().getCard().getRank())) {
+		if (isEmpty() == false && card.getColor() != peek().getColor()
+				&& card.getRank().isGreaterByOneThan(peek().getRank())) {
 			return true;
 		}
 
@@ -118,11 +108,10 @@ class Column extends CardStack {
 		stack.addCard(cards.get(length() - 1));
 
 		for (int index = length() - 2; index >= 0; index--) {
-			CardComponent card = cards.get(index);
+			Card card = cards.get(index);
 
-			if (card.getCard().getColor() != stack.peek().getCard().getColor()
-					&& card.getCard().getRank()
-							.isLessByOneThan(stack.peek().getCard().getRank())) {
+			if (card.getColor() != stack.peek().getColor()
+					&& card.getRank().isLessByOneThan(stack.peek().getRank())) {
 				stack.addCard(card);
 			} else {
 				break;
@@ -131,27 +120,4 @@ class Column extends CardStack {
 
 		return stack;
 	}
-
-	/**
-	 * Paint procedure.
-	 * 
-	 * @param g
-	 *            Graphic context.
-	 * 
-	 * @author Todor Balabanov
-	 */
-	@Override
-	public void paint(Graphics g) {
-		super.paint(g);
-
-		if (isEmpty()) {
-			return;
-		}
-
-		for (int i = 0; i < cards.size(); i++) {
-			Image image = cards.get(i).getImage();
-			g.drawImage(image, 0, i * 25, null);
-		}
-	}
-
 }

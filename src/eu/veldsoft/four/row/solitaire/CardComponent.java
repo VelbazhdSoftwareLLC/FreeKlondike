@@ -23,6 +23,8 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
@@ -56,9 +58,9 @@ class CardComponent extends JComponent {
 			null, null, null };
 
 	/**
-	 * Buffer.
+	 * Maps non GUI card objects with GUI card objects.
 	 */
-	private Card card = null;
+	static final Map<Card, CardComponent> cardsMapping = new HashMap<Card, CardComponent>();
 
 	/**
 	 * The back design.
@@ -81,6 +83,11 @@ class CardComponent extends JComponent {
 	private BufferedImage image = null;
 
 	/**
+	 * Buffer.
+	 */
+	Card card = null;
+
+	/**
 	 * It is used instead of constructor. Implement lazy initialization.
 	 * 
 	 * @param number
@@ -94,36 +101,7 @@ class CardComponent extends JComponent {
 		int index = number - 1;
 
 		if (cards[index] == null) {
-			if (number >= 1 && number <= 13) {
-				/*
-				 * To make the cardNumber 1-13 you do not need to do anything.
-				 */
-				cards[index] = new CardComponent(CardSuit.SPADES,
-						CardRank.getValue(number), number);
-			} else if (number >= 14 && number <= 26) {
-				/*
-				 * To make the cardNumber 1-13 instead of 14-26.
-				 */
-				cards[index] = new CardComponent(CardSuit.CLUBS,
-						CardRank.getValue(number - 13), number);
-			} else if (number >= 27 && number <= 39) {
-				/*
-				 * To make the cardNumber 1-13 instead of 27-39.
-				 */
-				cards[index] = new CardComponent(CardSuit.DIAMONDS,
-						CardRank.getValue(number - 26), number);
-			} else if (number >= 40 && number <= 52) {
-				/*
-				 * To make the cardNumber 1-13 instead of 40-52.
-				 */
-				cards[index] = new CardComponent(CardSuit.HEARTS,
-						CardRank.getValue(number - 39), number);
-			} else {
-				/*
-				 * Let user know the card is invalid.
-				 */
-				LOGGER.info("Invalid card!");
-			}
+			cards[index] = CardComponent.cardsMapping.get(Card.valueBy(number));
 		}
 
 		return (cards[index]);
@@ -170,6 +148,8 @@ class CardComponent extends JComponent {
 		initializeCardImageString();
 
 		setFaceUp();
+
+		cardsMapping.put(card, this);
 	}
 
 	/**

@@ -19,10 +19,6 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Point;
-
 /**
  * Class: AcePile
  * 
@@ -31,11 +27,6 @@ import java.awt.Point;
  * @author Matt Stephen
  */
 class AcePile extends CardStack {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Pile suit.
@@ -76,27 +67,12 @@ class AcePile extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent push(CardComponent card) {
+	public Card push(Card card) {
 		if (isValidMove(card) == false) {
 			return null;
 		}
 		super.push(card);
 		return (card);
-	}
-
-	/**
-	 * Returns the top card from a stack of cards. The card must be clicked
-	 * first.
-	 * 
-	 * @param point
-	 *            The location of the mouse click.
-	 * 
-	 * @return card The card located at the location of the mouse click.
-	 * 
-	 * @author Todor Balabanov
-	 */
-	public CardComponent getCardAtLocation(Point point) {
-		return peek();
 	}
 
 	/**
@@ -110,15 +86,14 @@ class AcePile extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	@Override
-	public boolean isValidMove(CardComponent card) {
-		if (card.getCard().getSuit().equals(suit) == false) {
+	public boolean isValidMove(Card card) {
+		if (card.getSuit().equals(suit) == false) {
 			return false;
 		}
 
-		if (isEmpty() && card.getCard().getRank().equals(CardRank.ACE)) {
+		if (isEmpty() && card.getRank().equals(CardRank.ACE)) {
 			return true;
-		} else if (card.getCard().getRank()
-				.isLessByOneThan(peek().getCard().getRank())) {
+		} else if (card.getRank().isLessByOneThan(peek().getRank())) {
 			return true;
 		}
 
@@ -153,35 +128,16 @@ class AcePile extends CardStack {
 		}
 
 		for (int i = 0; i < cards.size() - 1; i++) {
-			if (cards.get(i).getCard().getColor() != cards.get(i + 1).getCard()
-					.getColor()) {
+			if (cards.get(i).getColor() != cards.get(i + 1).getColor()) {
 				return (false);
 			}
 
-			if (cards.get(i).getCard().getRank()
-					.isLessByOneThan(cards.get(i + 1).getCard().getRank()) == true) {
+			if (cards.get(i).getRank()
+					.isLessByOneThan(cards.get(i + 1).getRank()) == true) {
 				return (false);
 			}
 		}
 
 		return (true);
-	}
-
-	/**
-	 * Paint procedure.
-	 * 
-	 * @param g
-	 *            Graphic context.
-	 * 
-	 * @author Todor Balabanov
-	 */
-	@Override
-	public void paint(Graphics g) {
-		super.paint(g);
-
-		for (int i = 0; i < length(); i++) {
-			Image image = getCardAtLocation(i).getImage();
-			g.drawImage(image, 0, 0, null);
-		}
 	}
 }

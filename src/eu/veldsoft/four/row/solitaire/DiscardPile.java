@@ -19,10 +19,6 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Point;
-
 /**
  * Class: DiscardPile
  * 
@@ -34,14 +30,9 @@ import java.awt.Point;
 class DiscardPile extends CardStack {
 
 	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	/**
 	 * Cards left from the last draw from the deal deck.
 	 */
-	private int cardsLeftFromDraw = 0;
+	int cardsLeftFromDraw = 0;
 
 	/**
 	 * Returns the cards left from the last draw from the deal deck.
@@ -74,7 +65,7 @@ class DiscardPile extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public void addCard(CardComponent card) {
+	public void addCard(Card card) {
 		cardsLeftFromDraw++;
 		super.addCard(card);
 	}
@@ -89,7 +80,7 @@ class DiscardPile extends CardStack {
 	 */
 	public void addStack(CardStack stack) {
 		for (int i = stack.length(); i > 0; i--) {
-			CardComponent card = stack.pop();
+			Card card = stack.pop();
 			addCard(card);
 		}
 	}
@@ -105,13 +96,13 @@ class DiscardPile extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent push(CardComponent card) {
+	public Card push(Card card) {
 		if (SolitaireBoard.drawCount == 1) {
 			cardsLeftFromDraw = 0;
 		}
 
 		addCard(card);
-		card.getCard().setSource("");
+		card.setSource("");
 		return card;
 	}
 
@@ -146,8 +137,8 @@ class DiscardPile extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public synchronized CardComponent pop() {
-		CardComponent card = super.pop();
+	public synchronized Card pop() {
+		Card card = super.pop();
 
 		/*
 		 * To make the display of multiple cards correct (After a player removes
@@ -169,22 +160,8 @@ class DiscardPile extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public synchronized CardComponent undoPop() {
+	public synchronized Card undoPop() {
 		return super.pop();
-	}
-
-	/**
-	 * Returns a card located at the position of a mouse click.
-	 * 
-	 * @param p
-	 *            Location of a mouse click.
-	 * 
-	 * @return peek() Card.
-	 * 
-	 * @author Todor Balabanov
-	 */
-	public CardComponent getCardAtLocation(Point p) {
-		return peek();
 	}
 
 	/**
@@ -197,8 +174,8 @@ class DiscardPile extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(CardComponent card) {
-		if (card.getCard().getSource().equals("Deck")) {
+	public boolean isValidMove(Card card) {
+		if (card.getSource().equals("Deck")) {
 			return true;
 		}
 
@@ -235,48 +212,5 @@ class DiscardPile extends CardStack {
 		stack.addCard(peek());
 
 		return stack;
-	}
-
-	/**
-	 * Paint procedure.
-	 * 
-	 * @param g
-	 *            Graphic context.
-	 * 
-	 * @author Todor Balabanov
-	 */
-	@Override
-	public void paint(Graphics g) {
-		super.paint(g);
-
-		if (isEmpty() == false && SolitaireBoard.drawCount == 1) {
-			for (int i = 0; i < length(); i++) {
-				Image image = getCardAtLocation(i).getImage();
-				g.drawImage(image, 0, 0, null);
-			}
-		} else if (isEmpty() == false && SolitaireBoard.drawCount == 3) {
-			if (cardsLeftFromDraw > 0) {
-				for (int i = 0; i < length() - cardsLeftFromDraw + 1; i++) {
-					Image image = getCardAtLocation(i).getImage();
-					g.drawImage(image, 0, 0, null);
-				}
-
-				for (int i = length() - cardsLeftFromDraw + 1; i < length(); i++) {
-					Image image = getCardAtLocation(i).getImage();
-
-					if ((cardsLeftFromDraw == 3 && i == length() - 2)
-							|| (cardsLeftFromDraw == 2 && i == length() - 1)) {
-						g.drawImage(image, 15, 0, null);
-					} else if (cardsLeftFromDraw == 3 && i == length() - 1) {
-						g.drawImage(image, 30, 0, null);
-					}
-				}
-			} else {
-				for (int i = 0; i < length(); i++) {
-					Image image = getCardAtLocation(i).getImage();
-					g.drawImage(image, 0, 0, null);
-				}
-			}
-		}
 	}
 }

@@ -41,7 +41,6 @@ import javax.swing.event.MouseInputAdapter;
 /**
  * 
  * @author Todor Balabanov
- * 
  */
 class SolitaireFrame extends JFrame {
 
@@ -138,17 +137,17 @@ class SolitaireFrame extends JFrame {
 		/**
 		 * 
 		 */
-		private CardStack source;
+		private CardStackLayeredPane source;
 
 		/**
 		 * 
 		 */
-		private CardStack destination;
+		private CardStackLayeredPane destination;
 
 		/**
 		 * 
 		 */
-		private CardStack temp;
+		private CardStackLayeredPane temp;
 
 		/**
 		 * For right clicking discard pile view.
@@ -167,7 +166,7 @@ class SolitaireFrame extends JFrame {
 		 */
 		private void checkWin() {
 			for (int i = 0; i < board.acePiles.length; i++) {
-				if (board.acePiles[i].isFull() == false) {
+				if (board.acePiles[i].getAcePile().isFull() == false) {
 					return;
 				}
 			}
@@ -238,9 +237,10 @@ class SolitaireFrame extends JFrame {
 		public void mousePressed(MouseEvent e) {
 			if (e.getButton() == MouseEvent.BUTTON3
 					&& e.getSource() == board.discardPile) {
-				if (board.discardPile.getNumViewableCards() == 1
-						|| (board.discardPile.getNumViewableCards() == 0 && !board.discardPile
-								.isEmpty())) {
+				if (board.discardPile.getDiscardPile().getNumViewableCards() == 1
+						|| (board.discardPile.getDiscardPile()
+								.getNumViewableCards() == 0 && !board.discardPile
+								.getDiscardPile().isEmpty())) {
 					tempCard = board.discardPile.pop();
 					board.discardPile.repaint();
 					rightClicked = true;
@@ -258,7 +258,7 @@ class SolitaireFrame extends JFrame {
 		 */
 		public void mouseReleased(MouseEvent e) {
 			if (e.getButton() == MouseEvent.BUTTON3 && tempCard != null) {
-				board.discardPile.push(tempCard);
+				board.discardPile.discardPile.push(tempCard.getCard());
 				board.discardPile.repaint();
 				rightClicked = false;
 				tempCard = null;
@@ -287,11 +287,11 @@ class SolitaireFrame extends JFrame {
 					&& singleCardSelected) {
 				if (source.peek().getCard().getRank().equals(CardRank.ACE)) {
 					CardComponent card = source.pop();
-					AcePile pile = board.acePiles[card.getCard().getSuit()
-							.getIndex()];
+					AcePileLayeredPane pile = board.acePiles[card.getCard()
+							.getSuit().getIndex()];
 					card.unhighlight();
 
-					pile.push(card);
+					pile.acePile.push(card.getCard());
 					board.destinationList.add(pile);
 
 					hasSelected = false;
@@ -301,20 +301,20 @@ class SolitaireFrame extends JFrame {
 				}
 
 				for (int i = 0; i < board.acePiles.length; i++) {
-					if (!board.acePiles[i].isEmpty()
+					if (!board.acePiles[i].getAcePile().isEmpty()
 							&& source
 									.peek()
 									.getCard()
 									.getSuit()
-									.equals(board.acePiles[i].peek().getCard()
-											.getSuit())
+									.equals(board.acePiles[i].getAcePile()
+											.peek().getSuit())
 							&& source
 									.peek()
 									.getCard()
 									.getRank()
 									.isLessByOneThan(
-											(board.acePiles[i].peek().getCard()
-													.getRank()))) {
+											(board.acePiles[i].getAcePile()
+													.peek().getRank()))) {
 						CardComponent card = source.pop();
 						card.unhighlight();
 						board.acePiles[i].push(card);
@@ -334,7 +334,7 @@ class SolitaireFrame extends JFrame {
 				}
 
 				for (int i = 0; i < board.cells.length; i++) {
-					if (board.cells[i].isEmpty()) {
+					if (board.cells[i].getSingleCell().isEmpty()) {
 						CardComponent card = source.pop();
 						card.unhighlight();
 						board.cells[i].push(card);
@@ -370,9 +370,9 @@ class SolitaireFrame extends JFrame {
 
 			else if (!hasSelected && e.getClickCount() == 1
 					|| (e.getSource() instanceof DealDeck)) {
-				source = (CardStack) e.getSource();
+				source = (CardStackLayeredPane) e.getSource();
 
-				if (source instanceof DealDeck) {
+				if (source instanceof DealDeckLayeredPane) {
 					if (hasSelected) {
 						hasSelected = false;
 
@@ -397,20 +397,20 @@ class SolitaireFrame extends JFrame {
 					}
 
 					board.numCardsInDiscardView.add(board.discardPile
-							.getNumViewableCards());
+							.getDiscardPile().getNumViewableCards());
 					clickedCard = source.pop();
 
 					if (clickedCard != null) {
 						board.sourceList.add(board.dealDeck);
 						board.destinationList.add(board.discardPile);
-						board.numCards.add(board.discardPile
+						board.numCards.add(board.discardPile.getDiscardPile()
 								.getNumViewableCards());
 					}
 					/*
 					 * The deck was reset but the player hasn't used up the
 					 * times through the deck.
 					 */
-					else if (board.dealDeck.hasDealsLeft()) {
+					else if (board.dealDeck.getDealDeck().hasDealsLeft()) {
 						board.sourceList.add(board.dealDeck);
 						board.destinationList.add(board.discardPile);
 						board.numCards.add(0);
@@ -422,7 +422,7 @@ class SolitaireFrame extends JFrame {
 				}
 
 				board.numCardsInDiscardView.add(board.discardPile
-						.getNumViewableCards());
+						.getDiscardPile().getNumViewableCards());
 				clickedCard = source.getCardAtLocation(e.getPoint());
 
 				if (clickedCard != null) {
@@ -447,7 +447,7 @@ class SolitaireFrame extends JFrame {
 			 * Stack/card already selected.
 			 */
 			else if (e.getClickCount() == 1 && hasSelected) {
-				destination = (CardStack) e.getSource();
+				destination = (CardStackLayeredPane) e.getSource();
 
 				if (singleCardSelected) {
 					if (destination.isValidMove(clickedCard)) {
@@ -460,7 +460,7 @@ class SolitaireFrame extends JFrame {
 						 */
 						board.destinationList.add(destination);
 
-						if (destination instanceof AcePile
+						if (destination instanceof AcePileLayeredPane
 								&& clickedCard.getCard().getRank()
 										.equals(CardRank.KING)) {
 							repaint();
@@ -481,7 +481,7 @@ class SolitaireFrame extends JFrame {
 					}
 				} else {
 					if (destination.isValidMove(temp)) {
-						CardStack stack = new CardStack();
+						CardStackLayeredPane stack = new CardStackLayeredPane();
 
 						for (int i = temp.length(); i > 0; i--) {
 							CardComponent card = source.pop();

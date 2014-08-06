@@ -19,25 +19,7 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.Graphics;
-import java.awt.Point;
 import java.util.Vector;
-
-import javax.swing.JLayeredPane;
-
-/**
- * 
- * @author Todor Balabanov
- */
-class CardLayeredPane extends JLayeredPane {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	// TODO Split GUI and business logic.
-}
 
 /**
  * Class: CardStack
@@ -46,18 +28,13 @@ class CardLayeredPane extends JLayeredPane {
  * 
  * @author Matt Stephen
  */
-class CardStack extends JLayeredPane {
+class CardStack {
 	// TODO Parent class methods should not have source code!
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Stack of cards.
 	 */
-	protected Vector<CardComponent> cards = new Vector<CardComponent>();
+	protected Vector<Card> cards = new Vector<Card>();
 
 	/**
 	 * For starting the game.
@@ -69,10 +46,8 @@ class CardStack extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public void addCard(CardComponent card) {
+	public void addCard(Card card) {
 		cards.add(card);
-		card.setBounds(0, 0, 72, 96);
-		add(card, 0);
 	}
 
 	/**
@@ -99,7 +74,7 @@ class CardStack extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent push(CardComponent card) {
+	public Card push(Card card) {
 		addCard(card);
 
 		return card;
@@ -132,10 +107,8 @@ class CardStack extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public synchronized CardComponent pop() {
-		CardComponent card = peek();
-
-		this.remove(card);
+	public synchronized Card pop() {
+		Card card = peek();
 		cards.remove(cards.size() - 1);
 
 		return card;
@@ -158,9 +131,8 @@ class CardStack extends JLayeredPane {
 		CardStack temp = new CardStack();
 
 		while (!stack.isEmpty()) {
-			CardComponent card = stack.pop();
+			Card card = stack.pop();
 			temp.push(card);
-			this.remove(card);
 		}
 
 		return temp;
@@ -173,7 +145,7 @@ class CardStack extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public synchronized CardComponent peek() {
+	public synchronized Card peek() {
 		if (cards.isEmpty()) {
 			return null;
 		}
@@ -213,7 +185,7 @@ class CardStack extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public synchronized int search(CardComponent card) {
+	public synchronized int search(Card card) {
 		int i = cards.lastIndexOf(card);
 
 		if (i >= 0) {
@@ -234,43 +206,9 @@ class CardStack extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getCardAtLocation(int index) {
+	public Card getCardAtLocation(int index) {
 		if (index < cards.size()) {
 			return cards.get(index);
-		}
-
-		return null;
-	}
-
-	/**
-	 * Returns the card located at the coordinates of a mouse click.
-	 * 
-	 * @param p
-	 *            Location of a mouse click.
-	 * 
-	 * @return The card at this location.
-	 * 
-	 * @author Todor Balabanov
-	 */
-	public CardComponent getCardAtLocation(Point p) {
-		if (cards.isEmpty()) {
-			return null;
-		}
-
-		if (isValidClick(p)) {
-			int y = (int) p.getY();
-
-			int index;
-
-			if (y > 25 * (cards.size() - 1)) {
-				index = cards.size() - 1;
-			} else {
-				index = y / 25;
-			}
-
-			if (isValidCard(index)) {
-				return cards.get(index);
-			}
 		}
 
 		return null;
@@ -286,7 +224,7 @@ class CardStack extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	private boolean isValidCard(int index) {
+	boolean isValidCard(int index) {
 		if (index >= cards.size()) {
 			return false;
 		}
@@ -295,35 +233,9 @@ class CardStack extends JLayeredPane {
 			/*
 			 * Cards are not opposite colors or decreasing in value correctly.
 			 */
-			if (cards.get(i).getCard().getColor() == cards.get(i + 1).getCard()
-					.getColor()
-					|| cards.get(i)
-							.getCard()
-							.getRank()
-							.isLessByOneThan(
-									cards.get(i + 1).getCard().getRank()) == false) {
-				return false;
-			}
-		}
-
-		return true;
-	}
-
-	/**
-	 * Checks if clicked area is defined on a card in the stack.
-	 * 
-	 * @param p
-	 *            Location of the click.
-	 * @return True or false.
-	 * 
-	 * @author Todor Balabanov
-	 */
-	private boolean isValidClick(Point p) {
-		int y = (int) p.getY();
-
-		if (!isEmpty()) {
-			if (y > 25 * (cards.size() - 1)
-					+ cards.lastElement().getBounds().getHeight()) {
+			if (cards.get(i).getColor() == cards.get(i + 1).getColor()
+					|| cards.get(i).getRank()
+							.isLessByOneThan(cards.get(i + 1).getRank()) == false) {
 				return false;
 			}
 		}
@@ -343,7 +255,7 @@ class CardStack extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStack getStack(CardComponent card) {
+	public CardStack getStack(Card card) {
 		CardStack temp = new CardStack();
 		int index = search(card);
 
@@ -410,7 +322,7 @@ class CardStack extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(CardComponent card) {
+	public boolean isValidMove(Card card) {
 		return false;
 	}
 
@@ -436,7 +348,7 @@ class CardStack extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getBottom() {
+	public Card getBottom() {
 		return cards.firstElement();
 	}
 
@@ -450,18 +362,5 @@ class CardStack extends JLayeredPane {
 	 */
 	public CardStack getAvailableCards() {
 		return null;
-	}
-
-	/**
-	 * Paint procedure.
-	 * 
-	 * @param g
-	 *            Graphic context.
-	 * 
-	 * @author Todor Balabanov
-	 */
-	@Override
-	public void paint(Graphics g) {
-		super.paint(g);
 	}
 }

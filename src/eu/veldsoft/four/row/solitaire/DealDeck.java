@@ -19,11 +19,7 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.Graphics;
-import java.awt.Point;
 import java.util.LinkedList;
-
-import javax.swing.JOptionPane;
 
 /**
  * Class: DealDeck
@@ -36,11 +32,6 @@ import javax.swing.JOptionPane;
 class DealDeck extends CardStack {
 
 	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	/**
 	 * Discard pile reference.
 	 */
 	private DiscardPile discardPile;
@@ -48,13 +39,13 @@ class DealDeck extends CardStack {
 	/**
 	 * Counter. Counts how many times we've gone through the deck.
 	 */
-	private int numTimesThroughDeck = 1;
+	int numTimesThroughDeck = 1;
 
 	/**
 	 * Deck through limit. An integer, representing the allowed number of deck
 	 * throughs.
 	 */
-	private int deckThroughLimit;
+	int deckThroughLimit;
 
 	/**
 	 * True by default. Keeps track if the deck is redealable.
@@ -131,7 +122,7 @@ class DealDeck extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public void setDeck(LinkedList<CardComponent> cards) {
+	public void setDeck(LinkedList<Card> cards) {
 		for (int i = 0; i < cards.size(); i++) {
 			cards.get(i).setFaceDown();
 			addCard(cards.get(i));
@@ -201,18 +192,17 @@ class DealDeck extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public synchronized CardComponent pop() {
+	public synchronized Card pop() {
 		if (isEmpty() == false) {
 			/*
 			 * Verify there are still cards remaining.
 			 */
 			if (SolitaireBoard.drawCount == 1) {
-				CardComponent card = super.pop();
+				Card card = super.pop();
 
 				card.setFaceUp();
 				discardPile.push(card);
 
-				this.repaint();
 				return card;
 			} else {
 				int tempDrawCount = SolitaireBoard.drawCount;
@@ -220,7 +210,7 @@ class DealDeck extends CardStack {
 
 				while (SolitaireBoard.drawCount > 1 && tempDrawCount > 0
 						&& isEmpty() == false) {
-					CardComponent card = super.pop();
+					Card card = super.pop();
 
 					card.setFaceUp();
 					tempStack.push(card);
@@ -240,27 +230,22 @@ class DealDeck extends CardStack {
 
 				discardPile.push(tempStack2);
 
-				this.repaint();
 				return discardPile.peek();
 			}
 		} else if (discardPile.isEmpty() == false
 				&& numTimesThroughDeck < deckThroughLimit) {
 			for (int i = discardPile.length(); i > 0; i--) {
-				CardComponent card = discardPile.pop();
+				Card card = discardPile.pop();
 				card.setFaceDown();
-				card.getCard().setSource("Deck");
+				card.setSource("Deck");
 				push(card);
 			}
 
-			discardPile.repaint();
 			numTimesThroughDeck++;
 		} else if (numTimesThroughDeck >= deckThroughLimit) {
 			redealable = false;
-			JOptionPane.showMessageDialog(null,
-					"You have reached your deck through limit.");
 		}
 
-		this.repaint();
 		return null;
 	}
 
@@ -271,7 +256,7 @@ class DealDeck extends CardStack {
 	 */
 	public synchronized void undoPop() {
 		while (isEmpty() == false) {
-			CardComponent card = super.pop();
+			Card card = super.pop();
 			card.setFaceUp();
 			discardPile.push(card);
 		}
@@ -281,21 +266,6 @@ class DealDeck extends CardStack {
 		if (redealable == false) {
 			redealable = true;
 		}
-
-		discardPile.repaint();
-		this.repaint();
-	}
-
-	/**
-	 * Returns a clicked card.
-	 * 
-	 * @param point
-	 *            The location of the mouse click.
-	 * 
-	 * @author Todor Balabanov
-	 */
-	public CardComponent getCardAtLocation(Point point) {
-		return peek();
 	}
 
 	/**
@@ -306,7 +276,7 @@ class DealDeck extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(CardComponent card) {
+	public boolean isValidMove(Card card) {
 		return false;
 	}
 
@@ -320,24 +290,5 @@ class DealDeck extends CardStack {
 	 */
 	public boolean isValidMove(CardStack stack) {
 		return false;
-	}
-
-	/**
-	 * Paint procedure.
-	 * 
-	 * @param g
-	 *            Paint.
-	 * 
-	 * @author Todor Balabanov
-	 */
-	@Override
-	public void paint(Graphics g) {
-		super.paint(g);
-
-		if (isEmpty() == true) {
-			return;
-		}
-
-		g.drawImage(getCardAtLocation(length() - 1).getImage(), 0, 0, null);
 	}
 }
