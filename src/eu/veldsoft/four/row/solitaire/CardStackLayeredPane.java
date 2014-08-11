@@ -19,36 +19,13 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.Graphics;
 import java.awt.Point;
-
-import javax.swing.JLayeredPane;
 
 /**
  * 
  * @author Todor Balabanov
  */
-class CardStackLayeredPane extends JLayeredPane {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	/**
-	 * 
-	 */
-	private CardStack stack = new CardStack();
-
-	/**
-	 * 
-	 * @return
-	 * 
-	 * @author Todor Balabanov
-	 */
-	public CardStack getStack() {
-		return stack;
-	}
+interface CardStackLayeredPane {
 
 	/**
 	 * Searches the stack for a specific card. Creates a new temporary stack.
@@ -62,18 +39,7 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane getStack(CardComponent card) {
-		CardStackLayeredPane temp = new CardStackLayeredPane();
-		int index = stack.search(card.getCard());
-
-		for (int i = 0; i < index; i++) {
-			temp.push(CardComponent.cardsMapping
-					.get(getCardAtLocation(stack.cards.size() - i - 1)));
-			getCardAtLocation(stack.cards.size() - i - 1).highlight();
-		}
-
-		return temp;
-	}
+	public CardStackLayeredPane getStack(CardComponent card);
 
 	/**
 	 * Searches the stack for a specified location, creates a temporary stack,
@@ -87,17 +53,7 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane getStack(int numCards) {
-		CardStackLayeredPane temp = new CardStackLayeredPane();
-		int index = length() - numCards;
-
-		for (int i = length(); i > index; i--) {
-			temp.push(getCardAtLocation(stack.cards.size() - i - 1).clone());
-			getCardAtLocation(stack.cards.size() - i - 1).highlight();
-		}
-
-		return temp;
-	}
+	public CardStackLayeredPane getStack(int numCards);
 
 	/**
 	 * Returns the card located at the coordinates of a mouse click.
@@ -109,29 +65,7 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getCardAtLocation(Point p) {
-		if (stack.cards.isEmpty()) {
-			return null;
-		}
-
-		if (isValidClick(p)) {
-			int y = (int) p.getY();
-
-			int index;
-
-			if (y > 25 * (stack.cards.size() - 1)) {
-				index = stack.cards.size() - 1;
-			} else {
-				index = y / 25;
-			}
-
-			if (stack.isValidCard(index)) {
-				return CardComponent.cardsMapping.get(stack.cards.get(index));
-			}
-		}
-
-		return null;
-	}
+	public CardComponent getCardAtLocation(Point p);
 
 	/**
 	 * Returns the card located at a specified location within the stack.
@@ -144,15 +78,7 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getCardAtLocation(int index) {
-		Card result = stack.getCardAtLocation(index);
-
-		if (result != null) {
-			return (CardComponent.cardsMapping.get(result));
-		}
-
-		return null;
-	}
+	public CardComponent getCardAtLocation(int index);
 
 	/**
 	 * Checks if clicked area is defined on a card in the stack.
@@ -163,20 +89,7 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	private boolean isValidClick(Point p) {
-		int y = (int) p.getY();
-
-		if (!isEmpty()) {
-			if (y > 25
-					* (stack.cards.size() - 1)
-					+ CardComponent.cardsMapping.get(stack.cards.lastElement())
-							.getBounds().getHeight()) {
-				return false;
-			}
-		}
-
-		return true;
-	}
+	public boolean isValidClick(Point p);
 
 	/**
 	 * Pops the top card out of a stack if possible. If not - returns null.
@@ -185,9 +98,7 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public synchronized CardComponent peek() {
-		return CardComponent.cardsMapping.get(stack.peek());
-	}
+	public CardComponent peek();
 
 	/**
 	 * 
@@ -195,9 +106,7 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isEmpty() {
-		return (stack.isEmpty());
-	}
+	public boolean isEmpty();
 
 	/**
 	 * 
@@ -205,9 +114,7 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public int length() {
-		return (stack.length());
-	}
+	public int length();
 
 	/**
 	 * Returns the available cards from a deck. This method is overriden by the
@@ -217,9 +124,7 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane getAvailableCards() {
-		return null;
-	}
+	public CardStack getAvailableCards();
 
 	/**
 	 * For starting the game.
@@ -231,11 +136,7 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public void addCard(CardComponent card) {
-		stack.addCard(card.getCard());
-		card.setBounds(0, 0, 72, 96);
-		add(card, 0);
-	}
+	public void addCard(CardComponent card);
 
 	/**
 	 * Pops the top card out of a stack.
@@ -244,13 +145,7 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public synchronized CardComponent pop() {
-		CardComponent card = CardComponent.cardsMapping.get(stack.pop());
-
-		remove(card);
-
-		return card;
-	}
+	public CardComponent pop();
 
 	/**
 	 * Temporary reverses the cards in a stack.
@@ -262,20 +157,7 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane pop(CardStackLayeredPane stack) {
-		/*
-		 * Temporary reverse pop of entire stack transfer.
-		 */
-		CardStackLayeredPane temp = new CardStackLayeredPane();
-
-		while (!stack.isEmpty()) {
-			CardComponent card = stack.pop();
-			temp.stack.push(card.getCard());
-			remove(card);
-		}
-
-		return temp;
-	}
+	public CardStackLayeredPane pop(CardStackLayeredPane stack);
 
 	/**
 	 * Used to add a bunch of cards to a stack.
@@ -285,11 +167,7 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public void addStack(CardStackLayeredPane stack) {
-		while (stack.isEmpty() == false) {
-			addCard(stack.pop());
-		}
-	}
+	public void addStack(CardStackLayeredPane stack);
 
 	/**
 	 * Used to add a card to a stack and then to return the moved card.
@@ -301,11 +179,7 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent push(CardComponent card) {
-		addCard(card);
-
-		return card;
-	}
+	public CardComponent push(CardComponent card);
 
 	/**
 	 * Used to add a bunch of cards to a card stack and then to return empty
@@ -318,14 +192,7 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane push(CardStackLayeredPane stack) {
-		addStack(stack);
-
-		/*
-		 * Returns empty stack.
-		 */
-		return stack;
-	}
+	public CardStackLayeredPane push(CardStackLayeredPane stack);
 
 	/**
 	 * Checks if the move is valid. Always returns false. The method is
@@ -338,9 +205,7 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(CardComponent card) {
-		return false;
-	}
+	public boolean isValidMove(CardComponent card);
 
 	/**
 	 * Checks if the move is valid. Always returns false. This method is
@@ -353,9 +218,7 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(CardStackLayeredPane stack) {
-		return false;
-	}
+	public boolean isValidMove(CardStackLayeredPane stack);
 
 	/**
 	 * Returns the first card from a stack.
@@ -364,9 +227,7 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getBottom() {
-		return CardComponent.cardsMapping.get(stack.getBottom());
-	}
+	public CardComponent getBottom();
 
 	/**
 	 * Used to undo the last stack move. Reverses the cards.
@@ -378,28 +239,5 @@ class CardStackLayeredPane extends JLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane undoStack(int numCards) {
-		CardStackLayeredPane temp = new CardStackLayeredPane();
-
-		for (int i = 0; i < numCards; i++) {
-			temp.push(pop());
-		}
-
-		stack.undoStack(numCards);
-
-		return temp;
-	}
-
-	/**
-	 * Paint procedure.
-	 * 
-	 * @param g
-	 *            Graphic context.
-	 * 
-	 * @author Todor Balabanov
-	 */
-	@Override
-	public void paint(Graphics g) {
-		super.paint(g);
-	}
+	public CardStackLayeredPane undoStack(int numCards);
 }

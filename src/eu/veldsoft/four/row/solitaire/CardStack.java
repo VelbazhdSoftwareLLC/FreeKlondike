@@ -19,8 +19,6 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.util.Vector;
-
 /**
  * Class: CardStack
  * 
@@ -28,13 +26,9 @@ import java.util.Vector;
  * 
  * @author Matt Stephen
  */
+// TODO Should be abstract class.
 class CardStack {
 	// TODO Parent class methods should not have source code!
-
-	/**
-	 * Stack of cards.
-	 */
-	protected Vector<Card> cards = new Vector<Card>();
 
 	/**
 	 * For starting the game.
@@ -47,7 +41,6 @@ class CardStack {
 	 * @author Todor Balabanov
 	 */
 	public void addCard(Card card) {
-		cards.add(card);
 	}
 
 	/**
@@ -108,10 +101,7 @@ class CardStack {
 	 * @author Todor Balabanov
 	 */
 	public synchronized Card pop() {
-		Card card = peek();
-		cards.remove(cards.size() - 1);
-
-		return card;
+		return null;
 	}
 
 	/**
@@ -146,11 +136,7 @@ class CardStack {
 	 * @author Todor Balabanov
 	 */
 	public synchronized Card peek() {
-		if (cards.isEmpty()) {
-			return null;
-		}
-
-		return cards.lastElement();
+		return null;
 	}
 
 	/**
@@ -159,7 +145,7 @@ class CardStack {
 	 * @return True or false, based on if the stack is empty or not.
 	 */
 	public boolean isEmpty() {
-		return cards.size() == 0;
+		return false;
 	}
 
 	/**
@@ -170,7 +156,7 @@ class CardStack {
 	 * @author Todor Balabanov
 	 */
 	public int length() {
-		return cards.size();
+		return 0;
 	}
 
 	/**
@@ -186,13 +172,7 @@ class CardStack {
 	 * @author Todor Balabanov
 	 */
 	public synchronized int search(Card card) {
-		int i = cards.lastIndexOf(card);
-
-		if (i >= 0) {
-			return cards.size() - i;
-		}
-
-		return -1;
+		return 0;
 	}
 
 	/**
@@ -207,10 +187,6 @@ class CardStack {
 	 * @author Todor Balabanov
 	 */
 	public Card getCardAtLocation(int index) {
-		if (index < cards.size()) {
-			return cards.get(index);
-		}
-
 		return null;
 	}
 
@@ -225,22 +201,7 @@ class CardStack {
 	 * @author Todor Balabanov
 	 */
 	boolean isValidCard(int index) {
-		if (index >= cards.size()) {
-			return false;
-		}
-
-		for (int i = index; i < cards.size() - 1; i++) {
-			/*
-			 * Cards are not opposite colors or decreasing in value correctly.
-			 */
-			if (cards.get(i).getColor() == cards.get(i + 1).getColor()
-					|| cards.get(i).getRank()
-							.isLessByOneThan(cards.get(i + 1).getRank()) == false) {
-				return false;
-			}
-		}
-
-		return true;
+		return false;
 	}
 
 	/**
@@ -256,15 +217,7 @@ class CardStack {
 	 * @author Todor Balabanov
 	 */
 	public CardStack getStack(Card card) {
-		CardStack temp = new CardStack();
-		int index = search(card);
-
-		for (int i = 0; i < index; i++) {
-			temp.push(getCardAtLocation(cards.size() - i - 1).clone());
-			getCardAtLocation(cards.size() - i - 1).highlight();
-		}
-
-		return temp;
+		return null;
 	}
 
 	/**
@@ -280,15 +233,7 @@ class CardStack {
 	 * @author Todor Balabanov
 	 */
 	public CardStack getStack(int numCards) {
-		CardStack temp = new CardStack();
-		int index = length() - numCards;
-
-		for (int i = length(); i > index; i--) {
-			temp.push(getCardAtLocation(cards.size() - i - 1).clone());
-			getCardAtLocation(cards.size() - i - 1).highlight();
-		}
-
-		return temp;
+		return null;
 	}
 
 	/**
@@ -349,7 +294,7 @@ class CardStack {
 	 * @author Todor Balabanov
 	 */
 	public Card getBottom() {
-		return cards.firstElement();
+		return null;
 	}
 
 	/**

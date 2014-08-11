@@ -19,6 +19,7 @@
 
 package eu.veldsoft.four.row.solitaire;
 
+import java.awt.Component;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -1009,7 +1010,7 @@ class SolitaireBoard {
 				}
 			}
 
-			tempSource.repaint();
+			((Component) tempSource).repaint();
 		} else if (!(sourceList.getLast() instanceof DealDeckLayeredPane)) {
 			CardStackLayeredPane tempSource = sourceList.getLast();
 			CardStackLayeredPane tempDest = destinationList.getLast();
@@ -1029,8 +1030,8 @@ class SolitaireBoard {
 			}
 
 			discardPile.getDiscardPile().setView(numDiscard);
-			tempSource.repaint();
-			tempDest.repaint();
+			((Component) tempSource).repaint();
+			((Component) tempDest).repaint();
 		}
 		/*
 		 * The last draw from the deck didn't reset the discard pile to make it
@@ -1086,9 +1087,9 @@ class SolitaireBoard {
 	 */
 	@SuppressWarnings("fallthrough")
 	public String[] getHint() {
-		CardStackLayeredPane source = new CardStackLayeredPane();
-		CardStackLayeredPane destination = new CardStackLayeredPane();
-		CardStackLayeredPane temp = new CardStackLayeredPane();
+		CardStackLayeredPane source = null;
+		CardStackLayeredPane destination = null;
+		CardStack temp = null;
 
 		LinkedList<String> hints = new LinkedList<String>();
 		String sourceString = "";
@@ -1150,9 +1151,10 @@ class SolitaireBoard {
 
 					if (destination != null && !destination.isEmpty()
 							&& destination != source
-							&& !(destination instanceof SingleCellLayeredPane)) {
+							&& !(destination instanceof SingleCell)) {
 						for (int k = temp.length() - 1; k >= 0; k--) {
-							CardComponent card = temp.getCardAtLocation(k);
+							CardComponent card = CardComponent.cardsMapping
+									.get(temp.getCardAtLocation(k));
 
 							if (((destination instanceof AcePileLayeredPane)
 									&& card.getCard()
@@ -1238,7 +1240,8 @@ class SolitaireBoard {
 							&& (source.getBottom().getCard().getRank()
 									.equals(CardRank.KING) == false || source instanceof SingleCellLayeredPane)) {
 						for (int k = 0; k < temp.length(); k++) {
-							CardComponent card = temp.getCardAtLocation(k);
+							CardComponent card = CardComponent.cardsMapping
+									.get(temp.getCardAtLocation(k));
 
 							if (card.getCard().getRank().equals(CardRank.KING)) {
 								String hintString = "Move the King of "
@@ -1259,7 +1262,8 @@ class SolitaireBoard {
 							&& (destination instanceof AcePileLayeredPane)
 							&& ((AcePileLayeredPane) destination).getAcePile()
 									.isEmpty()) {
-						CardComponent card = temp.peek();
+						CardComponent card = CardComponent.cardsMapping
+								.get(temp.peek());
 
 						if (card.getCard().getRank().equals(CardRank.ACE)
 								&& card.getCard()

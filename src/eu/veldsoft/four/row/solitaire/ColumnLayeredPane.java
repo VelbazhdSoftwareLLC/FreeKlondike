@@ -21,12 +21,15 @@ package eu.veldsoft.four.row.solitaire;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
+
+import javax.swing.JLayeredPane;
 
 /**
  * 
  * @author Todor Balabanov
  */
-class ColumnLayeredPane extends CardStackLayeredPane {
+class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 
 	/**
 	 * 
@@ -46,6 +49,99 @@ class ColumnLayeredPane extends CardStackLayeredPane {
 	 */
 	public Column getColumn() {
 		return column;
+	}
+
+	/**
+	 * Returns the available cards from a deck. This method is overriden by the
+	 * child classes.
+	 * 
+	 * @return Null.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public CardStack getAvailableCards() {
+		return (column.getAvailableCards());
+	}
+
+	/**
+	 * Returns the card located at the coordinates of a mouse click.
+	 * 
+	 * @param p
+	 *            Location of a mouse click.
+	 * 
+	 * @return The card at this location.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public CardComponent getCardAtLocation(Point p) {
+		if (column.getCards().isEmpty()) {
+			return null;
+		}
+
+		if (isValidClick(p)) {
+			int y = (int) p.getY();
+
+			int index;
+
+			if (y > 25 * (column.getCards().size() - 1)) {
+				index = column.getCards().size() - 1;
+			} else {
+				index = y / 25;
+			}
+
+			if (column.isValidCard(index)) {
+				return CardComponent.cardsMapping.get(column.getCards().get(
+						index));
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * Returns the card located at a specified location within the stack.
+	 * 
+	 * @param index
+	 *            Location within the stack.
+	 * 
+	 * @return The card at this location. Or null if the index is greater than
+	 *         the stack's size.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public CardComponent getCardAtLocation(int index) {
+		Card result = column.getCardAtLocation(index);
+
+		if (result != null) {
+			return (CardComponent.cardsMapping.get(result));
+		}
+
+		return null;
+	}
+
+	/**
+	 * Checks if clicked area is defined on a card in the stack.
+	 * 
+	 * @param p
+	 *            Location of the click.
+	 * @return True or false.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public boolean isValidClick(Point p) {
+		int y = (int) p.getY();
+
+		if (!isEmpty()) {
+			if (y > 25
+					* (column.getCards().size() - 1)
+					+ CardComponent.cardsMapping
+							.get(column.getCards().lastElement()).getBounds()
+							.getHeight()) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	/**
@@ -69,6 +165,252 @@ class ColumnLayeredPane extends CardStackLayeredPane {
 	}
 
 	/**
+	 * For starting the game.
+	 * 
+	 * Used to add a card to a stack.
+	 * 
+	 * @param card
+	 *            Card to be added.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public void addCard(CardComponent card) {
+		column.addCard(card.getCard());
+		card.setBounds(0, 0, 72, 96);
+		add(card, 0);
+	}
+
+	/**
+	 * Used to add a bunch of cards to a stack.
+	 * 
+	 * @param stack
+	 *            Stack to be added.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public void addStack(CardStackLayeredPane stack) {
+		while (stack.isEmpty() == false) {
+			addCard(stack.pop());
+		}
+	}
+
+	/**
+	 * Searches the stack for a specific card. Creates a new temporary stack.
+	 * Clones the cards from the end towards the beginning of the stack into the
+	 * temp stack. Stops after it reaches the specific card.
+	 * 
+	 * @param card
+	 *            Card to look for.
+	 * 
+	 * @return Stack of cards.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public ColumnLayeredPane getStack(CardComponent card) {
+		ColumnLayeredPane temp = new ColumnLayeredPane();
+		int index = column.search(card.getCard());
+
+		for (int i = 0; i < index; i++) {
+			temp.push(CardComponent.cardsMapping.get(getCardAtLocation(column
+					.getCards().size() - i - 1)));
+			getCardAtLocation(column.getCards().size() - i - 1).highlight();
+		}
+
+		return temp;
+	}
+
+	/**
+	 * Searches the stack for a specified location, creates a temporary stack,
+	 * Clones the cards from the end towards the begining of the stack, stops
+	 * when it reaches the specified location.
+	 * 
+	 * @param numCards
+	 *            Index.
+	 * 
+	 * @return Stack of cards.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public CardStackLayeredPane getStack(int numCards) {
+		ColumnLayeredPane temp = new ColumnLayeredPane();
+		int index = length() - numCards;
+
+		for (int i = length(); i > index; i--) {
+			temp.push(getCardAtLocation(column.getCards().size() - i - 1)
+					.clone());
+			getCardAtLocation(column.getCards().size() - i - 1).highlight();
+		}
+
+		return temp;
+	}
+
+	/**
+	 * Pops the top card out of a stack if possible. If not - returns null.
+	 * 
+	 * @return Card or null.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public synchronized CardComponent peek() {
+		return CardComponent.cardsMapping.get(column.peek());
+	}
+
+	/**
+	 * Pops the top card out of a stack.
+	 * 
+	 * @return card The popped card.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public synchronized CardComponent pop() {
+		CardComponent card = CardComponent.cardsMapping.get(column.pop());
+
+		if (card != null) {
+			remove(card);
+		}
+
+		return card;
+	}
+
+	/**
+	 * Temporary reverses the cards in a stack.
+	 * 
+	 * @param stack
+	 *            Stack to be reversed.
+	 * 
+	 * @return The reversed stack.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public CardStackLayeredPane pop(CardStackLayeredPane stack) {
+		/*
+		 * Temporary reverse pop of entire stack transfer.
+		 */
+		ColumnLayeredPane temp = new ColumnLayeredPane();
+
+		while (!stack.isEmpty()) {
+			CardComponent card = stack.pop();
+			temp.column.push(card.getCard());
+			remove(card);
+		}
+
+		return temp;
+	}
+
+	/**
+	 * Used to add a card to a stack and then to return the moved card.
+	 * 
+	 * @param card
+	 *            Card to be added.
+	 * 
+	 * @return Added card.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public CardComponent push(CardComponent card) {
+		addCard(card);
+
+		return card;
+	}
+
+	/**
+	 * Used to add a bunch of cards to a card stack and then to return empty
+	 * stack.
+	 * 
+	 * @param stack
+	 *            Stack to be added.
+	 * 
+	 * @return Empty stack.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public CardStackLayeredPane push(CardStackLayeredPane stack) {
+		addStack(stack);
+
+		/*
+		 * Returns empty stack.
+		 */
+		return stack;
+	}
+
+	/**
+	 * Returns the first card from a stack.
+	 * 
+	 * @return card The first card from the stack of cards.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public CardComponent getBottom() {
+		return CardComponent.cardsMapping.get(column.getBottom());
+	}
+
+	/**
+	 * Used to undo the last stack move. Reverses the cards.
+	 * 
+	 * @param numCards
+	 *            Number of cards in the stack.
+	 * 
+	 * @return Reversed stack.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public CardStackLayeredPane undoStack(int numCards) {
+		ColumnLayeredPane temp = new ColumnLayeredPane();
+
+		for (int i = 0; i < numCards; i++) {
+			temp.push(pop());
+		}
+
+		column.undoStack(numCards);
+
+		return temp;
+	}
+
+	/**
+	 * Checks if the move is valid. Always returns false. The method is
+	 * overridden by the child classes.
+	 * 
+	 * @param card
+	 *            Card to be checked.
+	 * 
+	 * @return False
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public boolean isValidMove(CardComponent card) {
+		return (column.isValidMove(card.getCard()));
+	}
+
+	/**
+	 * Checks if the move is valid. Always returns false. This method is
+	 * overridden by the child classes.
+	 * 
+	 * @param stack
+	 *            Stack of cards to be ckecked.
+	 * 
+	 * @return False.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public boolean isValidMove(CardStackLayeredPane stack) {
+		if (stack instanceof AcePileLayeredPane) {
+			return (column.isValidMove(((AcePileLayeredPane) stack).acePile));
+		} else if (stack instanceof DealDeckLayeredPane) {
+			return (column.isValidMove(((DealDeckLayeredPane) stack).dealDeck));
+		} else if (stack instanceof DiscardPileLayeredPane) {
+			return (column
+					.isValidMove(((DiscardPileLayeredPane) stack).discardPile));
+		} else if (stack instanceof ColumnLayeredPane) {
+			return (column.isValidMove(((ColumnLayeredPane) stack).column));
+		} else if (stack instanceof SingleCellLayeredPane) {
+			return (column
+					.isValidMove(((SingleCellLayeredPane) stack).singleCell));
+		}
+
+		return (false);
+	}
+
+	/**
 	 * Paint procedure.
 	 * 
 	 * @param g
@@ -80,13 +422,17 @@ class ColumnLayeredPane extends CardStackLayeredPane {
 	public void paint(Graphics g) {
 		super.paint(g);
 
+		if (CardComponent.cardsMapping.isEmpty() == true) {
+			return;
+		}
+
 		if (column.isEmpty()) {
 			return;
 		}
 
-		for (int i = 0; i < column.cards.size(); i++) {
-			Image image = CardComponent.cardsMapping.get(column.cards.get(i))
-					.getImage();
+		for (int i = 0; i < column.getCards().size(); i++) {
+			Image image = CardComponent.cardsMapping.get(
+					column.getCards().get(i)).getImage();
 			g.drawImage(image, 0, i * 25, null);
 		}
 	}

@@ -20,6 +20,7 @@
 package eu.veldsoft.four.row.solitaire;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -295,7 +296,7 @@ class SolitaireFrame extends JFrame {
 					board.destinationList.add(pile);
 
 					hasSelected = false;
-					source.repaint();
+					((Component) source).repaint();
 					repaint();
 					return;
 				}
@@ -322,7 +323,7 @@ class SolitaireFrame extends JFrame {
 						board.destinationList.add(board.acePiles[i]);
 						hasSelected = false;
 
-						source.repaint();
+						((Component) source).repaint();
 						repaint();
 
 						if (card.getCard().getRank().equals(CardRank.KING)) {
@@ -342,7 +343,7 @@ class SolitaireFrame extends JFrame {
 						board.destinationList.add(board.cells[i]);
 						hasSelected = false;
 
-						source.repaint();
+						((Component) source).repaint();
 						repaint();
 						return;
 					}
@@ -350,7 +351,7 @@ class SolitaireFrame extends JFrame {
 
 				source.peek().unhighlight();
 
-				source.repaint();
+				((Component) source).repaint();
 				repaint();
 				return;
 			} else if (e.getClickCount() == 2 && hasSelected) {
@@ -389,7 +390,7 @@ class SolitaireFrame extends JFrame {
 							board.sourceList.getLast().peek().unhighlight();
 						}
 
-						board.sourceList.getLast().repaint();
+						((Component) board.sourceList.getLast()).repaint();
 						repaint();
 						board.sourceList.removeLast();
 						board.numCardsInDiscardView.removeLast();
@@ -481,7 +482,21 @@ class SolitaireFrame extends JFrame {
 					}
 				} else {
 					if (destination.isValidMove(temp)) {
-						CardStackLayeredPane stack = new CardStackLayeredPane();
+						CardStackLayeredPane stack = null;
+						if (destination instanceof AcePileLayeredPane) {
+							stack = new AcePileLayeredPane(
+									((AcePileLayeredPane) destination).acePile
+											.getSuit());
+						} else if (destination instanceof DealDeckLayeredPane) {
+							stack = new DealDeckLayeredPane(
+									((DealDeckLayeredPane) destination).discard);
+						} else if (destination instanceof DiscardPileLayeredPane) {
+							stack = new DiscardPileLayeredPane();
+						} else if (destination instanceof ColumnLayeredPane) {
+							stack = new ColumnLayeredPane();
+						} else if (destination instanceof SingleCellLayeredPane) {
+							stack = new SingleCellLayeredPane();
+						}
 
 						for (int i = temp.length(); i > 0; i--) {
 							CardComponent card = source.pop();
