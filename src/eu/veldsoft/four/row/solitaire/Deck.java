@@ -96,13 +96,12 @@ class Deck {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public static List<Card> getDeckSubsetByCardNumbers(
-			LinkedList<Integer> numbers) {
+	public static List<Card> getDeckSubsetByCardNumbers(List<Integer> numbers) {
 		List<Card> deck = new LinkedList<Card>();
 
-		for (int i = 0; i < numbers.size(); i++) {
-			if (numbers.get(i) > 0) {
-				deck.add(Card.valueBy(numbers.get(i)));
+		for (Integer i : numbers) {
+			if (numbers.get(i.intValue()) > 0) {
+				deck.add(Card.valueBy(numbers.get(i.intValue())));
 			}
 		}
 

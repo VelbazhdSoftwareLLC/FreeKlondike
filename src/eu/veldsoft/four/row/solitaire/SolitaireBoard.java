@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Class: SolitaireBoard
@@ -217,8 +218,7 @@ class SolitaireBoard {
 	 * @author Todor Balabanov
 	 */
 	void dealOutCustomBoard(LinkedList<Integer> numbers, int numViewableCards) {
-		LinkedList<Card> cards = (LinkedList<Card>) Deck
-				.getDeckSubsetByCardNumbers(numbers);
+		List<Card> cards = Deck.getDeckSubsetByCardNumbers(numbers);
 
 		int pileNumber = 0;
 		int cardNumber = -1;

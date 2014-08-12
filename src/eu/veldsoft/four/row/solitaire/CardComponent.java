@@ -50,12 +50,59 @@ class CardComponent extends JComponent {
 	/**
 	 * Card instances.
 	 */
-	private static CardComponent cards[] = { null, null, null, null, null,
-			null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null };
+	private static CardComponent cards[] = {
+			new CardComponent(Card.valueBy(1)),
+			new CardComponent(Card.valueBy(2)),
+			new CardComponent(Card.valueBy(3)),
+			new CardComponent(Card.valueBy(4)),
+			new CardComponent(Card.valueBy(5)),
+			new CardComponent(Card.valueBy(6)),
+			new CardComponent(Card.valueBy(7)),
+			new CardComponent(Card.valueBy(8)),
+			new CardComponent(Card.valueBy(9)),
+			new CardComponent(Card.valueBy(10)),
+			new CardComponent(Card.valueBy(11)),
+			new CardComponent(Card.valueBy(12)),
+			new CardComponent(Card.valueBy(13)),
+			new CardComponent(Card.valueBy(14)),
+			new CardComponent(Card.valueBy(15)),
+			new CardComponent(Card.valueBy(16)),
+			new CardComponent(Card.valueBy(17)),
+			new CardComponent(Card.valueBy(18)),
+			new CardComponent(Card.valueBy(19)),
+			new CardComponent(Card.valueBy(20)),
+			new CardComponent(Card.valueBy(21)),
+			new CardComponent(Card.valueBy(22)),
+			new CardComponent(Card.valueBy(23)),
+			new CardComponent(Card.valueBy(24)),
+			new CardComponent(Card.valueBy(25)),
+			new CardComponent(Card.valueBy(26)),
+			new CardComponent(Card.valueBy(27)),
+			new CardComponent(Card.valueBy(28)),
+			new CardComponent(Card.valueBy(29)),
+			new CardComponent(Card.valueBy(30)),
+			new CardComponent(Card.valueBy(31)),
+			new CardComponent(Card.valueBy(32)),
+			new CardComponent(Card.valueBy(33)),
+			new CardComponent(Card.valueBy(34)),
+			new CardComponent(Card.valueBy(35)),
+			new CardComponent(Card.valueBy(36)),
+			new CardComponent(Card.valueBy(37)),
+			new CardComponent(Card.valueBy(38)),
+			new CardComponent(Card.valueBy(39)),
+			new CardComponent(Card.valueBy(40)),
+			new CardComponent(Card.valueBy(41)),
+			new CardComponent(Card.valueBy(42)),
+			new CardComponent(Card.valueBy(43)),
+			new CardComponent(Card.valueBy(44)),
+			new CardComponent(Card.valueBy(45)),
+			new CardComponent(Card.valueBy(46)),
+			new CardComponent(Card.valueBy(47)),
+			new CardComponent(Card.valueBy(48)),
+			new CardComponent(Card.valueBy(49)),
+			new CardComponent(Card.valueBy(50)),
+			new CardComponent(Card.valueBy(51)),
+			new CardComponent(Card.valueBy(52)), };
 
 	/**
 	 * Maps non GUI card objects with GUI card objects.
@@ -134,7 +181,7 @@ class CardComponent extends JComponent {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	private CardComponent(CardSuit suit, CardRank number, int fullNumber) {
+	private CardComponent(Card card) {
 		if (SolitaireFrame.deckNumber >= 1
 				&& SolitaireFrame.deckNumber <= ChangeAppearance.NUM_DECKS) {
 			cardBack = SolitaireFrame.IMAGES_PATH + "/cardbacks/cardback"
@@ -143,7 +190,7 @@ class CardComponent extends JComponent {
 			cardBack = SolitaireFrame.IMAGES_PATH + "/cardbacks/cardback3.png";
 		}
 
-		card = new Card(suit, number, fullNumber);
+		this.card = card;
 
 		initializeCardImageString();
 
