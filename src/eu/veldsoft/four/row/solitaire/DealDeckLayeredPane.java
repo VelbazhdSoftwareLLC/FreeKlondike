@@ -455,6 +455,9 @@ class DealDeckLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 			return;
 		}
 
+		CardComponent.cardsMapping.get(
+				dealDeck.getCardAtLocation(dealDeck.length() - 1)).updateImage();
+				
 		g.drawImage(
 				CardComponent.cardsMapping.get(
 						dealDeck.getCardAtLocation(dealDeck.length() - 1))

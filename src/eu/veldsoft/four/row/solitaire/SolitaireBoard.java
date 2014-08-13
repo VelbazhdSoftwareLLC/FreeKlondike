@@ -117,6 +117,25 @@ class SolitaireBoard {
 	LinkedList<Integer> numCardsInDiscardView = new LinkedList<Integer>();
 
 	/**
+	 * Repaint all card stacks.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	private void repaintCards() {
+		for (int i = 0; i < columns.length; i++) {
+			columns[i].repaint();
+		}
+		for (int i = 0; i < cells.length; i++) {
+			cells[i].repaint();
+		}
+		for (int i = 0; i < acePiles.length; i++) {
+			acePiles[i].repaint();
+		}
+		dealDeck.repaint();
+		discardPile.repaint();
+	}
+	
+	/**
 	 * Sets the board's window name, size, location, close button option, makes
 	 * it unresizable and puts the logo on it.
 	 * 
@@ -159,11 +178,12 @@ class SolitaireBoard {
 			case 3:
 				acePiles[i] = new AcePileLayeredPane(CardSuit.HEARTS);
 				break;
-
 			default:
 				break;
 			}
 		}
+		
+		repaintCards();
 	}
 
 	/**
@@ -204,6 +224,8 @@ class SolitaireBoard {
 		}
 
 		dealDeck.getDealDeck().setDeck(cards);
+		
+		repaintCards();
 	}
 
 	/**
@@ -241,15 +263,17 @@ class SolitaireBoard {
 			} else if (8 <= pileNumber && pileNumber <= 11) {
 				acePiles[pileNumber % 4].acePile.addCard(cards.get(cardNumber));
 			} else if (pileNumber == 12) {
-				Card card = cards.get(cardNumber);
+				CardComponent card = CardComponent.cardsMapping.get( cards.get(cardNumber) );
 				card.setFaceDown();
-				dealDeck.dealDeck.addCard(card);
+				dealDeck.dealDeck.addCard(card.getCard());
 			} else if (pileNumber == 13) {
 				discardPile.getDiscardPile().push(cards.get(cardNumber));
 			}
 		}
 
 		discardPile.getDiscardPile().setView(numViewableCards);
+		
+		repaintCards();
 	}
 
 	/**
@@ -262,37 +286,29 @@ class SolitaireBoard {
 			while (columns[i].getColumn().isEmpty() == false) {
 				columns[i].pop();
 			}
-
-			columns[i].repaint();
 		}
 
 		for (int i = 0; i < cells.length; i++) {
 			while (cells[i].getSingleCell().isEmpty() == false) {
 				cells[i].pop();
 			}
-
-			cells[i].repaint();
 		}
 
 		for (int i = 0; i < acePiles.length; i++) {
 			while (acePiles[i].getAcePile().isEmpty() == false) {
 				acePiles[i].pop();
 			}
-
-			acePiles[i].repaint();
 		}
 
 		while (dealDeck.getDealDeck().isEmpty() == false) {
 			dealDeck.pop();
 		}
 
-		dealDeck.repaint();
-
 		while (discardPile.getDiscardPile().isEmpty() == false) {
 			discardPile.pop();
 		}
-
-		discardPile.repaint();
+		
+		repaintCards();
 	}
 
 	/**
@@ -314,6 +330,8 @@ class SolitaireBoard {
 		destinationList.clear();
 		numCards.clear();
 		numCardsInDiscardView.clear();
+		
+		repaintCards();
 	}
 
 	/**

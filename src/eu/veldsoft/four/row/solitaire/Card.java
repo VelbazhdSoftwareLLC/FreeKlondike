@@ -194,6 +194,18 @@ class Card {
 	}
 
 	/**
+	 * Checks if the card is unhighlighted and returns the result(true/false).
+	 * 
+	 * @return highlighted Whether the card is highlighted or not (true or
+	 *         false).
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public boolean isUnhighlighted() {
+		return (!highlighted);
+	}
+
+	/**
 	 * Sets the card face-up.
 	 * 
 	 * @author Todor Balabanov
@@ -220,6 +232,17 @@ class Card {
 	 */
 	public boolean isFaceUp() {
 		return faceUp;
+	}
+
+	/**
+	 * Checks if the card is facing down and returns the result(true/false).
+	 * 
+	 * @return faceUp Whether the card is set face-up or not (true or false).
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public boolean isFaceDown() {
+		return (!faceUp);
 	}
 
 	/**

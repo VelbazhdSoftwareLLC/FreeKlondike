@@ -206,6 +206,11 @@ public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
 	 * @author Todor Balabanov
 	 */
 	private void checkForUpdate() {
+		//TODO Remove in the final release.
+		if(true) {
+			return;
+		}
+		
 		try {
 			URL url = new URL(
 					"http://www.mastadisasta.com/FourRowSolitaire/version.txt");

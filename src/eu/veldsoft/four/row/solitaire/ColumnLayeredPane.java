@@ -431,9 +431,10 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 		}
 
 		for (int i = 0; i < column.getCards().size(); i++) {
-			Image image = CardComponent.cardsMapping.get(
-					column.getCards().get(i)).getImage();
-			g.drawImage(image, 0, i * 25, null);
+			CardComponent.cardsMapping.get(column.getCards().get(i))
+					.updateImage();
+			g.drawImage(CardComponent.cardsMapping
+					.get(column.getCards().get(i)).getImage(), 0, i * 25, null);
 		}
 	}
 }

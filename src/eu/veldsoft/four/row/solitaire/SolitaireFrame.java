@@ -66,6 +66,11 @@ class SolitaireFrame extends JFrame {
 		 * @author Todor Balabanov
 		 */
 		public void windowClosing(WindowEvent e) {
+			//TODO Remove in the final release.
+			if(true) {
+				return;
+			}
+			
 			int save = JOptionPane
 					.showConfirmDialog(
 							SolitaireFrame.this,

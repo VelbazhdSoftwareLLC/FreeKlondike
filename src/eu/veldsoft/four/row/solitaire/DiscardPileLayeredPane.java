@@ -418,6 +418,8 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 
 		if (discardPile.isEmpty() == false && SolitaireBoard.drawCount == 1) {
 			for (int i = 0; i < discardPile.length(); i++) {
+				CardComponent.cardsMapping
+						.get(discardPile.getCardAtLocation(i)).updateImage();
 				Image image = CardComponent.cardsMapping.get(
 						discardPile.getCardAtLocation(i)).getImage();
 				g.drawImage(image, 0, 0, null);
@@ -427,6 +429,8 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 			if (discardPile.cardsLeftFromDraw > 0) {
 				for (int i = 0; i < discardPile.length()
 						- discardPile.cardsLeftFromDraw + 1; i++) {
+					CardComponent.cardsMapping.get(
+							discardPile.getCardAtLocation(i)).updateImage();
 					Image image = CardComponent.cardsMapping.get(
 							discardPile.getCardAtLocation(i)).getImage();
 					g.drawImage(image, 0, 0, null);
@@ -435,6 +439,8 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 				for (int i = discardPile.length()
 						- discardPile.cardsLeftFromDraw + 1; i < discardPile
 						.length(); i++) {
+					CardComponent.cardsMapping.get(
+							discardPile.getCardAtLocation(i)).updateImage();
 					Image image = CardComponent.cardsMapping.get(
 							discardPile.getCardAtLocation(i)).getImage();
 
@@ -450,6 +456,8 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 				}
 			} else {
 				for (int i = 0; i < discardPile.length(); i++) {
+					CardComponent.cardsMapping.get(
+							discardPile.getCardAtLocation(i)).updateImage();
 					Image image = CardComponent.cardsMapping.get(
 							discardPile.getCardAtLocation(i)).getImage();
 					g.drawImage(image, 0, 0, null);

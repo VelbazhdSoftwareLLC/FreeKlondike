@@ -416,6 +416,10 @@ class SingleCellLayeredPane extends JLayeredPane implements
 			return;
 		}
 
+		CardComponent.cardsMapping.get(
+				singleCell.getCards().get(
+						singleCell.getCards().size() - 1)).updateImage();
+		
 		g.drawImage(
 				CardComponent.cardsMapping.get(
 						singleCell.getCards().get(

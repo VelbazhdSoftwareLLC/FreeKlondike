@@ -103,7 +103,8 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 			}
 
 			if (acePile.isValidCard(index)) {
-				return CardComponent.cardsMapping.get(acePile.getCards().get(index));
+				return CardComponent.cardsMapping.get(acePile.getCards().get(
+						index));
 			}
 		}
 
@@ -223,8 +224,8 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 		int index = acePile.search(card.getCard());
 
 		for (int i = 0; i < index; i++) {
-			temp.push(CardComponent.cardsMapping
-					.get(getCardAtLocation(acePile.getCards().size() - i - 1)));
+			temp.push(CardComponent.cardsMapping.get(getCardAtLocation(acePile
+					.getCards().size() - i - 1)));
 			getCardAtLocation(acePile.getCards().size() - i - 1).highlight();
 		}
 
@@ -248,7 +249,8 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 		int index = length() - numCards;
 
 		for (int i = length(); i > index; i--) {
-			temp.push(getCardAtLocation(acePile.getCards().size() - i - 1).clone());
+			temp.push(getCardAtLocation(acePile.getCards().size() - i - 1)
+					.clone());
 			getCardAtLocation(acePile.getCards().size() - i - 1).highlight();
 		}
 
@@ -418,15 +420,18 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		
+
 		if (CardComponent.cardsMapping.isEmpty() == true) {
 			return;
 		}
 
 		for (int i = 0; i < acePile.length(); i++) {
-			Image image = CardComponent.cardsMapping.get(
-					acePile.getCardAtLocation(i)).getImage();
-			g.drawImage(image, 0, 0, null);
+			CardComponent.cardsMapping.get(acePile.getCardAtLocation(i))
+					.updateImage();
+			g.drawImage(
+					CardComponent.cardsMapping
+							.get(acePile.getCardAtLocation(i)).getImage(), 0,
+					0, null);
 		}
 	}
 }

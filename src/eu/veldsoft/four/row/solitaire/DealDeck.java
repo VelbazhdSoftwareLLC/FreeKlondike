@@ -20,6 +20,7 @@
 package eu.veldsoft.four.row.solitaire;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Vector;
 
 /**
@@ -139,10 +140,10 @@ class DealDeck extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public void setDeck(LinkedList<Card> cards) {
-		for (int i = 0; i < cards.size(); i++) {
-			cards.get(i).setFaceDown();
-			addCard(cards.get(i));
+	public void setDeck(List<Card> cards) {
+		for (Card card : cards) {
+			card.setFaceDown();
+			addCard(card);
 		}
 	}
 

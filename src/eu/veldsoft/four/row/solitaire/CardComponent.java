@@ -22,10 +22,8 @@ package eu.veldsoft.four.row.solitaire;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
@@ -35,13 +33,6 @@ import javax.swing.JComponent;
  * @author Todor Balabanov
  */
 class CardComponent extends JComponent {
-
-	/**
-	 * 
-	 */
-	private static final Logger LOGGER = Logger.getLogger(Class.class
-			.toString());
-
 	/**
 	 * 
 	 */
@@ -123,8 +114,12 @@ class CardComponent extends JComponent {
 	 *            Graphic context.
 	 * @author Todor Balabanov
 	 */
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+
+		updateImage();
+		
 		g.drawImage(image, 0, 0, null);
 	}
 
@@ -162,6 +157,40 @@ class CardComponent extends JComponent {
 	}
 
 	/**
+	 * Update image pointer according internal card state.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public void updateImage() {
+		if (card.isFaceUp()) {
+			if (card.isHighlighted()) {
+				try {
+					// TODO Load images only once.
+					image = ImageIO.read(this.getClass().getResource(
+							cardHighlighted));
+				} catch (NullPointerException e) {
+				} catch (IOException e) {
+				}
+			} else if (card.isUnhighlighted()) {
+				try {
+					// TODO Load images only once.
+					image = ImageIO.read(this.getClass().getResource(
+							cardImageString));
+				} catch (NullPointerException e) {
+				} catch (IOException e) {
+				}
+			}
+		} else if (card.isFaceDown()) {
+			try {
+				// TODO Load images only once.
+				image = ImageIO.read(this.getClass().getResource(cardBack));
+			} catch (NullPointerException e) {
+			} catch (IOException e) {
+			}
+		}
+	} 
+	
+	/**
 	 * Returns the card's buffered image (either back or front).
 	 * 
 	 * @return image Buffered image..
@@ -179,19 +208,6 @@ class CardComponent extends JComponent {
 	 */
 	public void highlight() {
 		card.highlight();
-
-		try {
-			URL imageURL = this.getClass().getResource(cardHighlighted);
-
-			if (imageURL != null) {
-				image = ImageIO.read(imageURL);
-			}
-		} catch (IOException ex) {
-			System.err
-					.println("Error in creating highlighted card face image.");
-		}
-
-		repaint();
 	}
 
 	/**
@@ -201,7 +217,6 @@ class CardComponent extends JComponent {
 	 */
 	public void unhighlight() {
 		card.unhighlight();
-
 		setFaceUp();
 	}
 
@@ -212,16 +227,6 @@ class CardComponent extends JComponent {
 	 */
 	public void setFaceUp() {
 		card.setFaceUp();
-
-		try {
-			URL imageURL = this.getClass().getResource(cardImageString);
-
-			if (imageURL != null) {
-				image = ImageIO.read(imageURL);
-			}
-		} catch (IOException ex) {
-			System.err.println("Error in creating card face image.");
-		}
 	}
 
 	/**
@@ -231,16 +236,6 @@ class CardComponent extends JComponent {
 	 */
 	public void setFaceDown() {
 		card.setFaceDown();
-
-		try {
-			URL imageURL = this.getClass().getResource(cardBack);
-
-			if (imageURL != null) {
-				image = ImageIO.read(imageURL);
-			}
-		} catch (IOException ex) {
-			System.err.println("Error in creating card back image.");
-		}
 	}
 
 	/**
