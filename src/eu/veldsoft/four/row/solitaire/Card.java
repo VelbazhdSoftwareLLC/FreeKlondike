@@ -40,17 +40,21 @@ class Card {
 	/**
 	 * Card instances.
 	 */
-	private static Card cards[] = { valueBy(1), valueBy(2), valueBy(3),
-			valueBy(4), valueBy(5), valueBy(6), valueBy(7), valueBy(8),
-			valueBy(9), valueBy(10), valueBy(11), valueBy(12), valueBy(13),
-			valueBy(14), valueBy(15), valueBy(16), valueBy(17), valueBy(18),
-			valueBy(19), valueBy(20), valueBy(21), valueBy(22), valueBy(23),
-			valueBy(24), valueBy(25), valueBy(26), valueBy(27), valueBy(28),
-			valueBy(29), valueBy(30), valueBy(31), valueBy(32), valueBy(33),
-			valueBy(34), valueBy(35), valueBy(36), valueBy(37), valueBy(38),
-			valueBy(39), valueBy(40), valueBy(41), valueBy(42), valueBy(43),
-			valueBy(44), valueBy(45), valueBy(46), valueBy(47), valueBy(48),
-			valueBy(49), valueBy(50), valueBy(51), valueBy(52), };
+	private static Card cards[] = { null, null, null, null, null, null, null,
+			null, null, null, null, null, null, null, null, null, null, null,
+			null, null, null, null, null, null, null, null, null, null, null,
+			null, null, null, null, null, null, null, null, null, null, null,
+			null, null, null, null, null, null, null, null, null, null, null,
+			null, };
+
+	/**
+	 * Initialize static data.
+	 */
+	static {
+		for (int i = 0; i < cards.length; i++) {
+			cards[i] = valueBy(i + 1);
+		}
+	}
 
 	/**
 	 * Card suit.
