@@ -197,6 +197,7 @@ public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
 		help.setAccelerator(KeyStroke.getKeyStroke("F1"));
 		about.setMnemonic('a');
 
+		//TODO It was used to fill board with initial stored data. 
 		loadData();
 	}
 

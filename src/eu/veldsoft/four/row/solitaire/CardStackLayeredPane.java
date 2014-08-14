@@ -39,7 +39,7 @@ interface CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane getStack(CardComponent card);
+	public CardStack getStack(Card card);
 
 	/**
 	 * Searches the stack for a specified location, creates a temporary stack,
@@ -53,7 +53,7 @@ interface CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane getStack(int numCards);
+	public CardStack getStack(int numCards);
 
 	/**
 	 * Returns the card located at the coordinates of a mouse click.
@@ -65,7 +65,7 @@ interface CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getCardAtLocation(Point p);
+	public Card getCardAtLocation(Point p);
 
 	/**
 	 * Returns the card located at a specified location within the stack.
@@ -78,7 +78,7 @@ interface CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getCardAtLocation(int index);
+	public Card getCardAtLocation(int index);
 
 	/**
 	 * Checks if clicked area is defined on a card in the stack.
@@ -98,7 +98,7 @@ interface CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent peek();
+	public Card peek();
 
 	/**
 	 * 
@@ -136,7 +136,7 @@ interface CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public void addCard(CardComponent card);
+	public void addCard(Card card);
 
 	/**
 	 * Pops the top card out of a stack.
@@ -145,7 +145,7 @@ interface CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent pop();
+	public Card pop();
 
 	/**
 	 * Temporary reverses the cards in a stack.
@@ -157,7 +157,7 @@ interface CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane pop(CardStackLayeredPane stack);
+	public CardStack pop(CardStack stack);
 
 	/**
 	 * Used to add a bunch of cards to a stack.
@@ -167,7 +167,7 @@ interface CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public void addStack(CardStackLayeredPane stack);
+	public void addStack(CardStack stack);
 
 	/**
 	 * Used to add a card to a stack and then to return the moved card.
@@ -179,7 +179,7 @@ interface CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent push(CardComponent card);
+	public Card push(Card card);
 
 	/**
 	 * Used to add a bunch of cards to a card stack and then to return empty
@@ -192,7 +192,7 @@ interface CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane push(CardStackLayeredPane stack);
+	public CardStack push(CardStack stack);
 
 	/**
 	 * Checks if the move is valid. Always returns false. The method is
@@ -205,7 +205,7 @@ interface CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(CardComponent card);
+	public boolean isValidMove(Card card);
 
 	/**
 	 * Checks if the move is valid. Always returns false. This method is
@@ -218,7 +218,7 @@ interface CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(CardStackLayeredPane stack);
+	public boolean isValidMove(CardStack stack);
 
 	/**
 	 * Returns the first card from a stack.
@@ -227,7 +227,7 @@ interface CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getBottom();
+	public Card getBottom();
 
 	/**
 	 * Used to undo the last stack move. Reverses the cards.
@@ -239,5 +239,5 @@ interface CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane undoStack(int numCards);
+	public CardStack undoStack(int numCards);
 }

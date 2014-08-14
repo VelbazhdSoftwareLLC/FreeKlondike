@@ -167,7 +167,9 @@ class Card {
 	 * @author Todor Balabanov
 	 */
 	public void highlight() {
-		highlighted = true;
+		if(isFaceUp() == true) {
+			highlighted = true;
+		}
 	}
 
 	/**
@@ -176,9 +178,10 @@ class Card {
 	 * @author Todor Balabanov
 	 */
 	public void unhighlight() {
-		highlighted = false;
-
-		setFaceUp();
+		if(isFaceUp() == true) {
+			highlighted = false;
+			setFaceUp();
+		}
 	}
 
 	/**

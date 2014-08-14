@@ -74,7 +74,7 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getCardAtLocation(Point p) {
+	public Card getCardAtLocation(Point p) {
 		if (discardPile.getCards().isEmpty()) {
 			return null;
 		}
@@ -91,8 +91,7 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 			}
 
 			if (discardPile.isValidCard(index)) {
-				return CardComponent.cardsMapping.get(discardPile.getCards()
-						.get(index));
+				return discardPile.getCards().get(index);
 			}
 		}
 
@@ -110,11 +109,11 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getCardAtLocation(int index) {
+	public Card getCardAtLocation(int index) {
 		Card result = discardPile.getCardAtLocation(index);
 
 		if (result != null) {
-			return (CardComponent.cardsMapping.get(result));
+			return (result);
 		}
 
 		return null;
@@ -175,10 +174,10 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public void addCard(CardComponent card) {
-		discardPile.addCard(card.getCard());
-		card.setBounds(0, 0, 72, 96);
-		add(card, 0);
+	public void addCard(Card card) {
+		discardPile.addCard(card);
+		CardComponent.cardsMapping.get(card).setBounds(0, 0, 72, 96);
+		add(CardComponent.cardsMapping.get(card), 0);
 	}
 
 	/**
@@ -189,7 +188,7 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public void addStack(CardStackLayeredPane stack) {
+	public void addStack(CardStack stack) {
 		while (stack.isEmpty() == false) {
 			addCard(stack.pop());
 		}
@@ -207,14 +206,12 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane getStack(CardComponent card) {
-		DiscardPileLayeredPane temp = new DiscardPileLayeredPane();
-		int index = discardPile.search(card.getCard());
+	public CardStack getStack(Card card) {
+		DiscardPile temp = new DiscardPile();
+		int index = discardPile.search(card);
 
 		for (int i = 0; i < index; i++) {
-			temp.push(CardComponent.cardsMapping
-					.get(getCardAtLocation(discardPile.getCards().size() - i
-							- 1)));
+			temp.push((getCardAtLocation(discardPile.getCards().size() - i - 1)));
 			getCardAtLocation(discardPile.getCards().size() - i - 1)
 					.highlight();
 		}
@@ -234,8 +231,8 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane getStack(int numCards) {
-		DiscardPileLayeredPane temp = new DiscardPileLayeredPane();
+	public CardStack getStack(int numCards) {
+		DiscardPile temp = new DiscardPile();
 		int index = length() - numCards;
 
 		for (int i = length(); i > index; i--) {
@@ -255,8 +252,8 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public synchronized CardComponent peek() {
-		return CardComponent.cardsMapping.get(discardPile.peek());
+	public synchronized Card peek() {
+		return (discardPile.peek());
 	}
 
 	/**
@@ -266,11 +263,11 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public synchronized CardComponent pop() {
-		CardComponent card = CardComponent.cardsMapping.get(discardPile.pop());
+	public synchronized Card pop() {
+		Card card = discardPile.pop();
 
 		if (card != null) {
-			remove(card);
+			remove(CardComponent.cardsMapping.get(card));
 		}
 
 		return card;
@@ -286,16 +283,16 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane pop(CardStackLayeredPane stack) {
+	public CardStack pop(CardStack stack) {
 		/*
 		 * Temporary reverse pop of entire stack transfer.
 		 */
-		DiscardPileLayeredPane temp = new DiscardPileLayeredPane();
+		DiscardPile temp = new DiscardPile();
 
 		while (!stack.isEmpty()) {
-			CardComponent card = stack.pop();
-			temp.discardPile.push(card.getCard());
-			remove(card);
+			Card card = stack.pop();
+			temp.push(card);
+			remove(CardComponent.cardsMapping.get(card));
 		}
 
 		return temp;
@@ -311,7 +308,7 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent push(CardComponent card) {
+	public Card push(Card card) {
 		addCard(card);
 
 		return card;
@@ -328,7 +325,7 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane push(CardStackLayeredPane stack) {
+	public CardStack push(CardStack stack) {
 		addStack(stack);
 
 		/*
@@ -344,8 +341,8 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getBottom() {
-		return CardComponent.cardsMapping.get(discardPile.getBottom());
+	public Card getBottom() {
+		return (discardPile.getBottom());
 	}
 
 	/**
@@ -358,8 +355,8 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane undoStack(int numCards) {
-		DiscardPileLayeredPane temp = new DiscardPileLayeredPane();
+	public CardStack undoStack(int numCards) {
+		DiscardPile temp = new DiscardPile();
 
 		for (int i = 0; i < numCards; i++) {
 			temp.push(pop());
@@ -381,8 +378,8 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(CardComponent card) {
-		return (discardPile.isValidMove(card.getCard()));
+	public boolean isValidMove(Card card) {
+		return (discardPile.isValidMove(card));
 	}
 
 	/**
@@ -396,7 +393,7 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(CardStackLayeredPane stack) {
+	public boolean isValidMove(CardStack stack) {
 		return (discardPile.isValidMove((CardStack) null));
 	}
 

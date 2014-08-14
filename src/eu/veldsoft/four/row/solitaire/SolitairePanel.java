@@ -81,6 +81,7 @@ class SolitairePanel extends JPanel {
 		}
 
 		repaint();
+		revalidate();
 	}
 
 	/**

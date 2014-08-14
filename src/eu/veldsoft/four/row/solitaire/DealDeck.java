@@ -19,7 +19,6 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
@@ -213,6 +212,7 @@ class DealDeck extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public void addCard(Card card) {
+		card.setFaceDown();
 		cards.add(card);
 	}
 
@@ -488,5 +488,14 @@ class DealDeck extends CardStack {
 	 */
 	public Card getBottom() {
 		return cards.firstElement();
+	}
+
+	/**
+	 * @author Todor Balabanov
+	 */
+	public void allFaceDown() {
+		for (Card card : cards) {
+			card.setFaceDown();
+		}
 	}
 }

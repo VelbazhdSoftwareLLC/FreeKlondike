@@ -66,11 +66,11 @@ class SolitaireFrame extends JFrame {
 		 * @author Todor Balabanov
 		 */
 		public void windowClosing(WindowEvent e) {
-			//TODO Remove in the final release.
-			if(true) {
+			// TODO Remove in the final release.
+			if (true) {
 				return;
 			}
-			
+
 			int save = JOptionPane
 					.showConfirmDialog(
 							SolitaireFrame.this,
@@ -138,7 +138,7 @@ class SolitaireFrame extends JFrame {
 		/**
 		 * 
 		 */
-		private CardComponent clickedCard;
+		private Card clickedCard;
 
 		/**
 		 * 
@@ -153,12 +153,12 @@ class SolitaireFrame extends JFrame {
 		/**
 		 * 
 		 */
-		private CardStackLayeredPane temp;
+		private CardStack temp;
 
 		/**
 		 * For right clicking discard pile view.
 		 */
-		private CardComponent tempCard;
+		private Card tempCard;
 
 		/**
 		 * To prevent clicking cards from the right click view.
@@ -249,6 +249,7 @@ class SolitaireFrame extends JFrame {
 								.getDiscardPile().isEmpty())) {
 					tempCard = board.discardPile.pop();
 					board.discardPile.repaint();
+					board.discardPile.revalidate();
 					rightClicked = true;
 				}
 			}
@@ -264,8 +265,9 @@ class SolitaireFrame extends JFrame {
 		 */
 		public void mouseReleased(MouseEvent e) {
 			if (e.getButton() == MouseEvent.BUTTON3 && tempCard != null) {
-				board.discardPile.discardPile.push(tempCard.getCard());
+				board.discardPile.push(tempCard);
 				board.discardPile.repaint();
+				board.discardPile.revalidate();
 				rightClicked = false;
 				tempCard = null;
 			}
@@ -291,18 +293,22 @@ class SolitaireFrame extends JFrame {
 				return;
 			} else if (e.getClickCount() == 2 && hasSelected
 					&& singleCardSelected) {
-				if (source.peek().getCard().getRank().equals(CardRank.ACE)) {
-					CardComponent card = source.pop();
-					AcePileLayeredPane pile = board.acePiles[card.getCard()
-							.getSuit().getIndex()];
+				if (source.peek().getRank().equals(CardRank.ACE)) {
+					Card card = source.pop();
+					AcePileLayeredPane pile = board.acePiles[card.getSuit()
+							.getIndex()];
 					card.unhighlight();
 
-					pile.acePile.push(card.getCard());
+					pile.push(card);
 					board.destinationList.add(pile);
 
 					hasSelected = false;
-					((Component) source).repaint();
+					((Component) CardComponent.cardsMapping.get(source))
+							.repaint();
+					((Component) CardComponent.cardsMapping.get(source))
+							.revalidate();
 					repaint();
+					revalidate();
 					return;
 				}
 
@@ -310,28 +316,30 @@ class SolitaireFrame extends JFrame {
 					if (!board.acePiles[i].getAcePile().isEmpty()
 							&& source
 									.peek()
-									.getCard()
 									.getSuit()
 									.equals(board.acePiles[i].getAcePile()
 											.peek().getSuit())
 							&& source
 									.peek()
-									.getCard()
 									.getRank()
 									.isLessByOneThan(
 											(board.acePiles[i].getAcePile()
 													.peek().getRank()))) {
-						CardComponent card = source.pop();
+						Card card = source.pop();
 						card.unhighlight();
 						board.acePiles[i].push(card);
 
 						board.destinationList.add(board.acePiles[i]);
 						hasSelected = false;
 
-						((Component) source).repaint();
+						((Component) CardComponent.cardsMapping.get(source))
+								.repaint();
+						((Component) CardComponent.cardsMapping.get(source))
+								.revalidate();
 						repaint();
+						revalidate();
 
-						if (card.getCard().getRank().equals(CardRank.KING)) {
+						if (card.getRank().equals(CardRank.KING)) {
 							checkWin();
 						}
 
@@ -341,23 +349,30 @@ class SolitaireFrame extends JFrame {
 
 				for (int i = 0; i < board.cells.length; i++) {
 					if (board.cells[i].getSingleCell().isEmpty()) {
-						CardComponent card = source.pop();
+						Card card = source.pop();
 						card.unhighlight();
 						board.cells[i].push(card);
 
 						board.destinationList.add(board.cells[i]);
 						hasSelected = false;
 
-						((Component) source).repaint();
+						((Component) CardComponent.cardsMapping.get(source))
+								.repaint();
+						((Component) CardComponent.cardsMapping.get(source))
+								.revalidate();
 						repaint();
+						revalidate();
 						return;
 					}
 				}
 
 				source.peek().unhighlight();
 
-				((Component) source).repaint();
+				((Component) CardComponent.cardsMapping.get(source)).repaint();
+				((Component) CardComponent.cardsMapping.get(source))
+						.revalidate();
 				repaint();
+				revalidate();
 				return;
 			} else if (e.getClickCount() == 2 && hasSelected) {
 				hasSelected = false;
@@ -378,7 +393,7 @@ class SolitaireFrame extends JFrame {
 					|| (e.getSource() instanceof DealDeck)) {
 				source = (CardStackLayeredPane) e.getSource();
 
-				if (source instanceof DealDeckLayeredPane) {
+				if (source instanceof DealDeck) {
 					if (hasSelected) {
 						hasSelected = false;
 
@@ -395,8 +410,12 @@ class SolitaireFrame extends JFrame {
 							board.sourceList.getLast().peek().unhighlight();
 						}
 
-						((Component) board.sourceList.getLast()).repaint();
+						((Component) CardComponent.cardsMapping
+								.get(board.sourceList.getLast())).repaint();
+						((Component) CardComponent.cardsMapping
+								.get(board.sourceList.getLast())).revalidate();
 						repaint();
+						revalidate();
 						board.sourceList.removeLast();
 						board.numCardsInDiscardView.removeLast();
 						board.numCards.removeLast();
@@ -457,7 +476,7 @@ class SolitaireFrame extends JFrame {
 
 				if (singleCardSelected) {
 					if (destination.isValidMove(clickedCard)) {
-						CardComponent card = source.pop();
+						Card card = source.pop();
 						card.unhighlight();
 						destination.push(card);
 
@@ -467,9 +486,10 @@ class SolitaireFrame extends JFrame {
 						board.destinationList.add(destination);
 
 						if (destination instanceof AcePileLayeredPane
-								&& clickedCard.getCard().getRank()
+								&& clickedCard.getRank()
 										.equals(CardRank.KING)) {
 							repaint();
+							revalidate();
 							checkWin();
 						}
 					} else {
@@ -487,24 +507,24 @@ class SolitaireFrame extends JFrame {
 					}
 				} else {
 					if (destination.isValidMove(temp)) {
-						CardStackLayeredPane stack = null;
+						CardStack stack = null;
 						if (destination instanceof AcePileLayeredPane) {
-							stack = new AcePileLayeredPane(
+							stack = new AcePile(
 									((AcePileLayeredPane) destination).acePile
 											.getSuit());
 						} else if (destination instanceof DealDeckLayeredPane) {
-							stack = new DealDeckLayeredPane(
-									((DealDeckLayeredPane) destination).discard);
+							stack = new DealDeck(
+									((DealDeckLayeredPane) destination).discard.getDiscardPile());
 						} else if (destination instanceof DiscardPileLayeredPane) {
-							stack = new DiscardPileLayeredPane();
+							stack = new DiscardPile();
 						} else if (destination instanceof ColumnLayeredPane) {
-							stack = new ColumnLayeredPane();
+							stack = new Column();
 						} else if (destination instanceof SingleCellLayeredPane) {
-							stack = new SingleCellLayeredPane();
+							stack = new SingleCell();
 						}
 
 						for (int i = temp.length(); i > 0; i--) {
-							CardComponent card = source.pop();
+							Card card = source.pop();
 							card.unhighlight();
 
 							stack.push(card);
@@ -538,6 +558,7 @@ class SolitaireFrame extends JFrame {
 			}
 
 			repaint();
+			revalidate();
 		}
 	}
 
@@ -807,20 +828,23 @@ class SolitaireFrame extends JFrame {
 		/*
 		 * If the game was won, the win was already reported.
 		 */
-		if (winOrLoss != GameState.GAME_WON
-				&& winOrLoss != GameState.DO_NOTHING) {
-			if (JOptionPane.showConfirmDialog(this,
-					"Quitting the current game will result in a loss.\n"
-							+ "Do you wish to continue?", "Continue?",
-					JOptionPane.PLAIN_MESSAGE) == JOptionPane.YES_OPTION) {
-				board.recordGame(GameState.GAME_LOST, deckNumber,
-						backgroundNumber, timerCount, timerToRunNextGame,
-						timerToRun);
-				board.newGame(winOrLoss);
-				dealOutBoard();
-			}
+		if (winOrLoss == GameState.GAME_WON
+				|| winOrLoss == GameState.DO_NOTHING) {
+			return;
 		}
 
+		// TODO Remove this comment in final release.
+		// if (JOptionPane.showConfirmDialog(this,
+		// "Quitting the current game will result in a loss.\n"
+		// + "Do you wish to continue?", "Continue?",
+		// JOptionPane.PLAIN_MESSAGE) != JOptionPane.YES_OPTION) {
+		// return;
+		// }
+
+		board.recordGame(GameState.GAME_LOST, deckNumber, backgroundNumber,
+				timerCount, timerToRunNextGame, timerToRun);
+		board.newGame(winOrLoss);
+		dealOutBoard();
 	}
 
 	/**

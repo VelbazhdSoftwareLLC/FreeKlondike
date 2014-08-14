@@ -73,7 +73,7 @@ class SingleCellLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getCardAtLocation(Point p) {
+	public Card getCardAtLocation(Point p) {
 		if (singleCell.getCards().isEmpty()) {
 			return null;
 		}
@@ -90,8 +90,7 @@ class SingleCellLayeredPane extends JLayeredPane implements
 			}
 
 			if (singleCell.isValidCard(index)) {
-				return CardComponent.cardsMapping.get(singleCell.getCards()
-						.get(index));
+				return singleCell.getCards().get(index);
 			}
 		}
 
@@ -109,11 +108,11 @@ class SingleCellLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getCardAtLocation(int index) {
+	public Card getCardAtLocation(int index) {
 		Card result = singleCell.getCardAtLocation(index);
 
 		if (result != null) {
-			return (CardComponent.cardsMapping.get(result));
+			return (result);
 		}
 
 		return null;
@@ -174,10 +173,10 @@ class SingleCellLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public void addCard(CardComponent card) {
-		singleCell.addCard(card.getCard());
-		card.setBounds(0, 0, 72, 96);
-		add(card, 0);
+	public void addCard(Card card) {
+		singleCell.addCard(card);
+		CardComponent.cardsMapping.get(card).setBounds(0, 0, 72, 96);
+		add(CardComponent.cardsMapping.get(card), 0);
 	}
 
 	/**
@@ -188,7 +187,7 @@ class SingleCellLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public void addStack(CardStackLayeredPane stack) {
+	public void addStack(CardStack stack) {
 		while (stack.isEmpty() == false) {
 			addCard(stack.pop());
 		}
@@ -206,13 +205,12 @@ class SingleCellLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane getStack(CardComponent card) {
-		SingleCellLayeredPane temp = new SingleCellLayeredPane();
-		int index = singleCell.search(card.getCard());
+	public CardStack getStack(Card card) {
+		SingleCell temp = new SingleCell();
+		int index = singleCell.search(card);
 
 		for (int i = 0; i < index; i++) {
-			temp.push(CardComponent.cardsMapping
-					.get(getCardAtLocation(singleCell.getCards().size() - i - 1)));
+			temp.push(getCardAtLocation(singleCell.getCards().size() - i - 1));
 			getCardAtLocation(singleCell.getCards().size() - i - 1).highlight();
 		}
 
@@ -231,8 +229,8 @@ class SingleCellLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane getStack(int numCards) {
-		SingleCellLayeredPane temp = new SingleCellLayeredPane();
+	public CardStack getStack(int numCards) {
+		SingleCell temp = new SingleCell();
 		int index = length() - numCards;
 
 		for (int i = length(); i > index; i--) {
@@ -251,8 +249,8 @@ class SingleCellLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public synchronized CardComponent peek() {
-		return CardComponent.cardsMapping.get(singleCell.peek());
+	public synchronized Card peek() {
+		return (singleCell.peek());
 	}
 
 	/**
@@ -262,11 +260,11 @@ class SingleCellLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public synchronized CardComponent pop() {
-		CardComponent card = CardComponent.cardsMapping.get(singleCell.pop());
+	public synchronized Card pop() {
+		Card card = singleCell.pop();
 
 		if (card != null) {
-			remove(card);
+			remove(CardComponent.cardsMapping.get(card));
 		}
 
 		return card;
@@ -282,16 +280,16 @@ class SingleCellLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane pop(CardStackLayeredPane stack) {
+	public CardStack pop(CardStack stack) {
 		/*
 		 * Temporary reverse pop of entire stack transfer.
 		 */
-		SingleCellLayeredPane temp = new SingleCellLayeredPane();
+		SingleCell temp = new SingleCell();
 
 		while (!stack.isEmpty()) {
-			CardComponent card = stack.pop();
-			temp.singleCell.push(card.getCard());
-			remove(card);
+			Card card = stack.pop();
+			temp.push(card);
+			remove(CardComponent.cardsMapping.get(card));
 		}
 
 		return temp;
@@ -307,7 +305,7 @@ class SingleCellLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent push(CardComponent card) {
+	public Card push(Card card) {
 		addCard(card);
 
 		return card;
@@ -324,7 +322,7 @@ class SingleCellLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane push(CardStackLayeredPane stack) {
+	public CardStack push(CardStack stack) {
 		addStack(stack);
 
 		/*
@@ -340,8 +338,8 @@ class SingleCellLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getBottom() {
-		return CardComponent.cardsMapping.get(singleCell.getBottom());
+	public Card getBottom() {
+		return (singleCell.getBottom());
 	}
 
 	/**
@@ -354,8 +352,8 @@ class SingleCellLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane undoStack(int numCards) {
-		SingleCellLayeredPane temp = new SingleCellLayeredPane();
+	public CardStack undoStack(int numCards) {
+		SingleCell temp = new SingleCell();
 
 		for (int i = 0; i < numCards; i++) {
 			temp.push(pop());
@@ -377,8 +375,8 @@ class SingleCellLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(CardComponent card) {
-		return (singleCell.isValidMove(card.getCard()));
+	public boolean isValidMove(Card card) {
+		return (singleCell.isValidMove(card));
 	}
 
 	/**
@@ -392,7 +390,7 @@ class SingleCellLayeredPane extends JLayeredPane implements
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(CardStackLayeredPane stack) {
+	public boolean isValidMove(CardStack stack) {
 		return (singleCell.isValidMove((CardStack) null));
 	}
 
@@ -417,9 +415,9 @@ class SingleCellLayeredPane extends JLayeredPane implements
 		}
 
 		CardComponent.cardsMapping.get(
-				singleCell.getCards().get(
-						singleCell.getCards().size() - 1)).updateImage();
-		
+				singleCell.getCards().get(singleCell.getCards().size() - 1))
+				.updateImage();
+
 		g.drawImage(
 				CardComponent.cardsMapping.get(
 						singleCell.getCards().get(

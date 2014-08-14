@@ -86,7 +86,7 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getCardAtLocation(Point p) {
+	public Card getCardAtLocation(Point p) {
 		if (acePile.getCards().isEmpty()) {
 			return null;
 		}
@@ -103,8 +103,7 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 			}
 
 			if (acePile.isValidCard(index)) {
-				return CardComponent.cardsMapping.get(acePile.getCards().get(
-						index));
+				return acePile.getCards().get(index);
 			}
 		}
 
@@ -122,11 +121,11 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getCardAtLocation(int index) {
+	public Card getCardAtLocation(int index) {
 		Card result = acePile.getCardAtLocation(index);
 
 		if (result != null) {
-			return (CardComponent.cardsMapping.get(result));
+			return (result);
 		}
 
 		return null;
@@ -187,10 +186,10 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public void addCard(CardComponent card) {
-		acePile.addCard(card.getCard());
-		card.setBounds(0, 0, 72, 96);
-		add(card, 0);
+	public void addCard(Card card) {
+		acePile.addCard(card);
+		CardComponent.cardsMapping.get(card).setBounds(0, 0, 72, 96);
+		add(CardComponent.cardsMapping.get(card), 0);
 	}
 
 	/**
@@ -201,7 +200,7 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public void addStack(CardStackLayeredPane stack) {
+	public void addStack(CardStack stack) {
 		while (stack.isEmpty() == false) {
 			addCard(stack.pop());
 		}
@@ -219,13 +218,12 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane getStack(CardComponent card) {
-		AcePileLayeredPane temp = new AcePileLayeredPane(acePile.getSuit());
-		int index = acePile.search(card.getCard());
+	public CardStack getStack(Card card) {
+		AcePile temp = new AcePile(acePile.getSuit());
+		int index = acePile.search(card);
 
 		for (int i = 0; i < index; i++) {
-			temp.push(CardComponent.cardsMapping.get(getCardAtLocation(acePile
-					.getCards().size() - i - 1)));
+			temp.push(getCardAtLocation(acePile.getCards().size() - i - 1));
 			getCardAtLocation(acePile.getCards().size() - i - 1).highlight();
 		}
 
@@ -244,13 +242,12 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane getStack(int numCards) {
-		AcePileLayeredPane temp = new AcePileLayeredPane(acePile.getSuit());
+	public CardStack getStack(int numCards) {
+		AcePile temp = new AcePile(acePile.getSuit());
 		int index = length() - numCards;
 
 		for (int i = length(); i > index; i--) {
-			temp.push(getCardAtLocation(acePile.getCards().size() - i - 1)
-					.clone());
+			temp.push(getCardAtLocation(acePile.getCards().size() - i - 1));
 			getCardAtLocation(acePile.getCards().size() - i - 1).highlight();
 		}
 
@@ -264,8 +261,8 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public synchronized CardComponent peek() {
-		return CardComponent.cardsMapping.get(acePile.peek());
+	public synchronized Card peek() {
+		return acePile.peek();
 	}
 
 	/**
@@ -275,11 +272,11 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public synchronized CardComponent pop() {
-		CardComponent card = CardComponent.cardsMapping.get(acePile.pop());
+	public synchronized Card pop() {
+		Card card = acePile.pop();
 
 		if (card != null) {
-			remove(card);
+			remove(CardComponent.cardsMapping.get(card));
 		}
 
 		return card;
@@ -295,16 +292,16 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane pop(CardStackLayeredPane stack) {
+	public CardStack pop(CardStack stack) {
 		/*
 		 * Temporary reverse pop of entire stack transfer.
 		 */
-		AcePileLayeredPane temp = new AcePileLayeredPane(acePile.getSuit());
+		AcePile temp = new AcePile(acePile.getSuit());
 
 		while (!stack.isEmpty()) {
-			CardComponent card = stack.pop();
-			temp.acePile.push(card.getCard());
-			remove(card);
+			Card card = stack.pop();
+			temp.push(card);
+			remove(CardComponent.cardsMapping.get(card));
 		}
 
 		return temp;
@@ -320,7 +317,7 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent push(CardComponent card) {
+	public Card push(Card card) {
 		addCard(card);
 
 		return card;
@@ -337,7 +334,7 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane push(CardStackLayeredPane stack) {
+	public CardStack push(CardStack stack) {
 		addStack(stack);
 
 		/*
@@ -353,8 +350,8 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getBottom() {
-		return CardComponent.cardsMapping.get(acePile.getBottom());
+	public Card getBottom() {
+		return acePile.getBottom();
 	}
 
 	/**
@@ -367,8 +364,8 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane undoStack(int numCards) {
-		AcePileLayeredPane temp = new AcePileLayeredPane(acePile.getSuit());
+	public CardStack undoStack(int numCards) {
+		AcePile temp = new AcePile(acePile.getSuit());
 
 		for (int i = 0; i < numCards; i++) {
 			temp.push(pop());
@@ -390,8 +387,8 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(CardComponent card) {
-		return (acePile.isValidMove(card.getCard()));
+	public boolean isValidMove(Card card) {
+		return (acePile.isValidMove(card));
 	}
 
 	/**
@@ -405,7 +402,7 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(CardStackLayeredPane stack) {
+	public boolean isValidMove(CardStack stack) {
 		return (acePile.isValidMove((CardStack) null));
 	}
 

@@ -73,7 +73,7 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getCardAtLocation(Point p) {
+	public Card getCardAtLocation(Point p) {
 		if (column.getCards().isEmpty()) {
 			return null;
 		}
@@ -90,8 +90,7 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 			}
 
 			if (column.isValidCard(index)) {
-				return CardComponent.cardsMapping.get(column.getCards().get(
-						index));
+				return column.getCards().get(index);
 			}
 		}
 
@@ -109,11 +108,11 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getCardAtLocation(int index) {
+	public Card getCardAtLocation(int index) {
 		Card result = column.getCardAtLocation(index);
 
 		if (result != null) {
-			return (CardComponent.cardsMapping.get(result));
+			return (result);
 		}
 
 		return null;
@@ -174,10 +173,10 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public void addCard(CardComponent card) {
-		column.addCard(card.getCard());
-		card.setBounds(0, 0, 72, 96);
-		add(card, 0);
+	public void addCard(Card card) {
+		column.addCard(card);
+		CardComponent.cardsMapping.get(card).setBounds(0, 0, 72, 96);
+		add(CardComponent.cardsMapping.get(card), 0);
 	}
 
 	/**
@@ -188,7 +187,7 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public void addStack(CardStackLayeredPane stack) {
+	public void addStack(CardStack stack) {
 		while (stack.isEmpty() == false) {
 			addCard(stack.pop());
 		}
@@ -206,13 +205,12 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public ColumnLayeredPane getStack(CardComponent card) {
-		ColumnLayeredPane temp = new ColumnLayeredPane();
-		int index = column.search(card.getCard());
+	public Column getStack(Card card) {
+		Column temp = new Column();
+		int index = column.search(card);
 
 		for (int i = 0; i < index; i++) {
-			temp.push(CardComponent.cardsMapping.get(getCardAtLocation(column
-					.getCards().size() - i - 1)));
+			temp.push(getCardAtLocation(column.getCards().size() - i - 1));
 			getCardAtLocation(column.getCards().size() - i - 1).highlight();
 		}
 
@@ -231,8 +229,8 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane getStack(int numCards) {
-		ColumnLayeredPane temp = new ColumnLayeredPane();
+	public CardStack getStack(int numCards) {
+		Column temp = new Column();
 		int index = length() - numCards;
 
 		for (int i = length(); i > index; i--) {
@@ -251,8 +249,8 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public synchronized CardComponent peek() {
-		return CardComponent.cardsMapping.get(column.peek());
+	public synchronized Card peek() {
+		return column.peek();
 	}
 
 	/**
@@ -262,11 +260,11 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public synchronized CardComponent pop() {
-		CardComponent card = CardComponent.cardsMapping.get(column.pop());
+	public synchronized Card pop() {
+		Card card = column.pop();
 
 		if (card != null) {
-			remove(card);
+			remove(CardComponent.cardsMapping.get(card));
 		}
 
 		return card;
@@ -282,16 +280,16 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane pop(CardStackLayeredPane stack) {
+	public CardStack pop(CardStack stack) {
 		/*
 		 * Temporary reverse pop of entire stack transfer.
 		 */
-		ColumnLayeredPane temp = new ColumnLayeredPane();
+		Column temp = new Column();
 
 		while (!stack.isEmpty()) {
-			CardComponent card = stack.pop();
-			temp.column.push(card.getCard());
-			remove(card);
+			Card card = stack.pop();
+			temp.push(card);
+			remove(CardComponent.cardsMapping.get(card));
 		}
 
 		return temp;
@@ -307,7 +305,7 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent push(CardComponent card) {
+	public Card push(Card card) {
 		addCard(card);
 
 		return card;
@@ -324,7 +322,7 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane push(CardStackLayeredPane stack) {
+	public CardStack push(CardStack stack) {
 		addStack(stack);
 
 		/*
@@ -340,8 +338,8 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardComponent getBottom() {
-		return CardComponent.cardsMapping.get(column.getBottom());
+	public Card getBottom() {
+		return column.getBottom();
 	}
 
 	/**
@@ -354,8 +352,8 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStackLayeredPane undoStack(int numCards) {
-		ColumnLayeredPane temp = new ColumnLayeredPane();
+	public CardStack undoStack(int numCards) {
+		Column temp = new Column();
 
 		for (int i = 0; i < numCards; i++) {
 			temp.push(pop());
@@ -377,8 +375,8 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(CardComponent card) {
-		return (column.isValidMove(card.getCard()));
+	public boolean isValidMove(Card card) {
+		return (column.isValidMove(card));
 	}
 
 	/**
@@ -392,19 +390,17 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(CardStackLayeredPane stack) {
-		if (stack instanceof AcePileLayeredPane) {
-			return (column.isValidMove(((AcePileLayeredPane) stack).acePile));
-		} else if (stack instanceof DealDeckLayeredPane) {
-			return (column.isValidMove(((DealDeckLayeredPane) stack).dealDeck));
-		} else if (stack instanceof DiscardPileLayeredPane) {
-			return (column
-					.isValidMove(((DiscardPileLayeredPane) stack).discardPile));
-		} else if (stack instanceof ColumnLayeredPane) {
-			return (column.isValidMove(((ColumnLayeredPane) stack).column));
-		} else if (stack instanceof SingleCellLayeredPane) {
-			return (column
-					.isValidMove(((SingleCellLayeredPane) stack).singleCell));
+	public boolean isValidMove(CardStack stack) {
+		if (stack instanceof AcePile) {
+			return (column.isValidMove(((AcePile) stack)));
+		} else if (stack instanceof DealDeck) {
+			return (column.isValidMove(((DealDeck) stack)));
+		} else if (stack instanceof DiscardPile) {
+			return (column.isValidMove(((DiscardPile) stack)));
+		} else if (stack instanceof Column) {
+			return (column.isValidMove(((Column) stack)));
+		} else if (stack instanceof SingleCell) {
+			return (column.isValidMove(((SingleCell) stack)));
 		}
 
 		return (false);

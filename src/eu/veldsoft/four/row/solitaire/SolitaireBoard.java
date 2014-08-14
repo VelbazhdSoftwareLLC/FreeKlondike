@@ -124,17 +124,22 @@ class SolitaireBoard {
 	private void repaintCards() {
 		for (int i = 0; i < columns.length; i++) {
 			columns[i].repaint();
+			columns[i].revalidate();
 		}
 		for (int i = 0; i < cells.length; i++) {
 			cells[i].repaint();
+			cells[i].revalidate();
 		}
 		for (int i = 0; i < acePiles.length; i++) {
 			acePiles[i].repaint();
+			acePiles[i].revalidate();
 		}
 		dealDeck.repaint();
+		dealDeck.revalidate();
 		discardPile.repaint();
+		discardPile.revalidate();
 	}
-	
+
 	/**
 	 * Sets the board's window name, size, location, close button option, makes
 	 * it unresizable and puts the logo on it.
@@ -182,7 +187,7 @@ class SolitaireBoard {
 				break;
 			}
 		}
-		
+
 		repaintCards();
 	}
 
@@ -212,6 +217,7 @@ class SolitaireBoard {
 			cards.removeLast();
 		}
 
+		dealDeck.getDealDeck().setDeck(cards);
 		dealDeck.getDealDeck().setDrawCount(newDrawCount);
 		dealDeck.getDealDeck().setDifficulty(newDifficulty);
 
@@ -223,8 +229,6 @@ class SolitaireBoard {
 			difficulty = newDifficulty;
 		}
 
-		dealDeck.getDealDeck().setDeck(cards);
-		
 		repaintCards();
 	}
 
@@ -263,7 +267,8 @@ class SolitaireBoard {
 			} else if (8 <= pileNumber && pileNumber <= 11) {
 				acePiles[pileNumber % 4].acePile.addCard(cards.get(cardNumber));
 			} else if (pileNumber == 12) {
-				CardComponent card = CardComponent.cardsMapping.get( cards.get(cardNumber) );
+				CardComponent card = CardComponent.cardsMapping.get(cards
+						.get(cardNumber));
 				card.setFaceDown();
 				dealDeck.dealDeck.addCard(card.getCard());
 			} else if (pileNumber == 13) {
@@ -272,7 +277,7 @@ class SolitaireBoard {
 		}
 
 		discardPile.getDiscardPile().setView(numViewableCards);
-		
+
 		repaintCards();
 	}
 
@@ -307,7 +312,7 @@ class SolitaireBoard {
 		while (discardPile.getDiscardPile().isEmpty() == false) {
 			discardPile.pop();
 		}
-		
+
 		repaintCards();
 	}
 
@@ -330,7 +335,7 @@ class SolitaireBoard {
 		destinationList.clear();
 		numCards.clear();
 		numCardsInDiscardView.clear();
-		
+
 		repaintCards();
 	}
 
@@ -1028,8 +1033,10 @@ class SolitaireBoard {
 				}
 			}
 
-			((Component) tempSource).repaint();
-		} else if (!(sourceList.getLast() instanceof DealDeckLayeredPane)) {
+			((Component) CardComponent.cardsMapping.get(tempSource)).repaint();
+			((Component) CardComponent.cardsMapping.get(tempSource))
+					.revalidate();
+		} else if (!(sourceList.getLast() instanceof DealDeck)) {
 			CardStackLayeredPane tempSource = sourceList.getLast();
 			CardStackLayeredPane tempDest = destinationList.getLast();
 			int num = numCards.getLast();
@@ -1043,19 +1050,22 @@ class SolitaireBoard {
 			if (num == 1) {
 				tempSource.addCard(tempDest.pop());
 			} else {
-				CardStackLayeredPane temp = tempDest.undoStack(num);
+				CardStack temp = tempDest.undoStack(num);
 				tempSource.addStack(temp);
 			}
 
 			discardPile.getDiscardPile().setView(numDiscard);
-			((Component) tempSource).repaint();
-			((Component) tempDest).repaint();
+			((Component) CardComponent.cardsMapping.get(tempSource)).repaint();
+			((Component) CardComponent.cardsMapping.get(tempSource))
+					.revalidate();
+			((Component) CardComponent.cardsMapping.get(tempDest)).repaint();
+			((Component) CardComponent.cardsMapping.get(tempDest)).revalidate();
 		}
 		/*
 		 * The last draw from the deck didn't reset the discard pile to make it
 		 * an empty pile.
 		 */
-		else if (sourceList.getLast() instanceof DealDeckLayeredPane
+		else if (sourceList.getLast() instanceof DealDeck
 				&& !destinationList.getLast().isEmpty()) {
 			int num = numCards.getLast();
 			int numDiscard = numCardsInDiscardView.getLast();
@@ -1066,20 +1076,21 @@ class SolitaireBoard {
 			numCardsInDiscardView.removeLast();
 
 			for (int i = 0; i < num; i++) {
-				CardComponent card = CardComponent.cardsMapping.get(discardPile
-						.getDiscardPile().undoPop());
+				Card card = discardPile.getDiscardPile().undoPop();
 				card.setFaceDown();
 				dealDeck.addCard(card);
 			}
 
 			discardPile.getDiscardPile().setView(numDiscard);
 			dealDeck.repaint();
+			dealDeck.revalidate();
 			discardPile.repaint();
+			discardPile.revalidate();
 		}
 		/*
 		 * Last move was a reset on the discard pile.
 		 */
-		else if (sourceList.getLast() instanceof DealDeckLayeredPane) {
+		else if (sourceList.getLast() instanceof DealDeck) {
 			dealDeck.getDealDeck().undoPop();
 
 			int numDiscard = numCardsInDiscardView.getLast();
@@ -1088,6 +1099,7 @@ class SolitaireBoard {
 			discardPile.repaint();
 			discardPile.revalidate();
 			dealDeck.repaint();
+			dealDeck.revalidate();
 
 			sourceList.removeLast();
 			destinationList.removeLast();
@@ -1255,7 +1267,7 @@ class SolitaireBoard {
 							&& (destination instanceof ColumnLayeredPane)
 							&& ((ColumnLayeredPane) destination).getColumn()
 									.isEmpty()
-							&& (source.getBottom().getCard().getRank()
+							&& (source.getBottom().getRank()
 									.equals(CardRank.KING) == false || source instanceof SingleCellLayeredPane)) {
 						for (int k = 0; k < temp.length(); k++) {
 							CardComponent card = CardComponent.cardsMapping
