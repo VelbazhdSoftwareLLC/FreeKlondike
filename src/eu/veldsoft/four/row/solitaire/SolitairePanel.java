@@ -52,8 +52,8 @@ class SolitairePanel extends JPanel {
 	 */
 	public SolitairePanel() {
 		URL imageURL = this.getClass().getResource(
-				SolitaireFrame.IMAGES_PATH + "/backgrounds/background"
-						+ SolitaireFrame.backgroundNumber + ".jpg");
+				SolitaireBoardFrame.IMAGES_PATH + "/backgrounds/background"
+						+ SolitaireBoardFrame.backgroundNumber + ".jpg");
 
 		if (imageURL != null) {
 			background = new ImageIcon(imageURL).getImage();
@@ -70,10 +70,10 @@ class SolitairePanel extends JPanel {
 	 * @author Todor Balabanov
 	 */
 	public void changeBackground(int back) {
-		SolitaireFrame.backgroundNumber = back;
+		SolitaireBoardFrame.backgroundNumber = back;
 
 		URL imageURL = this.getClass().getResource(
-				SolitaireFrame.IMAGES_PATH + "/backgrounds/background" + back
+				SolitaireBoardFrame.IMAGES_PATH + "/backgrounds/background" + back
 						+ ".jpg");
 
 		if (imageURL != null) {

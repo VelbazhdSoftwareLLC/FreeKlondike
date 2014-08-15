@@ -48,7 +48,7 @@ import javax.swing.UIManager;
  * 
  * @author Matt Stephen
  */
-public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
+public class FourRowSolitaire extends SolitaireBoardFrame implements ActionListener {
 
 	/**
 	 * 

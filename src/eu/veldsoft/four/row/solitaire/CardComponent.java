@@ -139,12 +139,12 @@ class CardComponent extends JComponent {
 	 * @author Todor Balabanov
 	 */
 	private CardComponent(Card card) {
-		if (SolitaireFrame.deckNumber >= 1
-				&& SolitaireFrame.deckNumber <= ChangeAppearance.NUM_DECKS) {
-			cardBack = SolitaireFrame.IMAGES_PATH + "/cardbacks/cardback"
-					+ SolitaireFrame.deckNumber + ".png";
+		if (SolitaireBoardFrame.deckNumber >= 1
+				&& SolitaireBoardFrame.deckNumber <= ChangeAppearance.NUM_DECKS) {
+			cardBack = SolitaireBoardFrame.IMAGES_PATH + "/cardbacks/cardback"
+					+ SolitaireBoardFrame.deckNumber + ".png";
 		} else {
-			cardBack = SolitaireFrame.IMAGES_PATH + "/cardbacks/cardback3.png";
+			cardBack = SolitaireBoardFrame.IMAGES_PATH + "/cardbacks/cardback3.png";
 		}
 
 		this.card = card;
@@ -256,8 +256,8 @@ class CardComponent extends JComponent {
 	 * @author Todor Balabanov
 	 */
 	private void initializeCardImageString() {
-		cardImageString = SolitaireFrame.IMAGES_PATH + "/cardfaces/";
-		cardHighlighted = SolitaireFrame.IMAGES_PATH + "/highlightedfaces/";
+		cardImageString = SolitaireBoardFrame.IMAGES_PATH + "/cardfaces/";
+		cardHighlighted = SolitaireBoardFrame.IMAGES_PATH + "/highlightedfaces/";
 
 		if (card.getSuit().equals(CardSuit.SPADES)) {
 			cardImageString += "s";

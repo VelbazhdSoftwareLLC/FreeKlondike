@@ -43,7 +43,7 @@ public class GameActivity extends Activity {
 	/**
 	 * 
 	 */
-	private SolitaireBoard board = null;// new SolitaireBoard();
+	private SolitaireBoard board = new SolitaireBoard();
 
 	/**
 	 * On creation.
@@ -86,9 +86,9 @@ public class GameActivity extends Activity {
 					new DialogInterface.OnClickListener() {
 
 						public void onClick(DialogInterface dialog, int which) {
-							// board.recordGame(GameState.GAME_LOST, 0, 0, 0, 0,
-							// false);
-							// board.newGame(GameState.GAME_LOST);
+							board.recordGame(GameState.GAME_LOST, 0, 0, 0, 0,
+									false);
+							board.newGame(GameState.GAME_LOST);
 							dialog.dismiss();
 						}
 
@@ -107,12 +107,12 @@ public class GameActivity extends Activity {
 			alert.show();
 			break;
 		case R.id.undo_last_move:
-			// board.undoMove();
+			board.undoMove();
 			break;
 		case R.id.hint:
-			// String hint[] = board.getHint();
-			// Toast.makeText(GameActivity.this, hint[0] + " " + hint[1],
-			// Toast.LENGTH_SHORT).show();
+			String hint[] = board.getHint();
+			Toast.makeText(GameActivity.this, hint[0] + " " + hint[1],
+					Toast.LENGTH_SHORT).show();
 			break;
 		}
 		return true;

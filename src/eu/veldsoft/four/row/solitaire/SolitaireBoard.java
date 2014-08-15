@@ -19,7 +19,9 @@
 
 package eu.veldsoft.four.row.solitaire;
 
+//TODO Remove AWT and Swing.
 import java.awt.Component;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;

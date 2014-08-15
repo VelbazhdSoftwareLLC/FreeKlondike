@@ -43,7 +43,7 @@ import javax.swing.event.MouseInputAdapter;
  * 
  * @author Todor Balabanov
  */
-class SolitaireFrame extends JFrame {
+class SolitaireBoardFrame extends JFrame {
 
 	/**
 	 * Images resources path.
@@ -73,7 +73,7 @@ class SolitaireFrame extends JFrame {
 
 			int save = JOptionPane
 					.showConfirmDialog(
-							SolitaireFrame.this,
+							SolitaireBoardFrame.this,
 							"Closing without saving will result "
 									+ "in a loss, would you like to save the current game?",
 							"Save Game?", JOptionPane.YES_NO_OPTION);
@@ -191,7 +191,7 @@ class SolitaireFrame extends JFrame {
 					public void windowClosing(WindowEvent e) {
 						top.setVisible(false);
 						int playAgain = JOptionPane.showConfirmDialog(
-								SolitaireFrame.this, "Play Again?", "You Won!",
+								SolitaireBoardFrame.this, "Play Again?", "You Won!",
 								JOptionPane.YES_NO_OPTION);
 
 						if (playAgain == JOptionPane.YES_OPTION) {
@@ -216,7 +216,7 @@ class SolitaireFrame extends JFrame {
 				}
 			}
 
-			int playAgain = JOptionPane.showConfirmDialog(SolitaireFrame.this,
+			int playAgain = JOptionPane.showConfirmDialog(SolitaireBoardFrame.this,
 					"Play Again?", "You Won!", JOptionPane.YES_NO_OPTION);
 
 			if (playAgain == JOptionPane.YES_OPTION) {
@@ -636,7 +636,7 @@ class SolitaireFrame extends JFrame {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public SolitaireFrame() throws HeadlessException {
+	public SolitaireBoardFrame() throws HeadlessException {
 		super();
 		setTitle("Four Row Solitaire");
 		setSize(806, 700);
@@ -644,7 +644,7 @@ class SolitaireFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setIconImage(new ImageIcon(getClass().getResource(
-				SolitaireFrame.IMAGES_PATH + "/logo.png")).getImage());
+				SolitaireBoardFrame.IMAGES_PATH + "/logo.png")).getImage());
 
 		setVisible(true);
 
