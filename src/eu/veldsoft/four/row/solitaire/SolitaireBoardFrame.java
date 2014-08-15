@@ -172,7 +172,7 @@ class SolitaireBoardFrame extends JFrame {
 		 */
 		private void checkWin() {
 			for (int i = 0; i < board.acePiles.length; i++) {
-				if (board.acePiles[i].getAcePile().isFull() == false) {
+				if (board.acePiles[i].isFull() == false) {
 					return;
 				}
 			}
@@ -191,8 +191,8 @@ class SolitaireBoardFrame extends JFrame {
 					public void windowClosing(WindowEvent e) {
 						top.setVisible(false);
 						int playAgain = JOptionPane.showConfirmDialog(
-								SolitaireBoardFrame.this, "Play Again?", "You Won!",
-								JOptionPane.YES_NO_OPTION);
+								SolitaireBoardFrame.this, "Play Again?",
+								"You Won!", JOptionPane.YES_NO_OPTION);
 
 						if (playAgain == JOptionPane.YES_OPTION) {
 							board.recordGame(GameState.GAME_WON, deckNumber,
@@ -216,8 +216,9 @@ class SolitaireBoardFrame extends JFrame {
 				}
 			}
 
-			int playAgain = JOptionPane.showConfirmDialog(SolitaireBoardFrame.this,
-					"Play Again?", "You Won!", JOptionPane.YES_NO_OPTION);
+			int playAgain = JOptionPane.showConfirmDialog(
+					SolitaireBoardFrame.this, "Play Again?", "You Won!",
+					JOptionPane.YES_NO_OPTION);
 
 			if (playAgain == JOptionPane.YES_OPTION) {
 				board.recordGame(GameState.GAME_WON, deckNumber,
@@ -243,10 +244,9 @@ class SolitaireBoardFrame extends JFrame {
 		public void mousePressed(MouseEvent e) {
 			if (e.getButton() == MouseEvent.BUTTON3
 					&& e.getSource() == board.discardPile) {
-				if (board.discardPile.getDiscardPile().getNumViewableCards() == 1
-						|| (board.discardPile.getDiscardPile()
-								.getNumViewableCards() == 0 && !board.discardPile
-								.getDiscardPile().isEmpty())) {
+				if (board.discardPile.getNumViewableCards() == 1
+						|| (board.discardPile.getNumViewableCards() == 0 && !board.discardPile
+								.isEmpty())) {
 					tempCard = board.discardPile.pop();
 					board.discardPile.repaint();
 					board.discardPile.revalidate();
@@ -313,18 +313,14 @@ class SolitaireBoardFrame extends JFrame {
 				}
 
 				for (int i = 0; i < board.acePiles.length; i++) {
-					if (!board.acePiles[i].getAcePile().isEmpty()
-							&& source
-									.peek()
-									.getSuit()
-									.equals(board.acePiles[i].getAcePile()
-											.peek().getSuit())
+					if (!board.acePiles[i].isEmpty()
+							&& source.peek().getSuit()
+									.equals(board.acePiles[i].peek().getSuit())
 							&& source
 									.peek()
 									.getRank()
 									.isLessByOneThan(
-											(board.acePiles[i].getAcePile()
-													.peek().getRank()))) {
+											(board.acePiles[i].peek().getRank()))) {
 						Card card = source.pop();
 						card.unhighlight();
 						board.acePiles[i].push(card);
@@ -348,7 +344,7 @@ class SolitaireBoardFrame extends JFrame {
 				}
 
 				for (int i = 0; i < board.cells.length; i++) {
-					if (board.cells[i].getSingleCell().isEmpty()) {
+					if (board.cells[i].isEmpty()) {
 						Card card = source.pop();
 						card.unhighlight();
 						board.cells[i].push(card);
@@ -422,20 +418,20 @@ class SolitaireBoardFrame extends JFrame {
 					}
 
 					board.numCardsInDiscardView.add(board.discardPile
-							.getDiscardPile().getNumViewableCards());
+							.getNumViewableCards());
 					clickedCard = source.pop();
 
 					if (clickedCard != null) {
 						board.sourceList.add(board.dealDeck);
 						board.destinationList.add(board.discardPile);
-						board.numCards.add(board.discardPile.getDiscardPile()
+						board.numCards.add(board.discardPile
 								.getNumViewableCards());
 					}
 					/*
 					 * The deck was reset but the player hasn't used up the
 					 * times through the deck.
 					 */
-					else if (board.dealDeck.getDealDeck().hasDealsLeft()) {
+					else if (board.dealDeck.hasDealsLeft()) {
 						board.sourceList.add(board.dealDeck);
 						board.destinationList.add(board.discardPile);
 						board.numCards.add(0);
@@ -447,7 +443,7 @@ class SolitaireBoardFrame extends JFrame {
 				}
 
 				board.numCardsInDiscardView.add(board.discardPile
-						.getDiscardPile().getNumViewableCards());
+						.getNumViewableCards());
 				clickedCard = source.getCardAtLocation(e.getPoint());
 
 				if (clickedCard != null) {
@@ -486,8 +482,7 @@ class SolitaireBoardFrame extends JFrame {
 						board.destinationList.add(destination);
 
 						if (destination instanceof AcePileLayeredPane
-								&& clickedCard.getRank()
-										.equals(CardRank.KING)) {
+								&& clickedCard.getRank().equals(CardRank.KING)) {
 							repaint();
 							revalidate();
 							checkWin();
@@ -514,7 +509,8 @@ class SolitaireBoardFrame extends JFrame {
 											.getSuit());
 						} else if (destination instanceof DealDeckLayeredPane) {
 							stack = new DealDeck(
-									((DealDeckLayeredPane) destination).discard.getDiscardPile());
+									((DealDeckLayeredPane) destination).discard
+											.getDiscardPile());
 						} else if (destination instanceof DiscardPileLayeredPane) {
 							stack = new DiscardPile();
 						} else if (destination instanceof ColumnLayeredPane) {
@@ -626,6 +622,30 @@ class SolitaireBoardFrame extends JFrame {
 	 * 
 	 */
 	protected WindowListener wl = new MyWindowListener();
+
+	/**
+	 * Repaint all card stacks.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	private void repaintCards() {
+		for (int i = 0; i < columns.length; i++) {
+			columns[i].repaint();
+			columns[i].revalidate();
+		}
+		for (int i = 0; i < cells.length; i++) {
+			cells[i].repaint();
+			cells[i].revalidate();
+		}
+		for (int i = 0; i < acePiles.length; i++) {
+			acePiles[i].repaint();
+			acePiles[i].revalidate();
+		}
+		dealDeck.repaint();
+		dealDeck.revalidate();
+		discardPile.repaint();
+		discardPile.revalidate();
+	}
 
 	/**
 	 * 
@@ -817,6 +837,16 @@ class SolitaireBoardFrame extends JFrame {
 	}
 
 	/**
+	 * Clears the board.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	private void clearBoard() {
+		board.clearBoard();
+		repaintCards();
+	}
+
+	/**
 	 * For starting a new game.
 	 * 
 	 * @param winOrLoss
@@ -844,6 +874,7 @@ class SolitaireBoardFrame extends JFrame {
 		board.recordGame(GameState.GAME_LOST, deckNumber, backgroundNumber,
 				timerCount, timerToRunNextGame, timerToRun);
 		board.newGame(winOrLoss);
+		repaintCards();
 		dealOutBoard();
 	}
 
@@ -894,6 +925,7 @@ class SolitaireBoardFrame extends JFrame {
 	private void dealOutCustomBoard(LinkedList<Integer> numbers,
 			int numViewableCards) {
 		board.dealOutCustomBoard(numbers, numViewableCards);
+		repaintCards();
 
 		if (timerToRunNextGame == 1) {
 			timer.stop();
@@ -923,6 +955,7 @@ class SolitaireBoardFrame extends JFrame {
 	 */
 	public void createBoard(LinkedList<Integer> cards, int numViewableCards) {
 		board.createBoard(cards, numViewableCards);
+		repaintCards();
 
 		mainPanel = new SolitairePanel();
 		mainPanel.setLayout(new SolitaireLayout());
@@ -997,6 +1030,7 @@ class SolitaireBoardFrame extends JFrame {
 			timerToRun = false;
 		}
 
+		repaintCards();
 		mainPanel.revalidate();
 	}
 
