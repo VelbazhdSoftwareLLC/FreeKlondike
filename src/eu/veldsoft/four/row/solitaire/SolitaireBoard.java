@@ -77,31 +77,31 @@ class SolitaireBoard {
 	 * The four columns for the main playing field.
 	 */
 	// TODO Should be private.
-	Column[] columns = new Column[4];
+	Column[] columns = {null, null, null, null};
 
 	/**
 	 * The discard pile.
 	 */
 	// TODO Should be private.
-	DiscardPile discardPile = new DiscardPile();
+	DiscardPile discardPile = null;
 
 	/**
 	 * The deal pile.
 	 */
 	// TODO Should be private.
-	DealDeck dealDeck = new DealDeck(discardPile);
+	DealDeck dealDeck = null;
 
 	/**
 	 * The four ace piles (to stack Ace - King of a single suit).
 	 */
 	// TODO Should be private.
-	AcePile[] acePiles = new AcePile[4];
+	AcePile[] acePiles = {null, null, null, null};
 
 	/**
 	 * The four top individual cells.
 	 */
 	// TODO Should be private.
-	SingleCell[] cells = new SingleCell[4];
+	SingleCell[] cells = {null, null, null, null};
 
 	/**
 	 * Source.
@@ -996,10 +996,6 @@ class SolitaireBoard {
 							.unhighlight();
 				}
 			}
-
-			((Component) CardComponent.cardsMapping.get(tempSource)).repaint();
-			((Component) CardComponent.cardsMapping.get(tempSource))
-					.revalidate();
 		} else if (!(sourceList.getLast() instanceof DealDeck)) {
 			CardStack tempSource = sourceList.getLast();
 			CardStack tempDest = destinationList.getLast();
@@ -1019,11 +1015,6 @@ class SolitaireBoard {
 			}
 
 			discardPile.setView(numDiscard);
-			((Component) CardComponent.cardsMapping.get(tempSource)).repaint();
-			((Component) CardComponent.cardsMapping.get(tempSource))
-					.revalidate();
-			((Component) CardComponent.cardsMapping.get(tempDest)).repaint();
-			((Component) CardComponent.cardsMapping.get(tempDest)).revalidate();
 		}
 		/*
 		 * The last draw from the deck didn't reset the discard pile to make it
@@ -1046,24 +1037,15 @@ class SolitaireBoard {
 			}
 
 			discardPile.setView(numDiscard);
-			dealDeck.repaint();
-			dealDeck.revalidate();
-			discardPile.repaint();
-			discardPile.revalidate();
 		}
 		/*
 		 * Last move was a reset on the discard pile.
 		 */
 		else if (sourceList.getLast() instanceof DealDeck) {
-			dealDeck.getDealDeck().undoPop();
+			dealDeck.undoPop();
 
 			int numDiscard = numCardsInDiscardView.getLast();
-			discardPile.getDiscardPile().setView(numDiscard);
-
-			discardPile.repaint();
-			discardPile.revalidate();
-			dealDeck.repaint();
-			dealDeck.revalidate();
+			discardPile.setView(numDiscard);
 
 			sourceList.removeLast();
 			destinationList.removeLast();

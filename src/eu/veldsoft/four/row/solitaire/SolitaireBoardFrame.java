@@ -46,11 +46,6 @@ import javax.swing.event.MouseInputAdapter;
 class SolitaireBoardFrame extends JFrame {
 
 	/**
-	 * Images resources path.
-	 */
-	final static String IMAGES_PATH = "images/vanya";
-
-	/**
 	 * Manages the window events.
 	 * 
 	 * @author Todor Balabanov
@@ -248,8 +243,8 @@ class SolitaireBoardFrame extends JFrame {
 						|| (board.discardPile.getNumViewableCards() == 0 && !board.discardPile
 								.isEmpty())) {
 					tempCard = board.discardPile.pop();
-					board.discardPile.repaint();
-					board.discardPile.revalidate();
+					discardPile.repaint();
+					discardPile.revalidate();
 					rightClicked = true;
 				}
 			}
@@ -266,8 +261,8 @@ class SolitaireBoardFrame extends JFrame {
 		public void mouseReleased(MouseEvent e) {
 			if (e.getButton() == MouseEvent.BUTTON3 && tempCard != null) {
 				board.discardPile.push(tempCard);
-				board.discardPile.repaint();
-				board.discardPile.revalidate();
+				discardPile.repaint();
+				discardPile.revalidate();
 				rightClicked = false;
 				tempCard = null;
 			}
@@ -282,8 +277,8 @@ class SolitaireBoardFrame extends JFrame {
 		 * @author Todor Balabanov
 		 */
 		public void mouseClicked(MouseEvent e) {
-			board.discardPile.repaint();
-			board.discardPile.revalidate();
+			discardPile.repaint();
+			discardPile.revalidate();
 
 			if (!timer.isRunning() && timerToRun) {
 				timer.start();
@@ -295,7 +290,7 @@ class SolitaireBoardFrame extends JFrame {
 					&& singleCardSelected) {
 				if (source.peek().getRank().equals(CardRank.ACE)) {
 					Card card = source.pop();
-					AcePileLayeredPane pile = board.acePiles[card.getSuit()
+					AcePileLayeredPane pile = acePiles[card.getSuit()
 							.getIndex()];
 					card.unhighlight();
 
@@ -564,6 +559,11 @@ class SolitaireBoardFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	/**
+	 * Images resources path.
+	 */
+	final static String IMAGES_PATH = "images/vanya";
+
+	/**
 	 * Find better OOP modeling alternative! Use enumerated type for card back.
 	 */
 	static int deckNumber = 3;
@@ -577,6 +577,31 @@ class SolitaireBoardFrame extends JFrame {
 	 * Solitaire Board.
 	 */
 	private SolitaireBoard board = new SolitaireBoard();
+
+	/**
+	 * The four columns for the main playing field.
+	 */
+	private ColumnLayeredPane[] columns = new ColumnLayeredPane[4];
+
+	/**
+	 * The discard pile.
+	 */
+	private DiscardPileLayeredPane discardPile = new DiscardPileLayeredPane();
+
+	/**
+	 * The deal pile.
+	 */
+	private DealDeckLayeredPane dealDeck = new DealDeckLayeredPane(discardPile);
+
+	/**
+	 * The four ace piles (to stack Ace - King of a single suit).
+	 */
+	private AcePileLayeredPane[] acePiles = new AcePileLayeredPane[4];
+
+	/**
+	 * The four top individual cells.
+	 */
+	private SingleCellLayeredPane[] cells = new SingleCellLayeredPane[4];
 
 	/**
 	 * Timer.
@@ -832,8 +857,30 @@ class SolitaireBoardFrame extends JFrame {
 				ml.temp = null;
 			}
 		}
-
+		
+		CardStack tempSource = null;
+		CardStack tempDest = null;
+		if (board.sourceList.size() > board.destinationList.size()) {
+			tempSource = board.sourceList.getLast();
+		} else if (!(board.sourceList.getLast() instanceof DealDeck)) {
+			tempSource = board.sourceList.getLast();
+			tempDest = board.destinationList.getLast();
+		}
+		
 		board.undoMove();
+		
+		dealDeck.repaint();
+		dealDeck.revalidate();
+		discardPile.repaint();
+		discardPile.revalidate();
+		if(tempSource != null) {
+			((Component) CardComponent.cardsMapping.get(tempSource)).repaint();
+			((Component) CardComponent.cardsMapping.get(tempSource)).revalidate();
+		}
+		if(tempDest != null) {
+			((Component) CardComponent.cardsMapping.get(tempDest)).repaint();
+			((Component) CardComponent.cardsMapping.get(tempDest)).revalidate();
+		}
 	}
 
 	/**
@@ -963,37 +1010,37 @@ class SolitaireBoardFrame extends JFrame {
 		mainPanel.changeBackground(backgroundNumber);
 
 		for (int i = 0; i < board.columns.length; i++) {
-			board.columns[i].addMouseListener(ml);
+			columns[i].addMouseListener(ml);
 		}
 
-		mainPanel.add(board.columns[0], SolitaireLayout.COLUMN_ONE);
-		mainPanel.add(board.columns[1], SolitaireLayout.COLUMN_TWO);
-		mainPanel.add(board.columns[2], SolitaireLayout.COLUMN_THREE);
-		mainPanel.add(board.columns[3], SolitaireLayout.COLUMN_FOUR);
+		mainPanel.add(columns[0], SolitaireLayout.COLUMN_ONE);
+		mainPanel.add(columns[1], SolitaireLayout.COLUMN_TWO);
+		mainPanel.add(columns[2], SolitaireLayout.COLUMN_THREE);
+		mainPanel.add(columns[3], SolitaireLayout.COLUMN_FOUR);
 
 		for (int i = 0; i < board.cells.length; i++) {
-			board.cells[i].addMouseListener(ml);
+			cells[i].addMouseListener(ml);
 		}
 
-		mainPanel.add(board.cells[0], SolitaireLayout.CELL_ONE);
-		mainPanel.add(board.cells[1], SolitaireLayout.CELL_TWO);
-		mainPanel.add(board.cells[2], SolitaireLayout.CELL_THREE);
-		mainPanel.add(board.cells[3], SolitaireLayout.CELL_FOUR);
+		mainPanel.add(cells[0], SolitaireLayout.CELL_ONE);
+		mainPanel.add(cells[1], SolitaireLayout.CELL_TWO);
+		mainPanel.add(cells[2], SolitaireLayout.CELL_THREE);
+		mainPanel.add(cells[3], SolitaireLayout.CELL_FOUR);
 
-		board.dealDeck.addMouseListener(ml);
-		board.discardPile.addMouseListener(ml);
+		dealDeck.addMouseListener(ml);
+		discardPile.addMouseListener(ml);
 
-		mainPanel.add(board.dealDeck, SolitaireLayout.DECK);
-		mainPanel.add(board.discardPile, SolitaireLayout.DISCARD_PILE);
+		mainPanel.add(dealDeck, SolitaireLayout.DECK);
+		mainPanel.add(discardPile, SolitaireLayout.DISCARD_PILE);
 
 		for (int i = 0; i < board.acePiles.length; i++) {
-			board.acePiles[i].addMouseListener(ml);
+			acePiles[i].addMouseListener(ml);
 		}
 
-		mainPanel.add(board.acePiles[0], SolitaireLayout.SPADES_ACE_PILE);
-		mainPanel.add(board.acePiles[1], SolitaireLayout.CLUBS_ACE_PILE);
-		mainPanel.add(board.acePiles[2], SolitaireLayout.DIAMONDS_ACE_PILE);
-		mainPanel.add(board.acePiles[3], SolitaireLayout.HEARTS_ACE_PILE);
+		mainPanel.add(acePiles[0], SolitaireLayout.SPADES_ACE_PILE);
+		mainPanel.add(acePiles[1], SolitaireLayout.CLUBS_ACE_PILE);
+		mainPanel.add(acePiles[2], SolitaireLayout.DIAMONDS_ACE_PILE);
+		mainPanel.add(acePiles[3], SolitaireLayout.HEARTS_ACE_PILE);
 
 		statusBar.add(timerLabel);
 
