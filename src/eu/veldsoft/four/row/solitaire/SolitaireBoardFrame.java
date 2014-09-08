@@ -295,7 +295,7 @@ class SolitaireBoardFrame extends JFrame {
 					card.unhighlight();
 
 					pile.push(card);
-					board.destinationList.add(pile);
+					board.destinationList.add(pile.acePile);
 
 					hasSelected = false;
 					((Component) CardComponent.cardsMapping.get(source))
@@ -445,7 +445,22 @@ class SolitaireBoardFrame extends JFrame {
 					hasSelected = true;
 					temp = source.getStack(clickedCard);
 
-					board.sourceList.add(source);
+					if (source instanceof AcePileLayeredPane) {
+						board.sourceList
+								.add(((AcePileLayeredPane) source).acePile);
+					} else if (source instanceof ColumnLayeredPane) {
+						board.sourceList
+								.add(((ColumnLayeredPane) source).column);
+					} else if (source instanceof DealDeckLayeredPane) {
+						board.sourceList
+								.add(((DealDeckLayeredPane) source).dealDeck);
+					} else if (source instanceof DiscardPileLayeredPane) {
+						board.sourceList
+								.add(((DiscardPileLayeredPane) source).discardPile);
+					} else if (source instanceof SingleCellLayeredPane) {
+						board.sourceList
+								.add(((SingleCellLayeredPane) source).singleCell);
+					}
 					board.numCards.add(temp.length());
 
 					if (temp.length() > 1) {
@@ -474,7 +489,22 @@ class SolitaireBoardFrame extends JFrame {
 						/*
 						 * If move is valid, add destination info for undo.
 						 */
-						board.destinationList.add(destination);
+						if (source instanceof AcePileLayeredPane) {
+							board.destinationList
+									.add(((AcePileLayeredPane) destination).acePile);
+						} else if (source instanceof ColumnLayeredPane) {
+							board.destinationList
+									.add(((ColumnLayeredPane) destination).column);
+						} else if (source instanceof DealDeckLayeredPane) {
+							board.destinationList
+									.add(((DealDeckLayeredPane) destination).dealDeck);
+						} else if (source instanceof DiscardPileLayeredPane) {
+							board.destinationList
+									.add(((DiscardPileLayeredPane) destination).discardPile);
+						} else if (source instanceof SingleCellLayeredPane) {
+							board.destinationList
+									.add(((SingleCellLayeredPane) destination).singleCell);
+						}
 
 						if (destination instanceof AcePileLayeredPane
 								&& clickedCard.getRank().equals(CardRank.KING)) {
@@ -526,7 +556,22 @@ class SolitaireBoardFrame extends JFrame {
 						/*
 						 * If move is valid, add destination info for undo.
 						 */
-						board.destinationList.add(destination);
+						if (source instanceof AcePileLayeredPane) {
+							board.destinationList
+									.add(((AcePileLayeredPane) destination).acePile);
+						} else if (source instanceof ColumnLayeredPane) {
+							board.destinationList
+									.add(((ColumnLayeredPane) destination).column);
+						} else if (source instanceof DealDeckLayeredPane) {
+							board.destinationList
+									.add(((DealDeckLayeredPane) destination).dealDeck);
+						} else if (source instanceof DiscardPileLayeredPane) {
+							board.destinationList
+									.add(((DiscardPileLayeredPane) destination).discardPile);
+						} else if (source instanceof SingleCellLayeredPane) {
+							board.destinationList
+									.add(((SingleCellLayeredPane) destination).singleCell);
+						}
 					} else {
 						for (int i = temp.length() - 1; i >= 0; i--) {
 							source.getCardAtLocation(source.length() - i - 1)
@@ -857,7 +902,7 @@ class SolitaireBoardFrame extends JFrame {
 				ml.temp = null;
 			}
 		}
-		
+
 		CardStack tempSource = null;
 		CardStack tempDest = null;
 		if (board.sourceList.size() > board.destinationList.size()) {
@@ -866,18 +911,19 @@ class SolitaireBoardFrame extends JFrame {
 			tempSource = board.sourceList.getLast();
 			tempDest = board.destinationList.getLast();
 		}
-		
+
 		board.undoMove();
-		
+
 		dealDeck.repaint();
 		dealDeck.revalidate();
 		discardPile.repaint();
 		discardPile.revalidate();
-		if(tempSource != null) {
+		if (tempSource != null) {
 			((Component) CardComponent.cardsMapping.get(tempSource)).repaint();
-			((Component) CardComponent.cardsMapping.get(tempSource)).revalidate();
+			((Component) CardComponent.cardsMapping.get(tempSource))
+					.revalidate();
 		}
-		if(tempDest != null) {
+		if (tempDest != null) {
 			((Component) CardComponent.cardsMapping.get(tempDest)).repaint();
 			((Component) CardComponent.cardsMapping.get(tempDest)).revalidate();
 		}
