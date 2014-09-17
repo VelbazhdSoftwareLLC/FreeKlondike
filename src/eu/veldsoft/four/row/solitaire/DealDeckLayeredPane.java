@@ -57,7 +57,6 @@ class DealDeckLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 */
 	public DealDeckLayeredPane(DiscardPileLayeredPane discard) {
 		this.discard = discard;
-		dealDeck = new DealDeck(discard.getDiscardPile());
 	}
 
 	/**

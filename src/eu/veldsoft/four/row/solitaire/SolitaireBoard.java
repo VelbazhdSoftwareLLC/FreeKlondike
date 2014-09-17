@@ -77,31 +77,31 @@ class SolitaireBoard {
 	 * The four columns for the main playing field.
 	 */
 	// TODO Should be private.
-	Column[] columns = {null, null, null, null};
+	Column[] columns = { null, null, null, null };
 
 	/**
 	 * The discard pile.
 	 */
 	// TODO Should be private.
-	DiscardPile discardPile = null;
+	DiscardPile discardPile = new DiscardPile();
 
 	/**
 	 * The deal pile.
 	 */
 	// TODO Should be private.
-	DealDeck dealDeck = null;
+	DealDeck dealDeck = new DealDeck(discardPile);
 
 	/**
 	 * The four ace piles (to stack Ace - King of a single suit).
 	 */
 	// TODO Should be private.
-	AcePile[] acePiles = {null, null, null, null};
+	AcePile[] acePiles = { null, null, null, null };
 
 	/**
 	 * The four top individual cells.
 	 */
 	// TODO Should be private.
-	SingleCell[] cells = {null, null, null, null};
+	SingleCell[] cells = { null, null, null, null };
 
 	/**
 	 * Source.

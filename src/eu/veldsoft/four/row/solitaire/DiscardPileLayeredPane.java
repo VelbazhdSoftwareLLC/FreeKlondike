@@ -40,7 +40,7 @@ class DiscardPileLayeredPane extends JLayeredPane implements
 	/**
 	 * 
 	 */
-	DiscardPile discardPile = new DiscardPile();
+	DiscardPile discardPile = null;
 
 	/**
 	 * 

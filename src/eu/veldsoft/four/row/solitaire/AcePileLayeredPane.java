@@ -42,19 +42,6 @@ class AcePileLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	AcePile acePile = null;
 
 	/**
-	 * Sets the pile's suit to be equal to the argument suit. Can be Spades,
-	 * Clubs, Hearts or Diamonds
-	 * 
-	 * @param suit
-	 *            Suit to be used for the ace pile.
-	 * 
-	 * @author Todor Balabanov
-	 */
-	public AcePileLayeredPane(CardSuit suit) {
-		acePile = new AcePile(suit);
-	}
-
-	/**
 	 * 
 	 * @return
 	 * 

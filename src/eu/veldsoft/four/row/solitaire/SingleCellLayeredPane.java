@@ -39,7 +39,7 @@ class SingleCellLayeredPane extends JLayeredPane implements
 	/**
 	 * 
 	 */
-	SingleCell singleCell = new SingleCell();
+	SingleCell singleCell = null;
 
 	/**
 	 * 

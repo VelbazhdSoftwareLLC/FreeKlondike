@@ -119,7 +119,7 @@ class CardComponent extends JComponent {
 		super.paintComponent(g);
 
 		updateImage();
-		
+
 		g.drawImage(image, 0, 0, null);
 	}
 
@@ -144,7 +144,8 @@ class CardComponent extends JComponent {
 			cardBack = SolitaireBoardFrame.IMAGES_PATH + "/cardbacks/cardback"
 					+ SolitaireBoardFrame.deckNumber + ".png";
 		} else {
-			cardBack = SolitaireBoardFrame.IMAGES_PATH + "/cardbacks/cardback3.png";
+			cardBack = SolitaireBoardFrame.IMAGES_PATH
+					+ "/cardbacks/cardback3.png";
 		}
 
 		this.card = card;
@@ -153,6 +154,7 @@ class CardComponent extends JComponent {
 
 		setFaceUp();
 
+		setBounds(0, 0, 72, 96);
 		cardsMapping.put(card, this);
 	}
 
@@ -188,8 +190,8 @@ class CardComponent extends JComponent {
 			} catch (IOException e) {
 			}
 		}
-	} 
-	
+	}
+
 	/**
 	 * Returns the card's buffered image (either back or front).
 	 * 
@@ -257,7 +259,8 @@ class CardComponent extends JComponent {
 	 */
 	private void initializeCardImageString() {
 		cardImageString = SolitaireBoardFrame.IMAGES_PATH + "/cardfaces/";
-		cardHighlighted = SolitaireBoardFrame.IMAGES_PATH + "/highlightedfaces/";
+		cardHighlighted = SolitaireBoardFrame.IMAGES_PATH
+				+ "/highlightedfaces/";
 
 		if (card.getSuit().equals(CardSuit.SPADES)) {
 			cardImageString += "s";

@@ -38,6 +38,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.event.MouseInputAdapter;
+import javax.swing.JLayeredPane;
 
 /**
  * 
@@ -237,17 +238,20 @@ class SolitaireBoardFrame extends JFrame {
 		 * @author Todor Balabanov
 		 */
 		public void mousePressed(MouseEvent e) {
-			if (e.getButton() == MouseEvent.BUTTON3
-					&& e.getSource() == board.discardPile) {
-				if (board.discardPile.getNumViewableCards() == 1
-						|| (board.discardPile.getNumViewableCards() == 0 && !board.discardPile
-								.isEmpty())) {
-					tempCard = board.discardPile.pop();
-					discardPile.repaint();
-					discardPile.revalidate();
-					rightClicked = true;
-				}
+			if (e.getButton() != MouseEvent.BUTTON3
+					|| e.getSource() != discardPile) {
+				return;
 			}
+			if (board.discardPile.getNumViewableCards() != 1
+					&& (board.discardPile.getNumViewableCards() != 0 || board.discardPile
+							.isEmpty() == true)) {
+				return;
+			}
+
+			tempCard = board.discardPile.pop();
+			discardPile.repaint();
+			discardPile.revalidate();
+			rightClicked = true;
 		}
 
 		/**
@@ -259,12 +263,65 @@ class SolitaireBoardFrame extends JFrame {
 		 * @author Todor Balabanov
 		 */
 		public void mouseReleased(MouseEvent e) {
-			if (e.getButton() == MouseEvent.BUTTON3 && tempCard != null) {
-				board.discardPile.push(tempCard);
-				discardPile.repaint();
-				discardPile.revalidate();
-				rightClicked = false;
-				tempCard = null;
+			if (e.getButton() != MouseEvent.BUTTON3 || tempCard == null) {
+				return;
+			}
+
+			board.discardPile.push(tempCard);
+			discardPile.repaint();
+			discardPile.revalidate();
+			rightClicked = false;
+			tempCard = null;
+		}
+
+		private void dealDeckClicked() {
+			if (hasSelected == true) {
+				hasSelected = false;
+
+				if (temp.length() > 0) {
+					for (int i = 0; i < temp.length(); i++) {
+						board.sourceList
+								.getLast()
+								.getCardAtLocation(
+										board.sourceList.getLast().length() - i
+												- 1).unhighlight();
+					}
+				} else {
+					board.sourceList.getLast().peek().unhighlight();
+				}
+
+				//TODO Wrong hash map key type.
+				((Component) CardComponent.cardsMapping.get(board.sourceList
+						.getLast())).repaint();
+				//TODO Wrong hash map key type.
+				((Component) CardComponent.cardsMapping.get(board.sourceList
+						.getLast())).revalidate();
+				repaint();
+				revalidate();
+				board.sourceList.removeLast();
+				board.numCardsInDiscardView.removeLast();
+				board.numCards.removeLast();
+			}
+
+			board.numCardsInDiscardView.add(board.discardPile
+					.getNumViewableCards());
+			clickedCard = source.pop();
+
+			if (clickedCard != null) {
+				board.sourceList.add(board.dealDeck);
+				board.destinationList.add(board.discardPile);
+				board.numCards.add(board.discardPile.getNumViewableCards());
+			}
+			/*
+			 * The deck was reset but the player hasn't used up the times
+			 * through the deck.
+			 */
+			else if (board.dealDeck.hasDealsLeft()) {
+				board.sourceList.add(board.dealDeck);
+				board.destinationList.add(board.discardPile);
+				board.numCards.add(0);
+			} else {
+				board.numCardsInDiscardView.removeLast();
 			}
 		}
 
@@ -284,88 +341,93 @@ class SolitaireBoardFrame extends JFrame {
 				timer.start();
 			}
 
-			if ((e.getButton() != MouseEvent.BUTTON1) || rightClicked) {
+			/*
+			 * Do not handle anything else except left mouse button when right
+			 * mouse button was not clicked.
+			 */
+			if ((e.getButton() != MouseEvent.BUTTON1) || rightClicked == true) {
 				return;
-			} else if (e.getClickCount() == 2 && hasSelected
-					&& singleCardSelected) {
+			}
+
+			if (e.getClickCount() == 2 && hasSelected == true && singleCardSelected == true) {
 				if (source.peek().getRank().equals(CardRank.ACE)) {
+//System.out.println("Test point 1 ...");
 					Card card = source.pop();
-					AcePileLayeredPane pile = acePiles[card.getSuit()
-							.getIndex()];
+					AcePileLayeredPane pile = acePiles[card.getSuit().getIndex()];
 					card.unhighlight();
 
 					pile.push(card);
 					board.destinationList.add(pile.acePile);
 
 					hasSelected = false;
-					((Component) CardComponent.cardsMapping.get(source))
-							.repaint();
-					((Component) CardComponent.cardsMapping.get(source))
-							.revalidate();
+					((JLayeredPane)source).repaint();
+					((JLayeredPane)source).revalidate();
 					repaint();
 					revalidate();
 					return;
 				}
 
 				for (int i = 0; i < board.acePiles.length; i++) {
-					if (!board.acePiles[i].isEmpty()
-							&& source.peek().getSuit()
-									.equals(board.acePiles[i].peek().getSuit())
-							&& source
-									.peek()
-									.getRank()
-									.isLessByOneThan(
-											(board.acePiles[i].peek().getRank()))) {
-						Card card = source.pop();
-						card.unhighlight();
-						board.acePiles[i].push(card);
-
-						board.destinationList.add(board.acePiles[i]);
-						hasSelected = false;
-
-						((Component) CardComponent.cardsMapping.get(source))
-								.repaint();
-						((Component) CardComponent.cardsMapping.get(source))
-								.revalidate();
-						repaint();
-						revalidate();
-
-						if (card.getRank().equals(CardRank.KING)) {
-							checkWin();
-						}
-
-						return;
+					if (board.acePiles[i].isEmpty() == true) {
+						continue;
 					}
+					if (source.peek().getSuit().equals(board.acePiles[i].peek().getSuit()) == false) {
+						continue;
+					}
+					if (source.peek().getRank().isLessByOneThan((board.acePiles[i].peek().getRank())) == false) {
+						continue;
+					}
+					
+					Card card = source.pop();
+					card.unhighlight();
+					board.acePiles[i].push(card);
+
+					board.destinationList.add(board.acePiles[i]);
+					hasSelected = false;
+
+					((JLayeredPane)source).repaint();
+					((JLayeredPane)source).revalidate();
+					repaint();
+					revalidate();
+
+					/*
+					 * If four kings are in the ace piles the game is finished. 
+					 */
+					if (card.getRank().equals(CardRank.KING)) {
+						checkWin();
+					}
+
+					return;
 				}
 
 				for (int i = 0; i < board.cells.length; i++) {
-					if (board.cells[i].isEmpty()) {
-						Card card = source.pop();
-						card.unhighlight();
-						board.cells[i].push(card);
-
-						board.destinationList.add(board.cells[i]);
-						hasSelected = false;
-
-						((Component) CardComponent.cardsMapping.get(source))
-								.repaint();
-						((Component) CardComponent.cardsMapping.get(source))
-								.revalidate();
-						repaint();
-						revalidate();
-						return;
+					if (board.cells[i].isEmpty() == false) {
+						continue;
 					}
+					
+					Card card = source.pop();
+					card.unhighlight();
+					board.cells[i].push(card);
+
+					board.destinationList.add(board.cells[i]);
+					hasSelected = false;
+
+					((JLayeredPane)source).repaint();
+					((JLayeredPane)source).revalidate();
+					repaint();
+					revalidate();
+					return;
 				}
 
 				source.peek().unhighlight();
 
-				((Component) CardComponent.cardsMapping.get(source)).repaint();
-				((Component) CardComponent.cardsMapping.get(source))
-						.revalidate();
+				((JLayeredPane)source).repaint();
+				((JLayeredPane)source).revalidate();
 				repaint();
 				revalidate();
 				return;
-			} else if (e.getClickCount() == 2 && hasSelected) {
+			} else if (e.getClickCount() == 2 && hasSelected == true && singleCardSelected == false) {
+System.out.println("Test point 2 ...");
 				hasSelected = false;
 
 				if (temp.length() > 0) {
@@ -378,64 +440,11 @@ class SolitaireBoardFrame extends JFrame {
 				board.sourceList.removeLast();
 				board.numCardsInDiscardView.removeLast();
 				board.numCards.removeLast();
-			}
-
-			else if (!hasSelected && e.getClickCount() == 1
-					|| (e.getSource() instanceof DealDeck)) {
+			} else if (e.getSource() instanceof DealDeckLayeredPane) {
+				dealDeckClicked();
+			} else if (hasSelected == false && e.getClickCount() == 1) {
+System.out.println("Test point 3 ...");
 				source = (CardStackLayeredPane) e.getSource();
-
-				if (source instanceof DealDeck) {
-					if (hasSelected) {
-						hasSelected = false;
-
-						if (temp.length() > 0) {
-							for (int i = 0; i < temp.length(); i++) {
-								board.sourceList
-										.getLast()
-										.getCardAtLocation(
-												board.sourceList.getLast()
-														.length() - i - 1)
-										.unhighlight();
-							}
-						} else {
-							board.sourceList.getLast().peek().unhighlight();
-						}
-
-						((Component) CardComponent.cardsMapping
-								.get(board.sourceList.getLast())).repaint();
-						((Component) CardComponent.cardsMapping
-								.get(board.sourceList.getLast())).revalidate();
-						repaint();
-						revalidate();
-						board.sourceList.removeLast();
-						board.numCardsInDiscardView.removeLast();
-						board.numCards.removeLast();
-					}
-
-					board.numCardsInDiscardView.add(board.discardPile
-							.getNumViewableCards());
-					clickedCard = source.pop();
-
-					if (clickedCard != null) {
-						board.sourceList.add(board.dealDeck);
-						board.destinationList.add(board.discardPile);
-						board.numCards.add(board.discardPile
-								.getNumViewableCards());
-					}
-					/*
-					 * The deck was reset but the player hasn't used up the
-					 * times through the deck.
-					 */
-					else if (board.dealDeck.hasDealsLeft()) {
-						board.sourceList.add(board.dealDeck);
-						board.destinationList.add(board.discardPile);
-						board.numCards.add(0);
-					} else {
-						board.numCardsInDiscardView.removeLast();
-					}
-
-					return;
-				}
 
 				board.numCardsInDiscardView.add(board.discardPile
 						.getNumViewableCards());
@@ -475,116 +484,126 @@ class SolitaireBoardFrame extends JFrame {
 				}
 			}
 			/*
-			 * Stack/card already selected.
+			 * Card already selected.
 			 */
-			else if (e.getClickCount() == 1 && hasSelected) {
+			else if (e.getClickCount() == 1 && hasSelected == true && singleCardSelected == true) {
 				destination = (CardStackLayeredPane) e.getSource();
+				
+				if (destination.isValidMove(clickedCard) == true) {
+					Card card = source.pop();
+					card.unhighlight();
+					destination.push(card);
 
-				if (singleCardSelected) {
-					if (destination.isValidMove(clickedCard)) {
-						Card card = source.pop();
-						card.unhighlight();
-						destination.push(card);
+					/*
+					 * If move is valid, add destination info for undo.
+					 */
+					if (source instanceof AcePileLayeredPane) {
+						board.destinationList
+								.add(((AcePileLayeredPane) destination).acePile);
+					} else if (source instanceof ColumnLayeredPane) {
+						board.destinationList
+								.add(((ColumnLayeredPane) destination).column);
+					} else if (source instanceof DealDeckLayeredPane) {
+						board.destinationList
+								.add(((DealDeckLayeredPane) destination).dealDeck);
+					} else if (source instanceof DiscardPileLayeredPane) {
+						board.destinationList
+								.add(((DiscardPileLayeredPane) destination).discardPile);
+					} else if (source instanceof SingleCellLayeredPane) {
+						board.destinationList
+								.add(((SingleCellLayeredPane) destination).singleCell);
+					}
 
-						/*
-						 * If move is valid, add destination info for undo.
-						 */
-						if (source instanceof AcePileLayeredPane) {
-							board.destinationList
-									.add(((AcePileLayeredPane) destination).acePile);
-						} else if (source instanceof ColumnLayeredPane) {
-							board.destinationList
-									.add(((ColumnLayeredPane) destination).column);
-						} else if (source instanceof DealDeckLayeredPane) {
-							board.destinationList
-									.add(((DealDeckLayeredPane) destination).dealDeck);
-						} else if (source instanceof DiscardPileLayeredPane) {
-							board.destinationList
-									.add(((DiscardPileLayeredPane) destination).discardPile);
-						} else if (source instanceof SingleCellLayeredPane) {
-							board.destinationList
-									.add(((SingleCellLayeredPane) destination).singleCell);
-						}
-
-						if (destination instanceof AcePileLayeredPane
-								&& clickedCard.getRank().equals(CardRank.KING)) {
-							repaint();
-							revalidate();
-							checkWin();
-						}
-					} else {
-						/*
-						 * Not needed with highlighting version.
-						 */
-						source.peek().unhighlight();
-
-						/*
-						 * Upon invalid move, remove undo information for cards.
-						 */
-						board.sourceList.removeLast();
-						board.numCards.removeLast();
-						board.numCardsInDiscardView.removeLast();
+					if (destination instanceof AcePileLayeredPane
+							&& clickedCard.getRank().equals(CardRank.KING)) {
+						repaint();
+						revalidate();
+						checkWin();
 					}
 				} else {
-					if (destination.isValidMove(temp)) {
-						CardStack stack = null;
-						if (destination instanceof AcePileLayeredPane) {
-							stack = new AcePile(
-									((AcePileLayeredPane) destination).acePile
-											.getSuit());
-						} else if (destination instanceof DealDeckLayeredPane) {
-							stack = new DealDeck(
-									((DealDeckLayeredPane) destination).discard
-											.getDiscardPile());
-						} else if (destination instanceof DiscardPileLayeredPane) {
-							stack = new DiscardPile();
-						} else if (destination instanceof ColumnLayeredPane) {
-							stack = new Column();
-						} else if (destination instanceof SingleCellLayeredPane) {
-							stack = new SingleCell();
-						}
+					/*
+					 * Not needed with highlighting version.
+					 */
+					source.peek().unhighlight();
 
-						for (int i = temp.length(); i > 0; i--) {
-							Card card = source.pop();
-							card.unhighlight();
+					/*
+					 * Upon invalid move, remove undo information for cards.
+					 */
+					board.sourceList.removeLast();
+					board.numCards.removeLast();
+					board.numCardsInDiscardView.removeLast();
+				}
 
-							stack.push(card);
-						}
+				singleCardSelected = false;
+				hasSelected = false;
+				temp = null;
+				clickedCard = null;
+			}
+			/*
+			 * Stack already selected.
+			 */
+			else if (e.getClickCount() == 1 && hasSelected == true && singleCardSelected == false) {
+System.out.println("Test point 4 ...");
+				destination = (CardStackLayeredPane) e.getSource();
 
-						destination.push(stack);
-
-						/*
-						 * If move is valid, add destination info for undo.
-						 */
-						if (source instanceof AcePileLayeredPane) {
-							board.destinationList
-									.add(((AcePileLayeredPane) destination).acePile);
-						} else if (source instanceof ColumnLayeredPane) {
-							board.destinationList
-									.add(((ColumnLayeredPane) destination).column);
-						} else if (source instanceof DealDeckLayeredPane) {
-							board.destinationList
-									.add(((DealDeckLayeredPane) destination).dealDeck);
-						} else if (source instanceof DiscardPileLayeredPane) {
-							board.destinationList
-									.add(((DiscardPileLayeredPane) destination).discardPile);
-						} else if (source instanceof SingleCellLayeredPane) {
-							board.destinationList
-									.add(((SingleCellLayeredPane) destination).singleCell);
-						}
-					} else {
-						for (int i = temp.length() - 1; i >= 0; i--) {
-							source.getCardAtLocation(source.length() - i - 1)
-									.unhighlight();
-						}
-
-						/*
-						 * Upon invalid move, remove undo information for cards.
-						 */
-						board.sourceList.removeLast();
-						board.numCards.removeLast();
-						board.numCardsInDiscardView.removeLast();
+				if (destination.isValidMove(temp)) {
+					CardStack stack = null;
+					if (destination instanceof AcePileLayeredPane) {
+						stack = new AcePile(
+								((AcePileLayeredPane) destination).acePile
+										.getSuit());
+					} else if (destination instanceof DealDeckLayeredPane) {
+						stack = new DealDeck(
+								((DealDeckLayeredPane) destination).discard
+										.getDiscardPile());
+					} else if (destination instanceof DiscardPileLayeredPane) {
+						stack = new DiscardPile();
+					} else if (destination instanceof ColumnLayeredPane) {
+						stack = new Column();
+					} else if (destination instanceof SingleCellLayeredPane) {
+						stack = new SingleCell();
 					}
+
+					for (int i = temp.length(); i > 0; i--) {
+						Card card = source.pop();
+						card.unhighlight();
+
+						stack.push(card);
+					}
+
+					destination.push(stack);
+
+					/*
+					 * If move is valid, add destination info for undo.
+					 */
+					if (source instanceof AcePileLayeredPane) {
+						board.destinationList
+								.add(((AcePileLayeredPane) destination).acePile);
+					} else if (source instanceof ColumnLayeredPane) {
+						board.destinationList
+								.add(((ColumnLayeredPane) destination).column);
+					} else if (source instanceof DealDeckLayeredPane) {
+						board.destinationList
+								.add(((DealDeckLayeredPane) destination).dealDeck);
+					} else if (source instanceof DiscardPileLayeredPane) {
+						board.destinationList
+								.add(((DiscardPileLayeredPane) destination).discardPile);
+					} else if (source instanceof SingleCellLayeredPane) {
+						board.destinationList
+								.add(((SingleCellLayeredPane) destination).singleCell);
+					}
+				} else {
+					for (int i = temp.length() - 1; i >= 0; i--) {
+						source.getCardAtLocation(source.length() - i - 1)
+								.unhighlight();
+					}
+
+					/*
+					 * Upon invalid move, remove undo information for cards.
+					 */
+					board.sourceList.removeLast();
+					board.numCards.removeLast();
+					board.numCardsInDiscardView.removeLast();
 				}
 
 				singleCardSelected = false;
@@ -593,6 +612,9 @@ class SolitaireBoardFrame extends JFrame {
 				clickedCard = null;
 			}
 
+			/*
+			 * Redraw frame after all card moves.
+			 */
 			repaint();
 			revalidate();
 		}
@@ -632,11 +654,17 @@ class SolitaireBoardFrame extends JFrame {
 	 * The discard pile.
 	 */
 	private DiscardPileLayeredPane discardPile = new DiscardPileLayeredPane();
+	/* Initialize internal references. */{
+		discardPile.discardPile = board.discardPile;
+	}
 
 	/**
 	 * The deal pile.
 	 */
 	private DealDeckLayeredPane dealDeck = new DealDeckLayeredPane(discardPile);
+	/* Initialize internal references. */{
+		dealDeck.dealDeck = board.dealDeck;
+	}
 
 	/**
 	 * The four ace piles (to stack Ace - King of a single suit).
@@ -919,11 +947,13 @@ class SolitaireBoardFrame extends JFrame {
 		discardPile.repaint();
 		discardPile.revalidate();
 		if (tempSource != null) {
+			//TODO Wrong hash map key type.
 			((Component) CardComponent.cardsMapping.get(tempSource)).repaint();
 			((Component) CardComponent.cardsMapping.get(tempSource))
 					.revalidate();
 		}
 		if (tempDest != null) {
+			//TODO Wrong hash map key type.
 			((Component) CardComponent.cardsMapping.get(tempDest)).repaint();
 			((Component) CardComponent.cardsMapping.get(tempDest)).revalidate();
 		}
@@ -1048,6 +1078,21 @@ class SolitaireBoardFrame extends JFrame {
 	 */
 	public void createBoard(LinkedList<Integer> cards, int numViewableCards) {
 		board.createBoard(cards, numViewableCards);
+		for (int i = 0; i < columns.length; i++) {
+			columns[i] = new ColumnLayeredPane();
+			columns[i].column = board.columns[i];
+		}
+
+		for (int i = 0; i < cells.length; i++) {
+			cells[i] = new SingleCellLayeredPane();
+			cells[i].singleCell = board.cells[i];
+		}
+
+		for (int i = 0; i < acePiles.length; i++) {
+			acePiles[i] = new AcePileLayeredPane();
+			acePiles[i].acePile = board.acePiles[i];
+		}
+
 		repaintCards();
 
 		mainPanel = new SolitairePanel();

@@ -126,7 +126,7 @@ class AcePile extends CardStack {
 	public boolean isEmpty() {
 		return cards.size() == 0;
 	}
-	
+
 	/**
 	 * Returns the stack's length.
 	 * 
@@ -159,7 +159,7 @@ class AcePile extends CardStack {
 
 		return -1;
 	}
-	
+
 	/**
 	 * Returns the card located at a specified location within the stack.
 	 * 

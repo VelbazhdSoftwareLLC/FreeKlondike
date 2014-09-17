@@ -190,8 +190,8 @@ class ChangeAppearance extends JDialog implements ActionListener {
 		buttonPanel.add(ok);
 
 		cardBackLabel.setIcon(new ImageIcon(this.getClass().getResource(
-				SolitaireBoardFrame.IMAGES_PATH + "/cardbacks/cardback" + deckNumber
-						+ ".png")));
+				SolitaireBoardFrame.IMAGES_PATH + "/cardbacks/cardback"
+						+ deckNumber + ".png")));
 		JPanel cardBackViewer = new JPanel();
 		cardBackViewer.add(cardBackLabel);
 

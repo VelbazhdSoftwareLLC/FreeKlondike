@@ -167,7 +167,7 @@ class Card {
 	 * @author Todor Balabanov
 	 */
 	public void highlight() {
-		if(isFaceUp() == true) {
+		if (isFaceUp() == true) {
 			highlighted = true;
 		}
 	}
@@ -178,7 +178,7 @@ class Card {
 	 * @author Todor Balabanov
 	 */
 	public void unhighlight() {
-		if(isFaceUp() == true) {
+		if (isFaceUp() == true) {
 			highlighted = false;
 			setFaceUp();
 		}

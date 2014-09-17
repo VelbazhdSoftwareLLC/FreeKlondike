@@ -20,7 +20,6 @@
 package eu.veldsoft.four.row.solitaire;
 
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Point;
 
 import javax.swing.JLayeredPane;
@@ -39,7 +38,7 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	/**
 	 * 
 	 */
-	Column column = new Column();
+	Column column = null;
 
 	/**
 	 * 
@@ -78,23 +77,23 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 			return null;
 		}
 
-		if (isValidClick(p)) {
-			int y = (int) p.getY();
-
-			int index;
-
-			if (y > 25 * (column.getCards().size() - 1)) {
-				index = column.getCards().size() - 1;
-			} else {
-				index = y / 25;
-			}
-
-			if (column.isValidCard(index)) {
-				return column.getCards().get(index);
-			}
+		if (isValidClick(p) == false) {
+			return (null);
 		}
 
-		return null;
+		int index;
+		int y = (int) p.getY();
+		if (y > 25 * (column.getCards().size() - 1)) {
+			index = column.getCards().size() - 1;
+		} else {
+			index = y / 25;
+		}
+
+		if (column.isValidCard(index) == true) {
+			return column.getCards().get(index);
+		}
+
+		return (null);
 	}
 
 	/**
@@ -129,18 +128,19 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 */
 	public boolean isValidClick(Point p) {
 		int y = (int) p.getY();
-
-		if (!isEmpty()) {
-			if (y > 25
-					* (column.getCards().size() - 1)
-					+ CardComponent.cardsMapping
-							.get(column.getCards().lastElement()).getBounds()
-							.getHeight()) {
-				return false;
-			}
+		if (isEmpty() == true) {
+			return (true);
 		}
 
-		return true;
+		if (y > 25
+				* (column.getCards().size() - 1)
+				+ CardComponent.cardsMapping
+						.get(column.getCards().lastElement()).getBounds()
+						.getHeight()) {
+			return (false);
+		}
+
+		return (true);
 	}
 
 	/**

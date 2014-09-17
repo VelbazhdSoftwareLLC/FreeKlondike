@@ -48,7 +48,8 @@ import javax.swing.UIManager;
  * 
  * @author Matt Stephen
  */
-public class FourRowSolitaire extends SolitaireBoardFrame implements ActionListener {
+public class FourRowSolitaire extends SolitaireBoardFrame implements
+		ActionListener {
 
 	/**
 	 * 
@@ -197,7 +198,7 @@ public class FourRowSolitaire extends SolitaireBoardFrame implements ActionListe
 		help.setAccelerator(KeyStroke.getKeyStroke("F1"));
 		about.setMnemonic('a');
 
-		//TODO It was used to fill board with initial stored data. 
+		// TODO It was used to fill board with initial stored data.
 		loadData();
 	}
 
@@ -207,11 +208,11 @@ public class FourRowSolitaire extends SolitaireBoardFrame implements ActionListe
 	 * @author Todor Balabanov
 	 */
 	private void checkForUpdate() {
-		//TODO Remove in the final release.
-		if(true) {
+		// TODO Remove in the final release.
+		if (true) {
 			return;
 		}
-		
+
 		try {
 			URL url = new URL(
 					"http://www.mastadisasta.com/FourRowSolitaire/version.txt");
