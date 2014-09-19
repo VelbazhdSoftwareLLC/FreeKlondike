@@ -249,8 +249,7 @@ class SolitaireBoardFrame extends JFrame {
 			}
 
 			tempCard = board.discardPile.pop();
-			discardPile.repaint();
-			discardPile.revalidate();
+			repaintCards();
 			rightClicked = true;
 		}
 
@@ -268,36 +267,33 @@ class SolitaireBoardFrame extends JFrame {
 			}
 
 			board.discardPile.push(tempCard);
-			discardPile.repaint();
-			discardPile.revalidate();
+			repaintCards();
 			rightClicked = false;
 			tempCard = null;
 		}
 
 		private void dealDeckClicked() {
+			/*
+			 * Clear cards highlighting.
+			 */
 			if (hasSelected == true) {
+				System.out.println("Test point 5.1 ...");
 				hasSelected = false;
 
-				if (temp.length() > 0) {
-					for (int i = 0; i < temp.length(); i++) {
-						board.sourceList
-								.getLast()
-								.getCardAtLocation(
-										board.sourceList.getLast().length() - i
-												- 1).unhighlight();
-					}
-				} else {
+				for (int i = 0; i < temp.length(); i++) {
+					board.sourceList
+							.getLast()
+							.getCardAtLocation(
+									board.sourceList.getLast().length() - i - 1)
+							.unhighlight();
+				}
+				
+				if (temp.length() == 0) {
 					board.sourceList.getLast().peek().unhighlight();
 				}
-
-				//TODO Wrong hash map key type.
-				((Component) CardComponent.cardsMapping.get(board.sourceList
-						.getLast())).repaint();
-				//TODO Wrong hash map key type.
-				((Component) CardComponent.cardsMapping.get(board.sourceList
-						.getLast())).revalidate();
-				repaint();
-				revalidate();
+				
+				repaintCards();
+				
 				board.sourceList.removeLast();
 				board.numCardsInDiscardView.removeLast();
 				board.numCards.removeLast();
@@ -316,13 +312,104 @@ class SolitaireBoardFrame extends JFrame {
 			 * The deck was reset but the player hasn't used up the times
 			 * through the deck.
 			 */
-			else if (board.dealDeck.hasDealsLeft()) {
+			else if (board.dealDeck.hasDealsLeft() == true) {
 				board.sourceList.add(board.dealDeck);
 				board.destinationList.add(board.discardPile);
 				board.numCards.add(0);
 			} else {
 				board.numCardsInDiscardView.removeLast();
 			}
+		}
+
+		private void singleCardDoubleClicked() {
+			/*
+			 * The card is Ace and should be collected in Ace Pile.
+			 */
+			if (source.peek().getRank().equals(CardRank.ACE)) {
+				Card card = source.pop();
+				AcePileLayeredPane pile = acePiles[card.getSuit().getIndex()];
+				card.unhighlight();
+
+				pile.push(card);
+				board.destinationList.add(pile.acePile);
+
+				hasSelected = false;
+				repaintCards();
+
+				repaint();
+				revalidate();
+
+				return;
+			}
+
+			/*
+			 * The card is not Ace and should be collected in Ace Pile only if
+			 * suite and rank are matching with Ace Pile state.
+			 */
+			for (int i = 0; i < board.acePiles.length; i++) {
+				if (board.acePiles[i].isEmpty() == true) {
+					continue;
+				}
+				if (source.peek().getSuit()
+						.equals(board.acePiles[i].peek().getSuit()) == false) {
+					continue;
+				}
+				if (source.peek().getRank()
+						.isLessByOneThan((board.acePiles[i].peek().getRank())) == false) {
+					continue;
+				}
+
+				Card card = source.pop();
+				card.unhighlight();
+				board.acePiles[i].push(card);
+
+				board.destinationList.add(board.acePiles[i]);
+				hasSelected = false;
+
+				repaintCards();
+				repaint();
+				revalidate();
+
+				/*
+				 * If four kings are in the ace piles the game is finished.
+				 */
+				if (card.getRank().equals(CardRank.KING)) {
+					checkWin();
+				}
+
+				return;
+			}
+
+			/*
+			 * The card is in the Cell and should go in some destination (Ace
+			 * Pile or Column).
+			 */
+			for (int i = 0; i < board.cells.length; i++) {
+				if (board.cells[i].isEmpty() == false) {
+					continue;
+				}
+
+				Card card = source.pop();
+				card.unhighlight();
+				board.cells[i].push(card);
+
+				board.destinationList.add(board.cells[i]);
+				hasSelected = false;
+
+				repaintCards();
+				repaint();
+				revalidate();
+
+				return;
+			}
+
+			source.peek().unhighlight();
+
+			repaintCards();
+			repaint();
+			revalidate();
+			
+			return;
 		}
 
 		/**
@@ -334,8 +421,7 @@ class SolitaireBoardFrame extends JFrame {
 		 * @author Todor Balabanov
 		 */
 		public void mouseClicked(MouseEvent e) {
-			discardPile.repaint();
-			discardPile.revalidate();
+			repaintCards();
 
 			if (!timer.isRunning() && timerToRun) {
 				timer.start();
@@ -349,85 +435,13 @@ class SolitaireBoardFrame extends JFrame {
 				return;
 			}
 
-			if (e.getClickCount() == 2 && hasSelected == true && singleCardSelected == true) {
-				if (source.peek().getRank().equals(CardRank.ACE)) {
-//System.out.println("Test point 1 ...");
-					Card card = source.pop();
-					AcePileLayeredPane pile = acePiles[card.getSuit().getIndex()];
-					card.unhighlight();
-
-					pile.push(card);
-					board.destinationList.add(pile.acePile);
-
-					hasSelected = false;
-					((JLayeredPane)source).repaint();
-					((JLayeredPane)source).revalidate();
-					repaint();
-					revalidate();
-					return;
-				}
-
-				for (int i = 0; i < board.acePiles.length; i++) {
-					if (board.acePiles[i].isEmpty() == true) {
-						continue;
-					}
-					if (source.peek().getSuit().equals(board.acePiles[i].peek().getSuit()) == false) {
-						continue;
-					}
-					if (source.peek().getRank().isLessByOneThan((board.acePiles[i].peek().getRank())) == false) {
-						continue;
-					}
-					
-					Card card = source.pop();
-					card.unhighlight();
-					board.acePiles[i].push(card);
-
-					board.destinationList.add(board.acePiles[i]);
-					hasSelected = false;
-
-					((JLayeredPane)source).repaint();
-					((JLayeredPane)source).revalidate();
-					repaint();
-					revalidate();
-
-					/*
-					 * If four kings are in the ace piles the game is finished. 
-					 */
-					if (card.getRank().equals(CardRank.KING)) {
-						checkWin();
-					}
-
-					return;
-				}
-
-				for (int i = 0; i < board.cells.length; i++) {
-					if (board.cells[i].isEmpty() == false) {
-						continue;
-					}
-					
-					Card card = source.pop();
-					card.unhighlight();
-					board.cells[i].push(card);
-
-					board.destinationList.add(board.cells[i]);
-					hasSelected = false;
-
-					((JLayeredPane)source).repaint();
-					((JLayeredPane)source).revalidate();
-					repaint();
-					revalidate();
-					return;
-				}
-
-				source.peek().unhighlight();
-
-				((JLayeredPane)source).repaint();
-				((JLayeredPane)source).revalidate();
-				repaint();
-				revalidate();
-				return;
-			} else if (e.getClickCount() == 2 && hasSelected == true && singleCardSelected == false) {
-System.out.println("Test point 2 ...");
+			if (e.getClickCount() == 2 && hasSelected == true
+					&& singleCardSelected == true) {
+				System.out.println("Test point 1 ...");
+				singleCardDoubleClicked();
+			} else if (e.getClickCount() == 2 && hasSelected == true
+					&& singleCardSelected == false) {
+				System.out.println("Test point 2 ...");
 				hasSelected = false;
 
 				if (temp.length() > 0) {
@@ -441,9 +455,11 @@ System.out.println("Test point 2 ...");
 				board.numCardsInDiscardView.removeLast();
 				board.numCards.removeLast();
 			} else if (e.getSource() instanceof DealDeckLayeredPane) {
+				System.out.println("Test point 5 ...");
+				source = (CardStackLayeredPane) e.getSource();
 				dealDeckClicked();
 			} else if (hasSelected == false && e.getClickCount() == 1) {
-System.out.println("Test point 3 ...");
+				System.out.println("Test point 3 ...");
 				source = (CardStackLayeredPane) e.getSource();
 
 				board.numCardsInDiscardView.add(board.discardPile
@@ -486,9 +502,10 @@ System.out.println("Test point 3 ...");
 			/*
 			 * Card already selected.
 			 */
-			else if (e.getClickCount() == 1 && hasSelected == true && singleCardSelected == true) {
+			else if (e.getClickCount() == 1 && hasSelected == true
+					&& singleCardSelected == true) {
 				destination = (CardStackLayeredPane) e.getSource();
-				
+
 				if (destination.isValidMove(clickedCard) == true) {
 					Card card = source.pop();
 					card.unhighlight();
@@ -542,8 +559,9 @@ System.out.println("Test point 3 ...");
 			/*
 			 * Stack already selected.
 			 */
-			else if (e.getClickCount() == 1 && hasSelected == true && singleCardSelected == false) {
-System.out.println("Test point 4 ...");
+			else if (e.getClickCount() == 1 && hasSelected == true
+					&& singleCardSelected == false) {
+				System.out.println("Test point 4 ...");
 				destination = (CardStackLayeredPane) e.getSource();
 
 				if (destination.isValidMove(temp)) {
@@ -628,7 +646,7 @@ System.out.println("Test point 4 ...");
 	/**
 	 * Images resources path.
 	 */
-	final static String IMAGES_PATH = "images/vanya";
+	final static String IMAGES_PATH = "images/iana";
 
 	/**
 	 * Find better OOP modeling alternative! Use enumerated type for card back.
@@ -743,6 +761,27 @@ System.out.println("Test point 4 ...");
 		dealDeck.revalidate();
 		discardPile.repaint();
 		discardPile.revalidate();
+	}
+
+	/**
+	 * Unhighlights highlighted cards.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	private void unhighlighCards() {
+		for (int i = 0; i < columns.length; i++) {
+			for (int j = 0; j < columns[i].column.length(); j++) {
+				columns[i].column.getCardAtLocation(j);
+			}
+		}
+		for (int i = 0; i < cells.length; i++) {
+			cells[i].singleCell.getCardAtLocation(0);
+		}
+		for (int i = 0; i < acePiles.length; i++) {
+			for (int j = 0; j < acePiles[i].acePile.length(); j++) {
+				acePiles[i].acePile.getCardAtLocation(j);
+			}
+		}
 	}
 
 	/**
@@ -942,21 +981,7 @@ System.out.println("Test point 4 ...");
 
 		board.undoMove();
 
-		dealDeck.repaint();
-		dealDeck.revalidate();
-		discardPile.repaint();
-		discardPile.revalidate();
-		if (tempSource != null) {
-			//TODO Wrong hash map key type.
-			((Component) CardComponent.cardsMapping.get(tempSource)).repaint();
-			((Component) CardComponent.cardsMapping.get(tempSource))
-					.revalidate();
-		}
-		if (tempDest != null) {
-			//TODO Wrong hash map key type.
-			((Component) CardComponent.cardsMapping.get(tempDest)).repaint();
-			((Component) CardComponent.cardsMapping.get(tempDest)).revalidate();
-		}
+		repaintCards();
 	}
 
 	/**
