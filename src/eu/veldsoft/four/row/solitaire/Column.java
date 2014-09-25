@@ -289,6 +289,22 @@ class Column extends CardStack {
 	}
 
 	/**
+	 * Checks if its possible to move a stack of cards on top of one of the four
+	 * columns. The bottom card from the stack must be lesser by one than the
+	 * top card from the column.
+	 * 
+	 * @param stack
+	 *            Stack to be pushed.
+	 * 
+	 * @return True or false.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public boolean isValidMove(Vector<Card> stack) {
+		return isValidMove(stack.lastElement());
+	}
+
+	/**
 	 * Creates a stack and adds all of the available cards from a column into
 	 * it. The available cards are: the first card and every other after the
 	 * first one that is lesser and with different color than the previous one.

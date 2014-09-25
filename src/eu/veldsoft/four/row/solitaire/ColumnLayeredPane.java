@@ -21,6 +21,7 @@ package eu.veldsoft.four.row.solitaire;
 
 import java.awt.Graphics;
 import java.awt.Point;
+import java.util.Vector;
 
 import javax.swing.JLayeredPane;
 
@@ -194,6 +195,20 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	}
 
 	/**
+	 * Used to add a bunch of cards to a stack.
+	 * 
+	 * @param stack
+	 *            Stack to be added.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public void addStack(Vector<Card> stack) {
+		for (int i = stack.size() - 1; i >= 0; i--) {
+			addCard(stack.elementAt(i));
+		}
+	}
+
+	/**
 	 * Searches the stack for a specific card. Creates a new temporary stack.
 	 * Clones the cards from the end towards the beginning of the stack into the
 	 * temp stack. Stops after it reaches the specific card.
@@ -205,12 +220,12 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public Column getStack(Card card) {
-		Column temp = new Column();
+	public Vector<Card> getStack(Card card) {
+		Vector<Card> temp = new Vector<Card>();
 		int index = column.search(card);
 
 		for (int i = 0; i < index; i++) {
-			temp.push(getCardAtLocation(column.getCards().size() - i - 1));
+			temp.add(getCardAtLocation(column.getCards().size() - i - 1));
 			getCardAtLocation(column.getCards().size() - i - 1).highlight();
 		}
 
@@ -332,6 +347,19 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 	}
 
 	/**
+	 * Used to add a bunch of cards to a card stack and then to return empty
+	 * stack.
+	 * 
+	 * @param stack
+	 *            Stack to be added.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public void push(Vector<Card> stack) {
+		addStack(stack);
+	}
+
+	/**
 	 * Returns the first card from a stack.
 	 * 
 	 * @return card The first card from the stack of cards.
@@ -404,6 +432,21 @@ class ColumnLayeredPane extends JLayeredPane implements CardStackLayeredPane {
 		}
 
 		return (false);
+	}
+
+	/**
+	 * Checks if the move is valid. Always returns false. This method is
+	 * overridden by the child classes.
+	 * 
+	 * @param stack
+	 *            Stack of cards to be ckecked.
+	 * 
+	 * @return False.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public boolean isValidMove(Vector<Card> stack) {
+		return (column.isValidMove(stack));
 	}
 
 	/**

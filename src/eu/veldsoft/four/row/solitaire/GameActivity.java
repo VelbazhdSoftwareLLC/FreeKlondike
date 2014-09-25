@@ -19,6 +19,8 @@
 
 package eu.veldsoft.four.row.solitaire;
 
+import java.util.HashMap;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -43,7 +45,57 @@ public class GameActivity extends Activity {
 	/**
 	 * 
 	 */
+	private HashMap<Card, Integer> cardsImagesMapping = new HashMap<Card, Integer>();
+
+	/**
+	 * 
+	 */
+	private HashMap<Card, Integer> cardsHighlightedImagesMapping = new HashMap<Card, Integer>();
+
+	/**
+	 * 
+	 */
 	private SolitaireBoard board = new SolitaireBoard();
+
+	/**
+	 * 
+	 */
+	private void updateImagaes() {
+		if (board.cells[0].isEmpty() == false) {
+			((ImageView) findViewById(R.id.imageView5))
+					.setImageResource(cardsImagesMapping.get(board.cells[0]
+							.peek()));
+		} else {
+			((ImageView) findViewById(R.id.imageView5))
+					.setImageResource(R.drawable.empty_card);
+		}
+		if (board.cells[0].isEmpty() == false) {
+			((ImageView) findViewById(R.id.imageView6))
+					.setImageResource(cardsImagesMapping.get(board.cells[1]
+							.peek()));
+		} else {
+			((ImageView) findViewById(R.id.imageView6))
+					.setImageResource(R.drawable.empty_card);
+		}
+		if (board.cells[0].isEmpty() == false) {
+			((ImageView) findViewById(R.id.imageView7))
+					.setImageResource(cardsImagesMapping.get(board.cells[2]
+							.peek()));
+		} else {
+			((ImageView) findViewById(R.id.imageView7))
+					.setImageResource(R.drawable.empty_card);
+		}
+		if (board.cells[0].isEmpty() == false) {
+			((ImageView) findViewById(R.id.imageView8))
+					.setImageResource(cardsImagesMapping.get(board.cells[3]
+							.peek()));
+		} else {
+			((ImageView) findViewById(R.id.imageView8))
+					.setImageResource(R.drawable.empty_card);
+		}
+
+		// TODO ...
+	}
 
 	/**
 	 * On creation.
@@ -129,6 +181,20 @@ public class GameActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
+
+		board.createBoard(null, 1);
+		board.newGame(GameState.GAME_LOST);
+		updateImagaes();
+
+		cardsImagesMapping.put(Card.valueBy(1), R.drawable.c_ace);
+		cardsImagesMapping.put(Card.valueBy(2), R.drawable.s_ace);
+		cardsImagesMapping.put(Card.valueBy(3), R.drawable.h_ace);
+		cardsImagesMapping.put(Card.valueBy(4), R.drawable.d_ace);
+
+		cardsHighlightedImagesMapping.put(Card.valueBy(1), R.drawable.c_ace_h);
+		cardsHighlightedImagesMapping.put(Card.valueBy(1), R.drawable.s_ace_h);
+		cardsHighlightedImagesMapping.put(Card.valueBy(1), R.drawable.h_ace_h);
+		cardsHighlightedImagesMapping.put(Card.valueBy(1), R.drawable.d_ace_h);
 
 		((ImageView) findViewById(R.id.imageView100))
 				.setOnClickListener(new OnClickListener() {
@@ -392,6 +458,78 @@ public class GameActivity extends Activity {
 					Toast.makeText(GameActivity.this, "	62	",
 							Toast.LENGTH_SHORT).show();
 					break;
+				case R.id.imageView63:
+					Toast.makeText(GameActivity.this, "	63	",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case R.id.imageView64:
+					Toast.makeText(GameActivity.this, "	64	",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case R.id.imageView65:
+					Toast.makeText(GameActivity.this, "	65	",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case R.id.imageView66:
+					Toast.makeText(GameActivity.this, "	66	",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case R.id.imageView67:
+					Toast.makeText(GameActivity.this, "	67	",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case R.id.imageView68:
+					Toast.makeText(GameActivity.this, "	68	",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case R.id.imageView69:
+					Toast.makeText(GameActivity.this, "	69	",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case R.id.imageView70:
+					Toast.makeText(GameActivity.this, "	70	",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case R.id.imageView71:
+					Toast.makeText(GameActivity.this, "	71	",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case R.id.imageView72:
+					Toast.makeText(GameActivity.this, "	72	",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case R.id.imageView73:
+					Toast.makeText(GameActivity.this, "	73	",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case R.id.imageView74:
+					Toast.makeText(GameActivity.this, "	74	",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case R.id.imageView75:
+					Toast.makeText(GameActivity.this, "	75	",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case R.id.imageView76:
+					Toast.makeText(GameActivity.this, "	76	",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case R.id.imageView77:
+					Toast.makeText(GameActivity.this, "	77	",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case R.id.imageView78:
+					Toast.makeText(GameActivity.this, "	78	",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case R.id.imageView79:
+					Toast.makeText(GameActivity.this, "	79	",
+							Toast.LENGTH_SHORT).show();
+					break;
+				case R.id.imageView80:
+					Toast.makeText(GameActivity.this, "	80	",
+							Toast.LENGTH_SHORT).show();
+					break;
 				}
 			}
 		};
@@ -510,6 +648,42 @@ public class GameActivity extends Activity {
 		((ImageView) findViewById(R.id.imageView61))
 				.setOnClickListener(onClick);
 		((ImageView) findViewById(R.id.imageView62))
+				.setOnClickListener(onClick);
+		((ImageView) findViewById(R.id.imageView63))
+				.setOnClickListener(onClick);
+		((ImageView) findViewById(R.id.imageView64))
+				.setOnClickListener(onClick);
+		((ImageView) findViewById(R.id.imageView65))
+				.setOnClickListener(onClick);
+		((ImageView) findViewById(R.id.imageView66))
+				.setOnClickListener(onClick);
+		((ImageView) findViewById(R.id.imageView67))
+				.setOnClickListener(onClick);
+		((ImageView) findViewById(R.id.imageView68))
+				.setOnClickListener(onClick);
+		((ImageView) findViewById(R.id.imageView69))
+				.setOnClickListener(onClick);
+		((ImageView) findViewById(R.id.imageView70))
+				.setOnClickListener(onClick);
+		((ImageView) findViewById(R.id.imageView71))
+				.setOnClickListener(onClick);
+		((ImageView) findViewById(R.id.imageView72))
+				.setOnClickListener(onClick);
+		((ImageView) findViewById(R.id.imageView73))
+				.setOnClickListener(onClick);
+		((ImageView) findViewById(R.id.imageView74))
+				.setOnClickListener(onClick);
+		((ImageView) findViewById(R.id.imageView75))
+				.setOnClickListener(onClick);
+		((ImageView) findViewById(R.id.imageView76))
+				.setOnClickListener(onClick);
+		((ImageView) findViewById(R.id.imageView77))
+				.setOnClickListener(onClick);
+		((ImageView) findViewById(R.id.imageView78))
+				.setOnClickListener(onClick);
+		((ImageView) findViewById(R.id.imageView79))
+				.setOnClickListener(onClick);
+		((ImageView) findViewById(R.id.imageView80))
 				.setOnClickListener(onClick);
 	}
 }

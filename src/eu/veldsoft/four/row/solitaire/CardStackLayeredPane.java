@@ -20,6 +20,7 @@
 package eu.veldsoft.four.row.solitaire;
 
 import java.awt.Point;
+import java.util.Vector;
 
 /**
  * 
@@ -39,7 +40,7 @@ interface CardStackLayeredPane {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStack getStack(Card card);
+	public Vector<Card> getStack(Card card);
 
 	/**
 	 * Searches the stack for a specified location, creates a temporary stack,
@@ -195,6 +196,17 @@ interface CardStackLayeredPane {
 	public CardStack push(CardStack stack);
 
 	/**
+	 * Used to add a bunch of cards to a card stack and then to return empty
+	 * stack.
+	 * 
+	 * @param stack
+	 *            Stack to be added.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public void push(Vector<Card> stack);
+
+	/**
 	 * Checks if the move is valid. Always returns false. The method is
 	 * overridden by the child classes.
 	 * 
@@ -219,6 +231,19 @@ interface CardStackLayeredPane {
 	 * @author Todor Balabanov
 	 */
 	public boolean isValidMove(CardStack stack);
+
+	/**
+	 * Checks if the move is valid. Always returns false. This method is
+	 * overridden by the child classes.
+	 * 
+	 * @param stack
+	 *            Stack of cards to be ckecked.
+	 * 
+	 * @return False.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public boolean isValidMove(Vector<Card> stack);
 
 	/**
 	 * Returns the first card from a stack.
