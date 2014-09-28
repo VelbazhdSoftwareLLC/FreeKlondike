@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva, Yana Genova
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -810,6 +810,7 @@ public class FourRowSolitaire extends SolitaireBoardFrame implements
 							this,
 							"Four Row Solitaire was created by Matt Stephen and\n"
 									+ "programmed by Matt Stephen, Todor Balabanov, Konstantin Tsanov and Ventsislav Medarov.\n"
+									+ "graphics by Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva and Yana Genova\n"
 									+ "\nYou can modify this code in accordance with GPL v3.0.\n"
 									+ "\nTo check if there is a newer version, go to:\n"
 									+ "github.com/TodorBalabanov/FourRowSolitaire",

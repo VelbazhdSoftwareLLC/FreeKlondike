@@ -2,7 +2,7 @@
 
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva, Yana Genova
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
