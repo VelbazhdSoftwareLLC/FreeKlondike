@@ -86,6 +86,7 @@ class AcePile extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public void addCard(Card card) {
+		card.setFaceUp();
 		cards.add(card);
 	}
 
@@ -221,7 +222,7 @@ class AcePile extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public CardStack getStack(Card card) {
-		CardStack temp = new CardStack();
+		CardStack temp = new AcePile(getSuit());
 		int index = search(card);
 
 		for (int i = 0; i < index; i++) {
@@ -245,7 +246,7 @@ class AcePile extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public CardStack getStack(int numCards) {
-		CardStack temp = new CardStack();
+		CardStack temp = new AcePile(getSuit());
 		int index = length() - numCards;
 
 		for (int i = length(); i > index; i--) {
@@ -267,6 +268,7 @@ class AcePile extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public Card push(Card card) {
+		card.setFaceUp();
 		if (isValidMove(card) == false) {
 			return null;
 		}
@@ -349,5 +351,16 @@ class AcePile extends CardStack {
 	 */
 	public Card getBottom() {
 		return cards.firstElement();
+	}
+
+	/**
+	 * Highlight cards according stack rules.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	void highlight(int index) {
+		if (isEmpty() == false) {
+			peek().highlight();
+		}
 	}
 }

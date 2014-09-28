@@ -19,6 +19,8 @@
 
 package eu.veldsoft.four.row.solitaire;
 
+import java.util.Vector;
+
 /**
  * Class: CardStack
  * 
@@ -27,7 +29,7 @@ package eu.veldsoft.four.row.solitaire;
  * @author Matt Stephen
  */
 // TODO Should be abstract class.
-class CardStack {
+abstract class CardStack {
 	// TODO Parent class methods should not have source code!
 
 	/**
@@ -54,6 +56,20 @@ class CardStack {
 	public void addStack(CardStack stack) {
 		while (stack.isEmpty() == false) {
 			addCard(stack.pop());
+		}
+	}
+
+	/**
+	 * Used to add a bunch of cards to a stack.
+	 * 
+	 * @param stack
+	 *            Stack to be added.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public void addStack(Vector<Card> stack) {
+		for (int i = stack.size() - 1; i >= 0; i--) {
+			addCard(stack.elementAt(i));
 		}
 	}
 
@@ -114,15 +130,15 @@ class CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStack pop(CardStack stack) {
+	public Vector<Card> pop(CardStack stack) {
 		/*
 		 * Temporary reverse pop of entire stack transfer.
 		 */
-		CardStack temp = new CardStack();
+		Vector<Card> temp = new Vector<Card>();
 
 		while (!stack.isEmpty()) {
 			Card card = stack.pop();
-			temp.push(card);
+			temp.add(card);
 		}
 
 		return temp;
@@ -246,11 +262,11 @@ class CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public CardStack undoStack(int numCards) {
-		CardStack temp = new CardStack();
+	public Vector<Card> undoStack(int numCards) {
+		Vector<Card> temp = new Vector<Card>();
 
 		for (int i = 0; i < numCards; i++) {
-			temp.push(pop());
+			temp.add(pop());
 		}
 
 		return temp;
@@ -298,7 +314,7 @@ class CardStack {
 	}
 
 	/**
-	 * Returns the available cards from a deck. This method is overriden by the
+	 * Returns the available cards from a deck. This method is overridden by the
 	 * child classes.
 	 * 
 	 * @return Null.
@@ -307,5 +323,13 @@ class CardStack {
 	 */
 	public CardStack getAvailableCards() {
 		return null;
+	}
+
+	/**
+	 * Highlight cards according stack rules.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	void highlight(int index) {
 	}
 }

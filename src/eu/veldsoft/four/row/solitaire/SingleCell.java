@@ -58,6 +58,7 @@ class SingleCell extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public void addCard(Card card) {
+		card.setFaceUp();
 		cards.add(card);
 	}
 
@@ -193,7 +194,7 @@ class SingleCell extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public CardStack getStack(Card card) {
-		CardStack temp = new CardStack();
+		CardStack temp = new SingleCell();
 		int index = search(card);
 
 		for (int i = 0; i < index; i++) {
@@ -217,7 +218,7 @@ class SingleCell extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public CardStack getStack(int numCards) {
-		CardStack temp = new CardStack();
+		CardStack temp = new SingleCell();
 		int index = length() - numCards;
 
 		for (int i = length(); i > index; i--) {
@@ -239,6 +240,7 @@ class SingleCell extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public Card push(Card card) {
+		card.setFaceUp();
 		if (isEmpty() == true) {
 			super.push(card);
 			return card;
@@ -292,7 +294,7 @@ class SingleCell extends CardStack {
 			return (null);
 		}
 
-		CardStack stack = new CardStack();
+		CardStack stack = new SingleCell();
 		stack.addCard(peek());
 
 		return stack;
@@ -307,5 +309,16 @@ class SingleCell extends CardStack {
 	 */
 	public Card getBottom() {
 		return cards.firstElement();
+	}
+
+	/**
+	 * Highlight cards according stack rules.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	void highlight(int index) {
+		if (isEmpty() == false) {
+			peek().highlight();
+		}
 	}
 }

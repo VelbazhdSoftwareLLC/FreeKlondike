@@ -84,6 +84,7 @@ class DiscardPile extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public void addCard(Card card) {
+		card.setFaceUp();
 		cardsLeftFromDraw++;
 		cards.add(card);
 	}
@@ -115,6 +116,7 @@ class DiscardPile extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public Card push(Card card) {
+		card.setFaceUp();
 		if (SolitaireBoard.drawCount == 1) {
 			cardsLeftFromDraw = 0;
 		}
@@ -290,7 +292,7 @@ class DiscardPile extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public CardStack getStack(Card card) {
-		CardStack temp = new CardStack();
+		CardStack temp = new DiscardPile();
 		int index = search(card);
 
 		for (int i = 0; i < index; i++) {
@@ -314,7 +316,7 @@ class DiscardPile extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public CardStack getStack(int numCards) {
-		CardStack temp = new CardStack();
+		CardStack temp = new DiscardPile();
 		int index = length() - numCards;
 
 		for (int i = length(); i > index; i--) {
@@ -380,7 +382,7 @@ class DiscardPile extends CardStack {
 			return (null);
 		}
 
-		CardStack stack = new CardStack();
+		CardStack stack = new DiscardPile();
 		stack.addCard(peek());
 
 		return stack;
@@ -395,5 +397,16 @@ class DiscardPile extends CardStack {
 	 */
 	public Card getBottom() {
 		return cards.firstElement();
+	}
+
+	/**
+	 * Highlight cards according stack rules.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	void highlight(int index) {
+		if (isEmpty() == false) {
+			peek().highlight();
+		}
 	}
 }

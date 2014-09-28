@@ -57,6 +57,7 @@ class Column extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public void addCard(Card card) {
+		card.setFaceUp();
 		cards.add(card);
 	}
 
@@ -192,7 +193,7 @@ class Column extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public CardStack getStack(Card card) {
-		CardStack temp = new CardStack();
+		CardStack temp = new Column();
 		int index = search(card);
 
 		for (int i = 0; i < index; i++) {
@@ -216,7 +217,7 @@ class Column extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public CardStack getStack(int numCards) {
-		CardStack temp = new CardStack();
+		CardStack temp = new Column();
 		int index = length() - numCards;
 
 		for (int i = length(); i > index; i--) {
@@ -239,6 +240,7 @@ class Column extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public Card push(Card card) {
+		card.setFaceUp();
 		if (isValidMove(card) == true) {
 			super.push(card);
 			return card;
@@ -319,7 +321,7 @@ class Column extends CardStack {
 			return (null);
 		}
 
-		CardStack stack = new CardStack();
+		CardStack stack = new Column();
 		stack.addCard(cards.get(length() - 1));
 
 		for (int index = length() - 2; index >= 0; index--) {
@@ -345,5 +347,24 @@ class Column extends CardStack {
 	 */
 	public Card getBottom() {
 		return cards.firstElement();
+	}
+
+	/**
+	 * Highlight cards according stack rules. In the columns variant it is very
+	 * important all cards to be in the specific order.
+	 * 
+	 * @param index
+	 *            Index of the card which should be leading the highlighting.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	void highlight(int index) {
+		if (isValidCard(index) == false) {
+			return;
+		}
+
+		for (int i = index; i < cards.size(); i++) {
+			cards.elementAt(i).highlight();
+		}
 	}
 }

@@ -155,10 +155,15 @@ class Card {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public Card(CardSuit suit, CardRank number, int fullNumber) {
+	private Card(CardSuit suit, CardRank number, int fullNumber) {
 		this.suit = suit;
 		this.rank = number;
 		this.fullCardNumber = fullNumber;
+		if (suit == CardSuit.SPADES || suit == CardSuit.CLUBS) {
+			this.color = CardColor.BLACK;
+		}else if (suit == CardSuit.DIAMONDS || suit == CardSuit.HEARTS) {
+			this.color = CardColor.RED;
+		}
 	}
 
 	/**
@@ -180,7 +185,6 @@ class Card {
 	public void unhighlight() {
 		if (isFaceUp() == true) {
 			highlighted = false;
-			setFaceUp();
 		}
 	}
 

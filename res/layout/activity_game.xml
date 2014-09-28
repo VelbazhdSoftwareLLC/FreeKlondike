@@ -14,8 +14,7 @@
         android:layout_marginRight="55dp"
         android:layout_marginTop="5dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/transparent_s_ace" />
+        android:scaleType="fitCenter" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -26,8 +25,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/transparent_c_ace" />
+        android:scaleType="fitCenter" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -38,8 +36,7 @@
         android:layout_marginRight="55dp"
         android:layout_marginTop="72dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/transparent_d_ace" />
+        android:scaleType="fitCenter" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -50,8 +47,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginTop="72dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/transparent_h_ace" />
+        android:scaleType="fitCenter" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -62,8 +58,7 @@
         android:layout_marginRight="265dp"
         android:layout_marginTop="10dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/empty_card" />
+        android:scaleType="fitCenter" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -74,8 +69,7 @@
         android:layout_marginRight="215dp"
         android:layout_marginTop="10dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/empty_card" />
+        android:scaleType="fitCenter" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -86,8 +80,7 @@
         android:layout_marginRight="165dp"
         android:layout_marginTop="10dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/empty_card" />
+        android:scaleType="fitCenter" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -98,8 +91,7 @@
         android:layout_marginRight="115dp"
         android:layout_marginTop="10dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/empty_card" />
+        android:scaleType="fitCenter" />
 
     <ImageView
         android:id="@+id/imageView9"

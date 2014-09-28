@@ -71,9 +71,9 @@ class DealDeck extends CardStack {
 		discardPile = discard;
 
 		if (SolitaireBoard.drawCount == 3) {
-			deckThroughLimit = ThroughLimit.MEDIUM.getThroughs() + 1;
+			deckThroughLimit = ThroughLimit.EASY.getThroughs() + 1;
 		} else {
-			deckThroughLimit = ThroughLimit.MEDIUM.getThroughs();
+			deckThroughLimit = ThroughLimit.EASY.getThroughs();
 		}
 	}
 
@@ -239,7 +239,7 @@ class DealDeck extends CardStack {
 				return card;
 			} else {
 				int tempDrawCount = SolitaireBoard.drawCount;
-				CardStack tempStack = new CardStack();
+				CardStack tempStack = new DealDeck(discardPile);
 
 				while (SolitaireBoard.drawCount > 1 && tempDrawCount > 0
 						&& isEmpty() == false) {
@@ -256,7 +256,7 @@ class DealDeck extends CardStack {
 				 * To put the cards back in order because the previous step
 				 * reversed them.
 				 */
-				CardStack tempStack2 = new CardStack();
+				CardStack tempStack2 = new DealDeck(discardPile);
 
 				for (int i = tempStack.length(); i > 0; i--) {
 					tempStack2.push(tempStack.pop());
@@ -401,7 +401,7 @@ class DealDeck extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public CardStack getStack(Card card) {
-		CardStack temp = new CardStack();
+		CardStack temp = new DealDeck(discardPile);
 		int index = search(card);
 
 		for (int i = 0; i < index; i++) {
@@ -425,7 +425,7 @@ class DealDeck extends CardStack {
 	 * @author Todor Balabanov
 	 */
 	public CardStack getStack(int numCards) {
-		CardStack temp = new CardStack();
+		CardStack temp = new DealDeck(discardPile);
 		int index = length() - numCards;
 
 		for (int i = length(); i > index; i--) {
@@ -497,5 +497,17 @@ class DealDeck extends CardStack {
 		for (Card card : cards) {
 			card.setFaceDown();
 		}
+	}
+
+	/**
+	 * Highlight cards according stack rules.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	void highlight(int index) {
+		/*
+		 * Deal deck has no highlighting. All cards are face down and are not
+		 * selectable.
+		 */
 	}
 }
