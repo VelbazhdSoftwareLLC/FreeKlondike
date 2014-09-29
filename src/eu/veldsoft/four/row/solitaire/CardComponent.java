@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva, Yana Genova
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -22,8 +22,8 @@ package eu.veldsoft.four.row.solitaire;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.net.URL;
-import java.util.logging.Logger;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
@@ -33,13 +33,6 @@ import javax.swing.JComponent;
  * @author Todor Balabanov
  */
 class CardComponent extends JComponent {
-
-	/**
-	 * 
-	 */
-	private static final Logger LOGGER = Logger.getLogger(Class.class
-			.toString());
-
 	/**
 	 * 
 	 */
@@ -53,12 +46,21 @@ class CardComponent extends JComponent {
 			null, null, null, null, null, null, null, null, null, null, null,
 			null, null, null, null, null, null, null, null, null, null, null,
 			null, null, null, null, null, null, null, null, null, null, null,
-			null, null, null };
+			null, null, null, };
 
 	/**
-	 * Buffer.
+	 * Maps non GUI card objects with GUI card objects.
 	 */
-	private Card card = null;
+	static final Map<Card, CardComponent> cardsMapping = new HashMap<Card, CardComponent>();
+
+	/**
+	 * Initialize static data.
+	 */
+	static {
+		for (int i = 0; i < cards.length; i++) {
+			cards[i] = new CardComponent(Card.valueBy(i + 1));
+		}
+	}
 
 	/**
 	 * The back design.
@@ -81,6 +83,11 @@ class CardComponent extends JComponent {
 	private BufferedImage image = null;
 
 	/**
+	 * Buffer.
+	 */
+	Card card = null;
+
+	/**
 	 * It is used instead of constructor. Implement lazy initialization.
 	 * 
 	 * @param number
@@ -94,36 +101,7 @@ class CardComponent extends JComponent {
 		int index = number - 1;
 
 		if (cards[index] == null) {
-			if (number >= 1 && number <= 13) {
-				/*
-				 * To make the cardNumber 1-13 you do not need to do anything.
-				 */
-				cards[index] = new CardComponent(CardSuit.SPADES,
-						CardRank.getValue(number), number);
-			} else if (number >= 14 && number <= 26) {
-				/*
-				 * To make the cardNumber 1-13 instead of 14-26.
-				 */
-				cards[index] = new CardComponent(CardSuit.CLUBS,
-						CardRank.getValue(number - 13), number);
-			} else if (number >= 27 && number <= 39) {
-				/*
-				 * To make the cardNumber 1-13 instead of 27-39.
-				 */
-				cards[index] = new CardComponent(CardSuit.DIAMONDS,
-						CardRank.getValue(number - 26), number);
-			} else if (number >= 40 && number <= 52) {
-				/*
-				 * To make the cardNumber 1-13 instead of 40-52.
-				 */
-				cards[index] = new CardComponent(CardSuit.HEARTS,
-						CardRank.getValue(number - 39), number);
-			} else {
-				/*
-				 * Let user know the card is invalid.
-				 */
-				LOGGER.info("Invalid card!");
-			}
+			cards[index] = CardComponent.cardsMapping.get(Card.valueBy(number));
 		}
 
 		return (cards[index]);
@@ -136,8 +114,12 @@ class CardComponent extends JComponent {
 	 *            Graphic context.
 	 * @author Todor Balabanov
 	 */
+	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+
+		updateImage();
+
 		g.drawImage(image, 0, 0, null);
 	}
 
@@ -156,20 +138,58 @@ class CardComponent extends JComponent {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	private CardComponent(CardSuit suit, CardRank number, int fullNumber) {
-		if (SolitaireFrame.deckNumber >= 1
-				&& SolitaireFrame.deckNumber <= ChangeAppearance.NUM_DECKS) {
-			cardBack = SolitaireFrame.IMAGES_PATH + "/cardbacks/cardback"
-					+ SolitaireFrame.deckNumber + ".png";
+	private CardComponent(Card card) {
+		if (SolitaireBoardFrame.deckNumber >= 1
+				&& SolitaireBoardFrame.deckNumber <= ChangeAppearance.NUM_DECKS) {
+			cardBack = SolitaireBoardFrame.IMAGES_PATH + "/cardbacks/cardback"
+					+ SolitaireBoardFrame.deckNumber + ".png";
 		} else {
-			cardBack = SolitaireFrame.IMAGES_PATH + "/cardbacks/cardback3.png";
+			cardBack = SolitaireBoardFrame.IMAGES_PATH
+					+ "/cardbacks/cardback3.png";
 		}
 
-		card = new Card(suit, number, fullNumber);
+		this.card = card;
 
 		initializeCardImageString();
 
 		setFaceUp();
+
+		setBounds(0, 0, 72, 96);
+		cardsMapping.put(card, this);
+	}
+
+	/**
+	 * Update image pointer according internal card state.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public void updateImage() {
+		if (card.isFaceUp()) {
+			if (card.isHighlighted()) {
+				try {
+					// TODO Load images only once.
+					image = ImageIO.read(this.getClass().getResource(
+							cardHighlighted));
+				} catch (NullPointerException e) {
+				} catch (IOException e) {
+				}
+			} else if (card.isUnhighlighted()) {
+				try {
+					// TODO Load images only once.
+					image = ImageIO.read(this.getClass().getResource(
+							cardImageString));
+				} catch (NullPointerException e) {
+				} catch (IOException e) {
+				}
+			}
+		} else if (card.isFaceDown()) {
+			try {
+				// TODO Load images only once.
+				image = ImageIO.read(this.getClass().getResource(cardBack));
+			} catch (NullPointerException e) {
+			} catch (IOException e) {
+			}
+		}
 	}
 
 	/**
@@ -190,19 +210,6 @@ class CardComponent extends JComponent {
 	 */
 	public void highlight() {
 		card.highlight();
-
-		try {
-			URL imageURL = this.getClass().getResource(cardHighlighted);
-
-			if (imageURL != null) {
-				image = ImageIO.read(imageURL);
-			}
-		} catch (IOException ex) {
-			System.err
-					.println("Error in creating highlighted card face image.");
-		}
-
-		repaint();
 	}
 
 	/**
@@ -212,7 +219,6 @@ class CardComponent extends JComponent {
 	 */
 	public void unhighlight() {
 		card.unhighlight();
-
 		setFaceUp();
 	}
 
@@ -223,16 +229,6 @@ class CardComponent extends JComponent {
 	 */
 	public void setFaceUp() {
 		card.setFaceUp();
-
-		try {
-			URL imageURL = this.getClass().getResource(cardImageString);
-
-			if (imageURL != null) {
-				image = ImageIO.read(imageURL);
-			}
-		} catch (IOException ex) {
-			System.err.println("Error in creating card face image.");
-		}
 	}
 
 	/**
@@ -242,16 +238,6 @@ class CardComponent extends JComponent {
 	 */
 	public void setFaceDown() {
 		card.setFaceDown();
-
-		try {
-			URL imageURL = this.getClass().getResource(cardBack);
-
-			if (imageURL != null) {
-				image = ImageIO.read(imageURL);
-			}
-		} catch (IOException ex) {
-			System.err.println("Error in creating card back image.");
-		}
 	}
 
 	/**
@@ -272,8 +258,9 @@ class CardComponent extends JComponent {
 	 * @author Todor Balabanov
 	 */
 	private void initializeCardImageString() {
-		cardImageString = SolitaireFrame.IMAGES_PATH + "/cardfaces/";
-		cardHighlighted = SolitaireFrame.IMAGES_PATH + "/highlightedfaces/";
+		cardImageString = SolitaireBoardFrame.IMAGES_PATH + "/cardfaces/";
+		cardHighlighted = SolitaireBoardFrame.IMAGES_PATH
+				+ "/highlightedfaces/";
 
 		if (card.getSuit().equals(CardSuit.SPADES)) {
 			cardImageString += "s";

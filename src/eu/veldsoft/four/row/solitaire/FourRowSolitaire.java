@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva, Yana Genova
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -48,7 +48,8 @@ import javax.swing.UIManager;
  * 
  * @author Matt Stephen
  */
-public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
+public class FourRowSolitaire extends SolitaireBoardFrame implements
+		ActionListener {
 
 	/**
 	 * 
@@ -197,6 +198,7 @@ public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
 		help.setAccelerator(KeyStroke.getKeyStroke("F1"));
 		about.setMnemonic('a');
 
+		// TODO It was used to fill board with initial stored data.
 		loadData();
 	}
 
@@ -206,6 +208,11 @@ public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
 	 * @author Todor Balabanov
 	 */
 	private void checkForUpdate() {
+		// TODO Remove in the final release.
+		if (true) {
+			return;
+		}
+
 		try {
 			URL url = new URL(
 					"http://www.mastadisasta.com/FourRowSolitaire/version.txt");
@@ -803,6 +810,7 @@ public class FourRowSolitaire extends SolitaireFrame implements ActionListener {
 							this,
 							"Four Row Solitaire was created by Matt Stephen and\n"
 									+ "programmed by Matt Stephen, Todor Balabanov, Konstantin Tsanov and Ventsislav Medarov.\n"
+									+ "graphics by Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva and Yana Genova\n"
 									+ "\nYou can modify this code in accordance with GPL v3.0.\n"
 									+ "\nTo check if there is a newer version, go to:\n"
 									+ "github.com/TodorBalabanov/FourRowSolitaire",

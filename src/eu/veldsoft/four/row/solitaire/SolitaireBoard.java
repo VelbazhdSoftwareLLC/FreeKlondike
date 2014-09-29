@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva, Yana Genova
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -25,6 +25,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Vector;
 
 /**
  * Class: SolitaireBoard
@@ -52,10 +54,31 @@ class SolitaireBoard {
 	private int newDrawCount = drawCount;
 
 	/**
+	 * 1 = easy, 2 = medium, 3 = hard Should be only here!
+	 */
+	private GameDifficulty difficulty = GameDifficulty.EASY;
+
+	/**
+	 * Game difficulty.
+	 */
+	private GameDifficulty newDifficulty = difficulty;
+
+	/**
+	 * Card numbers.
+	 */
+	// TODO Should be private.
+	LinkedList<Integer> numCards = new LinkedList<Integer>();
+
+	/**
+	 * The cards from the discard pile.
+	 */
+	LinkedList<Integer> numCardsInDiscardView = new LinkedList<Integer>();
+
+	/**
 	 * The four columns for the main playing field.
 	 */
 	// TODO Should be private.
-	Column[] columns = new Column[4];
+	Column[] columns = { null, null, null, null };
 
 	/**
 	 * The discard pile.
@@ -73,23 +96,13 @@ class SolitaireBoard {
 	 * The four ace piles (to stack Ace - King of a single suit).
 	 */
 	// TODO Should be private.
-	AcePile[] acePiles = new AcePile[4];
+	AcePile[] acePiles = { null, null, null, null };
 
 	/**
 	 * The four top individual cells.
 	 */
 	// TODO Should be private.
-	SingleCell[] cells = new SingleCell[4];
-
-	/**
-	 * 1 = easy, 2 = medium, 3 = hard Should be only here!
-	 */
-	private GameDifficulty difficulty = GameDifficulty.MEDIUM;
-
-	/**
-	 * Game difficulty.
-	 */
-	private GameDifficulty newDifficulty = difficulty;
+	SingleCell[] cells = { null, null, null, null };
 
 	/**
 	 * Source.
@@ -104,23 +117,64 @@ class SolitaireBoard {
 	LinkedList<CardStack> destinationList = new LinkedList<CardStack>();
 
 	/**
-	 * Card numbers.
-	 */
-	// TODO Should be private.
-	LinkedList<Integer> numCards = new LinkedList<Integer>();
-
-	/**
-	 * The cards from the discard pile.
-	 */
-	LinkedList<Integer> numCardsInDiscardView = new LinkedList<Integer>();
-
-	/**
 	 * Sets the board's window name, size, location, close button option, makes
 	 * it unresizable and puts the logo on it.
 	 * 
 	 * @author Todor Balabanov
 	 */
 	public SolitaireBoard() {
+	}
+
+	/**
+	 * Check for highlighted cards in the board.
+	 * 
+	 * @return True if there is a card or bunch of cards highlighted and false
+	 *         otherwise.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public int highlightedCards() {
+		int counter = 0;
+
+		for (int i = 0; i < columns.length; i++) {
+			for (int j = 0; j < columns[i].length(); j++) {
+				if (columns[i].getCardAtLocation(j).isHighlighted() == true) {
+					counter++;
+				}
+			}
+		}
+
+		for (int i = 0; i < cells.length; i++) {
+			if (cells[i].isEmpty() == false
+					&& cells[i].peek().isHighlighted() == true) {
+				counter++;
+			}
+		}
+
+		for (int i = 0; i < acePiles.length; i++) {
+			if (acePiles[i].isEmpty() == false
+					&& acePiles[i].peek().isHighlighted() == true) {
+				counter++;
+			}
+		}
+
+		if (discardPile.isEmpty() == false
+				&& discardPile.peek().isHighlighted() == true) {
+			counter++;
+		}
+
+		return (counter);
+	}
+
+	/**
+	 * Mark all cards on the board as non highlighted.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public void clearHighlighting() {
+		for (int n = 1; n <= 52; n++) {
+			Card.valueBy(n).unhighlight();
+		}
 	}
 
 	/**
@@ -157,7 +211,6 @@ class SolitaireBoard {
 			case 3:
 				acePiles[i] = new AcePile(CardSuit.HEARTS);
 				break;
-
 			default:
 				break;
 			}
@@ -170,8 +223,7 @@ class SolitaireBoard {
 	 * @author Todor Balabanov
 	 */
 	void dealOutBoard() {
-		LinkedList<CardComponent> cards = (LinkedList<CardComponent>) Deck
-				.getFullShuffledDeck();
+		LinkedList<Card> cards = (LinkedList<Card>) Deck.getFullShuffledDeck();
 
 		/*
 		 * Fill five cards by column.
@@ -191,6 +243,7 @@ class SolitaireBoard {
 			cards.removeLast();
 		}
 
+		dealDeck.setDeck(cards);
 		dealDeck.setDrawCount(newDrawCount);
 		dealDeck.setDifficulty(newDifficulty);
 
@@ -202,7 +255,7 @@ class SolitaireBoard {
 			difficulty = newDifficulty;
 		}
 
-		dealDeck.setDeck(cards);
+		clearHighlighting();
 	}
 
 	/**
@@ -217,8 +270,7 @@ class SolitaireBoard {
 	 * @author Todor Balabanov
 	 */
 	void dealOutCustomBoard(LinkedList<Integer> numbers, int numViewableCards) {
-		LinkedList<CardComponent> cards = (LinkedList<CardComponent>) Deck
-				.getDeckSubsetByCardNumbers(numbers);
+		List<Card> cards = Deck.getDeckSubsetByCardNumbers(numbers);
 
 		int pileNumber = 0;
 		int cardNumber = -1;
@@ -241,9 +293,10 @@ class SolitaireBoard {
 			} else if (8 <= pileNumber && pileNumber <= 11) {
 				acePiles[pileNumber % 4].addCard(cards.get(cardNumber));
 			} else if (pileNumber == 12) {
-				CardComponent card = cards.get(cardNumber);
+				CardComponent card = CardComponent.cardsMapping.get(cards
+						.get(cardNumber));
 				card.setFaceDown();
-				dealDeck.addCard(card);
+				dealDeck.addCard(card.getCard());
 			} else if (pileNumber == 13) {
 				discardPile.push(cards.get(cardNumber));
 			}
@@ -257,42 +310,32 @@ class SolitaireBoard {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	private void clearBoard() {
+	void clearBoard() {
 		for (int i = 0; i < columns.length; i++) {
 			while (columns[i].isEmpty() == false) {
 				columns[i].pop();
 			}
-
-			columns[i].repaint();
 		}
 
 		for (int i = 0; i < cells.length; i++) {
 			while (cells[i].isEmpty() == false) {
 				cells[i].pop();
 			}
-
-			cells[i].repaint();
 		}
 
 		for (int i = 0; i < acePiles.length; i++) {
 			while (acePiles[i].isEmpty() == false) {
 				acePiles[i].pop();
 			}
-
-			acePiles[i].repaint();
 		}
 
 		while (dealDeck.isEmpty() == false) {
 			dealDeck.pop();
 		}
 
-		dealDeck.repaint();
-
 		while (discardPile.isEmpty() == false) {
 			discardPile.pop();
 		}
-
-		discardPile.repaint();
 	}
 
 	/**
@@ -790,8 +833,7 @@ class SolitaireBoard {
 
 				for (int i = 0; i < cells.length; i++) {
 					if (!cells[i].isEmpty()) {
-						saved.writeInt(cells[i].peek().getCard()
-								.getFullNumber());
+						saved.writeInt(cells[i].peek().getFullNumber());
 						saved.writeInt(-1);
 					} else {
 						saved.writeInt(-1);
@@ -802,7 +844,7 @@ class SolitaireBoard {
 					if (!columns[i].isEmpty()) {
 						for (int j = 0; j < columns[i].length(); j++) {
 							saved.writeInt(columns[i].getCardAtLocation(j)
-									.getCard().getFullNumber());
+									.getFullNumber());
 						}
 
 						saved.writeInt(-1);
@@ -815,7 +857,7 @@ class SolitaireBoard {
 					if (!acePiles[i].isEmpty()) {
 						for (int j = 0; j < acePiles[i].length(); j++) {
 							saved.writeInt(acePiles[i].getCardAtLocation(j)
-									.getCard().getFullNumber());
+									.getFullNumber());
 						}
 
 						saved.writeInt(-1);
@@ -826,7 +868,7 @@ class SolitaireBoard {
 
 				if (!dealDeck.isEmpty()) {
 					for (int j = 0; j < dealDeck.length(); j++) {
-						saved.writeInt(dealDeck.getCardAtLocation(j).getCard()
+						saved.writeInt(dealDeck.getCardAtLocation(j)
 								.getFullNumber());
 					}
 
@@ -838,7 +880,7 @@ class SolitaireBoard {
 				if (!discardPile.isEmpty()) {
 					for (int j = 0; j < discardPile.length(); j++) {
 						saved.writeInt(discardPile.getCardAtLocation(j)
-								.getCard().getFullNumber());
+								.getFullNumber());
 					}
 
 					saved.writeInt(-1);
@@ -1009,8 +1051,6 @@ class SolitaireBoard {
 							.unhighlight();
 				}
 			}
-
-			tempSource.repaint();
 		} else if (!(sourceList.getLast() instanceof DealDeck)) {
 			CardStack tempSource = sourceList.getLast();
 			CardStack tempDest = destinationList.getLast();
@@ -1025,13 +1065,11 @@ class SolitaireBoard {
 			if (num == 1) {
 				tempSource.addCard(tempDest.pop());
 			} else {
-				CardStack temp = tempDest.undoStack(num);
+				Vector<Card> temp = tempDest.undoStack(num);
 				tempSource.addStack(temp);
 			}
 
 			discardPile.setView(numDiscard);
-			tempSource.repaint();
-			tempDest.repaint();
 		}
 		/*
 		 * The last draw from the deck didn't reset the discard pile to make it
@@ -1048,14 +1086,12 @@ class SolitaireBoard {
 			numCardsInDiscardView.removeLast();
 
 			for (int i = 0; i < num; i++) {
-				CardComponent card = discardPile.undoPop();
+				Card card = discardPile.undoPop();
 				card.setFaceDown();
 				dealDeck.addCard(card);
 			}
 
 			discardPile.setView(numDiscard);
-			dealDeck.repaint();
-			discardPile.repaint();
 		}
 		/*
 		 * Last move was a reset on the discard pile.
@@ -1065,10 +1101,6 @@ class SolitaireBoard {
 
 			int numDiscard = numCardsInDiscardView.getLast();
 			discardPile.setView(numDiscard);
-
-			discardPile.repaint();
-			discardPile.revalidate();
-			dealDeck.repaint();
 
 			sourceList.removeLast();
 			destinationList.removeLast();
@@ -1086,9 +1118,9 @@ class SolitaireBoard {
 	 */
 	@SuppressWarnings("fallthrough")
 	public String[] getHint() {
-		CardStack source = new CardStack();
-		CardStack destination = new CardStack();
-		CardStack temp = new CardStack();
+		CardStack source = null;
+		CardStack destination = null;
+		CardStack temp = null;
 
 		LinkedList<String> hints = new LinkedList<String>();
 		String sourceString = "";
@@ -1152,7 +1184,8 @@ class SolitaireBoard {
 							&& destination != source
 							&& !(destination instanceof SingleCell)) {
 						for (int k = temp.length() - 1; k >= 0; k--) {
-							CardComponent card = temp.getCardAtLocation(k);
+							CardComponent card = CardComponent.cardsMapping
+									.get(temp.getCardAtLocation(k));
 
 							if (((destination instanceof AcePile)
 									&& card.getCard()
@@ -1162,19 +1195,16 @@ class SolitaireBoard {
 									&& card.getCard()
 											.getRank()
 											.isLessByOneThan(
-													destination.peek()
-															.getCard()
-															.getRank()) && k == 0)
+													((AcePile) (destination))
+															.peek().getRank()) && k == 0)
 									|| (!(destination instanceof AcePile)
-											&& card.getCard().getColor() != destination
-													.peek().getCard()
-													.getColor() && card
+											&& card.getCard().getColor() != ((AcePile) destination)
+													.peek().getColor() && card
 											.getCard()
 											.getRank()
 											.isGreaterByOneThan(
-													destination.peek()
-															.getCard()
-															.getRank()))) {
+													(((AcePile) destination)
+															.peek()).getRank()))) {
 								String hintString = "Move the ";
 
 								if (card.getCard().getRank()
@@ -1196,25 +1226,25 @@ class SolitaireBoard {
 								hintString += " of " + card.getCard().getSuit()
 										+ " in " + sourceString + " to the ";
 
-								if (destination.peek().getCard().getRank()
+								if (((AcePile) (destination)).peek().getRank()
 										.equals(CardRank.JACK)) {
 									hintString += "Jack";
-								} else if (destination.peek().getCard()
+								} else if (((AcePile) (destination)).peek()
 										.getRank().equals(CardRank.QUEEN)) {
 									hintString += "Queen";
-								} else if (destination.peek().getCard()
+								} else if (((AcePile) (destination)).peek()
 										.getRank().equals(CardRank.KING)) {
 									hintString += "King";
-								} else if (destination.peek().getCard()
+								} else if (((AcePile) (destination)).peek()
 										.getRank().equals(CardRank.ACE)) {
 									hintString += "Ace";
 								} else {
-									hintString += destination.peek().getCard()
-											.getRank();
+									hintString += ((AcePile) (destination))
+											.peek().getRank();
 								}
 
 								hintString += " of "
-										+ destination.peek().getCard()
+										+ ((AcePile) (destination)).peek()
 												.getSuit() + " in "
 										+ destinationString;
 
@@ -1229,11 +1259,12 @@ class SolitaireBoard {
 					} else if (destination != null
 							&& destination != source
 							&& (destination instanceof Column)
-							&& destination.isEmpty()
-							&& (source.getBottom().getCard().getRank()
+							&& ((Column) destination).isEmpty()
+							&& (source.getBottom().getRank()
 									.equals(CardRank.KING) == false || source instanceof SingleCell)) {
 						for (int k = 0; k < temp.length(); k++) {
-							CardComponent card = temp.getCardAtLocation(k);
+							CardComponent card = CardComponent.cardsMapping
+									.get(temp.getCardAtLocation(k));
 
 							if (card.getCard().getRank().equals(CardRank.KING)) {
 								String hintString = "Move the King of "
@@ -1251,8 +1282,9 @@ class SolitaireBoard {
 						}
 					} else if (destination != null && destination != source
 							&& (destination instanceof AcePile)
-							&& destination.isEmpty()) {
-						CardComponent card = temp.peek();
+							&& ((AcePile) destination).isEmpty()) {
+						CardComponent card = CardComponent.cardsMapping
+								.get(temp.peek());
 
 						if (card.getCard().getRank().equals(CardRank.ACE)
 								&& card.getCard()
@@ -1296,5 +1328,231 @@ class SolitaireBoard {
 		}
 
 		return (hint);
+	}
+
+	/**
+	 * Try to move selected card to its ace pile.
+	 * 
+	 * @param index
+	 *            Index of the ace pile to be used.
+	 * @param numberOfSelectedCards
+	 *            Number of cards to be moved.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public void moveToAces(int index, int numberOfSelectedCards) {
+		if (numberOfSelectedCards > 1) {
+			return;
+		}
+
+		CardStack stack = null;
+		for (int i = 0; i < cells.length; i++) {
+			if (cells[i].isEmpty() == true) {
+				continue;
+			}
+
+			if (cells[i].peek().isHighlighted() == true) {
+				stack = cells[i];
+			}
+		}
+		for (int i = 0; i < columns.length; i++) {
+			if (columns[i].isEmpty() == true) {
+				continue;
+			}
+			if (columns[i].peek().isHighlighted() == true) {
+				stack = columns[i];
+			}
+		}
+		if (discardPile.isEmpty() == false
+				&& discardPile.peek().isHighlighted() == true) {
+			stack = discardPile;
+		}
+
+		if (stack == null) {
+			return;
+		}
+		if (stack == acePiles[index]) {
+			return;
+		}
+
+		/*
+		 * The card is Ace and should be collected in Ace Pile.
+		 */
+		if (stack.peek().getRank().equals(CardRank.ACE) == true
+				&& stack.peek().getSuit().equals(acePiles[index].getSuit()) == true) {
+			Card card = stack.pop();
+			acePiles[index].push(card);
+
+			return;
+		}
+
+		/*
+		 * The card is not Ace and should be collected in Ace Pile only if suite
+		 * and rank are matching with Ace Pile state.
+		 */
+		if (acePiles[index].isEmpty() == true) {
+			return;
+		}
+		if (stack.peek().getSuit().equals(acePiles[index].getSuit()) == false) {
+			return;
+		}
+		if (stack.peek().getRank()
+				.isLessByOneThan((acePiles[index].peek().getRank())) == false) {
+			return;
+		}
+
+		Card card = stack.pop();
+		acePiles[index].push(card);
+	}
+
+	/**
+	 * Try to move selected card to one of the single cells.
+	 * 
+	 * @param index
+	 *            Index of the single cell to be used.
+	 * @param numberOfSelectedCards
+	 *            Number of cards to be moved.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public void moveToCells(int index, int numberOfSelectedCards) {
+		if (numberOfSelectedCards > 1) {
+			return;
+		}
+
+		/*
+		 * Single cells can hold only single card.
+		 */
+		if (cells[index].isEmpty() == false) {
+			return;
+		}
+
+		CardStack stack = null;
+		for (int i = 0; i < acePiles.length; i++) {
+			if (acePiles[i].isEmpty() == true) {
+				continue;
+			}
+
+			if (acePiles[i].peek().isHighlighted() == true) {
+				stack = acePiles[i];
+			}
+		}
+		for (int i = 0; i < cells.length; i++) {
+			if (cells[i].isEmpty() == true) {
+				continue;
+			}
+
+			if (cells[i].peek().isHighlighted() == true) {
+				stack = cells[i];
+			}
+		}
+		for (int i = 0; i < columns.length; i++) {
+			if (columns[i].isEmpty() == true) {
+				continue;
+			}
+			if (columns[i].peek().isHighlighted() == true) {
+				stack = columns[i];
+			}
+		}
+		if (discardPile.isEmpty() == false
+				&& discardPile.peek().isHighlighted() == true) {
+			stack = discardPile;
+		}
+
+		if (stack == null) {
+			return;
+		}
+		if (stack == cells[index]) {
+			return;
+		}
+
+		Card card = stack.pop();
+		cells[index].push(card);
+	}
+
+	/**
+	 * Try to move selected card to one of the columns.
+	 * 
+	 * @param index
+	 *            Index of the column to be used.
+	 * @param numberOfSelectedCards
+	 *            Number of cards to be moved.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public void moveToColumns(int index, int numberOfSelectedCards) {
+		CardStack stack = null;
+		for (int i = 0; i < acePiles.length; i++) {
+			if (acePiles[i].isEmpty() == true) {
+				continue;
+			}
+
+			if (acePiles[i].peek().isHighlighted() == true) {
+				stack = acePiles[i];
+			}
+		}
+		for (int i = 0; i < cells.length; i++) {
+			if (cells[i].isEmpty() == true) {
+				continue;
+			}
+
+			if (cells[i].peek().isHighlighted() == true) {
+				stack = cells[i];
+			}
+		}
+		for (int i = 0; i < columns.length; i++) {
+			if (columns[i].isEmpty() == true) {
+				continue;
+			}
+			if (columns[i].peek().isHighlighted() == true) {
+				stack = columns[i];
+			}
+		}
+		if (discardPile.isEmpty() == false
+				&& discardPile.peek().isHighlighted() == true) {
+			stack = discardPile;
+		}
+
+		if (stack == null) {
+			return;
+		}
+		if (stack == columns[index]) {
+			return;
+		}
+
+		if (stack instanceof AcePile || stack instanceof SingleCell
+				|| stack instanceof DiscardPile
+				|| (stack instanceof Column && numberOfSelectedCards == 1)) {
+			Card card = stack.peek();
+
+			if (columns[index].isValidMove(card) == true) {
+				card = stack.pop();
+				columns[index].push(card);
+			}
+		} else if (stack instanceof Column && numberOfSelectedCards > 1) {
+			boolean valid = false;
+			Column a = (Column) stack;
+			Column b = columns[index];
+			for (int i = 0; i < a.length(); i++) {
+				if (a.getCardAtLocation(i).isHighlighted() == true) {
+					if (b.isValidMove(a.getCardAtLocation(i)) == true) {
+						valid = true;
+					}
+					break;
+				}
+			}
+			if (valid == true) {
+				for (int i = 0; i < a.length(); i++) {
+					if (a.getCardAtLocation(i).isHighlighted() == true) {
+						b.push(a.getCardAtLocation(i));
+					}
+				}
+				for (int i = a.length() - 1; i >= 0; i--) {
+					if (a.getCardAtLocation(i).isHighlighted() == true) {
+						a.pop();
+					}
+				}
+			}
+		}
 	}
 }

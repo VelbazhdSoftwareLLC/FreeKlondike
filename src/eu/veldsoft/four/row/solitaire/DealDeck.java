@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva, Yana Genova
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -19,11 +19,8 @@
 
 package eu.veldsoft.four.row.solitaire;
 
-import java.awt.Graphics;
-import java.awt.Point;
-import java.util.LinkedList;
-
-import javax.swing.JOptionPane;
+import java.util.List;
+import java.util.Vector;
 
 /**
  * Class: DealDeck
@@ -36,9 +33,9 @@ import javax.swing.JOptionPane;
 class DealDeck extends CardStack {
 
 	/**
-	 * 
+	 * Stack of cards.
 	 */
-	private static final long serialVersionUID = 1L;
+	private Vector<Card> cards = new Vector<Card>();
 
 	/**
 	 * Discard pile reference.
@@ -48,13 +45,13 @@ class DealDeck extends CardStack {
 	/**
 	 * Counter. Counts how many times we've gone through the deck.
 	 */
-	private int numTimesThroughDeck = 1;
+	int numTimesThroughDeck = 1;
 
 	/**
 	 * Deck through limit. An integer, representing the allowed number of deck
 	 * throughs.
 	 */
-	private int deckThroughLimit;
+	int deckThroughLimit;
 
 	/**
 	 * True by default. Keeps track if the deck is redealable.
@@ -74,10 +71,21 @@ class DealDeck extends CardStack {
 		discardPile = discard;
 
 		if (SolitaireBoard.drawCount == 3) {
-			deckThroughLimit = ThroughLimit.MEDIUM.getThroughs() + 1;
+			deckThroughLimit = ThroughLimit.EASY.getThroughs() + 1;
 		} else {
-			deckThroughLimit = ThroughLimit.MEDIUM.getThroughs();
+			deckThroughLimit = ThroughLimit.EASY.getThroughs();
 		}
+	}
+
+	/**
+	 * Returns the pile's suit.
+	 * 
+	 * @return suit The pile's suit.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public Vector<Card> getCards() {
+		return cards;
 	}
 
 	/**
@@ -131,10 +139,10 @@ class DealDeck extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public void setDeck(LinkedList<CardComponent> cards) {
-		for (int i = 0; i < cards.size(); i++) {
-			cards.get(i).setFaceDown();
-			addCard(cards.get(i));
+	public void setDeck(List<Card> cards) {
+		for (Card card : cards) {
+			card.setFaceDown();
+			addCard(card);
 		}
 	}
 
@@ -194,6 +202,21 @@ class DealDeck extends CardStack {
 	}
 
 	/**
+	 * For starting the game.
+	 * 
+	 * Used to add a card to a stack.
+	 * 
+	 * @param card
+	 *            Card to be added.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public void addCard(Card card) {
+		card.setFaceDown();
+		cards.add(card);
+	}
+
+	/**
 	 * Pops card(s) out of the deal deck based on the draw count. Pushes the
 	 * card(s) into the discard pile. When the deck through limit has been
 	 * reached, displays an error dialog, that notifies the user. Then forbids
@@ -201,26 +224,27 @@ class DealDeck extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public synchronized CardComponent pop() {
+	public synchronized Card pop() {
 		if (isEmpty() == false) {
 			/*
 			 * Verify there are still cards remaining.
 			 */
 			if (SolitaireBoard.drawCount == 1) {
-				CardComponent card = super.pop();
+				Card card = peek();
+				cards.remove(cards.size() - 1);
 
 				card.setFaceUp();
 				discardPile.push(card);
 
-				this.repaint();
 				return card;
 			} else {
 				int tempDrawCount = SolitaireBoard.drawCount;
-				CardStack tempStack = new CardStack();
+				CardStack tempStack = new DealDeck(discardPile);
 
 				while (SolitaireBoard.drawCount > 1 && tempDrawCount > 0
 						&& isEmpty() == false) {
-					CardComponent card = super.pop();
+					Card card = peek();
+					cards.remove(cards.size() - 1);
 
 					card.setFaceUp();
 					tempStack.push(card);
@@ -232,7 +256,7 @@ class DealDeck extends CardStack {
 				 * To put the cards back in order because the previous step
 				 * reversed them.
 				 */
-				CardStack tempStack2 = new CardStack();
+				CardStack tempStack2 = new DealDeck(discardPile);
 
 				for (int i = tempStack.length(); i > 0; i--) {
 					tempStack2.push(tempStack.pop());
@@ -240,28 +264,176 @@ class DealDeck extends CardStack {
 
 				discardPile.push(tempStack2);
 
-				this.repaint();
 				return discardPile.peek();
 			}
 		} else if (discardPile.isEmpty() == false
 				&& numTimesThroughDeck < deckThroughLimit) {
 			for (int i = discardPile.length(); i > 0; i--) {
-				CardComponent card = discardPile.pop();
+				Card card = discardPile.pop();
 				card.setFaceDown();
-				card.getCard().setSource("Deck");
+				card.setSource("Deck");
 				push(card);
 			}
 
-			discardPile.repaint();
 			numTimesThroughDeck++;
 		} else if (numTimesThroughDeck >= deckThroughLimit) {
 			redealable = false;
-			JOptionPane.showMessageDialog(null,
-					"You have reached your deck through limit.");
 		}
 
-		this.repaint();
 		return null;
+	}
+
+	/**
+	 * Pops the top card out of a stack if possible. If not - returns null.
+	 * 
+	 * @return Card or null.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public synchronized Card peek() {
+		if (cards.isEmpty()) {
+			return null;
+		}
+
+		return cards.lastElement();
+	}
+
+	/**
+	 * Checks if a stack is empty (has no cards inside).
+	 * 
+	 * @return True or false, based on if the stack is empty or not.
+	 */
+	public boolean isEmpty() {
+		return cards.size() == 0;
+	}
+
+	/**
+	 * Returns the stack's length.
+	 * 
+	 * @return Stack's length.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public int length() {
+		return cards.size();
+	}
+
+	/**
+	 * Searches the stack for a specific card and returns its location in the
+	 * stack.
+	 * 
+	 * @param card
+	 *            The card to be matched.
+	 * 
+	 * @return The location of the card or -1 if the card can't be found within
+	 *         the stack.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public synchronized int search(Card card) {
+		int i = cards.lastIndexOf(card);
+
+		if (i >= 0) {
+			return cards.size() - i;
+		}
+
+		return -1;
+	}
+
+	/**
+	 * Returns the card located at a specified location within the stack.
+	 * 
+	 * @param index
+	 *            Location within the stack.
+	 * 
+	 * @return The card at this location. Or null if the index is greater than
+	 *         the stack's size.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public Card getCardAtLocation(int index) {
+		if (index < cards.size()) {
+			return cards.get(index);
+		}
+
+		return null;
+	}
+
+	/**
+	 * Verifies that the card is a part of a valid stack.
+	 * 
+	 * @param index
+	 *            Index of the card to be verified.
+	 * 
+	 * @return true or false
+	 * 
+	 * @author Todor Balabanov
+	 */
+	boolean isValidCard(int index) {
+		if (index >= cards.size()) {
+			return false;
+		}
+
+		for (int i = index; i < cards.size() - 1; i++) {
+			/*
+			 * Cards are not opposite colors or decreasing in value correctly.
+			 */
+			if (cards.get(i).getColor() == cards.get(i + 1).getColor()
+					|| cards.get(i).getRank()
+							.isLessByOneThan(cards.get(i + 1).getRank()) == false) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Searches the stack for a specific card. Creates a new temporary stack.
+	 * Clones the cards from the end towards the beginning of the stack into the
+	 * temp stack. Stops after it reaches the specific card.
+	 * 
+	 * @param card
+	 *            Card to look for.
+	 * 
+	 * @return Stack of cards.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public CardStack getStack(Card card) {
+		CardStack temp = new DealDeck(discardPile);
+		int index = search(card);
+
+		for (int i = 0; i < index; i++) {
+			temp.push(getCardAtLocation(cards.size() - i - 1).clone());
+			getCardAtLocation(cards.size() - i - 1).highlight();
+		}
+
+		return temp;
+	}
+
+	/**
+	 * Searches the stack for a specified location, creates a temporary stack,
+	 * Clones the cards from the end towards the begining of the stack, stops
+	 * when it reaches the specified location.
+	 * 
+	 * @param numCards
+	 *            Index.
+	 * 
+	 * @return Stack of cards.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public CardStack getStack(int numCards) {
+		CardStack temp = new DealDeck(discardPile);
+		int index = length() - numCards;
+
+		for (int i = length(); i > index; i--) {
+			temp.push(getCardAtLocation(cards.size() - i - 1).clone());
+			getCardAtLocation(cards.size() - i - 1).highlight();
+		}
+
+		return temp;
 	}
 
 	/**
@@ -271,7 +443,7 @@ class DealDeck extends CardStack {
 	 */
 	public synchronized void undoPop() {
 		while (isEmpty() == false) {
-			CardComponent card = super.pop();
+			Card card = super.pop();
 			card.setFaceUp();
 			discardPile.push(card);
 		}
@@ -281,21 +453,6 @@ class DealDeck extends CardStack {
 		if (redealable == false) {
 			redealable = true;
 		}
-
-		discardPile.repaint();
-		this.repaint();
-	}
-
-	/**
-	 * Returns a clicked card.
-	 * 
-	 * @param point
-	 *            The location of the mouse click.
-	 * 
-	 * @author Todor Balabanov
-	 */
-	public CardComponent getCardAtLocation(Point point) {
-		return peek();
 	}
 
 	/**
@@ -306,7 +463,7 @@ class DealDeck extends CardStack {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public boolean isValidMove(CardComponent card) {
+	public boolean isValidMove(Card card) {
 		return false;
 	}
 
@@ -323,21 +480,34 @@ class DealDeck extends CardStack {
 	}
 
 	/**
-	 * Paint procedure.
+	 * Returns the first card from a stack.
 	 * 
-	 * @param g
-	 *            Paint.
+	 * @return card The first card from the stack of cards.
 	 * 
 	 * @author Todor Balabanov
 	 */
-	@Override
-	public void paint(Graphics g) {
-		super.paint(g);
+	public Card getBottom() {
+		return cards.firstElement();
+	}
 
-		if (isEmpty() == true) {
-			return;
+	/**
+	 * @author Todor Balabanov
+	 */
+	public void allFaceDown() {
+		for (Card card : cards) {
+			card.setFaceDown();
 		}
+	}
 
-		g.drawImage(getCardAtLocation(length() - 1).getImage(), 0, 0, null);
+	/**
+	 * Highlight cards according stack rules.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	void highlight(int index) {
+		/*
+		 * Deal deck has no highlighting. All cards are face down and are not
+		 * selectable.
+		 */
 	}
 }

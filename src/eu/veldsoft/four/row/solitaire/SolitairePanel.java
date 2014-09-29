@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva, Yana Genova
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -52,8 +52,8 @@ class SolitairePanel extends JPanel {
 	 */
 	public SolitairePanel() {
 		URL imageURL = this.getClass().getResource(
-				SolitaireFrame.IMAGES_PATH + "/backgrounds/background"
-						+ SolitaireFrame.backgroundNumber + ".jpg");
+				SolitaireBoardFrame.IMAGES_PATH + "/backgrounds/background"
+						+ SolitaireBoardFrame.backgroundNumber + ".jpg");
 
 		if (imageURL != null) {
 			background = new ImageIcon(imageURL).getImage();
@@ -70,17 +70,18 @@ class SolitairePanel extends JPanel {
 	 * @author Todor Balabanov
 	 */
 	public void changeBackground(int back) {
-		SolitaireFrame.backgroundNumber = back;
+		SolitaireBoardFrame.backgroundNumber = back;
 
 		URL imageURL = this.getClass().getResource(
-				SolitaireFrame.IMAGES_PATH + "/backgrounds/background" + back
-						+ ".jpg");
+				SolitaireBoardFrame.IMAGES_PATH + "/backgrounds/background"
+						+ back + ".jpg");
 
 		if (imageURL != null) {
 			background = new ImageIcon(imageURL).getImage();
 		}
 
 		repaint();
+		revalidate();
 	}
 
 	/**

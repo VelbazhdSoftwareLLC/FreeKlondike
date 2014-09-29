@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva, Yana Genova
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -49,7 +49,7 @@ class Deck {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	private static void shuffle(List<CardComponent> deck) {
+	private static void shuffle(List<Card> deck) {
 		int numbers[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
 				16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
 				32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47,
@@ -66,7 +66,7 @@ class Deck {
 		}
 
 		for (int i = 0; i < numbers.length; i++) {
-			deck.add(CardComponent.valueBy(numbers[i]));
+			deck.add(Card.valueBy(numbers[i]));
 		}
 	}
 
@@ -77,8 +77,8 @@ class Deck {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public static List<CardComponent> getFullShuffledDeck() {
-		List<CardComponent> deck = new LinkedList<CardComponent>();
+	public static List<Card> getFullShuffledDeck() {
+		List<Card> deck = new LinkedList<Card>();
 		shuffle(deck);
 
 		return deck;
@@ -96,13 +96,12 @@ class Deck {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public static List<CardComponent> getDeckSubsetByCardNumbers(
-			LinkedList<Integer> numbers) {
-		List<CardComponent> deck = new LinkedList<CardComponent>();
+	public static List<Card> getDeckSubsetByCardNumbers(List<Integer> numbers) {
+		List<Card> deck = new LinkedList<Card>();
 
-		for (int i = 0; i < numbers.size(); i++) {
-			if (numbers.get(i) > 0) {
-				deck.add(CardComponent.valueBy(numbers.get(i)));
+		for (Integer i : numbers) {
+			if (numbers.get(i.intValue()) > 0) {
+				deck.add(Card.valueBy(numbers.get(i.intValue())));
 			}
 		}
 

@@ -1,7 +1,7 @@
 /*
  This file is a part of Four Row Solitaire
 
- Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva
+ Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva, Yana Genova
 
  Four Row Solitaire is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -19,6 +19,8 @@
 
 package eu.veldsoft.four.row.solitaire;
 
+import java.util.logging.Logger;
+
 /**
  * Class: Card
  * 
@@ -28,6 +30,32 @@ package eu.veldsoft.four.row.solitaire;
  * @author Matt Stephen
  */
 class Card {
+
+	/**
+	 * 
+	 */
+	private static final Logger LOGGER = Logger.getLogger(Class.class
+			.toString());
+
+	/**
+	 * Card instances.
+	 */
+	private static Card cards[] = { null, null, null, null, null, null, null,
+			null, null, null, null, null, null, null, null, null, null, null,
+			null, null, null, null, null, null, null, null, null, null, null,
+			null, null, null, null, null, null, null, null, null, null, null,
+			null, null, null, null, null, null, null, null, null, null, null,
+			null, };
+
+	/**
+	 * Initialize static data.
+	 */
+	static {
+		for (int i = 0; i < cards.length; i++) {
+			cards[i] = valueBy(i + 1);
+		}
+	}
+
 	/**
 	 * Card suit.
 	 */
@@ -64,6 +92,55 @@ class Card {
 	private String location = "";
 
 	/**
+	 * It is used instead of constructor. Implement lazy initialization.
+	 * 
+	 * @param number
+	 *            Will be used to set the card's number.
+	 * 
+	 * @return Card with updated card number.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	static Card valueBy(int number) {
+		int index = number - 1;
+
+		if (cards[index] == null) {
+			if (number >= 1 && number <= 13) {
+				/*
+				 * To make the cardNumber 1-13 you do not need to do anything.
+				 */
+				cards[index] = new Card(CardSuit.SPADES,
+						CardRank.getValue(number), number);
+			} else if (number >= 14 && number <= 26) {
+				/*
+				 * To make the cardNumber 1-13 instead of 14-26.
+				 */
+				cards[index] = new Card(CardSuit.CLUBS,
+						CardRank.getValue(number - 13), number);
+			} else if (number >= 27 && number <= 39) {
+				/*
+				 * To make the cardNumber 1-13 instead of 27-39.
+				 */
+				cards[index] = new Card(CardSuit.DIAMONDS,
+						CardRank.getValue(number - 26), number);
+			} else if (number >= 40 && number <= 52) {
+				/*
+				 * To make the cardNumber 1-13 instead of 40-52.
+				 */
+				cards[index] = new Card(CardSuit.HEARTS,
+						CardRank.getValue(number - 39), number);
+			} else {
+				/*
+				 * Let user know the card is invalid.
+				 */
+				LOGGER.info("Invalid card!");
+			}
+		}
+
+		return (cards[index]);
+	}
+
+	/**
 	 * Card constructor Sets the card's suit, number, full number and back
 	 * image. Also sets it face-up.
 	 * 
@@ -78,10 +155,15 @@ class Card {
 	 * 
 	 * @author Todor Balabanov
 	 */
-	public Card(CardSuit suit, CardRank number, int fullNumber) {
+	private Card(CardSuit suit, CardRank number, int fullNumber) {
 		this.suit = suit;
 		this.rank = number;
 		this.fullCardNumber = fullNumber;
+		if (suit == CardSuit.SPADES || suit == CardSuit.CLUBS) {
+			this.color = CardColor.BLACK;
+		}else if (suit == CardSuit.DIAMONDS || suit == CardSuit.HEARTS) {
+			this.color = CardColor.RED;
+		}
 	}
 
 	/**
@@ -90,7 +172,9 @@ class Card {
 	 * @author Todor Balabanov
 	 */
 	public void highlight() {
-		highlighted = true;
+		if (isFaceUp() == true) {
+			highlighted = true;
+		}
 	}
 
 	/**
@@ -99,9 +183,9 @@ class Card {
 	 * @author Todor Balabanov
 	 */
 	public void unhighlight() {
-		highlighted = false;
-
-		setFaceUp();
+		if (isFaceUp() == true) {
+			highlighted = false;
+		}
 	}
 
 	/**
@@ -114,6 +198,18 @@ class Card {
 	 */
 	public boolean isHighlighted() {
 		return highlighted;
+	}
+
+	/**
+	 * Checks if the card is unhighlighted and returns the result(true/false).
+	 * 
+	 * @return highlighted Whether the card is highlighted or not (true or
+	 *         false).
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public boolean isUnhighlighted() {
+		return (!highlighted);
 	}
 
 	/**
@@ -143,6 +239,17 @@ class Card {
 	 */
 	public boolean isFaceUp() {
 		return faceUp;
+	}
+
+	/**
+	 * Checks if the card is facing down and returns the result(true/false).
+	 * 
+	 * @return faceUp Whether the card is set face-up or not (true or false).
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public boolean isFaceDown() {
+		return (!faceUp);
 	}
 
 	/**
