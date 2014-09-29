@@ -168,10 +168,8 @@ class SolitaireBoardFrame extends JFrame {
 		 * @author Todor Balabanov
 		 */
 		private void checkWin() {
-			for (int i = 0; i < board.acePiles.length; i++) {
-				if (board.acePiles[i].isFull() == false) {
-					return;
-				}
+			if (board.isSolved() == false) {
+				return;
 			}
 
 			if (WinScreen.animation != 0 || WinScreen.sounds != 0) {

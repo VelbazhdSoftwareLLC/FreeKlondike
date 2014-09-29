@@ -1555,4 +1555,22 @@ class SolitaireBoard {
 			}
 		}
 	}
+
+	/**
+	 * Check is the solitaire solved.
+	 * 
+	 * @return True if the solitaire is solved, false otherwise.
+	 * 
+	 * @author Todor Balabanov
+	 */
+	public boolean isSolved() {
+		// TODO Check much better for final solution.
+		for (int i = 0; i < acePiles.length; i++) {
+			if (acePiles[i].isFull() == false) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 }

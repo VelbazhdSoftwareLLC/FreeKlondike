@@ -161,7 +161,7 @@ class Card {
 		this.fullCardNumber = fullNumber;
 		if (suit == CardSuit.SPADES || suit == CardSuit.CLUBS) {
 			this.color = CardColor.BLACK;
-		}else if (suit == CardSuit.DIAMONDS || suit == CardSuit.HEARTS) {
+		} else if (suit == CardSuit.DIAMONDS || suit == CardSuit.HEARTS) {
 			this.color = CardColor.RED;
 		}
 	}

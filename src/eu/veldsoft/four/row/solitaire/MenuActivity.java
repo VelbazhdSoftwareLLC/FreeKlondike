@@ -54,32 +54,32 @@ public class MenuActivity extends Activity {
 					}
 				});
 
-		((Button) findViewById(R.id.statistics_button))
-				.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						MenuActivity.this.startActivity(new Intent(
-								MenuActivity.this, StatisticsActivity.class));
-					}
-				});
-
-		((Button) findViewById(R.id.best_times_button))
-				.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						MenuActivity.this.startActivity(new Intent(
-								MenuActivity.this, BestTimesActivity.class));
-					}
-				});
-
-		((Button) findViewById(R.id.settings_button))
-				.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						MenuActivity.this.startActivity(new Intent(
-								MenuActivity.this, SettingsActivity.class));
-					}
-				});
+		// ((Button) findViewById(R.id.statistics_button))
+		// .setOnClickListener(new OnClickListener() {
+		// @Override
+		// public void onClick(View v) {
+		// MenuActivity.this.startActivity(new Intent(
+		// MenuActivity.this, StatisticsActivity.class));
+		// }
+		// });
+		//
+		// ((Button) findViewById(R.id.best_times_button))
+		// .setOnClickListener(new OnClickListener() {
+		// @Override
+		// public void onClick(View v) {
+		// MenuActivity.this.startActivity(new Intent(
+		// MenuActivity.this, BestTimesActivity.class));
+		// }
+		// });
+		//
+		// ((Button) findViewById(R.id.settings_button))
+		// .setOnClickListener(new OnClickListener() {
+		// @Override
+		// public void onClick(View v) {
+		// MenuActivity.this.startActivity(new Intent(
+		// MenuActivity.this, SettingsActivity.class));
+		// }
+		// });
 
 		((Button) findViewById(R.id.view_help_button))
 				.setOnClickListener(new OnClickListener() {

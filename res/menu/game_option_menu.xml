@@ -4,11 +4,13 @@
     <item
         android:id="@+id/new_game"
         android:title="@string/new_option"/>
+    <!--
     <item
         android:id="@+id/undo_last_move"
         android:title="@string/undo_option"/>
     <item
         android:id="@+id/hint"
         android:title="@string/hint_option"/>
+    -->
 
 </menu>

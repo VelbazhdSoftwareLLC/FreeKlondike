@@ -1,6 +1,14 @@
-Four Row Solitaire
+Four Row Solitaire published by Velbazhd Software LLC
 
-    Copyright (C) 2010-2014 by Matt Stephen, Todor Balabanov, Konstantin Tsanov, Ventsislav Medarov, Vanya Gyaurova, Plamena Popova, Hristiana Kalcheva, Yana Genova
+    Copyright (C) 2010-2014 by	Matt Stephen <masta08@gmail.com>
+								Todor Balabanov <todor.balabanov@gmail.com>
+								Konstantin Tsanov <k.tsanov@gmail.com>
+								Ventsislav Medarov <venci932@gmail.com>
+								Vanya Gyaurova <vanya.gyaurova@gmail.com>
+								Plamena Popova <plamstik@gmail.com>
+								Hristiana Kalcheva <xristiana.kalcheva@gmail.com>
+								Yana Genova <iana.genova@gmail.com>
+
 
     Four Row Solitaire is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -18,7 +26,9 @@ Four Row Solitaire
 Card faces and deck 1 and 2 backs provided by 
 http://www.jfitz.com/cards/
 
-Four Row Solitaire was created by Matt Stephen and programmed by Matt Stephen, Todor Balabanov, Konstantin Tsanov and Ventsislav Medarov. Graphics by Vanya Gyaurova, Plamena Popova,Hristiana Kalcheva and Yana Genova.
+Four Row Solitaire was created by Matt Stephen and programmed by 
+Matt Stephen, Todor Balabanov, Konstantin Tsanov and Ventsislav Medarov. 
+Graphics by Vanya Gyaurova, Plamena Popova,Hristiana Kalcheva and Yana Genova.
 This game is a mixture of FreeCell and normal (Klondike) Solitaire.
 You can modify this code in accordance with GPL v3.0.
 

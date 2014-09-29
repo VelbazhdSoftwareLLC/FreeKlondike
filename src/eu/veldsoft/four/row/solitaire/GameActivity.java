@@ -27,6 +27,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -70,6 +71,13 @@ public class GameActivity extends Activity {
 	 * 
 	 */
 	private SolitaireBoard board = new SolitaireBoard();
+
+	private void resizeImageViews() {
+		DisplayMetrics metrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(metrics);
+		for (ImageView view : CardsViews.all) {
+		}
+	}
 
 	/**
 	 * 
@@ -217,6 +225,14 @@ public class GameActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.new_game:
+			if (board.isSolved() == true) {
+				board.newGame(GameState.GAME_WON);
+				board.dealOutBoard();
+				updateImages();
+
+				break;
+			}
+
 			/*
 			 * Ask the user for new game confirmation.
 			 */
@@ -229,9 +245,9 @@ public class GameActivity extends Activity {
 					new DialogInterface.OnClickListener() {
 
 						public void onClick(DialogInterface dialog, int which) {
-							board.recordGame(GameState.GAME_LOST, 0, 0, 0, 0,
-									false);
-							board.newGame(GameState.GAME_LOST);
+							board.newGame(GameState.GAME_WON);
+							board.dealOutBoard();
+							updateImages();
 							dialog.dismiss();
 						}
 
@@ -249,14 +265,17 @@ public class GameActivity extends Activity {
 			AlertDialog alert = builder.create();
 			alert.show();
 			break;
-		case R.id.undo_last_move:
-			board.undoMove();
-			break;
-		case R.id.hint:
-			String hint[] = board.getHint();
-			Toast.makeText(GameActivity.this, hint[0] + " " + hint[1],
-					Toast.LENGTH_SHORT).show();
-			break;
+
+		//
+		// case R.id.undo_last_move:
+		// board.undoMove();
+		// break;
+		//
+		// case R.id.hint:
+		// String hint[] = board.getHint();
+		// Toast.makeText(GameActivity.this, hint[0] + " " + hint[1],
+		// Toast.LENGTH_SHORT).show();
+		// break;
 		}
 		return true;
 	}
@@ -536,6 +555,7 @@ public class GameActivity extends Activity {
 				CardsViews.deal, CardsViews.discard[0], CardsViews.discard[1],
 				CardsViews.discard[2] };
 		CardsViews.all = all;
+		resizeImageViews();
 
 		((ImageView) findViewById(R.id.imageView100))
 				.setOnClickListener(new OnClickListener() {
@@ -559,7 +579,7 @@ public class GameActivity extends Activity {
 					board.numCardsInDiscardView.add(board.discardPile
 							.getNumViewableCards());
 					Card clickedCard = board.dealDeck.pop();
-					
+
 					if (clickedCard != null) {
 						board.sourceList.add(board.dealDeck);
 						board.destinationList.add(board.discardPile);
@@ -577,7 +597,7 @@ public class GameActivity extends Activity {
 						board.numCardsInDiscardView.removeLast();
 					}
 				}
-				
+
 				/*
 				 * Mark any card on the board as highlighted.
 				 */
@@ -587,36 +607,36 @@ public class GameActivity extends Activity {
 						if (view != CardsViews.aces[i]) {
 							continue;
 						}
-						
+
 						board.acePiles[i].highlight(0);
 						break;
 					}
-					
+
 					for (int i = 0; i < CardsViews.cells.length; i++) {
 						if (view != CardsViews.cells[i]) {
 							continue;
 						}
-						
+
 						board.cells[i].highlight(0);
 						break;
 					}
-					
+
 					for (int i = 0; i < CardsViews.columns.length; i++) {
 						for (int j = 0; j < CardsViews.columns[i].length; j++) {
 							if (view != CardsViews.columns[i][j]) {
 								continue;
 							}
-							
+
 							board.columns[i].highlight(j);
 							break;
 						}
 					}
-					
+
 					for (int i = 0; i < CardsViews.discard.length; i++) {
 						if (view != CardsViews.discard[i]) {
 							continue;
 						}
-						
+
 						board.discardPile.highlight(0);
 						break;
 					}
@@ -629,26 +649,26 @@ public class GameActivity extends Activity {
 						if (view != CardsViews.aces[i]) {
 							continue;
 						}
-						
+
 						board.moveToAces(i, numberOfSelectedCards);
 						break;
 					}
-					
+
 					for (int i = 0; i < CardsViews.cells.length; i++) {
 						if (view != CardsViews.cells[i]) {
 							continue;
 						}
-						
+
 						board.moveToCells(i, numberOfSelectedCards);
 						break;
 					}
-					
+
 					for (int i = 0; i < CardsViews.columns.length; i++) {
 						for (int j = 0; j < CardsViews.columns[i].length; j++) {
 							if (view != CardsViews.columns[i][j]) {
 								continue;
 							}
-							
+
 							board.moveToColumns(i, numberOfSelectedCards);
 							i = CardsViews.columns.length;
 							break;
@@ -657,7 +677,12 @@ public class GameActivity extends Activity {
 
 					board.clearHighlighting();
 				}
-				
+
+				if (board.isSolved() == true) {
+					Toast.makeText(GameActivity.this, "You Win!",
+							Toast.LENGTH_LONG).show();
+				}
+
 				updateImages();
 			}
 		};
@@ -665,7 +690,7 @@ public class GameActivity extends Activity {
 		for (ImageView view : CardsViews.all) {
 			view.setOnClickListener(onClick);
 		}
-		
+
 		updateImages();
 	}
 }

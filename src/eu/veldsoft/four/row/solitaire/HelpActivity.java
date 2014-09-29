@@ -29,7 +29,6 @@ import android.widget.Button;
  * Manages the "View Help" android menu.
  * 
  * @author Konstantin Tsanov
- * 
  */
 public class HelpActivity extends Activity {
 
