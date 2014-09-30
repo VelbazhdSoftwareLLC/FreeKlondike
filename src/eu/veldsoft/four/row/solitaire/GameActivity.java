@@ -167,6 +167,9 @@ public class GameActivity extends Activity {
 			 * Columns should be clickable even if they are empty.
 			 */
 			if (board.columns[i].isEmpty() == true) {
+				for (ImageView view : CardsViews.columns[i]) {
+					view.setImageBitmap(null);
+				}
 				CardsViews.columns[i][0]
 						.setImageResource(R.drawable.empty_card);
 				continue;
