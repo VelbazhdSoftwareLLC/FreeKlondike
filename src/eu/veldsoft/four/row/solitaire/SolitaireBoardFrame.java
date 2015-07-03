@@ -20,7 +20,6 @@
 package eu.veldsoft.four.row.solitaire;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -39,7 +38,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.event.MouseInputAdapter;
-import javax.swing.JLayeredPane;
 
 /**
  * 

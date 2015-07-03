@@ -37,5 +37,7 @@
     <string name="undo_option">Undo</string>
     <string name="hint_option">Hint</string>
     <string name="title_activity_win">You Win!</string>
+    <string name="title_activity_splash">Four Row Solitaire</string>
+    <string name="redirect_activity_is_missing_message">Redirect activity is missing!</string>
 
 </resources>

@@ -20,7 +20,6 @@
 package eu.veldsoft.four.row.solitaire;
 
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Point;
 import java.util.Vector;
 

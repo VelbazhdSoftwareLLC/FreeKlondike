@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eu.veldsoft.four.row.solitaire"
-    android:versionCode="2"
-    android:versionName="1.1" >
+    android:versionCode="3"
+    android:versionName="1.2" >
 
     <uses-sdk
         android:minSdkVersion="15"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="15" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,78 +16,90 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="eu.veldsoft.four.row.solitaire.MenuActivity"
+            android:name=".MenuActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".AboutGameActivity"
+            android:label="@string/title_activity_about_game"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".HelpActivity"
+            android:label="@string/title_activity_help"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".BestTimesActivity"
+            android:label="@string/title_activity_best_times"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".StatisticsActivity"
+            android:label="@string/title_activity_statistics"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".GameActivity"
+            android:label="@string/title_activity_game"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".StatisticsTab0Activity"
+            android:label="@string/title_activity_statistics_tab0"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".StatisticsTab1Activity"
+            android:label="@string/title_activity_statistics_tab1"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".StatisticsTab2Activity"
+            android:label="@string/title_activity_statistics_tab2"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".StatisticsTab3Activity"
+            android:label="@string/title_activity_statistics_tab3"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".StatisticsTab4Activity"
+            android:label="@string/title_activity_statistics_tab4"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".StatisticsTab5Activity"
+            android:label="@string/title_activity_statistics_tab5"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".WinActivity"
+            android:label="@string/title_activity_win" >
+        </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/title_activity_splash"
+            android:noHistory="true" >
+            <meta-data
+                android:name="timeout"
+                android:value="5000" />
+            <meta-data
+                android:name="redirect"
+                android:value="eu.veldsoft.four.row.solitaire.MenuActivity" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="eu.veldsoft.four.row.solitaire.AboutGameActivity"
-            android:label="@string/title_activity_about_game"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="eu.veldsoft.four.row.solitaire.HelpActivity"
-            android:label="@string/title_activity_help"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="eu.veldsoft.four.row.solitaire.BestTimesActivity"
-            android:label="@string/title_activity_best_times"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="eu.veldsoft.four.row.solitaire.StatisticsActivity"
-            android:label="@string/title_activity_statistics"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="eu.veldsoft.four.row.solitaire.SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="eu.veldsoft.four.row.solitaire.GameActivity"
-            android:label="@string/title_activity_game"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="eu.veldsoft.four.row.solitaire.StatisticsTab0Activity"
-            android:label="@string/title_activity_statistics_tab0"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="eu.veldsoft.four.row.solitaire.StatisticsTab1Activity"
-            android:label="@string/title_activity_statistics_tab1"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="eu.veldsoft.four.row.solitaire.StatisticsTab2Activity"
-            android:label="@string/title_activity_statistics_tab2"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="eu.veldsoft.four.row.solitaire.StatisticsTab3Activity"
-            android:label="@string/title_activity_statistics_tab3"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="eu.veldsoft.four.row.solitaire.StatisticsTab4Activity"
-            android:label="@string/title_activity_statistics_tab4"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="eu.veldsoft.four.row.solitaire.StatisticsTab5Activity"
-            android:label="@string/title_activity_statistics_tab5"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="eu.veldsoft.four.row.solitaire.WinActivity"
-            android:label="@string/title_activity_win" >
         </activity>
     </application>
 
