@@ -1,6 +1,6 @@
-Four Row Solitaire published by Velbazhd Software LLC
+Free Klondike published by Velbazhd Software LLC
 
-    Copyright (C) 2010-2014 by	Matt Stephen <masta08@gmail.com>
+    Copyright (C) 2010-2015 by	Matt Stephen <masta08@gmail.com>
 								Todor Balabanov <todor.balabanov@gmail.com>
 								Konstantin Tsanov <k.tsanov@gmail.com>
 								Ventsislav Medarov <venci932@gmail.com>
@@ -10,12 +10,12 @@ Four Row Solitaire published by Velbazhd Software LLC
 								Yana Genova <iana.genova@gmail.com>
 
 
-    Four Row Solitaire is free software: you can redistribute it and/or modify
+    Free Klondike is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    Four Row Solitaire is distributed in the hope that it will be useful,
+    Free Klondike is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
@@ -26,7 +26,7 @@ Four Row Solitaire published by Velbazhd Software LLC
 Card faces and deck 1 and 2 backs provided by 
 http://www.jfitz.com/cards/
 
-Four Row Solitaire was created by Matt Stephen and programmed by 
+Free Klondike was created by Matt Stephen and programmed by 
 Matt Stephen, Todor Balabanov, Konstantin Tsanov and Ventsislav Medarov. 
 Graphics by Vanya Gyaurova, Plamena Popova,Hristiana Kalcheva and Yana Genova.
 This game is a mixture of FreeCell and normal (Klondike) Solitaire.
