@@ -51,7 +51,7 @@
        <item>2</item>
        <item>3</item>
    </string-array>
-   <string name="four_row_solitaire">Four Row Solitaire</string>
+   <string name="free_klondike">Free Klondike</string>
     <!-- Strings related to Settings -->
 
     <string name="pref_ringtone_silent">Silent</string>

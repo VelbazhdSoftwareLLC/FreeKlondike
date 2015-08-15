@@ -21,7 +21,7 @@ Free Klondike published by Velbazhd Software LLC
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with FourRowSolitaire.  If not, see <http://www.gnu.org/licenses/>.
+    along with FreeKlondike.  If not, see <http://www.gnu.org/licenses/>.
 
 Card faces and deck 1 and 2 backs provided by 
 http://www.jfitz.com/cards/
