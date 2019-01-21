@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry excluding="eu/veldsoft/free/klondike/AcePileLayeredPane.java|eu/veldsoft/free/klondike/WinScreen.java|eu/veldsoft/free/klondike/TopTimes.java|eu/veldsoft/free/klondike/SolitairePanel.java|eu/veldsoft/free/klondike/FourRowSolitaire.java|eu/veldsoft/free/klondike/FireworksDisplay.java|eu/veldsoft/free/klondike/DiscardPileLayeredPane.java|eu/veldsoft/free/klondike/DealDeckLayeredPane.java|eu/veldsoft/free/klondike/CardComponent.java|eu/veldsoft/free/klondike/ChangeAppearance.java|eu/veldsoft/free/klondike/ChangeOptions.java|eu/veldsoft/free/klondike/ColumnLayeredPane.java|eu/veldsoft/free/klondike/SingleCellLayeredPane.java|eu/veldsoft/free/klondike/SolitaireBoardFrame.java|eu/veldsoft/free/klondike/SolitaireLayout.java|eu/veldsoft/free/klondike/CardStackLayeredPane.java" kind="src" path="src"/>
-	<classpathentry kind="src" path="raw"/>
-	<classpathentry kind="src" path="gen"/>
-	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-	<classpathentry kind="output" path="bin/classes"/>
-</classpath>

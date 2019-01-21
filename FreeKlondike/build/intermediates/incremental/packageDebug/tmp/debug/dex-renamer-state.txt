@@ -1,0 +1,4 @@
+#Mon Jan 21 14:03:09 EET 2019
+base.0=/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/dex/debug/mergeDexDebug/out
+path.0=classes.dex
+renamed.0=classes.dex

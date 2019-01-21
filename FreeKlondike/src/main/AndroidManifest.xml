@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="eu.veldsoft.free.klondike"
+    android:versionCode="2"
+    android:versionName="2.0.0" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="eu.veldsoft.free.klondike.MenuActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.free.klondike.AboutGameActivity"
+            android:label="@string/title_activity_about_game"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.free.klondike.HelpActivity"
+            android:label="@string/title_activity_help"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.free.klondike.BestTimesActivity"
+            android:label="@string/title_activity_best_times"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.free.klondike.StatisticsActivity"
+            android:label="@string/title_activity_statistics"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.free.klondike.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.free.klondike.GameActivity"
+            android:label="@string/title_activity_game"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.free.klondike.StatisticsTab0Activity"
+            android:label="@string/title_activity_statistics_tab0"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.free.klondike.StatisticsTab1Activity"
+            android:label="@string/title_activity_statistics_tab1"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.free.klondike.StatisticsTab2Activity"
+            android:label="@string/title_activity_statistics_tab2"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.free.klondike.StatisticsTab3Activity"
+            android:label="@string/title_activity_statistics_tab3"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.free.klondike.StatisticsTab4Activity"
+            android:label="@string/title_activity_statistics_tab4"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.free.klondike.StatisticsTab5Activity"
+            android:label="@string/title_activity_statistics_tab5"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.free.klondike.WinActivity"
+            android:label="@string/title_activity_win" >
+        </activity>
+        <activity
+            android:name="eu.veldsoft.free.klondike.SplashActivity"
+            android:label="@string/title_activity_splash"
+            android:noHistory="true" >
+            <meta-data
+                android:name="timeout"
+                android:value="5000" />
+            <meta-data
+                android:name="redirect"
+                android:value="eu.veldsoft.free.klondike.MenuActivity" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

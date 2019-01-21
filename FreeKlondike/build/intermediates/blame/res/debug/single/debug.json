@@ -1,0 +1,554 @@
+[
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_nine_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_nine_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_three.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_three.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_empty_card.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/empty_card.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_ace.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_ace.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/layout_activity_statistics_tab3.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/layout/activity_statistics_tab3.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_ten.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_ten.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_seven_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_seven_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_four_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_four_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_ace_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_ace_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_jack.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_jack.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_four.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_four.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_jack_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_jack_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-xxhdpi_logo.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-xxhdpi/logo.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_transparent_h_ace.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/transparent_h_ace.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_two.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_two.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_ten.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_ten.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_queen.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_queen.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/layout-large_activity_game.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/layout-large/activity_game.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_ace.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_ace.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/layout_activity_about_game.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/layout/activity_about_game.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/layout_activity_statistics_tab4.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/layout/activity_statistics_tab4.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_nine.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_nine.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_four_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_four_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_king_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_king_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_five.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_five.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_nine_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_nine_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_three_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_three_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_king.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_king.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/layout_activity_best_times.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/layout/activity_best_times.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_eight_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_eight_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_two.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_two.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_transparent_c_ace.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/transparent_c_ace.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_queen.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_queen.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_ten_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_ten_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/layout_activity_win.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/layout/activity_win.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_seven.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_seven.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_two_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_two_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_logo_letter_1.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/logo_letter_1.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_seven.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_seven.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_two_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_two_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_four.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_four.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_jack_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_jack_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/layout_activity_splash.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/layout/activity_splash.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/layout-xlarge_activity_game.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/layout-xlarge/activity_game.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_ten_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_ten_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_five_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_five_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_ebingo_logo.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/ebingo_logo.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_eight.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_eight.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_logo_letter_2.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/logo_letter_2.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_nine.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_nine.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/layout_activity_statistics_tab1.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/layout/activity_statistics_tab1.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_three_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_three_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_two.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_two.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_ten_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_ten_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_eight_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_eight_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_king_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_king_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_seven.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_seven.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_three.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_three.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_king.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_king.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_ace.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_ace.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_jack.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_jack.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/layout_activity_game.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/layout/activity_game.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_transparent_s_ace.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/transparent_s_ace.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/menu_game_option_menu.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/menu/game_option_menu.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_six_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_six_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_six.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_six.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_six_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_six_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_five_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_five_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_queen_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_queen_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_queen_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_queen_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_six_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_six_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_seven_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_seven_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/layout-small_activity_game.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/layout-small/activity_game.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_jack_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_jack_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_queen.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_queen.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_two_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_two_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_jack.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_jack.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_eight.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_eight.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_queen_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_queen_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_transparent_d_ace.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/transparent_d_ace.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_four_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_four_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_logo_letter_5.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/logo_letter_5.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_nine.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_nine.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/xml_pref_appearance.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/xml/pref_appearance.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_ten.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_ten.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/layout_activity_statistics.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/layout/activity_statistics.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/layout_activity_help.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/layout/activity_help.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_cardback1.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/cardback1.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_king_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_king_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_ten.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_ten.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_five_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_five_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_four.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_four.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_logo_letter_4.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/logo_letter_4.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_ace_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_ace_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_five.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_five.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_seven_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_seven_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_five.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_five.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_jack_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_jack_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_ace_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_ace_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_six.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_six.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/layout_activity_statistics_tab0.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/layout/activity_statistics_tab0.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_three.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_three.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_jack.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_jack.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_three_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_three_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_four.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_four.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_nine.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_nine.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_seven.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_seven.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_nine_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_nine_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_four_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_four_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_three_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_three_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_six_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_six_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_two.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_two.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_two_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_two_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_six.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_six.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_king_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_king_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_ace_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_ace_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_queen_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_queen_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_ten_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_ten_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_eight_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_eight_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_nine_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_nine_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_five_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_five_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_three.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_three.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_logo_letter_3.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/logo_letter_3.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_queen.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_queen.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_eight.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_eight.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/layout_activity_statistics_tab2.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/layout/activity_statistics_tab2.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_six.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_six.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/layout_activity_menu.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/layout/activity_menu.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_king.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_king.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_ace.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_ace.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_eight_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_eight_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_h_five.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/h_five.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_c_king.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/c_king.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_s_eight.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/s_eight.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_d_seven_h.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/d_seven_h.png"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/layout_activity_statistics_tab5.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/layout/activity_statistics_tab5.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/xml_pref_options.xml.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/xml/pref_options.xml"
+    },
+    {
+        "merged": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/drawable-mdpi_logo_letter_6.png.flat",
+        "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/drawable-mdpi/logo_letter_6.png"
+    }
+]

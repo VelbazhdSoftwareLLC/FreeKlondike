@@ -1,0 +1,190 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/values-w820dp-v13_values-w820dp-v13.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/values-w820dp/dimens.xml",
+                    "from": {
+                        "startLines": "7",
+                        "startColumns": "4",
+                        "startOffsets": "305",
+                        "endColumns": "57",
+                        "endOffsets": "358"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "57",
+                        "endOffsets": "108"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/values-sw720dp-land-v13_values-sw720dp-land-v13.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/values-sw720dp-land/dimens.xml",
+                    "from": {
+                        "startLines": "6",
+                        "startColumns": "4",
+                        "startOffsets": "200",
+                        "endColumns": "58",
+                        "endOffsets": "254"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "58",
+                        "endOffsets": "109"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/values_values.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/values/colors.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "5",
+                        "startOffsets": "56",
+                        "endColumns": "57",
+                        "endOffsets": "108"
+                    },
+                    "to": {
+                        "startLines": "42",
+                        "startColumns": "4",
+                        "startOffsets": "1186",
+                        "endColumns": "56",
+                        "endOffsets": "1238"
+                    }
+                },
+                {
+                    "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/values/dimens.xml",
+                    "from": {
+                        "startLines": "3,4",
+                        "startColumns": "4,4",
+                        "startOffsets": "89,147",
+                        "endColumns": "57,55",
+                        "endOffsets": "142,198"
+                    },
+                    "to": {
+                        "startLines": "43,44",
+                        "startColumns": "4,4",
+                        "startOffsets": "1243,1301",
+                        "endColumns": "57,55",
+                        "endOffsets": "1296,1352"
+                    }
+                },
+                {
+                    "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "6,15",
+                        "startColumns": "4,4",
+                        "startOffsets": "186,510",
+                        "endLines": "12,17",
+                        "endColumns": "12,12",
+                        "endOffsets": "472,665"
+                    },
+                    "to": {
+                        "startLines": "93,100",
+                        "startColumns": "4,4",
+                        "startOffsets": "5382,5673",
+                        "endLines": "99,102",
+                        "endColumns": "12,12",
+                        "endOffsets": "5668,5828"
+                    }
+                },
+                {
+                    "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/values/strings_activity_settings.xml",
+                    "from": {
+                        "startLines": "43,48,29,35,4,8,14,19,53,25,42,28,3,13,56,26,24,2",
+                        "startColumns": "3,3,3,3,4,4,4,4,3,4,3,3,4,5,4,4,4,4",
+                        "startOffsets": "1311,1472,935,1104,131,261,435,578,1600,763,1257,883,78,381,1698,825,711,17",
+                        "endLines": "47,52,34,40,7,11,18,23,53,25,42,28,3,13,56,26,24,2",
+                        "endColumns": "18,18,18,18,19,19,19,19,54,61,53,51,52,54,55,53,51,60",
+                        "endOffsets": "1468,1596,1100,1249,256,370,573,706,1651,820,1307,931,126,430,1749,874,758,73"
+                    },
+                    "to": {
+                        "startLines": "2,7,12,18,24,28,32,37,56,63,64,65,66,67,68,69,70,80",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,217,346,516,666,796,910,1053,2432,3547,3609,3664,3717,3770,3824,3880,3934,4533",
+                        "endLines": "6,11,17,23,27,31,36,41,56,63,64,65,66,67,68,69,70,80",
+                        "endColumns": "18,18,18,18,19,19,19,19,55,61,54,52,52,53,55,53,51,60",
+                        "endOffsets": "212,341,511,661,791,905,1048,1181,2483,3604,3659,3712,3765,3819,3875,3929,3981,4589"
+                    }
+                },
+                {
+                    "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/values/strings.xml",
+                    "from": {
+                        "startLines": "13,17,18,5,11,24,14,3,23,4,15,20,21,8,37,6,35,40,27,10,9,26,16,22,28,19,39,25,29,30,31,32,33,34,38,7,36,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "646,884,929,210,534,2475,703,56,2416,152,774,1478,1517,379,3265,261,3177,3430,2630,481,424,2585,819,2351,2677,1420,3366,2520,2739,2812,2885,2958,3031,3104,3310,314,3220,591",
+                        "endColumns": "56,44,490,50,56,44,70,95,58,57,44,38,833,44,44,52,42,94,46,52,56,44,64,64,61,57,63,64,72,72,72,72,72,72,55,64,44,54",
+                        "endOffsets": "698,924,1415,256,586,2515,769,147,2470,205,814,1512,2346,419,3305,309,3215,3520,2672,529,476,2625,879,2411,2734,1473,3425,2580,2807,2880,2953,3026,3099,3172,3361,374,3260,641"
+                    },
+                    "to": {
+                        "startLines": "45,46,47,48,49,50,51,52,53,54,55,57,58,59,60,61,62,71,72,73,74,75,76,77,78,79,81,82,83,84,85,86,87,88,89,90,91,92",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1357,1414,1459,1950,2001,2058,2103,2174,2270,2329,2387,2488,2527,3361,3406,3451,3504,3986,4081,4128,4181,4238,4283,4348,4413,4475,4594,4658,4723,4796,4869,4942,5015,5088,5161,5217,5282,5327",
+                        "endColumns": "56,44,490,50,56,44,70,95,58,57,44,38,833,44,44,52,42,94,46,52,56,44,64,64,61,57,63,64,72,72,72,72,72,72,55,64,44,54",
+                        "endOffsets": "1409,1454,1945,1996,2053,2098,2169,2265,2324,2382,2427,2522,3356,3401,3446,3499,3542,4076,4123,4176,4233,4278,4343,4408,4470,4528,4653,4718,4791,4864,4937,5010,5083,5156,5212,5277,5322,5377"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/values-v11_values-v11.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/values-v11/styles.xml",
+                    "from": {
+                        "startLines": "6",
+                        "startColumns": "4",
+                        "startOffsets": "177",
+                        "endLines": "8",
+                        "endColumns": "12",
+                        "endOffsets": "309"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "187"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/res/merged/debug/values-v14_values-v14.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/src/main/res/values-v14/styles.xml",
+                    "from": {
+                        "startLines": "7",
+                        "startColumns": "4",
+                        "startOffsets": "220",
+                        "endLines": "9",
+                        "endColumns": "12",
+                        "endOffsets": "366"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "201"
+                    }
+                }
+            ]
+        }
+    ]
+}
