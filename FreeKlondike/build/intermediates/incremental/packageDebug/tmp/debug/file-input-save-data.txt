@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Jan 21 14:03:09 EET 2019
+#Tue Jan 22 17:08:00 EET 2019
 1.base=/Users/todorbalabanov/Desktop/FreeKlondike/FreeKlondike/build/intermediates/merged_assets/debug/mergeDebugAssets/out
 0.baseType=DIRECTORY
 1.baseType=DIRECTORY
